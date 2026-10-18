@@ -32,8 +32,19 @@ def prefix(base):
             f.write_text(t, encoding='utf-8'); n += 1
     print('prefixed', n, 'files with', base)
 
+def unprefix(base='/thaivillas'):
+    """Data, scripts and CSS are edited in place by prefix(); undo that first so generators read clean paths."""
+    for f in list(ROOT.glob('data/*.json')) + list(ROOT.glob('thb-*.js')) + list(ROOT.rglob('*.css')):
+        if {'.git', 'tools'} & set(f.relative_to(ROOT).parts):
+            continue
+        s = f.read_text(encoding='utf-8')
+        t = s.replace(base + '/', '/')
+        if t != s:
+            f.write_text(t, encoding='utf-8')
+
 def main():
     base = sys.argv[sys.argv.index('--base') + 1] if '--base' in sys.argv else None
+    unprefix('/' + base.strip('/') if base else '/thaivillas')
     for step in STEPS:
         print('==', step)
         subprocess.run([sys.executable, '-I', str(HERE / step)], cwd=ROOT, check=True)
