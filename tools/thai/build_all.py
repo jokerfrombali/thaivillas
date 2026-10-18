@@ -21,7 +21,7 @@ def prefix(base):
     pat = re.compile(r'''(["'`(=,\s])/(?!/)(?=(%s)(?:[/"'`?#)\s,]|$))''' % TOP)
     home = re.compile(r'''((?:href|action|content)=["'](?:\d+;\s*url=)?)/(["'#?])''')
     n = 0
-    for f in list(ROOT.rglob('*.html')) + list(ROOT.glob('data/*.json')) + list(ROOT.glob('thb-*.js')):
+    for f in list(ROOT.rglob('*.html')) + list(ROOT.glob('data/*.json')) + list(ROOT.glob('thb-*.js')) + list(ROOT.rglob('*.css')):
         if {'.git', 'tools'} & set(f.relative_to(ROOT).parts):
             continue
         s = f.read_text(encoding='utf-8')
