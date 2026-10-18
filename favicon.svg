@@ -1,1 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0a0a0a"/><text x="32" y="43" text-anchor="middle" font-family="Georgia,serif" font-size="30" font-style="italic" fill="#fafaf7">TV</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0a0a0a"/>
+  <text x="32" y="42" text-anchor="middle" font-family="Lora, Georgia, 'Times New Roman', serif" font-size="27" fill="#fafaf7"><tspan font-style="italic">T</tspan><tspan font-weight="700" dx="1">V</tspan></text>
+</svg>

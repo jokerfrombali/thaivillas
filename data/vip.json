@@ -1,0 +1,20 @@
+{
+  "_note": "VIP services. No fleet lists or prices yet — everything is on request until real partners are signed.",
+  "categories": [
+    {"slug": "yachts", "name": "Yacht charter", "image": "/thaivillas/images/vip/yacht.jpg", "gallery": ["/thaivillas/images/vip/yacht-2.jpg", "/thaivillas/images/vip/catamaran.jpg"],
+     "short": "Motor yachts, sailing catamarans and speedboats from Chalong, Ao Po and Yacht Haven — day trips to Phang Nga Bay, Phi Phi, Racha and Coral islands, or multi-day charters.",
+     "options": ["Speedboat day trip", "Sailing catamaran", "Motor yacht with crew", "Sunset cruise", "Multi-day charter"]},
+    {"slug": "helicopters", "name": "Helicopter flights", "image": "/thaivillas/images/vip/helicopter.jpg", "gallery": ["/thaivillas/images/vip/helicopter-view.jpg"],
+     "short": "Scenic flights over Phuket and Phang Nga Bay, and private transfers to Krabi, Koh Samui or Bangkok.",
+     "options": ["Scenic island flight", "Phang Nga Bay tour", "Airport / island transfer", "Private charter"]},
+    {"slug": "supercars", "name": "Supercar & luxury car rental", "image": "/thaivillas/images/vip/supercar.jpg", "gallery": ["/thaivillas/images/vip/supercar-2.jpg"],
+     "short": "Supercars, convertibles and premium SUVs delivered to your villa — with or without a driver.",
+     "options": ["Supercar", "Convertible", "Premium SUV", "Car with chauffeur", "Airport pick-up in style"]},
+    {"slug": "superbikes", "name": "Superbike & premium bike rental", "image": "/thaivillas/images/vip/superbike.jpg", "gallery": ["/thaivillas/images/vip/superbike-2.jpg"],
+     "short": "Big bikes and premium scooters for island roads, delivered to your villa with helmets.",
+     "options": ["Superbike", "Touring bike", "Premium scooter", "Guided ride"]},
+    {"slug": "concierge", "name": "Luxury concierge", "image": "/thaivillas/images/vip/chef.jpg", "gallery": [],
+     "short": "Private chef, in-villa spa, event and party set-ups, nanny, security and reservations at the best tables.",
+     "options": ["Private chef", "In-villa spa & massage", "Celebration & event set-up", "Nanny", "Personal security", "Restaurant & club reservations"]}
+  ]
+}

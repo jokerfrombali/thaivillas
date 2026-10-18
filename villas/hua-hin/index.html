@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Villas for Rent in Hua Hin, Thailand — Daily &amp; Monthly | Thai Villas</title>
+<meta name="description" content="Private villas for rent in Hua Hin, Thailand. Royal seaside town south of Bangkok, golf and calm family beaches. Daily or monthly, book on WhatsApp.">
+<link rel="preload" as="font" type="font/woff2" href="/thaivillas/fonts/lora-ecda3beb.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/thaivillas/fonts/lora-6d4ac4a9.woff2" crossorigin>
+<link rel="stylesheet" href="/thaivillas/thb-tw.css">
+<style>
+* { box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: #fafaf7; color: #0a0a0a; -webkit-font-smoothing: antialiased; margin: 0; }
+
+/* NAV */
+.nav-link { position: relative; color: #0a0a0a; font-weight: 500; font-size: 14px; text-decoration: none; }
+.nav-link::after { content: ''; position: absolute; bottom: -6px; left: 0; right: 0; height: 1.5px; background: #0a0a0a; transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
+.nav-link:hover::after { transform: scaleX(1); }
+
+/* PROMO BANNER */
+.promo-banner {
+  position: relative;
+  background: #0a0a0a;
+  overflow: hidden;
+  padding: 32px 40px;
+}
+.promo-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/thaivillas/images/hua-hin.jpg') center/cover no-repeat;
+  opacity: 0.18;
+}
+.promo-inner {
+  position: relative;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.promo-thumb {
+  width: 140px;
+  height: 110px;
+  border-radius: 16px;
+  object-fit: cover;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+.promo-center { flex: 1; text-align: center; }
+.promo-tag {
+  display: inline-block;
+  background: #b8f04a;
+  color: #0a0a0a;
+  font-weight: 800;
+  font-size: 13px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+}
+.promo-title {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 44px;
+  font-weight: 800;
+  color: white;
+  line-height: 1.05;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.promo-title em { color: #b8f04a; font-style: normal; }
+.promo-subtitle { color: rgba(255,255,255,0.65); font-size: 13px; margin-bottom: 16px; }
+.promo-code {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: 13px;
+  color: white;
+  margin-bottom: 18px;
+}
+.promo-code strong { color: #b8f04a; letter-spacing: 0.06em; }
+.promo-search {
+  background: white;
+  border-radius: 20px;
+  max-width: 620px;
+  margin: 0 auto;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+  overflow: hidden;
+}
+.promo-search-top {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px 10px;
+  gap: 10px;
+  border-bottom: 1px solid #e6e3dc;
+}
+.promo-search-top svg { color: #b0ada6; flex-shrink: 0; }
+.promo-search-top input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  color: #0a0a0a;
+  background: transparent;
+}
+.promo-search-top input::placeholder { color: #b0ada6; }
+.promo-search-bottom {
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 10px 20px;
+  gap: 0;
+}
+.promo-search-field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.promo-search-field input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  color: #0a0a0a;
+  background: transparent;
+  padding: 4px 0;
+}
+.promo-search-field input::placeholder { color: #b0ada6; }
+.promo-search-divider { width: 1px; height: 20px; background: #e6e3dc; flex-shrink: 0; margin: 0 12px; }
+.promo-search-btn {
+  background: #0a0a0a;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 11px 22px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+.promo-search-btn:hover { background: #222; }
+.promo-right { text-align: center; flex-shrink: 0; }
+.promo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(184,240,74,0.15);
+  border: 1px solid rgba(184,240,74,0.4);
+  border-radius: 12px;
+  padding: 10px 18px;
+  margin-bottom: 8px;
+}
+.promo-badge-text { font-size: 13px; font-weight: 600; color: #b8f04a; }
+.promo-tiers { display: flex; flex-direction: column; gap: 4px; }
+.promo-tier { font-size: 12px; color: rgba(255,255,255,0.55); }
+.promo-tier strong { color: rgba(255,255,255,0.85); }
+
+/* AMENITY PILLS ROW */
+.pills-bar {
+  background: white;
+  border-bottom: 1px solid #e6e3dc;
+  padding: 0 40px;
+}
+.pills-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.pills-scroll {
+  flex: 1;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 12px 0;
+  scrollbar-width: none;
+}
+.pills-scroll::-webkit-scrollbar { display: none; }
+.pill {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  color: #4a4a45;
+}
+.pill svg { stroke: currentColor; transition: stroke 0.15s; }
+.pill:hover { border-color: #0a0a0a; background: #f5f3ee; color: #0a0a0a; }
+.pill.active { border-color: #0a0a0a; background: #0a0a0a; color: white; }
+.pill-label { font-size: 11px; font-weight: 500; color: inherit; }
+.pills-sep { width: 1px; height: 40px; background: #e6e3dc; flex-shrink: 0; margin: 0 12px; }
+.filters-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  background: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  color: #0a0a0a;
+  transition: all 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.filters-btn:hover { border-color: #0a0a0a; }
+.filter-count-badge {
+  background: #0a0a0a;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 999px;
+  display: none;
+}
+
+/* RESULTS BAR */
+.results-bar {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 20px 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sort-select {
+  border: 1.5px solid #e6e3dc;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  background: white;
+  cursor: pointer;
+  color: #0a0a0a;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+.sort-select:hover { border-color: #0a0a0a; }
+.view-btn { width: 36px; height: 36px; border: 1.5px solid #e6e3dc; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: white; cursor: pointer; transition: all 0.15s; }
+.view-btn.active, .view-btn:hover { background: #0a0a0a; border-color: #0a0a0a; color: white; }
+.view-btn svg { width: 16px; height: 16px; }
+
+/* CARDS */
+.cards-wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 24px 40px 60px;
+}
+.prop-card { background: white; border-radius: 20px; overflow: hidden; border: 1px solid #e6e3dc; transition: transform 0.3s cubic-bezier(0.2,0.6,0.2,1), box-shadow 0.3s; cursor: pointer; }
+.prop-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.10); }
+.prop-card .img-wrap { overflow: hidden; position: relative; }
+.prop-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.5s cubic-bezier(0.2,0.6,0.2,1); }
+.prop-card:hover img { transform: scale(1.04); }
+.badge { position: absolute; top: 12px; left: 12px; background: rgba(10,10,10,0.72); backdrop-filter: blur(6px); color: white; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+.heart-btn { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; background: rgba(250,250,247,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; transition: all 0.2s; }
+.heart-btn:hover { background: white; transform: scale(1.1); }
+.heart-btn.liked svg { fill: #e33; stroke: #e33; }
+.prop-meta { display: flex; align-items: center; gap: 12px; font-size: 12px; color: #6b6b66; }
+.prop-meta span { display: flex; align-items: center; gap: 4px; }
+
+/* FILTER DRAWER */
+#filterDrawer {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: none;
+}
+#filterDrawer.open { display: flex; }
+#filterBackdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,10,10,0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+#filterPanel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 380px;
+  background: #fafaf7;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  padding: 0;
+}
+#filterDrawer.open #filterPanel { transform: translateX(0); }
+
+.filter-section { border-bottom: 1px solid #e6e3dc; padding: 20px 28px; }
+.filter-section:last-child { border-bottom: none; }
+.filter-title { font-size: 13px; font-weight: 700; color: #0a0a0a; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+.filter-title svg { transition: transform 0.2s; }
+.filter-title.collapsed svg { transform: rotate(-90deg); }
+.filter-body { overflow: hidden; transition: max-height 0.3s ease; }
+
+.f-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 13px; border-radius: 999px; border: 1.5px solid #e6e3dc; font-size: 13px; cursor: pointer; transition: all 0.15s; user-select: none; background: white; font-family: 'Inter', sans-serif; }
+.f-chip:hover { border-color: #0a0a0a; }
+.f-chip.active { background: #0a0a0a; color: white; border-color: #0a0a0a; }
+.f-chip .count { font-size: 11px; opacity: 0.55; }
+.f-chip.active .count { opacity: 0.7; }
+
+.price-input { border: 1.5px solid #e6e3dc; border-radius: 10px; padding: 8px 12px; font-size: 13px; width: 100%; background: white; outline: none; font-family: 'Inter', sans-serif; }
+.price-input:focus { border-color: #0a0a0a; }
+
+/* CATEGORY CARDS */
+.cat-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.cat-card {
+  background: white;
+  border: 1px solid #e6e3dc;
+  border-radius: 24px;
+  padding: 28px 28px 26px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2,0.6,0.2,1);
+  overflow: hidden;
+  position: relative;
+}
+.cat-card::after {
+  content: '→';
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%) translateX(4px);
+  font-size: 18px;
+  color: #ccc;
+  transition: all 0.25s;
+  opacity: 0;
+}
+.cat-card:hover { border-color: #0a0a0a; transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.10); }
+.cat-card:hover::after { opacity: 1; transform: translateY(-50%) translateX(0); color: #0a0a0a; }
+.cat-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.2,0.6,0.2,1);
+}
+.cat-card:hover .cat-icon { transform: scale(1.06) rotate(-2deg); }
+.cat-card h3 { font-family: 'Lora', Georgia, serif; font-size: 17px; font-weight: 700; margin: 0 0 4px; letter-spacing: -0.01em; }
+.cat-card p { font-size: 12.5px; color: #6b6b66; margin: 0; line-height: 1.4; }
+
+/* BTN */
+.btn-primary { background: #0a0a0a; color: #fff; border-radius: 999px; padding: 12px 22px; font-weight: 600; font-size: 14px; border: none; cursor: pointer; transition: background 0.2s; display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; text-decoration: none; }
+.btn-primary:hover { background: #222; }
+.btn-outline { border: 1.5px solid #0a0a0a; color: #0a0a0a; background: transparent; border-radius: 999px; padding: 11px 21px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+.btn-outline:hover { background: #0a0a0a; color: #fff; }
+
+/* ── MEGA-MENU (copied from main) ── */
+#villasBackdrop { display:none; position:fixed; inset:0; top:72px; background:rgba(0,0,0,0.45); z-index:300; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+#villasBackdrop.open { display:block; }
+#villasPanel { display:none; position:fixed; top:72px; left:0; right:0; width:100%; background:#fafaf7; border-bottom:1px solid #e6e3dc; box-shadow:0 8px 40px rgba(0,0,0,0.10); padding:32px 0; z-index:310; flex-direction:row; justify-content:center; gap:0; }
+#villasPanel.open { display:flex; }
+.mega-inner { display:flex; align-items:flex-start; max-width:1400px; margin:0 auto; padding:0 40px; }
+.mega-col-title { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#b0ada6; margin-bottom:10px; }
+.mega-item { display:block; font-size:13.5px; font-weight:500; color:#0a0a0a; text-decoration:none; padding:4px 0; white-space:nowrap; position:relative; }
+.mega-item::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:#0a0a0a; transform:scaleX(0); transform-origin:center; transition:transform 0.25s cubic-bezier(0.4,0,0.2,1); }
+.mega-item:hover::after { transform:scaleX(1); }
+.mega-count { font-size:11px; color:#b0ada6; font-weight:400; margin-left:4px; }
+.mega-divider { width:1px; background:#e6e3dc; align-self:stretch; flex-shrink:0; }
+.mega-featured { position:relative; border-radius:16px; overflow:hidden; height:200px; cursor:pointer; flex-shrink:0; }
+.mega-featured-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(10,10,10,0.75) 0%,transparent 55%); }
+.mega-featured-content { position:absolute; bottom:0; left:0; right:0; padding:20px 16px; color:white; }
+.mega-zoom-img { transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1) !important; }
+.mega-zoom:hover .mega-zoom-img { transform:scale(1.08); }
+.mega-trigger { position:relative; }
+.mega-chevron { transition:transform 0.25s; }
+.mega-chevron.open { transform:rotate(180deg); }
+@keyframes vorbPulse { 0% { transform:scale(1); opacity:0.7; } 100% { transform:scale(2.1); opacity:0; } }
+</style>
+
+<meta name="theme-color" content="#343537">
+<style>picture{display:contents}</style>
+<style>section[id^="section-"]:not(:first-of-type){content-visibility:auto;contain-intrinsic-size:auto 600px}</style>
+<style id="thb-mobile-css">
+#thbBurger{display:none;background:#fff;border:1px solid #e6e3dc;border-radius:10px;width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+#thbMobileMenu{position:fixed;top:72px;left:0;right:0;z-index:49;background:#fafaf7;border-bottom:1px solid #e6e3dc;box-shadow:0 20px 40px rgba(0,0,0,.14);max-height:calc(100vh - 72px);overflow-y:auto}
+#thbMobileMenu a{display:block;padding:15px 22px;border-bottom:1px solid #eeece6;font-size:15px;font-weight:600;color:#0a0a0a;text-decoration:none}
+#thbMobileMenu a span{color:#b0ada6;font-weight:400;font-size:13px;margin-left:6px}
+@media(max-width:1023px){
+  #thbNavLinks{display:none!important}
+  #thbNavRight>a.btn-primary{font-size:12px!important;padding:9px 14px!important}
+  #thbNavRight>div,#thbNavRight>button:not(#thbBurger){display:none!important}
+  #thbBurger{display:flex!important}
+  #navbar>div{padding:0 16px!important}
+  .promo-banner{padding:26px 16px!important}
+  .promo-title{font-size:32px!important}
+  .promo-inner{gap:20px!important}
+  .promo-right,.promo-thumb{display:none!important}
+  .promo-search-bottom{flex-wrap:wrap;gap:8px;padding:10px 14px!important}
+  .promo-search-field{flex:1 1 40%;min-width:120px}
+  .promo-search-divider{display:none!important}
+  .promo-search-btn{flex:1 1 100%;justify-content:center;padding:13px 22px}
+  #cardGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
+}
+@media(max-width:639px){
+  .promo-search input,.promo-search-field input{font-size:16px!important}
+  #cardGrid{grid-template-columns:1fr!important;gap:18px!important}
+  .promo-title{font-size:28px!important}
+}
+@media(max-width:900px){.thb-rgrid2{grid-template-columns:1fr!important;padding:24px 20px!important}.thb-rgrid3{grid-template-columns:1fr!important}}
+</style>
+<style id="thb-sheet-css">
+#thbSearchPill{display:none}
+@media(max-width:1023px){
+  #thbSearchPill{flex:1;display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #dcd8cf;border-radius:999px;padding:12px 16px;box-shadow:0 4px 16px rgba(0,0,0,.07);font-family:'Inter',sans-serif;cursor:pointer;min-width:0;text-align:left}
+  #thbSearchPill svg{flex:0 0 auto;color:#0a0a0a}
+  #thbSearchPill .tsp-t{font-size:14px;font-weight:600;color:#0a0a0a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #thbSearchPill .tsp-s{font-size:12px;color:#8a877f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pills-inner{padding:10px 0;gap:10px}
+  .promo-search{display:none!important}
+}
+#thbSheet{position:fixed;inset:0;z-index:80;background:#fafaf7;display:none;flex-direction:column;font-family:'Inter',sans-serif}
+#thbSheet.open{display:flex}
+#thbSheet .tsh-hd{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #e6e3dc;flex-shrink:0}
+#thbSheet .tsh-hd p{font-family:'Lora',Georgia,serif;font-size:20px;font-weight:700;color:#0a0a0a;margin:0}
+#thbSheet .tsh-x{width:38px;height:38px;border-radius:999px;border:1px solid #e6e3dc;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+#thbSheet .tsh-bd{flex:1;overflow-y:auto;padding:20px;-webkit-overflow-scrolling:touch}
+#thbSheet .tsh-lbl{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a877f;margin:0 0 12px}
+#thbSheet .tsh-sec{background:#fff;border:1px solid #e6e3dc;border-radius:20px;padding:18px;margin-bottom:14px}
+#thbSheet .tsh-chips{display:flex;flex-wrap:wrap;gap:8px}
+#thbSheet .tsh-chip{display:inline-flex;align-items:center;gap:7px;border:1.5px solid #e6e3dc;background:#fff;border-radius:999px;padding:10px 16px;font-size:14px;font-weight:500;color:#0a0a0a;cursor:pointer;font-family:'Inter',sans-serif}
+#thbSheet .tsh-chip b{font-weight:400;font-size:12px;color:#8a877f}
+#thbSheet .tsh-chip.on{background:#0a0a0a;color:#fff;border-color:#0a0a0a}
+#thbSheet .tsh-chip.on b{color:rgba(255,255,255,.6)}
+#thbSheet .tsh-dates{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#thbSheet .tsh-dates label{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0a0a0a;margin:0 0 6px}
+#thbSheet .tsh-dates input{width:100%;border:1.5px solid #e6e3dc;border-radius:12px;padding:11px 12px;font-size:16px;font-family:'Inter',sans-serif;color:#0a0a0a;background:#fff;-webkit-appearance:none;appearance:none;min-height:46px}
+#thbSheet .tsh-guests{display:flex;align-items:center;justify-content:space-between}
+#thbSheet .tsh-guests p{margin:0;font-size:14px;font-weight:500;color:#0a0a0a}
+#thbSheet .tsh-step{display:flex;align-items:center;gap:14px}
+#thbSheet .tsh-step button{width:38px;height:38px;border-radius:999px;border:1.5px solid #dcd8cf;background:#fff;font-size:19px;line-height:1;color:#0a0a0a;cursor:pointer}
+#thbSheet .tsh-step button:disabled{opacity:.3}
+#thbSheet .tsh-step span{min-width:20px;text-align:center;font-size:16px;font-weight:600}
+#thbSheet .tsh-ft{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 20px calc(14px + env(safe-area-inset-bottom));border-top:1px solid #e6e3dc;background:#fafaf7}
+#thbSheet .tsh-clear{background:none;border:none;font-size:14px;font-weight:600;color:#0a0a0a;text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-family:'Inter',sans-serif;padding:10px 4px}
+#thbSheet .tsh-apply{flex:1;background:#0a0a0a;color:#fff;border:none;border-radius:999px;padding:15px 22px;font-size:15px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer}
+</style>
+<style id="thb-wapill-css">
+/* the green WhatsApp button on its own, bottom-right — no avatar, no pitch */
+#thbWaPill{position:fixed;left:auto;right:20px;transform:none;bottom:calc(20px + env(safe-area-inset-bottom));z-index:60;display:flex;align-items:center;background:none;border:0;box-shadow:none;padding:0;width:auto;font-family:'Inter',sans-serif;box-sizing:border-box}
+#thbWaPill .ava,#thbWaPill p,#thbWaPill .wa-ai{display:none}
+#thbWaPill .wa-go{display:inline-flex;align-items:center;gap:8px;height:48px;box-sizing:border-box;background:#22c55e;color:#fff;font-weight:700;font-size:14.5px;padding:0 20px;border-radius:999px;text-decoration:none;flex:0 0 auto;box-shadow:0 12px 28px -10px rgba(22,163,74,.6),0 2px 8px rgba(0,0,0,.14);transition:background .15s,transform .16s,box-shadow .16s}
+#thbWaPill .wa-go:hover{background:#16a34a;transform:translateY(-1px);box-shadow:0 16px 32px -10px rgba(22,163,74,.66),0 2px 10px rgba(0,0,0,.16)}
+#thbWaPill .wa-go svg{width:19px;height:19px}
+@media(max-width:600px){#thbWaPill{right:14px;bottom:calc(16px + env(safe-area-inset-bottom))}#thbWaPill .wa-go{height:46px;padding:0 17px;font-size:14px}}
+@media print{#thbWaPill{display:none}}
+</style>
+<style id="thb-qchips-css">
+.pills-bar{padding:0}
+.pills-bar .pills-inner{max-width:1300px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;gap:10px}
+#thbAreaChips{display:flex;gap:10px;align-items:center;flex:1;flex-wrap:wrap;min-width:0}
+.thb-qchip{display:inline-flex;align-items:center;gap:7px;border:1.5px solid #e6e3dc;background:#fff;border-radius:999px;padding:10px 18px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#0a0a0a;cursor:pointer;white-space:nowrap;transition:border-color .16s ease,background .16s ease,box-shadow .16s ease,transform .16s ease}
+.thb-qchip:hover{border-color:#0a0a0a;transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.07)}
+.thb-qchip b{font-weight:400;font-size:11.5px;color:#8a877f;background:#f2efe8;border-radius:999px;padding:2px 8px;line-height:1.4;transition:background .16s,color .16s}
+.thb-qchip.on{background:#0a0a0a;color:#fff;border-color:#0a0a0a;box-shadow:0 6px 18px rgba(10,10,10,.22)}
+.thb-qchip.on b{color:#fff;background:rgba(255,255,255,.16)}
+.pills-inner .filters-btn{margin-left:auto;flex-shrink:0}
+@media(max-width:1023px){
+  .pills-bar .pills-inner{padding:12px 16px;flex-wrap:wrap;gap:10px}
+  #thbAreaChips{flex:1 1 100%;order:3;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:2px;margin:0 -2px}
+  #thbAreaChips::-webkit-scrollbar{display:none}
+  .thb-qchip{padding:9px 16px;font-size:13.5px}
+}
+</style>
+<style id="thb-mhdr-css">
+@media(max-width:1023px){
+  .results-bar{display:none}
+  [data-hostpill]{height:44px;display:inline-flex;align-items:center;box-sizing:border-box;padding:0 16px!important;font-size:18px!important}
+  #thbNavRight>a.btn-primary{height:44px;display:inline-flex;align-items:center;box-sizing:border-box;padding:0 18px!important;font-size:12.5px!important;border-radius:999px!important}
+  #thbBurger{width:44px;height:44px;border-radius:999px}
+  .pills-bar .pills-inner{padding:10px 16px 12px;gap:8px}
+  #thbSearchPill{height:46px;box-sizing:border-box;padding:0 15px;align-items:center;gap:9px;box-shadow:none}
+  #thbSearchPill>span{display:flex!important;align-items:baseline;gap:6px;min-width:0;overflow:hidden}
+  #thbSearchPill .tsp-t{display:inline!important;font-size:14px;flex-shrink:0}
+  #thbSearchPill .tsp-s{display:inline!important;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #thbSearchPill .tsp-s::before{content:'\00b7\00a0';color:#b3afa6}
+  .pills-inner .filters-btn{height:46px;box-sizing:border-box;padding:0 18px;border-radius:999px;display:inline-flex;align-items:center;gap:7px}
+  .thb-qchip{height:38px;box-sizing:border-box;padding:0 14px;font-size:13px}
+  .thb-qchip b{padding:1px 7px;font-size:11px}
+}
+</style>
+<style id="thb-tap-css">
+a,button,[onclick],.prop-card,.thb-acard,.thb-qchip,#thbBurger,.tsh-chip{touch-action:manipulation;-webkit-tap-highlight-color:rgba(10,10,10,.06)}
+@media(hover:none){
+  .prop-card:hover,.thb-acard:hover,.thb-qchip:hover,.tt-card:hover,.card-hover:hover,.villa-floating-back:hover{transform:none!important;box-shadow:none!important}
+  .cat-card:hover::after{opacity:0!important}
+}
+</style>
+<style id="thb-fav-css">
+.thb-fav{position:absolute;top:10px;right:10px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border:none;border-radius:50%;cursor:pointer;padding:0;z-index:4;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 2px 8px rgba(0,0,0,.13);touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:background .18s,transform .18s}
+.thb-fav svg{width:17px;height:17px;fill:none;stroke:#0a0a0a;stroke-width:2;transition:fill .18s,stroke .18s,transform .18s}
+@media(hover:hover){.thb-fav:hover{background:#fff;transform:scale(1.08)}}
+.thb-fav[aria-pressed="true"] svg{fill:#e11d48;stroke:#e11d48}
+.thb-fav.thb-pop svg{animation:thbHeartPop .38s cubic-bezier(.2,.9,.3,1.4)}
+@keyframes thbHeartPop{0%{transform:scale(1)}42%{transform:scale(1.42)}100%{transform:scale(1)}}
+.thb-acw{position:relative;display:flex;flex:0 0 76vw;max-width:300px;scroll-snap-align:start}
+.thb-acw>.thb-acard{flex:1 1 auto;max-width:none}
+@media(min-width:640px){.thb-acw{flex:0 0 300px}}
+[data-fav-link]{position:relative;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:inherit}
+[data-fav-badge]{position:absolute;top:-1px;right:-1px;min-width:17px;height:17px;padding:0 4px;box-sizing:border-box;border-radius:999px;background:#e11d48;color:#fff;font-family:Inter,system-ui,sans-serif;font-size:10.5px;font-weight:700;line-height:17px;text-align:center;border:2px solid #fafaf7;display:none}
+[data-fav-link].thb-has svg{fill:#e11d48!important;stroke:#e11d48!important}
+[data-fav-link].thb-has [data-fav-badge]{display:block}
+#thbSavedToast{position:fixed;left:50%;transform:translateX(-50%) translateY(18px);bottom:calc(20px + env(safe-area-inset-bottom));z-index:95;display:flex;align-items:center;gap:12px;background:#0a0a0a;color:#fff;border-radius:999px;padding:11px 12px 11px 18px;font-family:Inter,system-ui,sans-serif;font-size:13.5px;font-weight:600;box-shadow:0 14px 40px rgba(0,0,0,.3);opacity:0;visibility:hidden;transition:opacity .22s ease,transform .22s ease,visibility .22s;max-width:92vw}
+#thbSavedToast.on{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+#thbSavedToast a{background:#fff;color:#0a0a0a;border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:700;text-decoration:none;white-space:nowrap}
+@media(prefers-reduced-motion:reduce){.thb-fav.thb-pop svg{animation:none}#thbSavedToast{transition:none}}
+</style>
+<style id="thb-display-tracking">
+/* Lora has prominent serifs: negative tracking makes them run into each other */
+.font-display,.hero-title,[data-slot="property-title"],[data-slot="section-header"],[style*="Lora"]{letter-spacing:0!important}
+</style>
+<style id="thb-tools-css">
+/* Filters + sort as one group, same shape as the district chips */
+.thb-tools{display:flex;align-items:center;gap:10px;margin-left:auto;flex-shrink:0}
+.pills-inner .filters-btn{margin-left:0}
+.thb-tools .filters-btn{height:42px;box-sizing:border-box;padding:0 16px;border:1.5px solid #e6e3dc;border-radius:999px;font-size:13.5px;font-weight:600;gap:8px;background:#fff}
+.thb-tools .filters-btn:hover{border-color:#0a0a0a}
+.thb-sortwrap{position:relative;flex-shrink:0}
+.thb-sortwrap .sort-select{height:42px;box-sizing:border-box;padding:0 38px 0 16px;border:1.5px solid #e6e3dc;border-radius:999px;font-size:13.5px;font-weight:600;color:#0a0a0a;background:#fff;-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;font-family:'Inter',sans-serif;transition:border-color .15s}
+.thb-sortwrap .sort-select:hover{border-color:#0a0a0a}
+.thb-sortwrap .sort-select:focus-visible{border-color:#0a0a0a;outline:none;box-shadow:0 0 0 3px rgba(10,10,10,.07)}
+.thb-sortchev{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:13px;height:13px;pointer-events:none;color:#6b6b66}
+@media(max-width:1023px){
+  .thb-tools{gap:8px}
+  .pills-inner .thb-tools .filters-btn{height:44px;padding:0 15px;font-size:13px;border-radius:999px}
+  .thb-sortwrap .sort-select{height:44px;font-size:13px;padding:0 34px 0 14px}
+}
+@media(max-width:560px){
+  .thb-tools{flex:1 1 100%;margin-left:0}
+  .pills-inner .thb-tools .filters-btn,.thb-sortwrap{flex:1 1 50%}
+  .thb-sortwrap .sort-select{width:100%}
+}
+</style>
+
+<!-- seo-rent-ld --><!-- /seo-rent-ld --><meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/thaivillas/favicon.svg">
+<meta property="og:title" content="Villas for Rent in Hua Hin, Thailand — Daily &amp; Monthly | Thai Villas">
+<meta property="og:description" content="Private villas for rent in Hua Hin, Thailand. Royal seaside town south of Bangkok, golf and calm family beaches. Daily or monthly, book on WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Thai Villas">
+<meta property="og:image" content="/thaivillas/images/hua-hin.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Thai Villas", "telephone": "+66000000000", "email": "hello@thaivillas.example", "address": {"@type": "PostalAddress", "addressLocality": "Phuket", "addressCountry": "TH"}, "areaServed": ["Phuket", "Koh Samui", "Pattaya", "Bangkok", "Krabi", "Koh Phangan", "Hua Hin", "Chiang Mai"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "Villas", "item": "/thaivillas/villas/"}, {"@type": "ListItem", "position": 3, "name": "Hua Hin", "item": "/thaivillas/villas/hua-hin/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I book a villa in Hua Hin?", "acceptedAnswer": {"@type": "Answer", "text": "Open a villa, choose your dates and send the request — it comes straight to us on WhatsApp. We reply with availability and the price for your dates, and confirm everything in writing before you pay."}}, {"@type": "Question", "name": "Can I rent a villa in Hua Hin by the month?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every villa is offered for daily stays, and many also for monthly or longer stays. Monthly rates and what they include (electricity, cleaning, pool care) are set per villa — filter by \"Monthly\" or ask us and we will list the options."}}, {"@type": "Question", "name": "What is Hua Hin like?", "acceptedAnswer": {"@type": "Answer", "text": "Hua Hin is a seaside town on the western Gulf coast, roughly three hours south of Bangkok by road and long a favourite retreat of the Thai royal family. It is known for a long, calm beach, night markets, golf courses and a relaxed, family-friendly pace."}}, {"@type": "Question", "name": "When is the best time to stay in Hua Hin?", "acceptedAnswer": {"@type": "Answer", "text": "Relatively dry compared with much of Thailand; November to February is the most comfortable, and showers are more common from about September to November."}}, {"@type": "Question", "name": "How do I get to Hua Hin?", "acceptedAnswer": {"@type": "Answer", "text": "About three hours by road from Bangkok; Hua Hin also has a small airport with limited domestic flights."}}, {"@type": "Question", "name": "Why do the villas show \"On request\" instead of a price?", "acceptedAnswer": {"@type": "Answer", "text": "The villas shown are sample listings while we onboard properties, and rates depend on the dates and the length of stay. Send your dates and we will quote the exact price."}}]}</script>
+</head>
+<body>
+
+<div id="villasBackdrop"></div>
+
+<!-- NAVBAR -->
+<style id="thv-nav-fix">@media(max-width:639px){#navbar a.mobile-menu-link{display:none!important}}</style>
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-off/80 backdrop-blur-md border-b border-line" style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,250,247,.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #e6e3dc">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between h-[72px]">
+      <a href="/thaivillas/" data-hostpill class="flex items-center text-ink border-[1.5px] border-ink/30 rounded-full px-3.5 py-1" aria-label="Thai Villas"><span class="thb-logo-text font-display text-[19px] tracking-tight ml-2.5 whitespace-nowrap"><span class="italic">Thai</span>&nbsp;<span class="font-semibold tracking-[0.09em]">VILLAS</span></span></a>
+
+      <div class="hidden lg:flex items-center gap-9">
+        <div class="mega-trigger">
+          <a href="/thaivillas/property-rental/" class="nav-link flex items-center gap-1">Villas <svg class="w-3 h-3 opacity-60 mega-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+        </div>
+        <a href="/thaivillas/property-rental/?period=daily" class="nav-link">Daily rentals</a>
+        <a href="/thaivillas/monthly-rental/" class="nav-link">Monthly & long stay</a>
+        <a href="/thaivillas/vip/" class="nav-link">VIP</a>
+        <a href="/thaivillas/about/" class="nav-link">About</a>
+        <a href="/thaivillas/contacts/" class="nav-link">Contacts</a>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a href="/thaivillas/saved/" data-fav-link aria-label="Saved villas" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-paper transition"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span data-fav-badge>0</span></a>
+        <a href="/thaivillas/property-rental/" class="btn-primary mobile-menu-link hidden sm:inline-flex items-center gap-2"> Browse villas <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg> </a>
+        <button id="mobileMenuBtn" aria-label="Menu" aria-expanded="false" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-paper transition">
+          <svg id="burgerIcon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+          <svg id="closeIcon" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden bg-off border-t border-line px-6 py-6">
+    <div class="flex flex-col gap-1 text-[16px] font-medium">
+      <a href="/thaivillas/saved/" class="thb-saved-item py-3 border-b border-line" style="display:flex;align-items:center;justify-content:space-between;color:#e11d48">Saved villas <span data-fav-count style="display:none;background:#e11d48;color:#fff;border-radius:999px;min-width:20px;height:20px;line-height:20px;text-align:center;font-size:11.5px;font-weight:700;padding:0 6px"></span></a>
+      <a href="/thaivillas/property-rental/" class="py-3 border-b border-line">All villas</a>
+      <a href="/thaivillas/villas/phuket/" class="py-3 border-b border-line">Phuket</a>
+      <a href="/thaivillas/property-rental/?period=daily" class="py-3 border-b border-line">Daily rentals</a>
+      <a href="/thaivillas/monthly-rental/" class="py-3 border-b border-line">Monthly & long stay</a>
+      <a href="/thaivillas/vip/" class="py-3 border-b border-line">VIP</a>
+      <a href="/thaivillas/about/" class="py-3 border-b border-line">About</a>
+      <a href="/thaivillas/contacts/" class="py-3 border-b border-line">Contacts</a>
+      <a href="https://wa.me/66000000000?text=Hi%20Thai%20Villas%21%20I%27m%20looking%20for%20a%20villa%20in%20Thailand." class="btn-primary text-center mt-5" rel="noopener">WhatsApp us</a>
+    </div>
+  </div>
+</nav>
+<script>
+(function(){
+  var btn=document.getElementById('mobileMenuBtn'),menu=document.getElementById('mobileMenu'),
+      b=document.getElementById('burgerIcon'),x=document.getElementById('closeIcon');
+  if(!btn||!menu)return;
+  function toggle(force){
+    var open=typeof force==='boolean'?force:menu.classList.contains('hidden');
+    menu.classList.toggle('hidden',!open);
+    b.classList.toggle('hidden',open);
+    x.classList.toggle('hidden',!open);
+    btn.setAttribute('aria-expanded',open);
+  }
+  btn.addEventListener('click',function(){toggle()});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){toggle(false)})});
+})();
+</script>
+
+<!-- MEGA-MENU PANEL -->
+<div id="villasPanel">
+  <div class="mega-inner">
+    <div style="width:150px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">Rental period</p>
+              <a href="/thaivillas/property-rental/?period=daily" class="mega-item">Daily <span class="mega-count">10</span></a>
+              <a href="/thaivillas/property-rental/?period=monthly" class="mega-item">Monthly <span class="mega-count">7</span></a>
+              <a href="/thaivillas/monthly-rental/" class="mega-item" style="font-weight:600">Long stay guide &rarr;</a>
+              <a href="/thaivillas/property-rental/" class="mega-item">All villas <span class="mega-count">10</span></a>
+              </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="width:170px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">Phuket beaches</p>
+              <a href="/thaivillas/villas/phuket/bang-tao/" class="mega-item">Bang Tao <span class="mega-count">2</span></a>
+              <a href="/thaivillas/villas/phuket/layan/" class="mega-item">Layan <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/phuket/surin/" class="mega-item">Surin <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/phuket/kamala/" class="mega-item">Kamala <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/phuket/patong/" class="mega-item">Patong <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/phuket/karon/" class="mega-item">Karon <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/phuket/kata/" class="mega-item">Kata <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/phuket/kata-noi/" class="mega-item">Kata Noi <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/phuket/nai-harn/" class="mega-item">Nai Harn <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/phuket/" class="mega-item" style="font-weight:600">All Phuket &rarr; <span class="mega-count">8</span></a>
+              </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="width:150px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">Thailand</p>
+              <a href="/thaivillas/villas/koh-samui/" class="mega-item">Koh Samui <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/pattaya/" class="mega-item">Pattaya <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/bangkok/" class="mega-item">Bangkok <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/krabi/" class="mega-item">Krabi <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/koh-phangan/" class="mega-item">Koh Phangan <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/hua-hin/" class="mega-item">Hua Hin <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/chiang-mai/" class="mega-item">Chiang Mai <span class="mega-count">0</span></a>
+              </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="width:140px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">Bedrooms</p>
+              <a href="/thaivillas/property-rental/?beds=1" class="mega-item">1 bedroom <span class="mega-count">1</span></a>
+              <a href="/thaivillas/property-rental/?beds=2" class="mega-item">2 bedrooms <span class="mega-count">2</span></a>
+              <a href="/thaivillas/property-rental/?beds=3" class="mega-item">3 bedrooms <span class="mega-count">3</span></a>
+              <a href="/thaivillas/property-rental/?beds=4" class="mega-item">4 bedrooms <span class="mega-count">3</span></a>
+              <a href="/thaivillas/property-rental/?beds=5" class="mega-item">5+ bedrooms <span class="mega-count">1</span></a>
+              </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="width:170px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">VIP</p>
+              <a href="/thaivillas/vip/yachts/" class="mega-item">Yacht charter</a>
+              <a href="/thaivillas/vip/helicopters/" class="mega-item">Helicopter flights</a>
+              <a href="/thaivillas/vip/supercars/" class="mega-item">Supercar</a>
+              <a href="/thaivillas/vip/superbikes/" class="mega-item">Superbike</a>
+              <a href="/thaivillas/vip/concierge/" class="mega-item">Luxury concierge</a>
+              <a href="/thaivillas/vip/" class="mega-item" style="font-weight:600">All VIP &rarr;</a>
+              </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="flex:1"></div>
+  </div>
+</div>
+
+<style id="thb-footer-css">
+.thb-ft{background:#232322;color:#e9e4da;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:14px;line-height:1.6;margin:0;padding:0;box-sizing:border-box}
+.thb-ft *{box-sizing:border-box}
+.thb-ft a{color:inherit;text-decoration:none}
+.thb-ft .thb-ft-in{max-width:1280px;margin:0 auto;padding:56px 24px 0}
+.thb-ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:40px}
+.thb-ft-brand img{height:64px;width:64px;display:block;margin-bottom:16px}
+.thb-ft-name{font-family:'Lora',Georgia,"Times New Roman",serif;font-size:21px;font-weight:600;letter-spacing:.01em;margin:0 0 10px;color:#fff}
+.thb-ft-lead{color:#a9a29a;margin:0 0 20px;max-width:34ch}
+.thb-ft-soc{display:flex;gap:10px;flex-wrap:wrap}
+.thb-ft-soc a{display:inline-flex;align-items:center;gap:7px;border:1px solid #3d3c39;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:500;color:#e9e4da;transition:background .15s,border-color .15s}
+.thb-ft-soc a:hover{background:#2e2d2b;border-color:#5F5340}
+.thb-ft-soc svg{width:15px;height:15px;flex:0 0 auto}
+.thb-ft h4{font-family:'Lora',Georgia,"Times New Roman",serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#C1B59D;margin:0 0 16px}
+.thb-ft ul{list-style:none;margin:0;padding:0}
+.thb-ft li{margin:0 0 10px}
+.thb-ft li a{color:#d6d0c6;transition:color .15s;display:inline-block;padding:5px 0}
+.thb-ft li a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.thb-ft-c{font-size:11px;color:#7d766d;margin-left:5px}
+.thb-ft-ct{margin:0 0 12px}
+.thb-ft-ct dt{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7d766d;margin:0 0 2px}
+.thb-ft-ct dd{margin:0 0 12px;color:#e9e4da}
+.thb-ft-ct dd a:hover{text-decoration:underline;text-underline-offset:3px}
+.thb-ft-bar{border-top:1px solid #37352f;margin-top:44px;padding:20px 0 26px;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;color:#7d766d;font-size:13px}
+.thb-ft-bar nav{display:flex;gap:20px;flex-wrap:wrap}
+.thb-ft-bar nav a{display:inline-block;padding:9px 0}.thb-ft-bar nav a:hover{color:#d6d0c6}
+@media(max-width:980px){.thb-ft-grid{grid-template-columns:1fr 1fr;gap:32px}.thb-ft-brand{grid-column:1/-1}}
+@media(max-width:560px){.thb-ft .thb-ft-in{padding:40px 20px 0}.thb-ft-grid{grid-template-columns:1fr;gap:28px}.thb-ft-bar{margin-top:32px}}
+</style>
+<style id="thv-ft5">@media(min-width:981px){.thb-ft .thb-ft-grid{grid-template-columns:1.5fr 1fr 1fr 1fr 1.2fr}}</style>
+<style id="thb-placegrid-css">.thb-placegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}@media(max-width:1023px){.thb-placegrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}}@media(max-width:639px){.thb-placegrid{grid-template-columns:1fr;gap:18px}}@media(max-width:900px){.thb-sec-pad{padding-left:16px!important;padding-right:16px!important}}#thbAreaChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;padding:4px 2px 6px}@media(max-width:639px){#navbar a.mobile-menu-link{display:none!important}}</style>
+<!-- PAGE -->
+<div style="padding-top:72px;min-height:100vh">
+
+  <!-- PROMO BANNER -->
+  <div class="promo-banner">
+    <div class="promo-inner">
+      <!-- Center -->
+      <div class="promo-center">
+        <nav aria-label="Breadcrumb" style="font-size:12.5px;color:rgba(255,255,255,0.68);margin-bottom:12px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px"><a href="/thaivillas/" style="color:inherit;text-decoration:none">Home</a> <span aria-hidden="true">/</span> <a href="/thaivillas/villas/" style="color:inherit;text-decoration:none">Villas</a> <span aria-hidden="true">/</span> <span aria-current="page" style="color:#fff">Hua Hin</span></nav>
+        <div class="promo-tag">🌴 Hua Hin villa rentals</div>
+        <h1 class="promo-title">Villas for rent in <em>Hua Hin</em></h1>
+        <p class="promo-subtitle">A royal seaside town south of Bangkok, golf and calm beaches</p>
+        <div class="promo-code">Villas in <strong>Hua Hin, Thailand</strong> &middot; daily &amp; monthly</div>
+        <p style="color:rgba(255,255,255,0.55);font-size:11.5px;margin-top:10px"><span style="color:#b8f04a;font-weight:600">Daily &amp; monthly rentals</span> &nbsp;•&nbsp; prices on request &nbsp;•&nbsp; a real person on WhatsApp</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- AMENITY PILLS + FILTERS -->
+  <div class="pills-bar">
+    <div class="pills-inner">
+      <button id="thbSearchPill" aria-label="Search by area and dates">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <span style="min-width:0"><span class="tsp-t" style="display:block">Where in Thailand?</span><span class="tsp-s" style="display:block">Any dates &middot; Any guests</span></span>
+      </button>
+      <div id="thbAreaChips" aria-label="Quick area filter">
+        <button class="thb-qchip" data-area="">All Thailand <b>10</b></button>
+        <button class="thb-qchip" data-area="phuket">Phuket <b>8</b></button>
+        <button class="thb-qchip" data-area="koh-samui">Koh Samui <b>1</b></button>
+        <button class="thb-qchip" data-area="pattaya">Pattaya <b>1</b></button>
+        <button class="thb-qchip" data-area="bangkok">Bangkok <b>0</b></button>
+        <button class="thb-qchip" data-area="krabi">Krabi <b>0</b></button>
+        <button class="thb-qchip" data-area="koh-phangan">Koh Phangan <b>0</b></button>
+        <button class="thb-qchip on" data-area="hua-hin">Hua Hin <b>0</b></button>
+        <button class="thb-qchip" data-area="chiang-mai">Chiang Mai <b>0</b></button>
+      </div>
+      <div class="pills-sep" style="display:none"></div>
+      
+    </div>
+  </div>
+
+  <!-- RESULTS BAR -->
+  <div class="results-bar">
+    <div>
+      <p style="font-size:12px;color:#6b6b66;text-transform:uppercase;letter-spacing:0.18em;font-weight:600;margin-bottom:3px">Hua Hin villa rentals</p>
+      <p style="font-family:'Lora',Georgia,serif;font-size:26px;font-weight:700" id="resultsTitle" data-suffix=" in Hua Hin">New listings coming in Hua Hin</p>
+      <p style="font-size:12.5px;color:#6b6b66;margin-top:6px">Sample listings while we onboard villas &middot; prices on request &middot; we reply on WhatsApp</p>
+    </div>
+  </div>
+
+  <!-- CARDS GRID -->
+  <div class="cards-wrap">
+    <div style="text-align:center;padding:44px 22px;background:white;border:1px solid #e6e3dc;border-radius:22px"><p style="font-family:'Lora',Georgia,serif;font-size:24px;font-weight:700;margin-bottom:8px">No villas listed in Hua Hin yet</p><p style="font-size:14.5px;line-height:1.7;color:#4b4b45;max-width:560px;margin:0 auto 18px">We are adding villas in Hua Hin now. Send us your dates, the number of guests and whether you need a daily or monthly stay &mdash; we will reply on WhatsApp with what is available.</p><a href="https://wa.me/66000000000?text=Hi%20Thai%20Villas%21%20I%20am%20looking%20for%20a%20villa%20in%20Hua%20Hin." rel="noopener" style="display:inline-flex;height:46px;align-items:center;padding:0 22px;border-radius:999px;background:#0a0a0a;color:#fff;text-decoration:none;font-weight:600;font-size:14.5px">Ask about Hua Hin on WhatsApp</a><p style="font-size:13px;color:#6b6b66;margin:22px 0 10px">Villas nearby</p><div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center"><a href="/thaivillas/villas/pattaya/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Pattaya <b style="font-weight:400;color:#8a877f">1</b></a><a href="/thaivillas/villas/koh-samui/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Koh Samui <b style="font-weight:400;color:#8a877f">1</b></a><a href="/thaivillas/villas/phuket/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Phuket <b style="font-weight:400;color:#8a877f">8</b></a><a href="/thaivillas/villas/bangkok/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Bangkok <b style="font-weight:400;color:#8a877f">0</b></a></div></div>
+  </div>
+</div>
+
+<section aria-labelledby="hua-hin-seo-title" style="max-width:1320px;margin:56px auto 0;padding:0 40px 56px">
+  <div class="thb-rgrid2" style="background:#f2efe8;border:1px solid #e6e3dc;border-radius:28px;padding:32px;display:grid;grid-template-columns:1.35fr .85fr;gap:28px">
+    <div>
+      <p style="font-size:12px;color:#6b6b66;text-transform:uppercase;letter-spacing:0.18em;font-weight:700;margin-bottom:10px">Hua Hin villa rentals</p>
+      <h2 id="hua-hin-seo-title" style="font-family:'Lora',Georgia,serif;font-size:34px;line-height:1.08;font-weight:700;margin:0 0 14px">Villas in Hua Hin, Thailand</h2>
+      <p style="font-size:15px;line-height:1.8;color:#3b3b36;margin:0 0 14px">Hua Hin is a seaside town on the western Gulf coast, roughly three hours south of Bangkok by road and long a favourite retreat of the Thai royal family. It is known for a long, calm beach, night markets, golf courses and a relaxed, family-friendly pace.</p><p style="font-size:15px;line-height:1.8;color:#3b3b36;margin:0">Pool villas on the edges of town and towards Khao Takiab and Pranburi give families space and quiet, and the town works well for longer stays, particularly in the cooler months.</p>
+    </div>
+    <div style="background:#fafaf7;border:1px solid #e6e3dc;border-radius:22px;padding:22px">
+      <h2 style="font-family:'Lora',Georgia,serif;font-size:22px;font-weight:700;margin:0 0 14px">More destinations</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/thaivillas/villas/phuket/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Villas in Phuket</a><a href="/thaivillas/villas/koh-samui/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Villas in Koh Samui</a><a href="/thaivillas/villas/pattaya/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Villas in Pattaya</a><a href="/thaivillas/villas/bangkok/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Villas in Bangkok</a><a href="/thaivillas/villas/krabi/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Villas in Krabi</a><a href="/thaivillas/villas/koh-phangan/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Villas in Koh Phangan</a><a href="/thaivillas/villas/chiang-mai/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Villas in Chiang Mai</a><a href="/thaivillas/property-rental/?location=hua-hin" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Filtered catalogue</a></div>
+    </div>
+  </div>
+  <div class="thb-rgrid3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px"><div style="background:white;border:1px solid #e6e3dc;border-radius:22px;padding:22px"><h2 style="font-family:'Lora',Georgia,serif;font-size:20px;font-weight:700;margin:0 0 8px">Who is Hua Hin for?</h2><p style="font-size:14px;line-height:1.7;color:#4b4b45;margin:0">Families, golfers and long-stay guests who want a calm beach town within easy reach of Bangkok.</p></div><div style="background:white;border:1px solid #e6e3dc;border-radius:22px;padding:22px"><h2 style="font-family:'Lora',Georgia,serif;font-size:20px;font-weight:700;margin:0 0 8px">Getting there</h2><p style="font-size:14px;line-height:1.7;color:#4b4b45;margin:0">About three hours by road from Bangkok; Hua Hin also has a small airport with limited domestic flights.</p></div><div style="background:white;border:1px solid #e6e3dc;border-radius:22px;padding:22px"><h2 style="font-family:'Lora',Georgia,serif;font-size:20px;font-weight:700;margin:0 0 8px">When to go</h2><p style="font-size:14px;line-height:1.7;color:#4b4b45;margin:0">Relatively dry compared with much of Thailand; November to February is the most comfortable, and showers are more common from about September to November.</p></div></div>
+</section><section aria-label="Phuket beaches" style="max-width:1320px;margin:0 auto;padding:0 40px 56px"><h2 style="font-family:'Lora',Georgia,serif;font-size:22px;font-weight:700;margin:0 0 16px">Phuket beaches</h2><div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/thaivillas/villas/phuket/bang-tao/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Bang Tao</a><a href="/thaivillas/villas/phuket/layan/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Layan</a><a href="/thaivillas/villas/phuket/surin/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Surin</a><a href="/thaivillas/villas/phuket/kamala/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Kamala</a><a href="/thaivillas/villas/phuket/patong/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Patong</a><a href="/thaivillas/villas/phuket/karon/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Karon</a><a href="/thaivillas/villas/phuket/kata/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Kata</a><a href="/thaivillas/villas/phuket/kata-noi/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Kata Noi</a><a href="/thaivillas/villas/phuket/nai-harn/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Nai Harn</a><a href="/thaivillas/villas/phuket/rawai/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Rawai</a><a href="/thaivillas/villas/phuket/chalong/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Chalong</a><a href="/thaivillas/villas/phuket/mai-khao/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">Mai Khao & Nai Yang</a><a href="/thaivillas/villas/" style="font-size:13px;color:#0a0a0a;text-decoration:none;background:white;border:1px solid #e6e3dc;border-radius:999px;padding:8px 12px">All destinations</a></div></section><section aria-label="Frequently asked questions — Hua Hin" style="max-width:1320px;margin:0 auto;padding:0 40px 56px"><h2 style="font-family:'Lora',Georgia,serif;font-size:22px;font-weight:700;margin:0 0 16px">Hua Hin villa rental — FAQ</h2><details style="border:1px solid #e5e0d6;border-radius:12px;padding:14px 18px;margin:0 0 10px;background:#fff"><summary style="cursor:pointer;font-weight:600;font-size:16px">How do I book a villa in Hua Hin?</summary><p style="margin:10px 0 2px;color:#4c473f;line-height:1.55">Open a villa, choose your dates and send the request &mdash; it comes straight to us on WhatsApp. We reply with availability and the price for your dates, and confirm everything in writing before you pay.</p></details><details style="border:1px solid #e5e0d6;border-radius:12px;padding:14px 18px;margin:0 0 10px;background:#fff"><summary style="cursor:pointer;font-weight:600;font-size:16px">Can I rent a villa in Hua Hin by the month?</summary><p style="margin:10px 0 2px;color:#4c473f;line-height:1.55">Yes. Every villa is offered for daily stays, and many also for monthly or longer stays. Monthly rates and what they include (electricity, cleaning, pool care) are set per villa &mdash; filter by "Monthly" or ask us and we will list the options.</p></details><details style="border:1px solid #e5e0d6;border-radius:12px;padding:14px 18px;margin:0 0 10px;background:#fff"><summary style="cursor:pointer;font-weight:600;font-size:16px">What is Hua Hin like?</summary><p style="margin:10px 0 2px;color:#4c473f;line-height:1.55">Hua Hin is a seaside town on the western Gulf coast, roughly three hours south of Bangkok by road and long a favourite retreat of the Thai royal family. It is known for a long, calm beach, night markets, golf courses and a relaxed, family-friendly pace.</p></details><details style="border:1px solid #e5e0d6;border-radius:12px;padding:14px 18px;margin:0 0 10px;background:#fff"><summary style="cursor:pointer;font-weight:600;font-size:16px">When is the best time to stay in Hua Hin?</summary><p style="margin:10px 0 2px;color:#4c473f;line-height:1.55">Relatively dry compared with much of Thailand; November to February is the most comfortable, and showers are more common from about September to November.</p></details><details style="border:1px solid #e5e0d6;border-radius:12px;padding:14px 18px;margin:0 0 10px;background:#fff"><summary style="cursor:pointer;font-weight:600;font-size:16px">How do I get to Hua Hin?</summary><p style="margin:10px 0 2px;color:#4c473f;line-height:1.55">About three hours by road from Bangkok; Hua Hin also has a small airport with limited domestic flights.</p></details><details style="border:1px solid #e5e0d6;border-radius:12px;padding:14px 18px;margin:0 0 10px;background:#fff"><summary style="cursor:pointer;font-weight:600;font-size:16px">Why do the villas show "On request" instead of a price?</summary><p style="margin:10px 0 2px;color:#4c473f;line-height:1.55">The villas shown are sample listings while we onboard properties, and rates depend on the dates and the length of stay. Send your dates and we will quote the exact price.</p></details></section>
+<footer class="thb-ft">
+  <div class="thb-ft-in">
+    <div class="thb-ft-grid">
+      <div class="thb-ft-brand">
+        <p class="thb-ft-name">Thai Villas</p>
+        <p class="thb-ft-lead">Pool villas in Phuket and across Thailand — daily and monthly rentals, booked direct with a real person on WhatsApp. Plus VIP: yachts, helicopters, supercars.</p>
+        <div class="thb-ft-soc">
+          <a href="https://wa.me/66000000000" rel="noopener">WhatsApp</a>
+          <a href="mailto:hello@thaivillas.example">Email</a>
+        </div>
+      </div>
+      <div>
+        <h4>Destinations</h4>
+        <ul>
+          <li><a href="/thaivillas/property-rental/">All villas<span class="thb-ft-c">10</span></a></li>
+          <li><a href="/thaivillas/villas/phuket/">Phuket<span class="thb-ft-c">8</span></a></li>
+          <li><a href="/thaivillas/villas/koh-samui/">Koh Samui<span class="thb-ft-c">1</span></a></li>
+          <li><a href="/thaivillas/villas/pattaya/">Pattaya<span class="thb-ft-c">1</span></a></li>
+          <li><a href="/thaivillas/villas/bangkok/">Bangkok<span class="thb-ft-c">0</span></a></li>
+          <li><a href="/thaivillas/villas/krabi/">Krabi<span class="thb-ft-c">0</span></a></li>
+          <li><a href="/thaivillas/villas/koh-phangan/">Koh Phangan<span class="thb-ft-c">0</span></a></li>
+          <li><a href="/thaivillas/villas/">All destinations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Phuket beaches</h4>
+        <ul>
+          <li><a href="/thaivillas/villas/phuket/bang-tao/">Bang Tao</a></li>
+          <li><a href="/thaivillas/villas/phuket/layan/">Layan</a></li>
+          <li><a href="/thaivillas/villas/phuket/surin/">Surin</a></li>
+          <li><a href="/thaivillas/villas/phuket/kamala/">Kamala</a></li>
+          <li><a href="/thaivillas/villas/phuket/patong/">Patong</a></li>
+          <li><a href="/thaivillas/villas/phuket/karon/">Karon</a></li>
+          <li><a href="/thaivillas/villas/phuket/kata/">Kata</a></li>
+          <li><a href="/thaivillas/villas/phuket/">All Phuket</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Rent &amp; VIP</h4>
+        <ul>
+          <li><a href="/thaivillas/property-rental/?period=daily">Daily rentals</a></li>
+          <li><a href="/thaivillas/monthly-rental/">Monthly &amp; long stay</a></li>
+          <li><a href="/thaivillas/vip/yachts/">Yacht charter</a></li>
+          <li><a href="/thaivillas/vip/helicopters/">Helicopters</a></li>
+          <li><a href="/thaivillas/vip/supercars/">Supercars</a></li>
+          <li><a href="/thaivillas/vip/superbikes/">Superbikes</a></li>
+          <li><a href="/thaivillas/vip/">All VIP services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <dl class="thb-ft-ct">
+          <dt>WhatsApp</dt>
+          <dd><a href="https://wa.me/66000000000" rel="noopener">+66 00 000 0000</a></dd>
+          <dt>Email</dt>
+          <dd><a href="mailto:hello@thaivillas.example">hello@thaivillas.example</a></dd>
+          <dt>Office</dt>
+          <dd>Phuket, Thailand</dd>
+          <dt>Hours</dt>
+          <dd>Every day 9:00–21:00 (GMT+7)<br>Guest support 24/7</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="thb-ft-bar">
+      <span>© 2026 Thai Villas · Villa rentals in Thailand</span>
+      <nav>
+        <a href="/thaivillas/property-rental/">All villas</a>
+        <a href="/thaivillas/about/">About</a>
+        <a href="/thaivillas/contacts/">Contacts</a>
+        <a href="/thaivillas/terms/">Terms</a>
+        <a href="/thaivillas/privacy/">Privacy</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<div id="thbWaPill">
+  <span class="ava" aria-hidden="true"></span>
+  <p>Need help choosing? Tell us your dates and what matters — we'll suggest the right villa.</p>
+  <a class="wa-go" href="https://wa.me/66000000000?text=Hi%20Thai%20Villas%21%20I%27m%20looking%20for%20a%20villa%20in%20Thailand." rel="noopener" aria-label="Chat on WhatsApp">WhatsApp</a>
+</div>
+<style id="thb-savedmenu-css">
+#thbMobileMenu .thb-saved-item{display:flex;align-items:center;justify-content:space-between}
+#thbMobileMenu .thb-saved-item [data-fav-count]{background:#e11d48;color:#fff;border-radius:999px;min-width:20px;height:20px;line-height:20px;text-align:center;font-size:11.5px;font-weight:700;padding:0 6px;margin:0}
+</style>
+<script defer src="/thaivillas/thb-fav.js"></script>
+<style id="thb-favhdr-fix">
+/* на узких экранах сердце не влезает рядом с CTA — прячем, счётчик показываем точкой на бургере */
+@media(max-width:639px){
+  #thbNavRight [data-fav-link],.hd nav [data-fav-link],header [data-fav-link]{display:none!important}
+  #thbBurger{position:relative}
+  body.thb-has-saved #thbBurger::after{content:'';position:absolute;top:5px;right:5px;width:10px;height:10px;
+    border-radius:50%;background:#e11d48;border:2px solid #fff}
+}
+</style>
+<script>
+/* Villas mega-menu: hover the Villas nav item to reveal the districts/sections panel */
+(function () {
+  var trigger = document.querySelector('.mega-trigger');
+  var panel = document.getElementById('villasPanel');
+  if (!trigger || !panel) return;
+  var backdrop = document.getElementById('villasBackdrop');
+  var chevron = trigger.querySelector('.mega-chevron');
+  var open = false;
+  function openMega() {
+    if (open) return; open = true;
+    panel.classList.add('open');
+    if (backdrop) backdrop.classList.add('open');
+    if (chevron) chevron.classList.add('open');
+  }
+  function closeMega() {
+    if (!open) return; open = false;
+    panel.classList.remove('open');
+    if (backdrop) backdrop.classList.remove('open');
+    if (chevron) chevron.classList.remove('open');
+  }
+  trigger.addEventListener('mouseenter', openMega);
+  if (backdrop) backdrop.addEventListener('click', closeMega);
+  /* close once the pointer leaves the trigger+panel zone */
+  document.addEventListener('mousemove', function (e) {
+    if (!open) return;
+    var pr = panel.getBoundingClientRect();
+    var tr = trigger.getBoundingClientRect();
+    var inZone = e.clientY >= tr.top && e.clientY <= pr.bottom + 8
+                 && e.clientX >= pr.left - 24 && e.clientX <= pr.right + 24;
+    if (!inZone && e.clientY > tr.bottom) closeMega();
+  });
+  /* click outside closes */
+  document.addEventListener('click', function (e) {
+    if (!trigger.contains(e.target) && !panel.contains(e.target)) closeMega();
+  });
+  /* Escape closes */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMega();
+  });
+})();
+</script>
+<script defer src="/thaivillas/thb-totop.js"></script>
+<script id="thb-sort-js">(function(){
+  var sel=document.getElementById('sortSelect'),grid=document.getElementById('cardGrid');
+  if(!sel||!grid)return;
+  var cards=[].slice.call(grid.querySelectorAll('.prop-card'));
+  cards.forEach(function(c,i){c.setAttribute('data-thb-i',i);});
+  function n(c,k){return parseInt(c.getAttribute('data-'+k)||'0',10)||0;}
+  function orig(c){return parseInt(c.getAttribute('data-thb-i'),10)||0;}
+  sel.addEventListener('change',function(){
+    var v=sel.value,list=cards.slice();
+    if(v==='beds-desc')list.sort(function(a,b){return n(b,'beds')-n(a,'beds')||n(b,'guests')-n(a,'guests');});
+    else if(v==='beds-asc')list.sort(function(a,b){return n(a,'beds')-n(b,'beds')||n(a,'guests')-n(b,'guests');});
+    else if(v==='guests-desc')list.sort(function(a,b){return n(b,'guests')-n(a,'guests')||n(b,'beds')-n(a,'beds');});
+    else list.sort(function(a,b){return orig(a)-orig(b);});
+    var frag=document.createDocumentFragment();
+    list.forEach(function(c){frag.appendChild(c);});
+    grid.appendChild(frag);
+  });
+})();</script>
+
+<script defer src="/thaivillas/thb-events.js"></script>
+<div id="thbSheet" role="dialog" aria-modal="true" aria-label="Search villas">
+  <div class="tsh-hd"><p>Search villas</p><button class="tsh-x" aria-label="Close" onclick="thbSheetClose()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+  <div class="tsh-bd">
+    <div class="tsh-sec"><p class="tsh-lbl">Where in Thailand?</p><div class="tsh-chips" id="thbSheetAreas"><button class="tsh-chip" data-area="">All Thailand <b>10</b></button>
+<button class="tsh-chip" data-area="phuket">Phuket <b>8</b></button>
+<button class="tsh-chip" data-area="koh-samui">Koh Samui <b>1</b></button>
+<button class="tsh-chip" data-area="pattaya">Pattaya <b>1</b></button>
+<button class="tsh-chip" data-area="bangkok">Bangkok <b>0</b></button>
+<button class="tsh-chip" data-area="krabi">Krabi <b>0</b></button>
+<button class="tsh-chip" data-area="koh-phangan">Koh Phangan <b>0</b></button>
+<button class="tsh-chip on" data-area="hua-hin">Hua Hin <b>0</b></button>
+<button class="tsh-chip" data-area="chiang-mai">Chiang Mai <b>0</b></button></div></div>
+    <div class="tsh-sec"><p class="tsh-lbl">When?</p>
+      <div class="tsh-dates">
+        <div><label for="thbCi">Check in</label><input type="date" id="thbCi"></div>
+        <div><label for="thbCo">Check out</label><input type="date" id="thbCo"></div>
+      </div>
+    </div>
+    <div class="tsh-sec"><p class="tsh-lbl">Who?</p>
+      <div class="tsh-guests"><p>Guests</p>
+        <div class="tsh-step"><button id="thbGm" aria-label="Fewer guests">&minus;</button><span id="thbGn">Any</span><button id="thbGp" aria-label="More guests">+</button></div>
+    </div></div>
+  </div>
+  <div class="tsh-ft"><button class="tsh-clear" onclick="thbSheetClear()">Clear all</button><button class="tsh-apply" id="thbSheetApply">Show villas</button></div>
+</div>
+<script id="thai-search-js">
+(function(){
+  var IS_CAT=false, CUR="hua-hin", KEYS=[["", "All Thailand", 10], ["phuket", "Phuket", 8], ["koh-samui", "Koh Samui", 1], ["pattaya", "Pattaya", 1], ["bangkok", "Bangkok", 0], ["krabi", "Krabi", 0], ["koh-phangan", "Koh Phangan", 0], ["hua-hin", "Hua Hin", 0], ["chiang-mai", "Chiang Mai", 0]];
+  var NAMES={}; KEYS.forEach(function(k){NAMES[k[0]]=k[1];});
+  var q={area:CUR,ci:'',co:'',g:0};
+  function urlOf(k){if(!k)return '/thaivillas/property-rental/';var p=k.split('/');return '/thaivillas/villas/'+p[0]+'/'+(p[1]?p[1]+'/':'');}
+  function gChip(g){var v=[2,4,6,8,10,12];for(var i=0;i<v.length;i++){if(v[i]>=g)return String(v[i]);}return '12';}
+  function qs(){var ps=new URLSearchParams();if(q.ci)ps.set('checkin',q.ci);if(q.co)ps.set('checkout',q.co);if(q.g)ps.set('guests',q.g);var s=ps.toString();return s?'?'+s:'';}
+  function apply(){
+    if(!IS_CAT){ if(q.area!==CUR){window.location=urlOf(q.area)+qs();return false;} }
+    if(window.thbFilterSet){
+      var o={guests:q.g?[gChip(q.g)]:[]};
+      if(IS_CAT){var p=q.area?q.area.split('/'):[];o.location=p[0]&&!p[1]?[p[0]]:[];o.sub=p[1]?[p[1]]:[];}
+      window.thbFilterSet(o);
+    }
+    syncUi(); return true;
+  }
+  function fmt(d){if(!d)return'';var p=d.split('-');return p[2]+'.'+p[1];}
+  function syncUi(){
+    document.querySelectorAll('.thb-qchip').forEach(function(k){k.classList.toggle('on',k.getAttribute('data-area')===q.area);});
+    var t=document.querySelector('#thbSearchPill .tsp-t'),st=document.querySelector('#thbSearchPill .tsp-s');
+    if(t)t.textContent=NAMES[q.area]||NAMES['']||'Anywhere';
+    var bits=[];bits.push(q.ci&&q.co?fmt(q.ci)+' – '+fmt(q.co):'Any dates');bits.push(q.g?q.g+' guests':'Any guests');
+    if(st)st.textContent=bits.join(' · ');
+    var hv=document.getElementById('hsWhereVal');if(hv){hv.textContent=NAMES[q.area]||'All Thailand';hv.classList.toggle('set',!!q.area);}
+  }
+  window.thbSearchQ=q;
+  /* quick chips */
+  document.querySelectorAll('.thb-qchip').forEach(function(c){
+    c.addEventListener('click',function(){q.area=c.getAttribute('data-area');apply();});
+  });
+  /* mobile sheet */
+  var sheet=document.getElementById('thbSheet');
+  if(sheet){
+    var pill=document.getElementById('thbSearchPill');
+    var ci=document.getElementById('thbCi'),co=document.getElementById('thbCo'),gn=document.getElementById('thbGn');
+    function count(){
+      var n=0;document.querySelectorAll('#cardGrid .prop-card').forEach(function(k){
+        var p=q.area?q.area.split('/'):[];
+        var ok=(!p[0]||k.getAttribute('data-location')===p[0])&&(!p[1]||k.getAttribute('data-sub')===p[1])&&(!q.g||Number(k.getAttribute('data-guests')||0)>=q.g);
+        if(ok)n++;});
+      return n;
+    }
+    function upd(){var b=document.getElementById('thbSheetApply');
+      if(IS_CAT||q.area===CUR){var n=count();b.textContent='Show '+n+(n===1?' villa':' villas');}
+      else b.textContent='Show villas in '+(NAMES[q.area]||'Thailand');}
+    window.thbSheetOpen=function(){sheet.classList.add('open');document.body.style.overflow='hidden';upd();};
+    window.thbSheetClose=function(){sheet.classList.remove('open');document.body.style.overflow='';};
+    window.thbSheetClear=function(){q.area=IS_CAT?'':CUR;q.ci='';q.co='';q.g=0;ci.value='';co.value='';gn.textContent='Any';
+      sheet.querySelectorAll('.tsh-chip').forEach(function(c){c.classList.toggle('on',c.getAttribute('data-area')===q.area);});upd();};
+    if(pill)pill.addEventListener('click',window.thbSheetOpen);
+    sheet.querySelectorAll('.tsh-chip').forEach(function(c){c.addEventListener('click',function(){
+      sheet.querySelectorAll('.tsh-chip').forEach(function(k){k.classList.remove('on');});c.classList.add('on');q.area=c.getAttribute('data-area');upd();});});
+    ci.addEventListener('change',function(){q.ci=ci.value;if(co.value&&co.value<=ci.value){co.value='';q.co='';}co.min=ci.value;upd();});
+    co.addEventListener('change',function(){q.co=co.value;upd();});
+    document.getElementById('thbGm').addEventListener('click',function(){if(q.g>0)q.g--;gn.textContent=q.g||'Any';upd();});
+    document.getElementById('thbGp').addEventListener('click',function(){if(q.g<16)q.g++;gn.textContent=q.g;upd();});
+    document.getElementById('thbSheetApply').addEventListener('click',function(){
+      if(apply()){window.thbSheetClose();var rb=document.querySelector('.cards-wrap');if(rb)rb.scrollIntoView({behavior:'smooth',block:'start'});}
+    });
+  }
+  /* hero search (catalogue) */
+  var root=document.getElementById('thbHeroSearch');
+  if(root){
+    var MN=['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var today=new Date();today.setHours(0,0,0,0);var view=new Date(today.getFullYear(),today.getMonth(),1);
+    function iso(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
+    function nice(s){if(!s)return'';var p=s.split('-');return p[2].replace(/^0/,'')+' '+MN[parseInt(p[1],10)-1].slice(0,3);}
+    function closeAll(){['hsPopWhere','hsPopCal','hsPopGuests'].forEach(function(id){document.getElementById(id).classList.remove('open');});
+      root.querySelectorAll('.hs-seg').forEach(function(s){s.classList.remove('act');});}
+    function open(id,segs){var el=document.getElementById(id);var was=el.classList.contains('open');closeAll();
+      if(!was){el.classList.add('open');segs.forEach(function(x){document.getElementById(x).classList.add('act');});}}
+    function drawWhere(){var w=document.getElementById('hsPopWhere');w.innerHTML='';
+      KEYS.forEach(function(a){var b=document.createElement('button');b.type='button';b.className='hs-opt'+(q.area===a[0]?' sel':'');
+        b.innerHTML=(a[0].indexOf('/')>0?'&nbsp;&nbsp;&nbsp;':'')+a[1]+' <b>'+a[2]+'</b>';
+        b.addEventListener('click',function(e){e.stopPropagation();q.area=a[0];syncUi();closeAll();});w.appendChild(b);});}
+    document.getElementById('hsWhere').addEventListener('click',function(e){e.stopPropagation();drawWhere();open('hsPopWhere',['hsWhere']);});
+    function drawCal(){var wrap=document.getElementById('calWrap');wrap.innerHTML='';
+      for(var k=0;k<2;k++){var m=new Date(view.getFullYear(),view.getMonth()+k,1);var div=document.createElement('div');div.className='cal-m';
+        var hd=document.createElement('div');hd.className='cal-hd';hd.innerHTML='<p>'+MN[m.getMonth()]+' '+m.getFullYear()+'</p>';
+        if(k===0){var pv=document.createElement('button');pv.type='button';pv.className='cal-nav';pv.id='calPrev';pv.textContent='‹';
+          pv.addEventListener('click',function(e){e.stopPropagation();view=new Date(view.getFullYear(),view.getMonth()-1,1);drawCal();});hd.appendChild(pv);}
+        if(k===1){var nx=document.createElement('button');nx.type='button';nx.className='cal-nav';nx.id='calNext';nx.textContent='›';
+          nx.addEventListener('click',function(e){e.stopPropagation();view=new Date(view.getFullYear(),view.getMonth()+1,1);drawCal();});hd.appendChild(nx);}
+        div.appendChild(hd);var g=document.createElement('div');g.className='cal-g';
+        ['Mo','Tu','We','Th','Fr','Sa','Su'].forEach(function(d){var c=document.createElement('div');c.className='cal-dow';c.textContent=d;g.appendChild(c);});
+        var first=(m.getDay()+6)%7;for(var i=0;i<first;i++){g.appendChild(document.createElement('div'));}
+        var days=new Date(m.getFullYear(),m.getMonth()+1,0).getDate();
+        for(var d=1;d<=days;d++){(function(d){var dt=new Date(m.getFullYear(),m.getMonth(),d);var s=iso(dt);
+          var b=document.createElement('button');b.type='button';b.className='cal-d';b.textContent=d;if(dt<today)b.disabled=true;
+          if(q.ci&&q.co&&s>q.ci&&s<q.co)b.classList.add('rng');if(s===q.ci||s===q.co)b.classList.add('sel');
+          b.addEventListener('click',function(e){e.stopPropagation();if(!q.ci||(q.ci&&q.co)){q.ci=s;q.co='';}else if(s<=q.ci){q.ci=s;q.co='';}else{q.co=s;}
+            syncDates();drawCal();if(q.ci&&q.co){setTimeout(closeAll,350);}});g.appendChild(b);})(d);}
+        div.appendChild(g);wrap.appendChild(div);}
+      document.getElementById('calHint').textContent=!q.ci?'Select check-in date':(q.co?nice(q.ci)+' → '+nice(q.co):'Select check-out date');}
+    function syncDates(){var vi=document.getElementById('hsInVal'),vo=document.getElementById('hsOutVal');
+      vi.textContent=q.ci?nice(q.ci):'Add date';vi.classList.toggle('set',!!q.ci);vo.textContent=q.co?nice(q.co):'Add date';vo.classList.toggle('set',!!q.co);}
+    function openCal(e){e.stopPropagation();drawCal();open('hsPopCal',['hsIn','hsOut']);}
+    document.getElementById('hsIn').addEventListener('click',openCal);document.getElementById('hsOut').addEventListener('click',openCal);
+    document.getElementById('calClear').addEventListener('click',function(e){e.stopPropagation();q.ci='';q.co='';syncDates();drawCal();});
+    document.getElementById('hsPopCal').addEventListener('click',function(e){e.stopPropagation();});
+    function syncG(){var v=document.getElementById('hsGuestsVal');v.textContent=q.g?q.g+' guest'+(q.g>1?'s':''):'Any';v.classList.toggle('set',!!q.g);
+      document.getElementById('hsGn').textContent=q.g||'Any';document.getElementById('hsGm').disabled=!q.g;}
+    document.getElementById('hsGuests').addEventListener('click',function(e){e.stopPropagation();open('hsPopGuests',['hsGuests']);});
+    document.getElementById('hsPopGuests').addEventListener('click',function(e){e.stopPropagation();});
+    document.getElementById('hsGm').addEventListener('click',function(){if(q.g>0)q.g--;syncG();});
+    document.getElementById('hsGp').addEventListener('click',function(){if(q.g<16)q.g++;syncG();});
+    document.addEventListener('click',closeAll);
+    document.getElementById('hsGo').addEventListener('click',function(e){e.stopPropagation();closeAll();apply();
+      var rb=document.querySelector('.cards-wrap');if(rb)rb.scrollIntoView({behavior:'smooth',block:'start'});});
+    window.thbHeroSync=function(){syncDates();syncG();};
+  }
+  /* carry dates/guests to the villa page */
+  var grid=document.getElementById('cardGrid');
+  if(grid)grid.addEventListener('click',function(e){
+    if(!q.ci&&!q.g)return; if(e.target.closest('.thb-fav'))return;
+    var card=e.target.closest('.prop-card');if(!card)return;
+    var m=(card.getAttribute('onclick')||'').match(/window\.location='([^']+)'/);if(!m)return;
+    e.stopPropagation();e.preventDefault();window.location=m[1]+qs();
+  },true);
+  /* state from the URL, after thb-filters.js (deferred) has applied it */
+  document.addEventListener('DOMContentLoaded',function(){
+    try{
+      var up=new URLSearchParams(location.search);
+      if(IS_CAT){var l=(up.get('location')||'').split(',')[0],s=(up.get('sub')||'').split(',')[0];
+        q.area=s?'phuket/'+s:(l||'');if(!NAMES.hasOwnProperty(q.area))q.area='';}
+      if(up.get('checkin'))q.ci=up.get('checkin');if(up.get('checkout'))q.co=up.get('checkout');
+      if(up.get('guests'))q.g=parseInt(up.get('guests'),10)||0;
+      var ci=document.getElementById('thbCi'),co=document.getElementById('thbCo');if(ci&&q.ci)ci.value=q.ci;if(co&&q.co)co.value=q.co;
+      var gn=document.getElementById('thbGn');if(gn&&q.g)gn.textContent=q.g;
+      if(!IS_CAT&&q.g&&window.thbFilterApply)window.thbFilterApply();
+      if(window.thbHeroSync)window.thbHeroSync();
+      if(sheet)sheet.querySelectorAll('.tsh-chip').forEach(function(c){c.classList.toggle('on',c.getAttribute('data-area')===q.area);});
+      syncUi();
+      if(IS_CAT&&window.clearAllFilters){var ca=window.clearAllFilters;window.clearAllFilters=function(){q.area='';q.g=0;ca();syncUi();};}
+      var on=document.querySelector('.thb-qchip.on'),box=document.getElementById('thbAreaChips');
+      if(on&&box&&box.scrollWidth>box.clientWidth)box.scrollLeft=on.offsetLeft-box.offsetLeft-16;
+    }catch(err){}
+  });
+})();
+</script>
+</body>
+</html>
+
+

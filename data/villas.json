@@ -1,8 +1,528 @@
 [
-  {"slug":"kata-hills-3br-pool-villa","name":"Kata Hills — 3BR Pool Villa with Sea View","area":"Phuket","areaSlug":"phuket","district":"Kata","bedrooms":3,"bathrooms":3,"guests":6,"priceNight":null,"priceMonth":null,"currency":"USD","amenities":["Private pool","Sea view","Wi-Fi","Workspace","Fully equipped kitchen","Air conditioning","Parking"],"images":["/thaivillas/images/villa-1.jpg","/thaivillas/images/phuket.jpg","/thaivillas/images/villa-3.jpg"],"monthly":true,"demo":true},
-  {"slug":"bang-tao-2br-pool-townhouse","name":"Bang Tao — 2BR Pool Townhouse near Beach","area":"Phuket","areaSlug":"phuket","district":"Bang Tao","bedrooms":2,"bathrooms":2,"guests":4,"priceNight":null,"priceMonth":null,"currency":"USD","amenities":["Private pool","Near beach","Wi-Fi","Smart TV","Kitchen","Washing machine"],"images":["/thaivillas/images/villa-2.jpg","/thaivillas/images/phuket-2.jpg","/thaivillas/images/villa-1.jpg"],"monthly":true,"demo":true},
-  {"slug":"chaweng-noi-4br-family-villa","name":"Chaweng Noi — 4BR Family Villa with Big Pool","area":"Koh Samui","areaSlug":"koh-samui","district":"Chaweng","bedrooms":4,"bathrooms":4,"guests":8,"priceNight":null,"priceMonth":null,"currency":"USD","amenities":["Private pool","Ocean view","Wi-Fi","Chef on request","Garden","Kids friendly"],"images":["/thaivillas/images/villa-3.jpg","/thaivillas/images/samui.jpg","/thaivillas/images/villa-2.jpg"],"monthly":false,"demo":true},
-  {"slug":"bophut-1br-garden-pool-villa","name":"Bophut — 1BR Garden Pool Villa for Couples","area":"Koh Samui","areaSlug":"koh-samui","district":"Bophut","bedrooms":1,"bathrooms":1,"guests":2,"priceNight":null,"priceMonth":null,"currency":"USD","amenities":["Private pool","Garden","Wi-Fi","Outdoor shower","Kitchenette"],"images":["/thaivillas/images/romantic.jpg","/thaivillas/images/samui-2.jpg","/thaivillas/images/villa-1.jpg"],"monthly":true,"demo":true},
-  {"slug":"pratumnak-3br-pool-villa","name":"Pratumnak Hill — 3BR Pool Villa","area":"Pattaya","areaSlug":"pattaya","district":"Pratumnak","bedrooms":3,"bathrooms":3,"guests":6,"priceNight":null,"priceMonth":null,"currency":"USD","amenities":["Private pool","Wi-Fi","Workspace","Kitchen","Parking","Air conditioning"],"images":["/thaivillas/images/villa-2.jpg","/thaivillas/images/pattaya.jpg","/thaivillas/images/villa-3.jpg"],"monthly":true,"demo":true},
-  {"slug":"jomtien-2br-family-house","name":"Jomtien — 2BR Family House with Pool","area":"Pattaya","areaSlug":"pattaya","district":"Jomtien","bedrooms":2,"bathrooms":2,"guests":5,"priceNight":null,"priceMonth":null,"currency":"USD","amenities":["Private pool","Near beach","Wi-Fi","Kids friendly","Kitchen"],"images":["/thaivillas/images/family.jpg","/thaivillas/images/villa-1.jpg","/thaivillas/images/villa-2.jpg"],"monthly":false,"demo":true}
+ {
+  "id": "bang-tao-pool-villa-4br",
+  "slug": "bang-tao-pool-villa-4br",
+  "name": "Bang Tao — 4BR Pool Villa near Laguna",
+  "sample": true,
+  "area": "Phuket",
+  "areaSlug": "phuket",
+  "subArea": "Bang Tao",
+  "subAreaSlug": "bang-tao",
+  "bedrooms": 4,
+  "bathrooms": 4,
+  "guests": 8,
+  "priceNight": null,
+  "priceMonth": null,
+  "currency": "USD",
+  "amenities": [
+   "Private pool",
+   "Wi-Fi",
+   "Air conditioning",
+   "Fully equipped kitchen",
+   "Workspace",
+   "Parking",
+   "Garden"
+  ],
+  "images": [
+   "/thaivillas/images/villas/ext-1.jpg",
+   "/thaivillas/images/villas/living-1.jpg",
+   "/thaivillas/images/villas/bed-1.jpg",
+   "/thaivillas/images/villas/ext-4.jpg",
+   "/thaivillas/images/villas/bed-2.jpg"
+  ],
+  "cardImage": "/thaivillas/images/villas/ext-1.jpg",
+  "topGallery": [
+   "/thaivillas/images/villas/ext-1.jpg",
+   "/thaivillas/images/villas/living-1.jpg",
+   "/thaivillas/images/villas/bed-1.jpg",
+   "/thaivillas/images/villas/ext-4.jpg",
+   "/thaivillas/images/villas/bed-2.jpg"
+  ],
+  "monthly": true,
+  "daily": true,
+  "categories": [
+   "property-rental",
+   "phuket",
+   "bang-tao",
+   "monthly",
+   "luxury"
+  ],
+  "filterTags": [
+   "family",
+   "luxury"
+  ],
+  "url": "/thaivillas/villa/phuket/bang-tao-pool-villa-4br/",
+  "updatedAt": "2026-10-19"
+ },
+ {
+  "id": "bang-tao-2br-pool-townhouse",
+  "slug": "bang-tao-2br-pool-townhouse",
+  "name": "Bang Tao — 2BR Pool Townhouse in Cherng Talay",
+  "sample": true,
+  "area": "Phuket",
+  "areaSlug": "phuket",
+  "subArea": "Bang Tao",
+  "subAreaSlug": "bang-tao",
+  "bedrooms": 2,
+  "bathrooms": 2,
+  "guests": 4,
+  "priceNight": null,
+  "priceMonth": null,
+  "currency": "USD",
+  "amenities": [
+   "Private pool",
+   "Wi-Fi",
+   "Air conditioning",
+   "Kitchen",
+   "Washing machine",
+   "Workspace"
+  ],
+  "images": [
+   "/thaivillas/images/villas/ext-2.jpg",
+   "/thaivillas/images/villas/living-2.jpg",
+   "/thaivillas/images/villas/bed-3.jpg",
+   "/thaivillas/images/villas/ext-1.jpg",
+   "/thaivillas/images/villas/bed-1.jpg"
+  ],
+  "cardImage": "/thaivillas/images/villas/ext-2.jpg",
+  "topGallery": [
+   "/thaivillas/images/villas/ext-2.jpg",
+   "/thaivillas/images/villas/living-2.jpg",
+   "/thaivillas/images/villas/bed-3.jpg",
+   "/thaivillas/images/villas/ext-1.jpg",
+   "/thaivillas/images/villas/bed-1.jpg"
+  ],
+  "monthly": true,
+  "daily": true,
+  "categories": [
+   "property-rental",
+   "phuket",
+   "bang-tao",
+   "monthly"
+  ],
+  "filterTags": [
+   "work",
+   "romantic"
+  ],
+  "url": "/thaivillas/villa/phuket/bang-tao-2br-pool-townhouse/",
+  "updatedAt": "2026-10-19"
+ },
+ {
+  "id": "layan-sea-view-villa-5br",
+  "slug": "layan-sea-view-villa-5br",
+  "name": "Layan — 5BR Sea-View Villa on the Hill",
+  "sample": true,
+  "area": "Phuket",
+  "areaSlug": "phuket",
+  "subArea": "Layan",
+  "subAreaSlug": "layan",
+  "bedrooms": 5,
+  "bathrooms": 5,
+  "guests": 10,
+  "priceNight": null,
+  "priceMonth": null,
+  "currency": "USD",
+  "amenities": [
+   "Private pool",
+   "Sea view",
+   "Wi-Fi",
+   "Chef on request",
+   "Air conditioning",
+   "Garden",
+   "Parking"
+  ],
+  "images": [
+   "/thaivillas/images/villas/ext-4.jpg",
+   "/thaivillas/images/villas/living-3.jpg",
+   "/thaivillas/images/villas/bed-2.jpg",
+   "/thaivillas/images/villas/ext-5.jpg",
+   "/thaivillas/images/villas/bed-1.jpg"
+  ],
+  "cardImage": "/thaivillas/images/villas/ext-4.jpg",
+  "topGallery": [
+   "/thaivillas/images/villas/ext-4.jpg",
+   "/thaivillas/images/villas/living-3.jpg",
+   "/thaivillas/images/villas/bed-2.jpg",
+   "/thaivillas/images/villas/ext-5.jpg",
+   "/thaivillas/images/villas/bed-1.jpg"
+  ],
+  "monthly": false,
+  "daily": true,
+  "categories": [
+   "property-rental",
+   "phuket",
+   "layan",
+   "luxury"
+  ],
+  "filterTags": [
+   "luxury",
+   "family"
+  ],
+  "url": "/thaivillas/villa/phuket/layan-sea-view-villa-5br/",
+  "updatedAt": "2026-10-19"
+ },
+ {
+  "id": "surin-3br-pool-villa",
+  "slug": "surin-3br-pool-villa",
+  "name": "Surin — 3BR Pool Villa, Walk to the Beach",
+  "sample": true,
+  "area": "Phuket",
+  "areaSlug": "phuket",
+  "subArea": "Surin",
+  "subAreaSlug": "surin",
+  "bedrooms": 3,
+  "bathrooms": 3,
+  "guests": 6,
+  "priceNight": null,
+  "priceMonth": null,
+  "currency": "USD",
+  "amenities": [
+   "Private pool",
+   "Walk to beach",
+   "Wi-Fi",
+   "Air conditioning",
+   "Kitchen"
+  ],
+  "images": [
+   "/thaivillas/images/villas/ext-3.jpg",
+   "/thaivillas/images/villas/living-1.jpg",
+   "/thaivillas/images/villas/bed-3.jpg",
+   "/thaivillas/images/villas/ext-2.jpg",
+   "/thaivillas/images/villas/bed-2.jpg"
+  ],
+  "cardImage": "/thaivillas/images/villas/ext-3.jpg",
+  "topGallery": [
+   "/thaivillas/images/villas/ext-3.jpg",
+   "/thaivillas/images/villas/living-1.jpg",
+   "/thaivillas/images/villas/bed-3.jpg",
+   "/thaivillas/images/villas/ext-2.jpg",
+   "/thaivillas/images/villas/bed-2.jpg"
+  ],
+  "monthly": true,
+  "daily": true,
+  "categories": [
+   "property-rental",
+   "phuket",
+   "surin",
+   "monthly"
+  ],
+  "filterTags": [
+   "family",
+   "romantic"
+  ],
+  "url": "/thaivillas/villa/phuket/surin-3br-pool-villa/",
+  "updatedAt": "2026-10-19"
+ },
+ {
+  "id": "kamala-cliff-villa-4br",
+  "slug": "kamala-cliff-villa-4br",
+  "name": "Kamala — 4BR Cliff Villa with Ocean View",
+  "sample": true,
+  "area": "Phuket",
+  "areaSlug": "phuket",
+  "subArea": "Kamala",
+  "subAreaSlug": "kamala",
+  "bedrooms": 4,
+  "bathrooms": 4,
+  "guests": 8,
+  "priceNight": null,
+  "priceMonth": null,
+  "currency": "USD",
+  "amenities": [
+   "Private pool",
+   "Sea view",
+   "Wi-Fi",
+   "Air conditioning",
+   "Kitchen",
+   "Parking"
+  ],
+  "images": [
+   "/thaivillas/images/villas/ext-5.jpg",
+   "/thaivillas/images/villas/living-2.jpg",
+   "/thaivillas/images/villas/bed-1.jpg",
+   "/thaivillas/images/villas/ext-4.jpg",
+   "/thaivillas/images/villas/bed-3.jpg"
+  ],
+  "cardImage": "/thaivillas/images/villas/ext-5.jpg",
+  "topGallery": [
+   "/thaivillas/images/villas/ext-5.jpg",
+   "/thaivillas/images/villas/living-2.jpg",
+   "/thaivillas/images/villas/bed-1.jpg",
+   "/thaivillas/images/villas/ext-4.jpg",
+   "/thaivillas/images/villas/bed-3.jpg"
+  ],
+  "monthly": false,
+  "daily": true,
+  "categories": [
+   "property-rental",
+   "phuket",
+   "kamala",
+   "luxury"
+  ],
+  "filterTags": [
+   "luxury"
+  ],
+  "url": "/thaivillas/villa/phuket/kamala-cliff-villa-4br/",
+  "updatedAt": "2026-10-19"
+ },
+ {
+  "id": "kata-2br-pool-villa",
+  "slug": "kata-2br-pool-villa",
+  "name": "Kata — 2BR Pool Villa above the Bay",
+  "sample": true,
+  "area": "Phuket",
+  "areaSlug": "phuket",
+  "subArea": "Kata",
+  "subAreaSlug": "kata",
+  "bedrooms": 2,
+  "bathrooms": 2,
+  "guests": 4,
+  "priceNight": null,
+  "priceMonth": null,
+  "currency": "USD",
+  "amenities": [
+   "Private pool",
+   "Sea view",
+   "Wi-Fi",
+   "Workspace",
+   "Kitchen"
+  ],
+  "images": [
+   "/thaivillas/images/villas/ext-2.jpg",
+   "/thaivillas/images/villas/living-3.jpg",
+   "/thaivillas/images/villas/bed-2.jpg",
+   "/thaivillas/images/villas/ext-3.jpg",
+   "/thaivillas/images/villas/bed-1.jpg"
+  ],
+  "cardImage": "/thaivillas/images/villas/ext-2.jpg",
+  "topGallery": [
+   "/thaivillas/images/villas/ext-2.jpg",
+   "/thaivillas/images/villas/living-3.jpg",
+   "/thaivillas/images/villas/bed-2.jpg",
+   "/thaivillas/images/villas/ext-3.jpg",
+   "/thaivillas/images/villas/bed-1.jpg"
+  ],
+  "monthly": true,
+  "daily": true,
+  "categories": [
+   "property-rental",
+   "phuket",
+   "kata",
+   "monthly"
+  ],
+  "filterTags": [
+   "romantic",
+   "surf"
+  ],
+  "url": "/thaivillas/villa/phuket/kata-2br-pool-villa/",
+  "updatedAt": "2026-10-19"
+ },
+ {
+  "id": "nai-harn-3br-garden-villa",
+  "slug": "nai-harn-3br-garden-villa",
+  "name": "Nai Harn — 3BR Garden Pool Villa near the Lake",
+  "sample": true,
+  "area": "Phuket",
+  "areaSlug": "phuket",
+  "subArea": "Nai Harn",
+  "subAreaSlug": "nai-harn",
+  "bedrooms": 3,
+  "bathrooms": 3,
+  "guests": 6,
+  "priceNight": null,
+  "priceMonth": null,
+  "currency": "USD",
+  "amenities": [
+   "Private pool",
+   "Garden",
+   "Wi-Fi",
+   "Workspace",
+   "Washing machine",
+   "Kitchen"
+  ],
+  "images": [
+   "/thaivillas/images/villas/ext-1.jpg",
+   "/thaivillas/images/villas/living-1.jpg",
+   "/thaivillas/images/villas/bed-3.jpg",
+   "/thaivillas/images/villas/ext-5.jpg",
+   "/thaivillas/images/villas/bed-2.jpg"
+  ],
+  "cardImage": "/thaivillas/images/villas/ext-1.jpg",
+  "topGallery": [
+   "/thaivillas/images/villas/ext-1.jpg",
+   "/thaivillas/images/villas/living-1.jpg",
+   "/thaivillas/images/villas/bed-3.jpg",
+   "/thaivillas/images/villas/ext-5.jpg",
+   "/thaivillas/images/villas/bed-2.jpg"
+  ],
+  "monthly": true,
+  "daily": true,
+  "categories": [
+   "property-rental",
+   "phuket",
+   "nai-harn",
+   "monthly"
+  ],
+  "filterTags": [
+   "work",
+   "family"
+  ],
+  "url": "/thaivillas/villa/phuket/nai-harn-3br-garden-villa/",
+  "updatedAt": "2026-10-19"
+ },
+ {
+  "id": "rawai-1br-pool-villa",
+  "slug": "rawai-1br-pool-villa",
+  "name": "Rawai — 1BR Private Pool Villa for Long Stays",
+  "sample": true,
+  "area": "Phuket",
+  "areaSlug": "phuket",
+  "subArea": "Rawai",
+  "subAreaSlug": "rawai",
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "guests": 2,
+  "priceNight": null,
+  "priceMonth": null,
+  "currency": "USD",
+  "amenities": [
+   "Private pool",
+   "Wi-Fi",
+   "Workspace",
+   "Kitchen",
+   "Washing machine",
+   "Motorbike parking"
+  ],
+  "images": [
+   "/thaivillas/images/villas/ext-3.jpg",
+   "/thaivillas/images/villas/living-2.jpg",
+   "/thaivillas/images/villas/bed-1.jpg",
+   "/thaivillas/images/villas/ext-2.jpg",
+   "/thaivillas/images/villas/bed-3.jpg"
+  ],
+  "cardImage": "/thaivillas/images/villas/ext-3.jpg",
+  "topGallery": [
+   "/thaivillas/images/villas/ext-3.jpg",
+   "/thaivillas/images/villas/living-2.jpg",
+   "/thaivillas/images/villas/bed-1.jpg",
+   "/thaivillas/images/villas/ext-2.jpg",
+   "/thaivillas/images/villas/bed-3.jpg"
+  ],
+  "monthly": true,
+  "daily": true,
+  "categories": [
+   "property-rental",
+   "phuket",
+   "rawai",
+   "monthly"
+  ],
+  "filterTags": [
+   "work",
+   "romantic"
+  ],
+  "url": "/thaivillas/villa/phuket/rawai-1br-pool-villa/",
+  "updatedAt": "2026-10-19"
+ },
+ {
+  "id": "chaweng-noi-4br-sea-view-villa",
+  "slug": "chaweng-noi-4br-sea-view-villa",
+  "name": "Chaweng Noi — 4BR Sea-View Villa",
+  "sample": true,
+  "area": "Koh Samui",
+  "areaSlug": "koh-samui",
+  "subArea": null,
+  "subAreaSlug": null,
+  "bedrooms": 4,
+  "bathrooms": 4,
+  "guests": 8,
+  "priceNight": null,
+  "priceMonth": null,
+  "currency": "USD",
+  "amenities": [
+   "Private pool",
+   "Sea view",
+   "Wi-Fi",
+   "Air conditioning",
+   "Kitchen"
+  ],
+  "images": [
+   "/thaivillas/images/villas/ext-4.jpg",
+   "/thaivillas/images/villas/living-3.jpg",
+   "/thaivillas/images/villas/bed-2.jpg",
+   "/thaivillas/images/villas/ext-1.jpg",
+   "/thaivillas/images/villas/bed-1.jpg"
+  ],
+  "cardImage": "/thaivillas/images/villas/ext-4.jpg",
+  "topGallery": [
+   "/thaivillas/images/villas/ext-4.jpg",
+   "/thaivillas/images/villas/living-3.jpg",
+   "/thaivillas/images/villas/bed-2.jpg",
+   "/thaivillas/images/villas/ext-1.jpg",
+   "/thaivillas/images/villas/bed-1.jpg"
+  ],
+  "monthly": false,
+  "daily": true,
+  "categories": [
+   "property-rental",
+   "koh-samui",
+   "luxury"
+  ],
+  "filterTags": [
+   "family",
+   "luxury"
+  ],
+  "url": "/thaivillas/villa/koh-samui/chaweng-noi-4br-sea-view-villa/",
+  "updatedAt": "2026-10-19"
+ },
+ {
+  "id": "pratumnak-3br-pool-house",
+  "slug": "pratumnak-3br-pool-house",
+  "name": "Pratumnak — 3BR Pool House",
+  "sample": true,
+  "area": "Pattaya",
+  "areaSlug": "pattaya",
+  "subArea": null,
+  "subAreaSlug": null,
+  "bedrooms": 3,
+  "bathrooms": 3,
+  "guests": 6,
+  "priceNight": null,
+  "priceMonth": null,
+  "currency": "USD",
+  "amenities": [
+   "Private pool",
+   "Wi-Fi",
+   "Air conditioning",
+   "Kitchen",
+   "Parking"
+  ],
+  "images": [
+   "/thaivillas/images/villas/ext-2.jpg",
+   "/thaivillas/images/villas/living-1.jpg",
+   "/thaivillas/images/villas/bed-3.jpg",
+   "/thaivillas/images/villas/ext-5.jpg",
+   "/thaivillas/images/villas/bed-2.jpg"
+  ],
+  "cardImage": "/thaivillas/images/villas/ext-2.jpg",
+  "topGallery": [
+   "/thaivillas/images/villas/ext-2.jpg",
+   "/thaivillas/images/villas/living-1.jpg",
+   "/thaivillas/images/villas/bed-3.jpg",
+   "/thaivillas/images/villas/ext-5.jpg",
+   "/thaivillas/images/villas/bed-2.jpg"
+  ],
+  "monthly": true,
+  "daily": true,
+  "categories": [
+   "property-rental",
+   "pattaya",
+   "monthly"
+  ],
+  "filterTags": [
+   "family",
+   "work"
+  ],
+  "url": "/thaivillas/villa/pattaya/pratumnak-3br-pool-house/",
+  "updatedAt": "2026-10-19"
+ }
 ]

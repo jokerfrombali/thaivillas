@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Villa Concierge in Phuket — Private Chef, Spa, Events | Thai Villas VIP</title>
+<meta name="description" content="Private chef, in-villa spa, event and party set-ups, nanny, security and reservations at the best tables.">
+<link rel="preload" as="font" type="font/woff2" href="/thaivillas/fonts/lora-ecda3beb.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/thaivillas/fonts/lora-6d4ac4a9.woff2" crossorigin>
+<link rel="stylesheet" href="/thaivillas/thb-tw.css">
+<style>
+body { font-family: 'Inter', sans-serif; background: #fafaf7; color: #0a0a0a; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+.font-display { font-family: 'Lora', Georgia, serif; }
+html { scroll-behavior: smooth; }
+.kicker { text-transform: uppercase; letter-spacing: 0.22em; font-size: 11px; font-weight: 600; color: #6b6b66; }
+.btn-primary { background: #0a0a0a; color: #fff; border-radius: 999px; padding: 14px 24px; font-weight: 600; font-size: 14px; transition: transform 0.15s, background 0.2s; }
+.btn-primary:hover { background: #1c1c1c; transform: translateY(-1px); }
+.btn-outline { border: 1px solid #0a0a0a; color: #0a0a0a; background: transparent; border-radius: 999px; padding: 13px 23px; font-weight: 600; font-size: 14px; transition: all 0.2s; }
+.btn-outline:hover { background: #0a0a0a; color: #fff; }
+.card-hover { transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1); }
+.card-hover:hover { transform: translateY(-4px); }
+.nav-link { position: relative; color: #0a0a0a; font-weight: 500; font-size: 14px; }
+.nav-link::after { content: ''; position: absolute; bottom: -6px; left: 0; right: 0; height: 1.5px; background: #0a0a0a; transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
+.nav-link:hover::after { transform: scaleX(1); }
+/* Mega-menu */
+.mega-trigger { position: relative; }
+#villasBackdrop {
+  display: none; position: fixed; inset: 0; top: 72px;
+  background: rgba(0,0,0,0.45); z-index: 300;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+#villasBackdrop.open { display: block; }
+#villasPanel {
+  display: none;
+  position: fixed; top: 72px; left: 0; right: 0; width: 100%;
+  background: #fafaf7; border-bottom: 1px solid #e6e3dc;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+  padding: 32px 0; z-index: 310;
+  flex-direction: row; justify-content: center; gap: 0;
+}
+#villasPanel.open { display: flex; }
+#villasPanel .mega-inner {
+  display: flex; gap: 0; align-items: flex-start;
+  max-width: 1400px; width: 100%; padding: 0 40px;
+}
+.mega-col-title { text-transform: uppercase; letter-spacing: 0.18em; font-size: 10.5px; font-weight: 700; color: #8a8a85; margin-bottom: 14px; }
+.mega-item { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: 13.5px; color: #0a0a0a; text-decoration: none; transition: color 0.2s; cursor: pointer; border: none; background: none; width: 100%; text-align: left; position: relative; white-space: nowrap; }
+.mega-item::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: #0a0a0a; transform: scaleX(0); transform-origin: center; transition: transform 0.25s cubic-bezier(0.4,0,0.2,1); }
+.mega-item:hover { color: #0a0a0a; }
+.mega-item:hover::after { transform: scaleX(1); }
+.mega-count { font-size: 12px; color: #b0ada6; margin-left: 8px; flex-shrink: 0; }
+.mega-divider { width: 1px; background: #e6e3dc; flex-shrink: 0; }
+.mega-featured { width: 200px; flex-shrink: 0; border-radius: 14px; overflow: hidden; position: relative; min-height: 260px; }
+.mega-zoom { cursor: pointer; }
+.mega-zoom-img { transition: transform 0.5s cubic-bezier(0.2,0.6,0.2,1) !important; }
+.mega-zoom:hover .mega-zoom-img { transform: scale(1.08); }
+.mega-featured img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mega-featured-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.1) 55%, transparent 100%); }
+.mega-featured-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 16px; color: white; }
+.mega-chevron { transition: transform 0.25s; }
+.mega-chevron.open { transform: rotate(180deg); }
+.tab-active { background: #0a0a0a; color: #fff; }
+.divider { border-top: 1px solid #e6e3dc; }
+@keyframes pulse-ring { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(2); opacity: 0; } }
+.pulse-ring { animation: pulse-ring 2s infinite ease-out; }
+@keyframes scrollLine { 0% { transform: translateY(-100%); } 100% { transform: translateY(250%); } }
+.text-stroke { -webkit-text-stroke: 1px rgba(255,255,255,0.9); color: transparent; }
+.hero-img{filter:none}
+    .hero-title{text-shadow:0 2px 26px rgba(0,0,0,.55),0 1px 4px rgba(0,0,0,.35)}
+    .hero-sub{text-shadow:0 2px 16px rgba(0,0,0,.5)}
+.hero-title { text-shadow: 0 2px 24px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.35); }
+.hero-sub { text-shadow: 0 1px 10px rgba(0,0,0,0.6); }
+</style>
+
+<meta name="theme-color" content="#343537">
+<style>picture{display:contents}</style>
+<style>section[id^="section-"]:not(:first-of-type){content-visibility:auto;contain-intrinsic-size:auto 600px}</style>
+<style id="thb-home-mobile">
+@media(max-width:639px){
+  .thb-srow{flex-wrap:wrap;row-gap:12px}
+  .thb-srow>div:first-child{width:100%;display:flex;justify-content:center}
+  .thb-srow>div:last-child{width:100%}
+  .thb-srow>div:last-child .btn-primary{flex:1 1 auto;justify-content:center}
+}
+@media(max-width:429px){
+  .thb-logo-text{font-size:17px}
+  nav .w-12{width:2.5rem;height:2.5rem}
+}
+</style>
+<style id="thb-arow-css">
+.thb-arow{display:flex;gap:14px;overflow-x:auto;padding:2px 24px 10px;scroll-snap-type:x mandatory;scroll-padding:0 24px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.thb-arow::-webkit-scrollbar{display:none}
+.thb-acard{flex:0 0 76vw;max-width:300px;scroll-snap-align:start;background:#fff;border:1px solid #e6e3dc;border-radius:22px;overflow:hidden;text-decoration:none;color:#0a0a0a;transition:transform .18s,box-shadow .18s}
+.thb-acard:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,.09)}
+.thb-acard img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#f2efe8}
+.thb-acard .in{padding:13px 15px 15px;font-family:'Inter',sans-serif}
+.thb-acard .t{font-family:'Lora',Georgia,serif;font-size:16.5px;font-weight:600;line-height:1.25;margin:0 0 5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.thb-acard .a{display:flex;align-items:center;gap:5px;font-size:12.5px;color:#6b6b66;margin:0 0 7px}
+.thb-acard .m{font-size:12.5px;color:#6b6b66;margin:0 0 9px}
+.thb-acard .p{font-family:'Lora',Georgia,serif;font-size:15px;font-weight:700;margin:0}
+.thb-acard .p span{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:400;color:#6b6b66}
+.thb-arh{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px;text-decoration:none;color:#0a0a0a}
+.thb-arh h3{font-family:'Lora',Georgia,serif;font-size:clamp(21px,2.6vw,28px);font-weight:600;letter-spacing:-0.01em;margin:0;display:flex;align-items:center;gap:9px}
+.thb-arh svg{flex:0 0 auto;transition:transform .15s}
+.thb-arh:hover svg{transform:translateX(3px)}
+.thb-arh .cnt{font-family:'Inter',sans-serif;font-size:12.5px;color:#6b6b66;font-weight:500}
+@media(min-width:1024px){.thb-arow{padding:2px 40px 10px;scroll-padding:0 40px}.thb-acard{flex-basis:300px}}
+</style>
+<style id="thb-wapill-css">
+/* the green WhatsApp button on its own, bottom-right — no avatar, no pitch */
+#thbWaPill{position:fixed;left:auto;right:20px;transform:none;bottom:calc(20px + env(safe-area-inset-bottom));z-index:60;display:flex;align-items:center;background:none;border:0;box-shadow:none;padding:0;width:auto;font-family:'Inter',sans-serif;box-sizing:border-box}
+#thbWaPill .ava,#thbWaPill p,#thbWaPill .wa-ai{display:none}
+#thbWaPill .wa-go{display:inline-flex;align-items:center;gap:8px;height:48px;box-sizing:border-box;background:#22c55e;color:#fff;font-weight:700;font-size:14.5px;padding:0 20px;border-radius:999px;text-decoration:none;flex:0 0 auto;box-shadow:0 12px 28px -10px rgba(22,163,74,.6),0 2px 8px rgba(0,0,0,.14);transition:background .15s,transform .16s,box-shadow .16s}
+#thbWaPill .wa-go:hover{background:#16a34a;transform:translateY(-1px);box-shadow:0 16px 32px -10px rgba(22,163,74,.66),0 2px 10px rgba(0,0,0,.16)}
+#thbWaPill .wa-go svg{width:19px;height:19px}
+@media(max-width:600px){#thbWaPill{right:14px;bottom:calc(16px + env(safe-area-inset-bottom))}#thbWaPill .wa-go{height:46px;padding:0 17px;font-size:14px}}
+@media print{#thbWaPill{display:none}}
+</style>
+<style id="thb-tap-css">
+a,button,[onclick],.prop-card,.thb-acard,.thb-qchip,#thbBurger,.tsh-chip{touch-action:manipulation;-webkit-tap-highlight-color:rgba(10,10,10,.06)}
+@media(hover:none){
+  .prop-card:hover,.thb-acard:hover,.thb-qchip:hover,.tt-card:hover,.card-hover:hover,.villa-floating-back:hover{transform:none!important;box-shadow:none!important}
+  .cat-card:hover::after{opacity:0!important}
+}
+
+/* --- 1) пилюля WhatsApp не лезет на панель: появляется после первого экрана --- */
+#thbWaPill{opacity:0;visibility:hidden;transform:translateY(14px);
+  transition:opacity .3s ease,transform .3s ease,visibility .3s}
+#thbWaPill.thb-pill-on{opacity:1;visibility:visible;transform:translateY(0)}
+/* --- 2) локальная подложка строго под текстом: фото по краям остаётся ярким --- */
+#thbHero .thb-hero-txt{position:relative}
+#thbHero .thb-hero-txt>div{position:relative;z-index:1}
+#thbHero .thb-hero-txt>div::before{content:'';position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);width:min(1180px,94vw);height:calc(100% + 320px);
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.52) 0%,rgba(0,0,0,.45) 38%,rgba(0,0,0,.28) 60%,rgba(0,0,0,.10) 78%,rgba(0,0,0,0) 93%);
+  pointer-events:none;z-index:-1}
+#thbHero .thb-hero-txt>div>*{position:relative;z-index:1}
+/* --- 3) подзаголовок крупнее, текстовый блок ниже --- */
+@media(min-width:1024px){
+  #thbHero .hero-sub{font-size:22px!important;line-height:1.5;max-width:680px}
+  #thbHero .thb-hero-txt{align-items:flex-end!important;padding-top:118px;padding-bottom:clamp(96px,13vh,150px)}
+}
+@media(min-width:640px) and (max-width:1023px){#thbHero .hero-sub{font-size:18px!important}}
+</style>
+<style id="thb-fav-css">
+.thb-fav{position:absolute;top:10px;right:10px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border:none;border-radius:50%;cursor:pointer;padding:0;z-index:4;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 2px 8px rgba(0,0,0,.13);touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:background .18s,transform .18s}
+.thb-fav svg{width:17px;height:17px;fill:none;stroke:#0a0a0a;stroke-width:2;transition:fill .18s,stroke .18s,transform .18s}
+@media(hover:hover){.thb-fav:hover{background:#fff;transform:scale(1.08)}}
+.thb-fav[aria-pressed="true"] svg{fill:#e11d48;stroke:#e11d48}
+.thb-fav.thb-pop svg{animation:thbHeartPop .38s cubic-bezier(.2,.9,.3,1.4)}
+@keyframes thbHeartPop{0%{transform:scale(1)}42%{transform:scale(1.42)}100%{transform:scale(1)}}
+.thb-acw{position:relative;display:flex;flex:0 0 76vw;max-width:300px;scroll-snap-align:start}
+.thb-acw>.thb-acard{flex:1 1 auto;max-width:none}
+@media(min-width:640px){.thb-acw{flex:0 0 300px}}
+[data-fav-link]{position:relative;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:inherit}
+[data-fav-badge]{position:absolute;top:-1px;right:-1px;min-width:17px;height:17px;padding:0 4px;box-sizing:border-box;border-radius:999px;background:#e11d48;color:#fff;font-family:Inter,system-ui,sans-serif;font-size:10.5px;font-weight:700;line-height:17px;text-align:center;border:2px solid #fafaf7;display:none}
+[data-fav-link].thb-has svg{fill:#e11d48!important;stroke:#e11d48!important}
+[data-fav-link].thb-has [data-fav-badge]{display:block}
+#thbSavedToast{position:fixed;left:50%;transform:translateX(-50%) translateY(18px);bottom:calc(20px + env(safe-area-inset-bottom));z-index:95;display:flex;align-items:center;gap:12px;background:#0a0a0a;color:#fff;border-radius:999px;padding:11px 12px 11px 18px;font-family:Inter,system-ui,sans-serif;font-size:13.5px;font-weight:600;box-shadow:0 14px 40px rgba(0,0,0,.3);opacity:0;visibility:hidden;transition:opacity .22s ease,transform .22s ease,visibility .22s;max-width:92vw}
+#thbSavedToast.on{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+#thbSavedToast a{background:#fff;color:#0a0a0a;border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:700;text-decoration:none;white-space:nowrap}
+@media(prefers-reduced-motion:reduce){.thb-fav.thb-pop svg{animation:none}#thbSavedToast{transition:none}}
+</style>
+<style id="thb-display-tracking">
+/* Lora has prominent serifs: negative tracking makes them run into each other */
+.font-display,.hero-title,[data-slot="property-title"],[data-slot="section-header"],[style*="Lora"]{letter-spacing:0!important}
+</style>
+
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/thaivillas/favicon.svg">
+<meta property="og:title" content="Luxury Villa Concierge in Phuket — Private Chef, Spa, Events | Thai Villas VIP">
+<meta property="og:description" content="Private chef, in-villa spa, event and party set-ups, nanny, security and reservations at the best tables.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Thai Villas">
+<meta property="og:image" content="/thaivillas/images/vip/chef.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Thai Villas", "telephone": "+66000000000", "email": "hello@thaivillas.example", "address": {"@type": "PostalAddress", "addressLocality": "Phuket", "addressCountry": "TH"}, "areaServed": ["Phuket", "Koh Samui", "Pattaya", "Bangkok", "Krabi", "Koh Phangan", "Hua Hin", "Chiang Mai"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How far in advance should I book?", "acceptedAnswer": {"@type": "Answer", "text": "As early as you can, especially in the high season (roughly November to April). Some things can be arranged the same day — just ask."}}, {"@type": "Question", "name": "Can services be added during the stay?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Message us on WhatsApp at any time and we'll arrange what is possible."}}, {"@type": "Question", "name": "How is it paid?", "acceptedAnswer": {"@type": "Answer", "text": "Each service is quoted separately and confirmed in writing before you pay."}}, {"@type": "Question", "name": "Do I need to rent a villa with you?", "acceptedAnswer": {"@type": "Answer", "text": "Concierge works best together with a villa stay, but ask us — we'll tell you what is possible."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "VIP", "item": "/thaivillas/vip/"}, {"@type": "ListItem", "position": 3, "name": "Luxury concierge", "item": "/thaivillas/vip/concierge/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Luxury concierge", "serviceType": "Luxury concierge", "areaServed": "Phuket, Thailand", "provider": {"@type": "Organization", "name": "Thai Villas"}, "description": "Private chef, in-villa spa, event and party set-ups, nanny, security and reservations at the best tables."}</script>
+
+<style id="w4-css">
+.w4{font-family:'Inter',sans-serif;color:#0a0a0a}
+.w4 *{box-sizing:border-box}
+.w4 a{color:inherit;text-decoration:none}
+.w4-wrap{max-width:1400px;margin:0 auto;padding:0 24px}
+@media(min-width:1024px){.w4-wrap{padding:0 40px}}
+.w4-narrow{max-width:860px}
+.w4-sec{padding:84px 0;border-top:1px solid #e6e3dc;background:#fafaf7}
+.w4-sec.paper{background:#f4f2ed}
+.w4-sec.ink{background:#0a0a0a;color:#fff;border-top-color:#0a0a0a}
+.w4-kicker{text-transform:uppercase;letter-spacing:.22em;font-size:11px;font-weight:600;color:#6b6b66;margin:0 0 14px}
+.ink .w4-kicker,.w4-hero .w4-kicker{color:rgba(255,255,255,.62)}
+.w4-h2{font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,4vw,54px);line-height:1.02;margin:0 0 16px}
+.w4-h2 i,.w4-h1 i{font-style:italic}
+.w4-sub{color:#6b6b66;font-size:16px;line-height:1.65;max-width:62ch;margin:0 0 34px}
+.ink .w4-sub{color:rgba(255,255,255,.66)}
+.w4-crumbs{font-size:12.5px;color:#8a877f;padding:16px 0 0}.w4-crumbs a{color:#6b6b66}.w4-crumbs span{margin:0 6px}
+/* hero with photo */
+.w4-hero{position:relative;background:#0a0a0a;color:#fff;padding-top:72px;min-height:min(86vh,820px);display:flex;align-items:flex-end;overflow:hidden}
+.w4-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.w4-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.88) 0%,rgba(10,10,10,.45) 45%,rgba(10,10,10,.18) 75%,rgba(10,10,10,.35) 100%)}
+.w4-hero .w4-wrap{position:relative;z-index:2;width:100%;padding-bottom:72px;padding-top:72px}
+.w4-hero.short{min-height:min(64vh,620px)}
+.w4-h1{font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(40px,6.4vw,84px);line-height:.98;margin:0 0 22px;max-width:16ch}
+.w4-lead{font-size:clamp(16px,1.5vw,19px);line-height:1.6;color:rgba(255,255,255,.78);max-width:58ch;margin:0 0 30px}
+.w4-chiprow{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 26px}
+.w4-chiprow span{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:6px 14px;color:rgba(255,255,255,.82)}
+/* plain dark header (info pages) */
+.w4-head{background:#0a0a0a;color:#fff;padding:72px 0 0}
+.w4-head .w4-wrap{padding-top:76px;padding-bottom:76px}
+.w4-head .w4-lead{color:rgba(255,255,255,.66)}
+.w4-head .w4-meta{color:rgba(255,255,255,.42);font-size:13px;margin-top:20px}
+/* buttons */
+.w4-btns{display:flex;gap:10px;flex-wrap:wrap}
+.w4-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:15px 24px;font-size:15px;font-weight:600;transition:background .15s,transform .15s;cursor:pointer;border:0;font-family:inherit}
+.w4-btn:hover{transform:translateY(-1px)}
+.w4-btn.wa{background:#22c55e;color:#fff}.w4-btn.wa:hover{background:#16a34a}
+.w4-btn.dark{background:#0a0a0a;color:#fff}.w4-btn.dark:hover{background:#2b2b28}
+.w4-btn.light{background:#fff;color:#0a0a0a;border:1px solid #d9d4c9}
+.w4-btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.42)}.w4-btn.ghost:hover{background:#fff;color:#0a0a0a}
+.w4-btn svg{width:18px;height:18px}
+/* grids & tiles */
+.w4-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.w4-grid.g3{grid-template-columns:repeat(3,1fr)}.w4-grid.g2{grid-template-columns:repeat(2,1fr)}.w4-grid.g4{grid-template-columns:repeat(4,1fr)}
+.w4-tile{background:#fff;border:1px solid #e6e3dc;border-radius:20px;padding:24px 24px 22px}
+.ink .w4-tile{background:#151514;border-color:#2a2926;color:#fff}
+.w4-tile h3{font-family:'Lora',Georgia,serif;font-size:19px;font-weight:600;margin:0 0 8px;line-height:1.25}
+.w4-tile p,.w4-tile li{font-size:14.5px;line-height:1.62;color:#55524b;margin:0}
+.ink .w4-tile p,.ink .w4-tile li{color:rgba(255,255,255,.66)}
+.w4-tile ul{margin:0;padding-left:18px}.w4-tile li{margin:0 0 6px}
+.w4-tile .ic{width:42px;height:42px;border-radius:50%;background:#0a0a0a;color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.ink .w4-tile .ic{background:#fff;color:#0a0a0a}
+.w4-tile .ic svg{width:20px;height:20px}
+/* photo cards */
+.w4-pcard{position:relative;display:block;border-radius:24px;overflow:hidden;aspect-ratio:4/5;background:#1b1b1a;color:#fff}
+.w4 .w4-pcard{color:#fff}
+.w4-pcard.wide{aspect-ratio:16/10}
+.w4-pcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.6,.2,1)}
+.w4-pcard:hover img{transform:scale(1.05)}
+.w4-pcard::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.86) 0%,rgba(0,0,0,.55) 42%,rgba(0,0,0,.08) 72%,rgba(0,0,0,0) 100%)}
+.w4-pcard .in{position:absolute;left:0;right:0;bottom:0;padding:22px;z-index:2}
+.w4-pcard h3{font-family:'Lora',Georgia,serif;font-size:24px;font-weight:500;margin:0 0 6px;line-height:1.1}
+.w4-pcard p{text-shadow:0 1px 8px rgba(0,0,0,.4);font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.8);margin:0}
+.w4-pcard .go{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:13px;font-weight:600}
+.w4-pcard .cnt{position:absolute;top:14px;left:14px;z-index:2;background:rgba(255,255,255,.92);color:#0a0a0a;font-size:12px;font-weight:600;border-radius:999px;padding:5px 11px}
+/* villa cards (thv.acard) as a grid */
+.w4-cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.w4-cards .thb-acw{flex:none;max-width:none;width:100%}
+.w4-cards .thb-acard{max-width:none;width:100%}
+/* steps */
+.w4-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:step}
+.w4-steps.s3{grid-template-columns:repeat(3,1fr)}
+.w4-step{background:#fff;border:1px solid #e6e3dc;border-radius:20px;padding:24px 22px}
+.ink .w4-step{background:#151514;border-color:#2a2926}
+.w4-step::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:'Lora',Georgia,serif;font-size:34px;font-weight:300;color:#c9c2b4;display:block;margin-bottom:10px}
+.ink .w4-step::before{color:#C1B59D}
+.w4-step h3{font-family:'Lora',Georgia,serif;font-size:18px;font-weight:600;margin:0 0 7px}
+.w4-step p{font-size:14px;color:#6b6b66;line-height:1.58;margin:0}
+.ink .w4-step p{color:rgba(255,255,255,.62)}
+/* prose */
+.w4-prose p{margin:0 0 16px;color:#3b3b36;font-size:16px;line-height:1.75}
+.w4-prose ul{margin:0 0 18px 20px;padding:0;color:#3b3b36;font-size:15.5px;line-height:1.7}.w4-prose li{margin:0 0 8px}
+.w4-prose h3{font-family:'Lora',Georgia,serif;font-size:21px;font-weight:600;margin:28px 0 10px}
+.w4-prose a{text-decoration:underline;text-underline-offset:3px}
+/* legal */
+.w4-legal section{margin:0 0 46px}
+.w4-legal h2{font-family:'Lora',Georgia,serif;font-size:clamp(24px,2.6vw,30px);font-weight:400;line-height:1.15;margin:0 0 14px}
+.w4-legal p,.w4-legal li{color:rgba(10,10,10,.72);font-size:15px;line-height:1.8}
+.w4-legal p{margin:0 0 14px}.w4-legal ul{margin:0 0 14px 20px;padding:0}
+.w4-legal a{text-decoration:underline;text-underline-offset:3px}
+.w4-notice{background:#fff8e6;border:1px solid #e8d9a8;border-radius:14px;padding:14px 18px;margin:0 0 36px;font-size:14px;line-height:1.7;color:#3b3b36}
+/* chips */
+.w4-rel{display:flex;flex-wrap:wrap;gap:10px}
+.w4-rel a{border:1px solid #e6e3dc;background:#fff;border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:500;color:#0a0a0a}
+.w4-rel a:hover{border-color:#0a0a0a}
+.ink .w4-rel a{background:transparent;border-color:#3a3935;color:#fff}
+/* faq */
+.w4-faq details{background:#fff;border:1px solid #e6e3dc;border-radius:16px;margin-bottom:10px;overflow:hidden}
+.w4-faq summary{cursor:pointer;list-style:none;padding:18px 20px;font-weight:600;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.w4-faq summary::-webkit-details-marker{display:none}
+.w4-faq summary::after{content:'+';font-family:'Lora',Georgia,serif;font-size:22px;font-weight:300;color:#8a877f;transition:transform .2s;flex:0 0 auto}
+.w4-faq details[open] summary::after{transform:rotate(45deg)}
+.w4-faq .a{padding:0 20px 18px;color:#55524b;font-size:14.5px;line-height:1.68}
+/* final CTA */
+.w4-final{background:#f4f2ed;border:1px solid #e6e3dc;border-radius:28px;text-align:center;padding:72px 24px}
+.w4-final.ink{background:#0a0a0a;border-color:#0a0a0a;color:#fff}
+.w4-final p.t{color:#6b6b66;max-width:54ch;margin:0 auto 26px;font-size:15.5px;line-height:1.65}
+.w4-final.ink p.t{color:rgba(255,255,255,.66)}
+.w4-final .w4-btns{justify-content:center}
+/* forms */
+.w4-form{background:#fff;border:1px solid #e6e3dc;border-radius:24px;padding:26px}
+.ink .w4-form{background:#151514;border-color:#2a2926}
+.w4-form label{display:block;font-size:12.5px;font-weight:600;color:#6b6b66;margin:0 0 6px}
+.ink .w4-form label{color:rgba(255,255,255,.6)}
+.w4-form input,.w4-form select,.w4-form textarea{width:100%;border:1px solid #d9d4c9;border-radius:12px;padding:12px 13px;font-size:15px;margin:0 0 16px;background:#fafaf7;color:#0a0a0a;font-family:inherit}
+.w4-form textarea{min-height:96px;resize:vertical}
+.w4-form .row{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.w4-form .w4-btn{width:100%}
+.w4-form .fine{font-size:12.5px;color:#8a877f;margin:12px 0 0;line-height:1.5}
+/* split */
+.w4-split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.w4-split.top{align-items:start}
+.w4-img{border-radius:28px;overflow:hidden;background:#1b1b1a}
+.w4-img img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3}
+.w4-gal{display:grid;grid-template-columns:2fr 1fr;gap:12px}
+.w4-gal.one{grid-template-columns:1fr}
+.w4-gal img{width:100%;height:100%;object-fit:cover;border-radius:22px;display:block;min-height:0}
+.w4-gal .side{display:grid;gap:12px}
+.w4-gal>img{aspect-ratio:16/10}
+.w4-opts{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.w4-sample{background:#fff8e6;border:1px solid #e8d9a8;border-radius:12px;padding:10px 14px;font-size:13px;color:#55524b;margin:0 0 20px;display:inline-block}
+@media(max-width:1023px){.w4-grid.g4{grid-template-columns:repeat(2,1fr)}.w4-steps{grid-template-columns:repeat(2,1fr)}.w4-split{grid-template-columns:1fr;gap:34px}.w4-grid.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.w4-sec{padding:58px 0}.w4-grid.g2,.w4-grid.g3,.w4-grid.g4,.w4-steps,.w4-steps.s3{grid-template-columns:1fr}.w4-hero .w4-wrap{padding-bottom:48px}.w4-head .w4-wrap{padding-top:52px;padding-bottom:52px}.w4-final{padding:52px 20px;border-radius:22px}.w4-form .row{grid-template-columns:1fr}.w4-gal{grid-template-columns:1fr}.w4-pcard{aspect-ratio:4/4.4}.w4-btns .w4-btn{flex:1 1 auto}.w4-opts{grid-template-columns:1fr 1fr;gap:10px}.w4-opts .w4-tile{padding:16px 14px}.w4-opts .ic{display:none}.w4-opts h3{font-size:15.5px}.w4-opts p{font-size:12.5px}}
+</style>
+</head>
+<body>
+
+<div id="villasBackdrop"></div>
+<!-- =============== NAVBAR =============== -->
+<style id="thv-nav-fix">@media(max-width:639px){#navbar a.mobile-menu-link{display:none!important}}</style>
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-off/80 backdrop-blur-md border-b border-line" style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,250,247,.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #e6e3dc">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between h-[72px]">
+      <a href="/thaivillas/" data-hostpill class="flex items-center text-ink border-[1.5px] border-ink/30 rounded-full px-3.5 py-1" aria-label="Thai Villas"><span class="thb-logo-text font-display text-[19px] tracking-tight ml-2.5 whitespace-nowrap"><span class="italic">Thai</span>&nbsp;<span class="font-semibold tracking-[0.09em]">VILLAS</span></span></a>
+
+      <div class="hidden lg:flex items-center gap-9">
+        <div class="mega-trigger">
+          <a href="/thaivillas/property-rental/" class="nav-link flex items-center gap-1">Villas <svg class="w-3 h-3 opacity-60 mega-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+        </div>
+        <a href="/thaivillas/property-rental/?period=daily" class="nav-link">Daily rentals</a>
+        <a href="/thaivillas/monthly-rental/" class="nav-link">Monthly & long stay</a>
+        <a href="/thaivillas/vip/" class="nav-link">VIP</a>
+        <a href="/thaivillas/about/" class="nav-link">About</a>
+        <a href="/thaivillas/contacts/" class="nav-link">Contacts</a>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a href="/thaivillas/saved/" data-fav-link aria-label="Saved villas" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-paper transition"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span data-fav-badge>0</span></a>
+        <a href="/thaivillas/property-rental/" class="btn-primary mobile-menu-link hidden sm:inline-flex items-center gap-2"> Browse villas <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg> </a>
+        <button id="mobileMenuBtn" aria-label="Menu" aria-expanded="false" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-paper transition">
+          <svg id="burgerIcon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+          <svg id="closeIcon" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden bg-off border-t border-line px-6 py-6">
+    <div class="flex flex-col gap-1 text-[16px] font-medium">
+      <a href="/thaivillas/saved/" class="thb-saved-item py-3 border-b border-line" style="display:flex;align-items:center;justify-content:space-between;color:#e11d48">Saved villas <span data-fav-count style="display:none;background:#e11d48;color:#fff;border-radius:999px;min-width:20px;height:20px;line-height:20px;text-align:center;font-size:11.5px;font-weight:700;padding:0 6px"></span></a>
+      <a href="/thaivillas/property-rental/" class="py-3 border-b border-line">All villas</a>
+      <a href="/thaivillas/villas/phuket/" class="py-3 border-b border-line">Phuket</a>
+      <a href="/thaivillas/property-rental/?period=daily" class="py-3 border-b border-line">Daily rentals</a>
+      <a href="/thaivillas/monthly-rental/" class="py-3 border-b border-line">Monthly & long stay</a>
+      <a href="/thaivillas/vip/" class="py-3 border-b border-line">VIP</a>
+      <a href="/thaivillas/about/" class="py-3 border-b border-line">About</a>
+      <a href="/thaivillas/contacts/" class="py-3 border-b border-line">Contacts</a>
+      <a href="https://wa.me/66000000000?text=Hi%20Thai%20Villas%21%20I%27m%20looking%20for%20a%20villa%20in%20Thailand." class="btn-primary text-center mt-5" rel="noopener">WhatsApp us</a>
+    </div>
+  </div>
+</nav>
+<script>
+(function(){
+  var btn=document.getElementById('mobileMenuBtn'),menu=document.getElementById('mobileMenu'),
+      b=document.getElementById('burgerIcon'),x=document.getElementById('closeIcon');
+  if(!btn||!menu)return;
+  function toggle(force){
+    var open=typeof force==='boolean'?force:menu.classList.contains('hidden');
+    menu.classList.toggle('hidden',!open);
+    b.classList.toggle('hidden',open);
+    x.classList.toggle('hidden',!open);
+    btn.setAttribute('aria-expanded',open);
+  }
+  btn.addEventListener('click',function(){toggle()});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){toggle(false)})});
+})();
+</script>
+
+<!-- Villas mega-menu panel (outside nav to avoid stacking context issues) -->
+<div id="villasPanel">
+  <div class="mega-inner">
+    <div style="width:150px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">Rental period</p>
+              <a href="/thaivillas/property-rental/?period=daily" class="mega-item">Daily <span class="mega-count">10</span></a>
+              <a href="/thaivillas/property-rental/?period=monthly" class="mega-item">Monthly <span class="mega-count">7</span></a>
+              <a href="/thaivillas/monthly-rental/" class="mega-item" style="font-weight:600">Long stay guide &rarr;</a>
+              <a href="/thaivillas/property-rental/" class="mega-item">All villas <span class="mega-count">10</span></a>
+              </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="width:170px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">Phuket beaches</p>
+              <a href="/thaivillas/villas/phuket/bang-tao/" class="mega-item">Bang Tao <span class="mega-count">2</span></a>
+              <a href="/thaivillas/villas/phuket/layan/" class="mega-item">Layan <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/phuket/surin/" class="mega-item">Surin <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/phuket/kamala/" class="mega-item">Kamala <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/phuket/patong/" class="mega-item">Patong <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/phuket/karon/" class="mega-item">Karon <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/phuket/kata/" class="mega-item">Kata <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/phuket/kata-noi/" class="mega-item">Kata Noi <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/phuket/nai-harn/" class="mega-item">Nai Harn <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/phuket/" class="mega-item" style="font-weight:600">All Phuket &rarr; <span class="mega-count">8</span></a>
+              </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="width:150px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">Thailand</p>
+              <a href="/thaivillas/villas/koh-samui/" class="mega-item">Koh Samui <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/pattaya/" class="mega-item">Pattaya <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/bangkok/" class="mega-item">Bangkok <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/krabi/" class="mega-item">Krabi <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/koh-phangan/" class="mega-item">Koh Phangan <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/hua-hin/" class="mega-item">Hua Hin <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/chiang-mai/" class="mega-item">Chiang Mai <span class="mega-count">0</span></a>
+              </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="width:140px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">Bedrooms</p>
+              <a href="/thaivillas/property-rental/?beds=1" class="mega-item">1 bedroom <span class="mega-count">1</span></a>
+              <a href="/thaivillas/property-rental/?beds=2" class="mega-item">2 bedrooms <span class="mega-count">2</span></a>
+              <a href="/thaivillas/property-rental/?beds=3" class="mega-item">3 bedrooms <span class="mega-count">3</span></a>
+              <a href="/thaivillas/property-rental/?beds=4" class="mega-item">4 bedrooms <span class="mega-count">3</span></a>
+              <a href="/thaivillas/property-rental/?beds=5" class="mega-item">5+ bedrooms <span class="mega-count">1</span></a>
+              </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="width:170px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">VIP</p>
+              <a href="/thaivillas/vip/yachts/" class="mega-item">Yacht charter</a>
+              <a href="/thaivillas/vip/helicopters/" class="mega-item">Helicopter flights</a>
+              <a href="/thaivillas/vip/supercars/" class="mega-item">Supercar</a>
+              <a href="/thaivillas/vip/superbikes/" class="mega-item">Superbike</a>
+              <a href="/thaivillas/vip/concierge/" class="mega-item">Luxury concierge</a>
+              <a href="/thaivillas/vip/" class="mega-item" style="font-weight:600">All VIP &rarr;</a>
+              </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="flex:1"></div>
+  </div>
+</div>
+
+<!-- =============== HERO =============== -->
+<main class="w4">
+<header class="w4-hero short">
+  <img src="/thaivillas/images/vip/chef.jpg" alt="Luxury concierge in Phuket" fetchpriority="high" decoding="async" width="1600" height="1000">
+  <div class="w4-wrap">
+    <div class="w4-chiprow"><span>On request</span><span>Vetted partners</span></div><p class="w4-kicker">Thai Villas VIP · Luxury concierge</p>
+    <h1 class="w4-h1">Luxury concierge <i>at your villa.</i></h1>
+    <p class="w4-lead">Private chef, in-villa spa, celebrations, childcare, security and reservations — arranged around your stay.</p>
+    <div class="w4-btns"><a class="w4-btn wa" href="https://wa.me/66000000000?text=Hi%20Thai%20Villas%21%20I%27d%20like%20to%20arrange%20concierge%20services%20for%20my%20villa%20stay." rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.5l-.9-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.4-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.7 2.7 1.1 3.2.9 3.8.8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>Ask on WhatsApp</a><a class="w4-btn ghost" href="#enquiry">Send an enquiry</a></div>
+  </div>
+</header>
+<div class="w4-wrap"><div class="w4-crumbs"><a href="/thaivillas/">Home</a><span>/</span><a href="/thaivillas/vip/">VIP</a><span>/</span>Luxury concierge</div></div><section class="w4-sec " id="options">
+  <div class="w4-wrap">
+    <p class="w4-kicker">What's possible</p>
+    <h2 class="w4-h2">Luxury concierge, <i>your way</i></h2>
+<p class="w4-sub">Private chef, in-villa spa, event and party set-ups, nanny, security and reservations at the best tables.</p><div class="w4-grid w4-opts" style="margin-bottom:34px"><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><h3>Private chef</h3><p>On request</p></div><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><h3>In-villa spa &amp; massage</h3><p>On request</p></div><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><h3>Celebration &amp; event set-up</h3><p>On request</p></div><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><h3>Nanny</h3><p>On request</p></div><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><h3>Personal security</h3><p>On request</p></div><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><h3>Restaurant &amp; club reservations</h3><p>On request</p></div></div><div class="w4-img" style="max-width:900px"><img src="/thaivillas/images/vip/chef.jpg" alt="Luxury concierge" loading="lazy" decoding="async" width="1200" height="900"></div>
+  </div>
+</section>
+<section class="w4-sec ink">
+  <div class="w4-wrap">
+    <p class="w4-kicker">Popular ideas</p>
+    <h2 class="w4-h2">Where to go &amp; <i>what to do</i></h2>
+<div class="w4-grid g3" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))"><div class="w4-tile"><h3>Private chef dinner</h3><p>Thai or international menus cooked in your villa kitchen and served on the terrace.</p></div><div class="w4-tile"><h3>Spa day at the villa</h3><p>Massage and treatments by the pool, without leaving the villa.</p></div><div class="w4-tile"><h3>Celebration set-up</h3><p>Birthdays, anniversaries, proposals: decoration, cake, music and a photographer.</p></div><div class="w4-tile"><h3>Ready on arrival</h3><p>Groceries stocked, cots and high chairs in place, transfers waiting at the airport.</p></div><div class="w4-tile"><h3>Tables & tickets</h3><p>Reservations at restaurants and beach clubs, and help planning day trips.</p></div></div>
+  </div>
+</section>
+<section class="w4-sec paper" id="enquiry">
+  <div class="w4-wrap">
+    <p class="w4-kicker">Enquiry</p>
+    <h2 class="w4-h2">Tell us the date <i>&amp; group size</i></h2>
+<div class="w4-split top"><div><div class="w4-steps s3" style="grid-template-columns:1fr"><div class="w4-step"><h3>Tell us the date & group size</h3><p>Send the date, how many people and what you have in mind — on WhatsApp or with the form.</p></div><div class="w4-step"><h3>We propose options</h3><p>We come back with options from vetted local partners, with what is included and the price for your date.</p></div><div class="w4-step"><h3>Confirm on WhatsApp</h3><p>Pick the option you like and confirm on WhatsApp. One contact for everything, before and during your stay.</p></div></div><p class="w4-sub" style="margin-top:24px">We reply with options from vetted local partners, what is included and the price for your date. Prices are on request — nothing is booked until you confirm on WhatsApp.</p><div class="w4-btns"><a class="w4-btn light" href="https://wa.me/66000000000?text=Hi%20Thai%20Villas%21%20I%27d%20like%20to%20arrange%20concierge%20services%20for%20my%20villa%20stay." rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.5l-.9-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.4-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.7 2.7 1.1 3.2.9 3.8.8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>Message us directly</a></div></div><form class="w4-form" data-wa-form="Hi Thai Villas! VIP enquiry — Luxury concierge"><div class="row"><div><label for="vd">Date</label><input id="vd" type="date" data-label="Date"></div><div><label for="vg">Group size</label><input id="vg" type="number" min="1" max="200" inputmode="numeric" placeholder="e.g. 6" data-label="Group size"></div></div><label for="vo">What would you like?</label><select id="vo" data-label="Interested in"><option value="">Choose…</option><option>Private chef</option><option>In-villa spa &amp; massage</option><option>Celebration &amp; event set-up</option><option>Nanny</option><option>Personal security</option><option>Restaurant &amp; club reservations</option></select><label for="vn">Anything else?</label><textarea id="vn" placeholder="Times, where you are staying, special requests" data-label="Notes"></textarea><button class="w4-btn wa" type="submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.5l-.9-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.4-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.7 2.7 1.1 3.2.9 3.8.8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>Send on WhatsApp</button><p class="fine">Opens WhatsApp with your message ready to send. Nothing is stored on this site.</p></form></div>
+  </div>
+</section>
+<section class="w4-sec " id="faq">
+  <div class="w4-wrap w4-narrow">
+    <p class="w4-kicker">Questions</p>
+    <h2 class="w4-h2">Luxury concierge: <i>good to know</i></h2>
+<div class="w4-faq"><details><summary>How far in advance should I book?</summary><div class="a">As early as you can, especially in the high season (roughly November to April). Some things can be arranged the same day — just ask.</div></details><details><summary>Can services be added during the stay?</summary><div class="a">Yes. Message us on WhatsApp at any time and we'll arrange what is possible.</div></details><details><summary>How is it paid?</summary><div class="a">Each service is quoted separately and confirmed in writing before you pay.</div></details><details><summary>Do I need to rent a villa with you?</summary><div class="a">Concierge works best together with a villa stay, but ask us — we'll tell you what is possible.</div></details></div>
+  </div>
+</section>
+<section class="w4-sec paper">
+  <div class="w4-wrap">
+    <p class="w4-kicker">More VIP</p>
+    <h2 class="w4-h2">Add something <i>else</i></h2>
+<div class="w4-grid g4"><a class="w4-pcard " href="/thaivillas/vip/yachts/"><img src="/thaivillas/images/vip/yacht.jpg" alt="Yacht charter in Phuket" loading="lazy" decoding="async" width="900" height="1100"><span class="cnt">On request</span><div class="in"><h3>Yacht charter</h3><p>Motor yachts, sailing catamarans and speedboats from Chalong, Ao Po and Yacht Haven — day trips to Phang Nga Bay, Phi Phi, Racha and Coral islands, or multi-day charters.</p><span class="go">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div></a><a class="w4-pcard " href="/thaivillas/vip/helicopters/"><img src="/thaivillas/images/vip/helicopter.jpg" alt="Helicopter flights in Phuket" loading="lazy" decoding="async" width="900" height="1100"><span class="cnt">On request</span><div class="in"><h3>Helicopter flights</h3><p>Scenic flights over Phuket and Phang Nga Bay, and private transfers to Krabi, Koh Samui or Bangkok.</p><span class="go">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div></a><a class="w4-pcard " href="/thaivillas/vip/supercars/"><img src="/thaivillas/images/vip/supercar.jpg" alt="Supercar &amp; luxury car rental in Phuket" loading="lazy" decoding="async" width="900" height="1100"><span class="cnt">On request</span><div class="in"><h3>Supercar &amp; luxury car rental</h3><p>Supercars, convertibles and premium SUVs delivered to your villa — with or without a driver.</p><span class="go">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div></a><a class="w4-pcard " href="/thaivillas/vip/superbikes/"><img src="/thaivillas/images/vip/superbike.jpg" alt="Superbike &amp; premium bike rental in Phuket" loading="lazy" decoding="async" width="900" height="1100"><span class="cnt">On request</span><div class="in"><h3>Superbike &amp; premium bike rental</h3><p>Big bikes and premium scooters for island roads, delivered to your villa with helmets.</p><span class="go">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div></a></div><div class="w4-rel" style="margin-top:22px"><a href="/thaivillas/vip/">All VIP services</a><a href="/thaivillas/property-rental/?vibe=luxury">Luxury villas</a></div>
+  </div>
+</section>
+<section class="w4-sec" style="border-top:0;padding-top:24px"><div class="w4-wrap"><div class="w4-final ink"><p class="w4-kicker">Thai Villas VIP</p><h2 class="w4-h2" style="margin-bottom:12px">Send us the date.</h2><p class="t">Tell us the date, the group size and what you have in mind — we'll come back with options.</p><div class="w4-btns"><a class="w4-btn wa" href="https://wa.me/66000000000?text=Hi%20Thai%20Villas%21%20I%27d%20like%20to%20arrange%20concierge%20services%20for%20my%20villa%20stay." rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.5l-.9-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.4-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.7 2.7 1.1 3.2.9 3.8.8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>Message us on WhatsApp</a><a class="w4-btn ghost" href="/thaivillas/vip/">All VIP services</a></div></div></div></section>
+
+</main>
+
+<style id="thb-footer-css">
+.thb-ft{background:#232322;color:#e9e4da;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:14px;line-height:1.6;margin:0;padding:0;box-sizing:border-box}
+.thb-ft *{box-sizing:border-box}
+.thb-ft a{color:inherit;text-decoration:none}
+.thb-ft .thb-ft-in{max-width:1280px;margin:0 auto;padding:56px 24px 0}
+.thb-ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:40px}
+.thb-ft-brand img{height:64px;width:64px;display:block;margin-bottom:16px}
+.thb-ft-name{font-family:'Lora',Georgia,"Times New Roman",serif;font-size:21px;font-weight:600;letter-spacing:.01em;margin:0 0 10px;color:#fff}
+.thb-ft-lead{color:#a9a29a;margin:0 0 20px;max-width:34ch}
+.thb-ft-soc{display:flex;gap:10px;flex-wrap:wrap}
+.thb-ft-soc a{display:inline-flex;align-items:center;gap:7px;border:1px solid #3d3c39;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:500;color:#e9e4da;transition:background .15s,border-color .15s}
+.thb-ft-soc a:hover{background:#2e2d2b;border-color:#5F5340}
+.thb-ft-soc svg{width:15px;height:15px;flex:0 0 auto}
+.thb-ft h4{font-family:'Lora',Georgia,"Times New Roman",serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#C1B59D;margin:0 0 16px}
+.thb-ft ul{list-style:none;margin:0;padding:0}
+.thb-ft li{margin:0 0 10px}
+.thb-ft li a{color:#d6d0c6;transition:color .15s;display:inline-block;padding:5px 0}
+.thb-ft li a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.thb-ft-c{font-size:11px;color:#7d766d;margin-left:5px}
+.thb-ft-ct{margin:0 0 12px}
+.thb-ft-ct dt{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7d766d;margin:0 0 2px}
+.thb-ft-ct dd{margin:0 0 12px;color:#e9e4da}
+.thb-ft-ct dd a:hover{text-decoration:underline;text-underline-offset:3px}
+.thb-ft-bar{border-top:1px solid #37352f;margin-top:44px;padding:20px 0 26px;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;color:#7d766d;font-size:13px}
+.thb-ft-bar nav{display:flex;gap:20px;flex-wrap:wrap}
+.thb-ft-bar nav a{display:inline-block;padding:9px 0}.thb-ft-bar nav a:hover{color:#d6d0c6}
+@media(max-width:980px){.thb-ft-grid{grid-template-columns:1fr 1fr;gap:32px}.thb-ft-brand{grid-column:1/-1}}
+@media(max-width:560px){.thb-ft .thb-ft-in{padding:40px 20px 0}.thb-ft-grid{grid-template-columns:1fr;gap:28px}.thb-ft-bar{margin-top:32px}}
+</style>
+<style id="thv-ft5">@media(min-width:981px){.thb-ft .thb-ft-grid{grid-template-columns:1.5fr 1fr 1fr 1fr 1.2fr}}</style>
+<footer class="thb-ft">
+  <div class="thb-ft-in">
+    <div class="thb-ft-grid">
+      <div class="thb-ft-brand">
+        <p class="thb-ft-name">Thai Villas</p>
+        <p class="thb-ft-lead">Pool villas in Phuket and across Thailand — daily and monthly rentals, booked direct with a real person on WhatsApp. Plus VIP: yachts, helicopters, supercars.</p>
+        <div class="thb-ft-soc">
+          <a href="https://wa.me/66000000000" rel="noopener">WhatsApp</a>
+          <a href="mailto:hello@thaivillas.example">Email</a>
+        </div>
+      </div>
+      <div>
+        <h4>Destinations</h4>
+        <ul>
+          <li><a href="/thaivillas/property-rental/">All villas<span class="thb-ft-c">10</span></a></li>
+          <li><a href="/thaivillas/villas/phuket/">Phuket<span class="thb-ft-c">8</span></a></li>
+          <li><a href="/thaivillas/villas/koh-samui/">Koh Samui<span class="thb-ft-c">1</span></a></li>
+          <li><a href="/thaivillas/villas/pattaya/">Pattaya<span class="thb-ft-c">1</span></a></li>
+          <li><a href="/thaivillas/villas/bangkok/">Bangkok<span class="thb-ft-c">0</span></a></li>
+          <li><a href="/thaivillas/villas/krabi/">Krabi<span class="thb-ft-c">0</span></a></li>
+          <li><a href="/thaivillas/villas/koh-phangan/">Koh Phangan<span class="thb-ft-c">0</span></a></li>
+          <li><a href="/thaivillas/villas/">All destinations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Phuket beaches</h4>
+        <ul>
+          <li><a href="/thaivillas/villas/phuket/bang-tao/">Bang Tao</a></li>
+          <li><a href="/thaivillas/villas/phuket/layan/">Layan</a></li>
+          <li><a href="/thaivillas/villas/phuket/surin/">Surin</a></li>
+          <li><a href="/thaivillas/villas/phuket/kamala/">Kamala</a></li>
+          <li><a href="/thaivillas/villas/phuket/patong/">Patong</a></li>
+          <li><a href="/thaivillas/villas/phuket/karon/">Karon</a></li>
+          <li><a href="/thaivillas/villas/phuket/kata/">Kata</a></li>
+          <li><a href="/thaivillas/villas/phuket/">All Phuket</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Rent &amp; VIP</h4>
+        <ul>
+          <li><a href="/thaivillas/property-rental/?period=daily">Daily rentals</a></li>
+          <li><a href="/thaivillas/monthly-rental/">Monthly &amp; long stay</a></li>
+          <li><a href="/thaivillas/vip/yachts/">Yacht charter</a></li>
+          <li><a href="/thaivillas/vip/helicopters/">Helicopters</a></li>
+          <li><a href="/thaivillas/vip/supercars/">Supercars</a></li>
+          <li><a href="/thaivillas/vip/superbikes/">Superbikes</a></li>
+          <li><a href="/thaivillas/vip/">All VIP services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <dl class="thb-ft-ct">
+          <dt>WhatsApp</dt>
+          <dd><a href="https://wa.me/66000000000" rel="noopener">+66 00 000 0000</a></dd>
+          <dt>Email</dt>
+          <dd><a href="mailto:hello@thaivillas.example">hello@thaivillas.example</a></dd>
+          <dt>Office</dt>
+          <dd>Phuket, Thailand</dd>
+          <dt>Hours</dt>
+          <dd>Every day 9:00–21:00 (GMT+7)<br>Guest support 24/7</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="thb-ft-bar">
+      <span>© 2026 Thai Villas · Villa rentals in Thailand</span>
+      <nav>
+        <a href="/thaivillas/property-rental/">All villas</a>
+        <a href="/thaivillas/about/">About</a>
+        <a href="/thaivillas/contacts/">Contacts</a>
+        <a href="/thaivillas/terms/">Terms</a>
+        <a href="/thaivillas/privacy/">Privacy</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- =============== FLOATING WHATSAPP =============== -->
+<div id="thbWaPill">
+  <span class="ava" aria-hidden="true"></span>
+  <p>Need help choosing? Tell us your dates and what matters — we'll suggest the right villa.</p>
+  <a class="wa-go" href="https://wa.me/66000000000?text=Hi%20Thai%20Villas%21%20I%27m%20looking%20for%20a%20villa%20in%20Thailand." rel="noopener" aria-label="Chat on WhatsApp">WhatsApp</a>
+</div>
+
+<script>
+(function(){var pill=document.getElementById('thbWaPill');if(!pill)return;
+ function up(){pill.classList.toggle('thb-pill-on', window.scrollY > window.innerHeight*0.6);}
+ up();window.addEventListener('scroll',up,{passive:true});})();
+</script>
+<script defer src="/thaivillas/thb-fav.js"></script>
+<script>
+/* Villas mega-menu: hover the Villas nav item to reveal the districts/sections panel */
+(function () {
+  var trigger = document.querySelector('.mega-trigger');
+  var panel = document.getElementById('villasPanel');
+  if (!trigger || !panel) return;
+  var backdrop = document.getElementById('villasBackdrop');
+  var chevron = trigger.querySelector('.mega-chevron');
+  var open = false;
+  function openMega() {
+    if (open) return; open = true;
+    panel.classList.add('open');
+    if (backdrop) backdrop.classList.add('open');
+    if (chevron) chevron.classList.add('open');
+  }
+  function closeMega() {
+    if (!open) return; open = false;
+    panel.classList.remove('open');
+    if (backdrop) backdrop.classList.remove('open');
+    if (chevron) chevron.classList.remove('open');
+  }
+  trigger.addEventListener('mouseenter', openMega);
+  if (backdrop) backdrop.addEventListener('click', closeMega);
+  /* close once the pointer leaves the trigger+panel zone */
+  document.addEventListener('mousemove', function (e) {
+    if (!open) return;
+    var pr = panel.getBoundingClientRect();
+    var tr = trigger.getBoundingClientRect();
+    var inZone = e.clientY >= tr.top && e.clientY <= pr.bottom + 8
+                 && e.clientX >= pr.left - 24 && e.clientX <= pr.right + 24;
+    if (!inZone && e.clientY > tr.bottom) closeMega();
+  });
+  /* click outside closes */
+  document.addEventListener('click', function (e) {
+    if (!trigger.contains(e.target) && !panel.contains(e.target)) closeMega();
+  });
+  /* Escape closes */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMega();
+  });
+})();
+</script>
+<script defer src="/thaivillas/thb-totop.js"></script>
+<script defer src="/thaivillas/thb-events.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('form[data-wa-form]').forEach(function(f){
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var lines=[f.getAttribute('data-wa-form')];
+      f.querySelectorAll('[data-label]').forEach(function(el){
+        var v=(el.value||'').trim(); if(v) lines.push(el.getAttribute('data-label')+': '+v);
+      });
+      var url='https://wa.me/66000000000?text='+encodeURIComponent(lines.join('\n'));
+      window.open(url,'_blank','noopener');
+    });
+  });
+})();
+</script>
+</body>
+</html>
+
+

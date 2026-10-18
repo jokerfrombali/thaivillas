@@ -1,0 +1,273 @@
+/* thb-filters.js — the Filters drawer on the rental / district pages.
+
+   The markup for the drawer shipped long ago, but the functions its buttons call
+   (openFilters, closeFilters, clearAllFilters, toggleFilter, setPill, setPrice)
+   were never defined — every click threw a ReferenceError and nothing happened.
+   This file implements them and filters the card grid from the data already on
+   the cards: data-type, data-beds, data-location, data-amenities.
+*/
+(function () {
+  'use strict';
+
+  var drawer = document.getElementById('filterDrawer');
+  var panel = document.getElementById('filterPanel');
+
+  function cards() {
+    return [].slice.call(document.querySelectorAll('#cardGrid .prop-card'));
+  }
+  function inputs(name) {
+    if (!panel) return [];
+    return [].slice.call(panel.querySelectorAll('input[data-filter="' + name + '"]'));
+  }
+  function checkedOne(name, fallback) {
+    var on = inputs(name).filter(function (i) { return i.checked; });
+    return on.length ? on[on.length - 1].value : fallback;
+  }
+  function checkedMany(name) {
+    return inputs(name).filter(function (i) { return i.checked; })
+      .map(function (i) { return i.value; });
+  }
+  function quickPills() {
+    /* the row ships an "All" pill pre-activated — it is a reset, not an amenity */
+    return [].slice.call(document.querySelectorAll('.pill.active[data-amenity]'))
+      .map(function (p) { return p.getAttribute('data-amenity'); })
+      .filter(function (v) { return v && v !== 'all' && v !== 'any'; });
+  }
+
+  function state() {
+    var am = checkedMany('amenity').concat(quickPills(), checkedMany('vibe'));
+    return {
+      type: checkedOne('type', 'all'),
+      /* 21.09.2026: спальни стали множественным выбором — «2 и 3 спальни»
+         обычный запрос, а раньше чип-ы вели себя как радиокнопки. */
+      beds: checkedMany('beds').filter(function (v) { return v !== 'any'; }),
+      loc: checkedMany('location'),
+      /* Thai Villas: beach sub-areas, rental period, minimum guests, vibe */
+      sub: checkedMany('sub'),
+      period: checkedOne('period', 'any'),
+      guests: parseInt(checkedOne('guests', '0'), 10) || 0,
+      am: am.filter(function (v, i) { return v && am.indexOf(v) === i; })
+    };
+  }
+
+  function fits(card, s) {
+    if (s.type && s.type !== 'all') {
+      if ((card.getAttribute('data-type') || '').indexOf(s.type) < 0) return false;
+    }
+    if (s.beds.length) {
+      var b = parseInt(card.getAttribute('data-beds') || '0', 10) || 0;
+      var hit = s.beds.some(function (v) {
+        return v === '5' ? b >= 5 : b === parseInt(v, 10);   /* «5+» — это диапазон */
+      });
+      if (!hit) return false;
+    }
+    var cl = card.getAttribute('data-location'), cs = card.getAttribute('data-sub') || '';
+    if (s.loc.length || s.sub.length) {
+      /* a beach is a part of its destination: "Phuket" + "Kata" means Kata only */
+      var where = (cs && s.sub.indexOf(cs) >= 0) ||
+        (s.loc.indexOf(cl) >= 0 && !(cl === 'phuket' && s.sub.length));
+      if (!where) return false;
+    }
+    if (s.period && s.period !== 'any' && s.period !== 'all') {
+      if ((card.getAttribute('data-period') || '').split(/\s+/).indexOf(s.period) < 0) return false;
+    }
+    if (s.guests && (parseInt(card.getAttribute('data-guests') || '0', 10) || 0) < s.guests) return false;
+    if (s.am.length) {
+      var have = (card.getAttribute('data-amenities') || '').split(/\s+/);
+      for (var i = 0; i < s.am.length; i++) {
+        if (have.indexOf(s.am[i]) < 0) return false;
+      }
+    }
+    return true;
+  }
+
+  function activeCount(s) {
+    return (s.type && s.type !== 'all' ? 1 : 0) +
+           s.beds.length + s.loc.length + s.sub.length + s.am.length +
+           (s.period && s.period !== 'any' && s.period !== 'all' ? 1 : 0) + (s.guests ? 1 : 0);
+  }
+
+  function word(n) { return n === 1 ? ' villa' : ' villas'; }
+
+  /* Type и Rental period — выбор один. Bedrooms — сколько угодно, но первый чип
+     («Any») работает как сброс: он гасит остальные, а любой другой гасит его. */
+  var MULTI = { beds: true };
+
+  function syncChips(changed) {
+    ['type', 'beds', 'period', 'guests'].forEach(function (group) {
+      var list = inputs(group);
+      var touched = changed && changed.getAttribute('data-filter') === group;
+      if (touched && changed.checked) {
+        if (!MULTI[group] || changed.value === 'any' || changed.value === 'all') {
+          list.forEach(function (i) { if (i !== changed) i.checked = false; });
+        } else {
+          list.forEach(function (i) {
+            if (i.value === 'any' || i.value === 'all') i.checked = false;
+          });
+        }
+      }
+      if (!list.some(function (i) { return i.checked; }) && list.length) {
+        list[0].checked = true;               // fall back to "All" / "Any"
+      }
+    });
+    if (!panel) return;
+    [].forEach.call(panel.querySelectorAll('.f-chip'), function (chip) {
+      var i = chip.querySelector('input');
+      if (i) chip.classList.toggle('active', i.checked);
+    });
+  }
+
+  /* Виллы, занятые на выбранные даты, прячет thb-dates.js атрибутом. Считать
+     их здесь нельзя: на кнопке выходило «Show 11 villas», когда на эти даты
+     свободны восемь. */
+  function datesOff(c) { return c.getAttribute('data-thb-date') === 'off'; }
+
+  function apply() {
+    var s = state(), n = 0, total = 0;
+    cards().forEach(function (c) {
+      var ok = fits(c, s);
+      c.style.display = ok ? '' : 'none';
+      if (datesOff(c)) return;
+      total++;
+      if (ok) n++;
+    });
+
+    var title = document.getElementById('resultsTitle');
+    if (title) {
+      /* data-suffix keeps the page's own place name in the counter (" in Kata") */
+      title.textContent = (activeCount(s)
+        ? n + word(n) + ' found'
+        : total + word(total) + ' available') + (title.getAttribute('data-suffix') || '');
+    }
+
+    var badge = document.getElementById('filterCountBadge');
+    if (badge) {
+      var c = activeCount(s);
+      badge.textContent = c;
+      badge.style.display = c ? 'inline-flex' : 'none';
+    }
+
+    var cta = panel && panel.querySelector('.btn-primary');
+    if (cta) cta.textContent = 'Show ' + n + word(n);
+
+    var empty = document.getElementById('thbNoMatch');
+    if (empty) empty.hidden = n > 0;
+    try { document.dispatchEvent(new CustomEvent('thb:cards-changed')); } catch (e) {}
+    return n;
+  }
+
+  /* ---------- the functions the markup calls ---------- */
+  window.openFilters = function () {
+    if (!drawer) return;
+    drawer.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    syncChips(null);
+    apply();
+  };
+  window.closeFilters = function () {
+    if (!drawer) return;
+    drawer.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+  window.toggleFilter = function (el) {
+    var body = el.parentElement && el.parentElement.querySelector('.filter-body');
+    if (!body) return;
+    var collapsed = el.classList.toggle('collapsed');
+    body.style.maxHeight = collapsed ? '0px' : '';
+  };
+  window.clearAllFilters = function () {
+    if (panel) {
+      [].forEach.call(panel.querySelectorAll('input[type="checkbox"]'), function (i) { i.checked = false; });
+      var min = document.getElementById('priceMin'), max = document.getElementById('priceMax');
+      if (min) min.value = '';
+      if (max) max.value = '';
+    }
+    [].forEach.call(document.querySelectorAll('.pill.active[data-amenity]'), function (p) {
+      p.classList.remove('active');
+    });
+    syncChips(null);
+    apply();
+  };
+  window.setPill = function (el) {
+    if (!el) return;
+    var v = el.getAttribute('data-amenity');
+    var all = [].slice.call(document.querySelectorAll('.pill[data-amenity]'));
+    if (v === 'all' || v === 'any') {
+      all.forEach(function (p) { p.classList.toggle('active', p === el); });
+    } else {
+      el.classList.toggle('active');
+      all.forEach(function (p) {
+        var pv = p.getAttribute('data-amenity');
+        if (pv === 'all' || pv === 'any') p.classList.remove('active');
+      });
+      if (!quickPills().length) {
+        all.forEach(function (p) {
+          var pv = p.getAttribute('data-amenity');
+          if (pv === 'all' || pv === 'any') p.classList.add('active');
+        });
+      }
+    }
+    apply();
+  };
+  window.setPrice = function (from, to) {
+    var min = document.getElementById('priceMin'), max = document.getElementById('priceMax');
+    if (min) min.value = from;
+    if (max) max.value = to;
+  };
+
+  /* live updates while the drawer is open */
+  if (panel) {
+    panel.addEventListener('change', function (e) {
+      var i = e.target;
+      if (!i || i.tagName !== 'INPUT') return;
+      syncChips(i);
+      apply();
+    });
+  }
+  if (drawer) {
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && drawer.classList.contains('open')) window.closeFilters();
+    });
+  }
+
+  /* Thai Villas: filters from the URL (?location= ?sub= ?beds= ?period= ?guests= ?amenity= ?vibe=)
+     and a small API for the quick chips / search bar. */
+  function setGroup(name, values) {
+    var want = (values || []).map(String);
+    inputs(name).forEach(function (i) { i.checked = want.indexOf(i.value) >= 0; });
+  }
+  window.thbFilterSet = function (o) {
+    o = o || {};
+    Object.keys(o).forEach(function (k) {
+      var v = o[k];
+      setGroup(k, v == null || v === '' ? [] : [].concat(v));
+    });
+    syncChips(null);
+    return apply();
+  };
+  window.thbFilterApply = function () { syncChips(null); return apply(); };
+
+  syncChips(null);
+  if (panel) {
+    var q = new URLSearchParams(location.search), got = {}, any = false;
+    [['location', 'location'], ['sub', 'sub'], ['beds', 'beds'], ['period', 'period'], ['guests', 'guests'],
+     ['amenity', 'amenity'], ['vibe', 'vibe'], ['type', 'type']].forEach(function (p) {
+      var raw = q.getAll(p[0]).join(',');
+      if (!raw) return;
+      var vals = raw.split(',').filter(Boolean);
+      if (p[0] === 'guests') {   /* guests=5 → the smallest chip that still fits everyone (6+) */
+        var g = parseInt(vals[0], 10) || 0, best = '', last = '';
+        inputs('guests').forEach(function (i) {
+          var n = parseInt(i.value, 10) || 0;
+          if (!n) return;
+          last = i.value;
+          if (!best && n >= g) best = i.value;
+        });
+        vals = g ? [best || last] : [];
+      }
+      if (p[0] === 'beds') vals = vals.map(function (b) { return parseInt(b, 10) >= 5 ? '5' : b; });
+      if (vals.length) { got[p[1]] = vals; any = true; }
+    });
+    if (any) window.thbFilterSet(got);
+  }
+})();

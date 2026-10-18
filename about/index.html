@@ -3,120 +3,340 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us — Thai Villas | Local Team + AI Villa Search in Thailand</title>
-<meta name="description" content="Thai Villas is a local team in Thailand with an AI search that matches you to handpicked pool villas in Phuket, Koh Samui, Pattaya, Bangkok, Krabi and Chiang Mai — for a week, a month or a year.">
-<meta name="robots" content="noindex">
-<link rel="icon" type="image/svg+xml" href="/thaivillas/favicon.svg">
-<link rel="apple-touch-icon" href="/thaivillas/favicon.svg">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "AboutPage",
-      "name": "About Thai Villas",
-      "about": { "@type": "Organization", "name": "Thai Villas", "alternateName": "ThaiVillas", "areaServed": "Thailand", "email": "hello@thaivillas.example" },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "/" },
-          { "@type": "ListItem", "position": 2, "name": "About", "item": "/thaivillas/about/" }
-        ]
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is Thai Villas?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Thai Villas is a villa rental service in Thailand: a local team plus an AI search that matches guests to handpicked villas in Phuket, Koh Samui, Pattaya, Bangkok, Krabi and Chiang Mai — for daily, monthly and yearly stays, with concierge help before and during the trip." }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I book a villa in Thailand with Thai Villas?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Describe your stay in plain words in the AI search, or message the team on WhatsApp. We confirm availability and the exact price with the villa, send you a written booking confirmation, and you secure the dates with a deposit." }
-        },
-        {
-          "@type": "Question",
-          "name": "How do deposits and payments work?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Short stays are usually secured with a booking deposit, with the balance due before check-in. Monthly and yearly stays typically include a refundable security deposit returned after check-out. Every amount and the cancellation terms are written in your confirmation before you pay." }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I rent a villa for a month or a year?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many guests stay monthly or yearly, and long stays usually come at a lower effective nightly rate. We help with the details that matter for longer stays — utilities, cleaning schedules, Wi-Fi for remote work and schools or gyms nearby." }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I need a visa for a long stay in Thailand?",
-          "acceptedAnswer": { "@type": "Answer", "text": "It depends on your passport and the length of your stay. Many nationalities can enter visa-free for a limited period, and longer options exist (for example tourist, education, retirement or long-term visas). Rules change, so always check with the Thai embassy or official sources; we're happy to share what other long-stay guests have done." }
-        },
-        {
-          "@type": "Question",
-          "name": "When is the best time to visit Thailand?",
-          "acceptedAnswer": { "@type": "Answer", "text": "High season runs roughly November to April — dry, sunny and busiest, so book early. Koh Samui is often driest from January to August, while the Andaman coast (Phuket, Krabi) gets more rain from May to October. Green season brings lower rates and quieter beaches." }
-        }
-      ]
-    }
-  ]
-}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: { ink: '#0a0a0a', off: '#fafaf7', paper: '#f4f2ed', stone: '#9a9a94', line: '#e6e3dc' },
-      fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], display: ['Fraunces', 'Georgia', 'serif'] },
-      letterSpacing: { tightest: '-0.045em', 'extra-wide': '0.22em' }
-    }
-  }
-}
-</script>
+<title>About Thai Villas — Villa Rentals in Phuket &amp; Thailand</title>
+<meta name="description" content="Thai Villas is a local team in Phuket renting private pool villas by the night and by the month, plus VIP services: yachts, helicopters, supercars.">
+<link rel="preload" as="font" type="font/woff2" href="/thaivillas/fonts/lora-ecda3beb.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/thaivillas/fonts/lora-6d4ac4a9.woff2" crossorigin>
+<link rel="stylesheet" href="/thaivillas/thb-tw.css">
 <style>
 body { font-family: 'Inter', sans-serif; background: #fafaf7; color: #0a0a0a; -webkit-font-smoothing: antialiased; overflow-x: clip; }
-.font-display { font-family: 'Fraunces', Georgia, serif; }
+.font-display { font-family: 'Lora', Georgia, serif; }
 html { scroll-behavior: smooth; }
 .kicker { text-transform: uppercase; letter-spacing: 0.22em; font-size: 11px; font-weight: 600; color: #6b6b66; }
 .btn-primary { background: #0a0a0a; color: #fff; border-radius: 999px; padding: 14px 24px; font-weight: 600; font-size: 14px; transition: transform 0.15s, background 0.2s; }
 .btn-primary:hover { background: #1c1c1c; transform: translateY(-1px); }
-.btn-white { background: #fff; color: #0a0a0a; border-radius: 999px; padding: 14px 24px; font-weight: 600; font-size: 14px; transition: transform 0.15s; }
-.btn-white:hover { transform: translateY(-1px); }
 .btn-outline { border: 1px solid #0a0a0a; color: #0a0a0a; background: transparent; border-radius: 999px; padding: 13px 23px; font-weight: 600; font-size: 14px; transition: all 0.2s; }
 .btn-outline:hover { background: #0a0a0a; color: #fff; }
+.card-hover { transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1); }
+.card-hover:hover { transform: translateY(-4px); }
 .nav-link { position: relative; color: #0a0a0a; font-weight: 500; font-size: 14px; }
 .nav-link::after { content: ''; position: absolute; bottom: -6px; left: 0; right: 0; height: 1.5px; background: #0a0a0a; transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
 .nav-link:hover::after { transform: scaleX(1); }
-.nav-link.active::after { transform: scaleX(1); }
-.card-hover { transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1); }
-.card-hover:hover { transform: translateY(-4px); }
-.img-zoom img { transition: transform 0.6s cubic-bezier(0.2, 0.6, 0.2, 1); }
-.img-zoom:hover img { transform: scale(1.05); }
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+/* Mega-menu */
+.mega-trigger { position: relative; }
+#villasBackdrop {
+  display: none; position: fixed; inset: 0; top: 72px;
+  background: rgba(0,0,0,0.45); z-index: 300;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+#villasBackdrop.open { display: block; }
+#villasPanel {
+  display: none;
+  position: fixed; top: 72px; left: 0; right: 0; width: 100%;
+  background: #fafaf7; border-bottom: 1px solid #e6e3dc;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+  padding: 32px 0; z-index: 310;
+  flex-direction: row; justify-content: center; gap: 0;
+}
+#villasPanel.open { display: flex; }
+#villasPanel .mega-inner {
+  display: flex; gap: 0; align-items: flex-start;
+  max-width: 1400px; width: 100%; padding: 0 40px;
+}
+.mega-col-title { text-transform: uppercase; letter-spacing: 0.18em; font-size: 10.5px; font-weight: 700; color: #8a8a85; margin-bottom: 14px; }
+.mega-item { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: 13.5px; color: #0a0a0a; text-decoration: none; transition: color 0.2s; cursor: pointer; border: none; background: none; width: 100%; text-align: left; position: relative; white-space: nowrap; }
+.mega-item::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: #0a0a0a; transform: scaleX(0); transform-origin: center; transition: transform 0.25s cubic-bezier(0.4,0,0.2,1); }
+.mega-item:hover { color: #0a0a0a; }
+.mega-item:hover::after { transform: scaleX(1); }
+.mega-count { font-size: 12px; color: #b0ada6; margin-left: 8px; flex-shrink: 0; }
+.mega-divider { width: 1px; background: #e6e3dc; flex-shrink: 0; }
+.mega-featured { width: 200px; flex-shrink: 0; border-radius: 14px; overflow: hidden; position: relative; min-height: 260px; }
+.mega-zoom { cursor: pointer; }
+.mega-zoom-img { transition: transform 0.5s cubic-bezier(0.2,0.6,0.2,1) !important; }
+.mega-zoom:hover .mega-zoom-img { transform: scale(1.08); }
+.mega-featured img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mega-featured-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.1) 55%, transparent 100%); }
+.mega-featured-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 16px; color: white; }
+.mega-chevron { transition: transform 0.25s; }
+.mega-chevron.open { transform: rotate(180deg); }
+.tab-active { background: #0a0a0a; color: #fff; }
+.divider { border-top: 1px solid #e6e3dc; }
+@keyframes pulse-ring { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(2); opacity: 0; } }
+.pulse-ring { animation: pulse-ring 2s infinite ease-out; }
+@keyframes scrollLine { 0% { transform: translateY(-100%); } 100% { transform: translateY(250%); } }
+.text-stroke { -webkit-text-stroke: 1px rgba(255,255,255,0.9); color: transparent; }
+.hero-img{filter:none}
+    .hero-title{text-shadow:0 2px 26px rgba(0,0,0,.55),0 1px 4px rgba(0,0,0,.35)}
+    .hero-sub{text-shadow:0 2px 16px rgba(0,0,0,.5)}
+.hero-title { text-shadow: 0 2px 24px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.35); }
+.hero-sub { text-shadow: 0 1px 10px rgba(0,0,0,0.6); }
+</style>
+
+<meta name="theme-color" content="#343537">
+<style>picture{display:contents}</style>
+<style>section[id^="section-"]:not(:first-of-type){content-visibility:auto;contain-intrinsic-size:auto 600px}</style>
+<style id="thb-home-mobile">
+@media(max-width:639px){
+  .thb-srow{flex-wrap:wrap;row-gap:12px}
+  .thb-srow>div:first-child{width:100%;display:flex;justify-content:center}
+  .thb-srow>div:last-child{width:100%}
+  .thb-srow>div:last-child .btn-primary{flex:1 1 auto;justify-content:center}
+}
+@media(max-width:429px){
+  .thb-logo-text{font-size:17px}
+  nav .w-12{width:2.5rem;height:2.5rem}
+}
+</style>
+<style id="thb-arow-css">
+.thb-arow{display:flex;gap:14px;overflow-x:auto;padding:2px 24px 10px;scroll-snap-type:x mandatory;scroll-padding:0 24px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.thb-arow::-webkit-scrollbar{display:none}
+.thb-acard{flex:0 0 76vw;max-width:300px;scroll-snap-align:start;background:#fff;border:1px solid #e6e3dc;border-radius:22px;overflow:hidden;text-decoration:none;color:#0a0a0a;transition:transform .18s,box-shadow .18s}
+.thb-acard:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,.09)}
+.thb-acard img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#f2efe8}
+.thb-acard .in{padding:13px 15px 15px;font-family:'Inter',sans-serif}
+.thb-acard .t{font-family:'Lora',Georgia,serif;font-size:16.5px;font-weight:600;line-height:1.25;margin:0 0 5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.thb-acard .a{display:flex;align-items:center;gap:5px;font-size:12.5px;color:#6b6b66;margin:0 0 7px}
+.thb-acard .m{font-size:12.5px;color:#6b6b66;margin:0 0 9px}
+.thb-acard .p{font-family:'Lora',Georgia,serif;font-size:15px;font-weight:700;margin:0}
+.thb-acard .p span{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:400;color:#6b6b66}
+.thb-arh{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px;text-decoration:none;color:#0a0a0a}
+.thb-arh h3{font-family:'Lora',Georgia,serif;font-size:clamp(21px,2.6vw,28px);font-weight:600;letter-spacing:-0.01em;margin:0;display:flex;align-items:center;gap:9px}
+.thb-arh svg{flex:0 0 auto;transition:transform .15s}
+.thb-arh:hover svg{transform:translateX(3px)}
+.thb-arh .cnt{font-family:'Inter',sans-serif;font-size:12.5px;color:#6b6b66;font-weight:500}
+@media(min-width:1024px){.thb-arow{padding:2px 40px 10px;scroll-padding:0 40px}.thb-acard{flex-basis:300px}}
+</style>
+<style id="thb-wapill-css">
+/* the green WhatsApp button on its own, bottom-right — no avatar, no pitch */
+#thbWaPill{position:fixed;left:auto;right:20px;transform:none;bottom:calc(20px + env(safe-area-inset-bottom));z-index:60;display:flex;align-items:center;background:none;border:0;box-shadow:none;padding:0;width:auto;font-family:'Inter',sans-serif;box-sizing:border-box}
+#thbWaPill .ava,#thbWaPill p,#thbWaPill .wa-ai{display:none}
+#thbWaPill .wa-go{display:inline-flex;align-items:center;gap:8px;height:48px;box-sizing:border-box;background:#22c55e;color:#fff;font-weight:700;font-size:14.5px;padding:0 20px;border-radius:999px;text-decoration:none;flex:0 0 auto;box-shadow:0 12px 28px -10px rgba(22,163,74,.6),0 2px 8px rgba(0,0,0,.14);transition:background .15s,transform .16s,box-shadow .16s}
+#thbWaPill .wa-go:hover{background:#16a34a;transform:translateY(-1px);box-shadow:0 16px 32px -10px rgba(22,163,74,.66),0 2px 10px rgba(0,0,0,.16)}
+#thbWaPill .wa-go svg{width:19px;height:19px}
+@media(max-width:600px){#thbWaPill{right:14px;bottom:calc(16px + env(safe-area-inset-bottom))}#thbWaPill .wa-go{height:46px;padding:0 17px;font-size:14px}}
+@media print{#thbWaPill{display:none}}
+</style>
+<style id="thb-tap-css">
+a,button,[onclick],.prop-card,.thb-acard,.thb-qchip,#thbBurger,.tsh-chip{touch-action:manipulation;-webkit-tap-highlight-color:rgba(10,10,10,.06)}
+@media(hover:none){
+  .prop-card:hover,.thb-acard:hover,.thb-qchip:hover,.tt-card:hover,.card-hover:hover,.villa-floating-back:hover{transform:none!important;box-shadow:none!important}
+  .cat-card:hover::after{opacity:0!important}
+}
+
+/* --- 1) пилюля WhatsApp не лезет на панель: появляется после первого экрана --- */
+#thbWaPill{opacity:0;visibility:hidden;transform:translateY(14px);
+  transition:opacity .3s ease,transform .3s ease,visibility .3s}
+#thbWaPill.thb-pill-on{opacity:1;visibility:visible;transform:translateY(0)}
+/* --- 2) локальная подложка строго под текстом: фото по краям остаётся ярким --- */
+#thbHero .thb-hero-txt{position:relative}
+#thbHero .thb-hero-txt>div{position:relative;z-index:1}
+#thbHero .thb-hero-txt>div::before{content:'';position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);width:min(1180px,94vw);height:calc(100% + 320px);
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.52) 0%,rgba(0,0,0,.45) 38%,rgba(0,0,0,.28) 60%,rgba(0,0,0,.10) 78%,rgba(0,0,0,0) 93%);
+  pointer-events:none;z-index:-1}
+#thbHero .thb-hero-txt>div>*{position:relative;z-index:1}
+/* --- 3) подзаголовок крупнее, текстовый блок ниже --- */
+@media(min-width:1024px){
+  #thbHero .hero-sub{font-size:22px!important;line-height:1.5;max-width:680px}
+  #thbHero .thb-hero-txt{align-items:flex-end!important;padding-top:118px;padding-bottom:clamp(96px,13vh,150px)}
+}
+@media(min-width:640px) and (max-width:1023px){#thbHero .hero-sub{font-size:18px!important}}
+</style>
+<style id="thb-fav-css">
+.thb-fav{position:absolute;top:10px;right:10px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);border:none;border-radius:50%;cursor:pointer;padding:0;z-index:4;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 2px 8px rgba(0,0,0,.13);touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:background .18s,transform .18s}
+.thb-fav svg{width:17px;height:17px;fill:none;stroke:#0a0a0a;stroke-width:2;transition:fill .18s,stroke .18s,transform .18s}
+@media(hover:hover){.thb-fav:hover{background:#fff;transform:scale(1.08)}}
+.thb-fav[aria-pressed="true"] svg{fill:#e11d48;stroke:#e11d48}
+.thb-fav.thb-pop svg{animation:thbHeartPop .38s cubic-bezier(.2,.9,.3,1.4)}
+@keyframes thbHeartPop{0%{transform:scale(1)}42%{transform:scale(1.42)}100%{transform:scale(1)}}
+.thb-acw{position:relative;display:flex;flex:0 0 76vw;max-width:300px;scroll-snap-align:start}
+.thb-acw>.thb-acard{flex:1 1 auto;max-width:none}
+@media(min-width:640px){.thb-acw{flex:0 0 300px}}
+[data-fav-link]{position:relative;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:inherit}
+[data-fav-badge]{position:absolute;top:-1px;right:-1px;min-width:17px;height:17px;padding:0 4px;box-sizing:border-box;border-radius:999px;background:#e11d48;color:#fff;font-family:Inter,system-ui,sans-serif;font-size:10.5px;font-weight:700;line-height:17px;text-align:center;border:2px solid #fafaf7;display:none}
+[data-fav-link].thb-has svg{fill:#e11d48!important;stroke:#e11d48!important}
+[data-fav-link].thb-has [data-fav-badge]{display:block}
+#thbSavedToast{position:fixed;left:50%;transform:translateX(-50%) translateY(18px);bottom:calc(20px + env(safe-area-inset-bottom));z-index:95;display:flex;align-items:center;gap:12px;background:#0a0a0a;color:#fff;border-radius:999px;padding:11px 12px 11px 18px;font-family:Inter,system-ui,sans-serif;font-size:13.5px;font-weight:600;box-shadow:0 14px 40px rgba(0,0,0,.3);opacity:0;visibility:hidden;transition:opacity .22s ease,transform .22s ease,visibility .22s;max-width:92vw}
+#thbSavedToast.on{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+#thbSavedToast a{background:#fff;color:#0a0a0a;border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:700;text-decoration:none;white-space:nowrap}
+@media(prefers-reduced-motion:reduce){.thb-fav.thb-pop svg{animation:none}#thbSavedToast{transition:none}}
+</style>
+<style id="thb-display-tracking">
+/* Lora has prominent serifs: negative tracking makes them run into each other */
+.font-display,.hero-title,[data-slot="property-title"],[data-slot="section-header"],[style*="Lora"]{letter-spacing:0!important}
+</style>
+
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/thaivillas/favicon.svg">
+<meta property="og:title" content="About Thai Villas — Villa Rentals in Phuket &amp; Thailand">
+<meta property="og:description" content="Thai Villas is a local team in Phuket renting private pool villas by the night and by the month, plus VIP services: yachts, helicopters, supercars.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Thai Villas">
+<meta property="og:image" content="/thaivillas/images/phuket.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Thai Villas", "telephone": "+66000000000", "email": "hello@thaivillas.example", "address": {"@type": "PostalAddress", "addressLocality": "Phuket", "addressCountry": "TH"}, "areaServed": ["Phuket", "Koh Samui", "Pattaya", "Bangkok", "Krabi", "Koh Phangan", "Hua Hin", "Chiang Mai"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "/"}, {"@type": "ListItem", "position": 2, "name": "About", "item": "/thaivillas/about/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "AboutPage", "name": "About Thai Villas", "url": "/thaivillas/about/"}</script>
+
+<style id="w4-css">
+.w4{font-family:'Inter',sans-serif;color:#0a0a0a}
+.w4 *{box-sizing:border-box}
+.w4 a{color:inherit;text-decoration:none}
+.w4-wrap{max-width:1400px;margin:0 auto;padding:0 24px}
+@media(min-width:1024px){.w4-wrap{padding:0 40px}}
+.w4-narrow{max-width:860px}
+.w4-sec{padding:84px 0;border-top:1px solid #e6e3dc;background:#fafaf7}
+.w4-sec.paper{background:#f4f2ed}
+.w4-sec.ink{background:#0a0a0a;color:#fff;border-top-color:#0a0a0a}
+.w4-kicker{text-transform:uppercase;letter-spacing:.22em;font-size:11px;font-weight:600;color:#6b6b66;margin:0 0 14px}
+.ink .w4-kicker,.w4-hero .w4-kicker{color:rgba(255,255,255,.62)}
+.w4-h2{font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(30px,4vw,54px);line-height:1.02;margin:0 0 16px}
+.w4-h2 i,.w4-h1 i{font-style:italic}
+.w4-sub{color:#6b6b66;font-size:16px;line-height:1.65;max-width:62ch;margin:0 0 34px}
+.ink .w4-sub{color:rgba(255,255,255,.66)}
+.w4-crumbs{font-size:12.5px;color:#8a877f;padding:16px 0 0}.w4-crumbs a{color:#6b6b66}.w4-crumbs span{margin:0 6px}
+/* hero with photo */
+.w4-hero{position:relative;background:#0a0a0a;color:#fff;padding-top:72px;min-height:min(86vh,820px);display:flex;align-items:flex-end;overflow:hidden}
+.w4-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.w4-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.88) 0%,rgba(10,10,10,.45) 45%,rgba(10,10,10,.18) 75%,rgba(10,10,10,.35) 100%)}
+.w4-hero .w4-wrap{position:relative;z-index:2;width:100%;padding-bottom:72px;padding-top:72px}
+.w4-hero.short{min-height:min(64vh,620px)}
+.w4-h1{font-family:'Lora',Georgia,serif;font-weight:400;font-size:clamp(40px,6.4vw,84px);line-height:.98;margin:0 0 22px;max-width:16ch}
+.w4-lead{font-size:clamp(16px,1.5vw,19px);line-height:1.6;color:rgba(255,255,255,.78);max-width:58ch;margin:0 0 30px}
+.w4-chiprow{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 26px}
+.w4-chiprow span{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:6px 14px;color:rgba(255,255,255,.82)}
+/* plain dark header (info pages) */
+.w4-head{background:#0a0a0a;color:#fff;padding:72px 0 0}
+.w4-head .w4-wrap{padding-top:76px;padding-bottom:76px}
+.w4-head .w4-lead{color:rgba(255,255,255,.66)}
+.w4-head .w4-meta{color:rgba(255,255,255,.42);font-size:13px;margin-top:20px}
+/* buttons */
+.w4-btns{display:flex;gap:10px;flex-wrap:wrap}
+.w4-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:15px 24px;font-size:15px;font-weight:600;transition:background .15s,transform .15s;cursor:pointer;border:0;font-family:inherit}
+.w4-btn:hover{transform:translateY(-1px)}
+.w4-btn.wa{background:#22c55e;color:#fff}.w4-btn.wa:hover{background:#16a34a}
+.w4-btn.dark{background:#0a0a0a;color:#fff}.w4-btn.dark:hover{background:#2b2b28}
+.w4-btn.light{background:#fff;color:#0a0a0a;border:1px solid #d9d4c9}
+.w4-btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.42)}.w4-btn.ghost:hover{background:#fff;color:#0a0a0a}
+.w4-btn svg{width:18px;height:18px}
+/* grids & tiles */
+.w4-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.w4-grid.g3{grid-template-columns:repeat(3,1fr)}.w4-grid.g2{grid-template-columns:repeat(2,1fr)}.w4-grid.g4{grid-template-columns:repeat(4,1fr)}
+.w4-tile{background:#fff;border:1px solid #e6e3dc;border-radius:20px;padding:24px 24px 22px}
+.ink .w4-tile{background:#151514;border-color:#2a2926;color:#fff}
+.w4-tile h3{font-family:'Lora',Georgia,serif;font-size:19px;font-weight:600;margin:0 0 8px;line-height:1.25}
+.w4-tile p,.w4-tile li{font-size:14.5px;line-height:1.62;color:#55524b;margin:0}
+.ink .w4-tile p,.ink .w4-tile li{color:rgba(255,255,255,.66)}
+.w4-tile ul{margin:0;padding-left:18px}.w4-tile li{margin:0 0 6px}
+.w4-tile .ic{width:42px;height:42px;border-radius:50%;background:#0a0a0a;color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.ink .w4-tile .ic{background:#fff;color:#0a0a0a}
+.w4-tile .ic svg{width:20px;height:20px}
+/* photo cards */
+.w4-pcard{position:relative;display:block;border-radius:24px;overflow:hidden;aspect-ratio:4/5;background:#1b1b1a;color:#fff}
+.w4 .w4-pcard{color:#fff}
+.w4-pcard.wide{aspect-ratio:16/10}
+.w4-pcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.6,.2,1)}
+.w4-pcard:hover img{transform:scale(1.05)}
+.w4-pcard::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.86) 0%,rgba(0,0,0,.55) 42%,rgba(0,0,0,.08) 72%,rgba(0,0,0,0) 100%)}
+.w4-pcard .in{position:absolute;left:0;right:0;bottom:0;padding:22px;z-index:2}
+.w4-pcard h3{font-family:'Lora',Georgia,serif;font-size:24px;font-weight:500;margin:0 0 6px;line-height:1.1}
+.w4-pcard p{text-shadow:0 1px 8px rgba(0,0,0,.4);font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.8);margin:0}
+.w4-pcard .go{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:13px;font-weight:600}
+.w4-pcard .cnt{position:absolute;top:14px;left:14px;z-index:2;background:rgba(255,255,255,.92);color:#0a0a0a;font-size:12px;font-weight:600;border-radius:999px;padding:5px 11px}
+/* villa cards (thv.acard) as a grid */
+.w4-cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.w4-cards .thb-acw{flex:none;max-width:none;width:100%}
+.w4-cards .thb-acard{max-width:none;width:100%}
+/* steps */
+.w4-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:step}
+.w4-steps.s3{grid-template-columns:repeat(3,1fr)}
+.w4-step{background:#fff;border:1px solid #e6e3dc;border-radius:20px;padding:24px 22px}
+.ink .w4-step{background:#151514;border-color:#2a2926}
+.w4-step::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:'Lora',Georgia,serif;font-size:34px;font-weight:300;color:#c9c2b4;display:block;margin-bottom:10px}
+.ink .w4-step::before{color:#C1B59D}
+.w4-step h3{font-family:'Lora',Georgia,serif;font-size:18px;font-weight:600;margin:0 0 7px}
+.w4-step p{font-size:14px;color:#6b6b66;line-height:1.58;margin:0}
+.ink .w4-step p{color:rgba(255,255,255,.62)}
+/* prose */
+.w4-prose p{margin:0 0 16px;color:#3b3b36;font-size:16px;line-height:1.75}
+.w4-prose ul{margin:0 0 18px 20px;padding:0;color:#3b3b36;font-size:15.5px;line-height:1.7}.w4-prose li{margin:0 0 8px}
+.w4-prose h3{font-family:'Lora',Georgia,serif;font-size:21px;font-weight:600;margin:28px 0 10px}
+.w4-prose a{text-decoration:underline;text-underline-offset:3px}
+/* legal */
+.w4-legal section{margin:0 0 46px}
+.w4-legal h2{font-family:'Lora',Georgia,serif;font-size:clamp(24px,2.6vw,30px);font-weight:400;line-height:1.15;margin:0 0 14px}
+.w4-legal p,.w4-legal li{color:rgba(10,10,10,.72);font-size:15px;line-height:1.8}
+.w4-legal p{margin:0 0 14px}.w4-legal ul{margin:0 0 14px 20px;padding:0}
+.w4-legal a{text-decoration:underline;text-underline-offset:3px}
+.w4-notice{background:#fff8e6;border:1px solid #e8d9a8;border-radius:14px;padding:14px 18px;margin:0 0 36px;font-size:14px;line-height:1.7;color:#3b3b36}
+/* chips */
+.w4-rel{display:flex;flex-wrap:wrap;gap:10px}
+.w4-rel a{border:1px solid #e6e3dc;background:#fff;border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:500;color:#0a0a0a}
+.w4-rel a:hover{border-color:#0a0a0a}
+.ink .w4-rel a{background:transparent;border-color:#3a3935;color:#fff}
+/* faq */
+.w4-faq details{background:#fff;border:1px solid #e6e3dc;border-radius:16px;margin-bottom:10px;overflow:hidden}
+.w4-faq summary{cursor:pointer;list-style:none;padding:18px 20px;font-weight:600;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.w4-faq summary::-webkit-details-marker{display:none}
+.w4-faq summary::after{content:'+';font-family:'Lora',Georgia,serif;font-size:22px;font-weight:300;color:#8a877f;transition:transform .2s;flex:0 0 auto}
+.w4-faq details[open] summary::after{transform:rotate(45deg)}
+.w4-faq .a{padding:0 20px 18px;color:#55524b;font-size:14.5px;line-height:1.68}
+/* final CTA */
+.w4-final{background:#f4f2ed;border:1px solid #e6e3dc;border-radius:28px;text-align:center;padding:72px 24px}
+.w4-final.ink{background:#0a0a0a;border-color:#0a0a0a;color:#fff}
+.w4-final p.t{color:#6b6b66;max-width:54ch;margin:0 auto 26px;font-size:15.5px;line-height:1.65}
+.w4-final.ink p.t{color:rgba(255,255,255,.66)}
+.w4-final .w4-btns{justify-content:center}
+/* forms */
+.w4-form{background:#fff;border:1px solid #e6e3dc;border-radius:24px;padding:26px}
+.ink .w4-form{background:#151514;border-color:#2a2926}
+.w4-form label{display:block;font-size:12.5px;font-weight:600;color:#6b6b66;margin:0 0 6px}
+.ink .w4-form label{color:rgba(255,255,255,.6)}
+.w4-form input,.w4-form select,.w4-form textarea{width:100%;border:1px solid #d9d4c9;border-radius:12px;padding:12px 13px;font-size:15px;margin:0 0 16px;background:#fafaf7;color:#0a0a0a;font-family:inherit}
+.w4-form textarea{min-height:96px;resize:vertical}
+.w4-form .row{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.w4-form .w4-btn{width:100%}
+.w4-form .fine{font-size:12.5px;color:#8a877f;margin:12px 0 0;line-height:1.5}
+/* split */
+.w4-split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.w4-split.top{align-items:start}
+.w4-img{border-radius:28px;overflow:hidden;background:#1b1b1a}
+.w4-img img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3}
+.w4-gal{display:grid;grid-template-columns:2fr 1fr;gap:12px}
+.w4-gal.one{grid-template-columns:1fr}
+.w4-gal img{width:100%;height:100%;object-fit:cover;border-radius:22px;display:block;min-height:0}
+.w4-gal .side{display:grid;gap:12px}
+.w4-gal>img{aspect-ratio:16/10}
+.w4-opts{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.w4-sample{background:#fff8e6;border:1px solid #e8d9a8;border-radius:12px;padding:10px 14px;font-size:13px;color:#55524b;margin:0 0 20px;display:inline-block}
+@media(max-width:1023px){.w4-grid.g4{grid-template-columns:repeat(2,1fr)}.w4-steps{grid-template-columns:repeat(2,1fr)}.w4-split{grid-template-columns:1fr;gap:34px}.w4-grid.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.w4-sec{padding:58px 0}.w4-grid.g2,.w4-grid.g3,.w4-grid.g4,.w4-steps,.w4-steps.s3{grid-template-columns:1fr}.w4-hero .w4-wrap{padding-bottom:48px}.w4-head .w4-wrap{padding-top:52px;padding-bottom:52px}.w4-final{padding:52px 20px;border-radius:22px}.w4-form .row{grid-template-columns:1fr}.w4-gal{grid-template-columns:1fr}.w4-pcard{aspect-ratio:4/4.4}.w4-btns .w4-btn{flex:1 1 auto}.w4-opts{grid-template-columns:1fr 1fr;gap:10px}.w4-opts .w4-tile{padding:16px 14px}.w4-opts .ic{display:none}.w4-opts h3{font-size:15.5px}.w4-opts p{font-size:12.5px}}
 </style>
 </head>
 <body>
 
+<div id="villasBackdrop"></div>
 <!-- =============== NAVBAR =============== -->
-<nav class="fixed top-0 left-0 right-0 z-50 bg-off/80 backdrop-blur-md border-b border-line">
+<style id="thv-nav-fix">@media(max-width:639px){#navbar a.mobile-menu-link{display:none!important}}</style>
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-off/80 backdrop-blur-md border-b border-line" style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,250,247,.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #e6e3dc">
   <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
     <div class="flex items-center justify-between h-[72px]">
-      <a href="/thaivillas/" class="flex items-center text-ink">
-        <span class="font-display text-[19px] tracking-tight"><span class="italic">Thai</span> <span class="font-semibold">Villas</span></span>
-      </a>
+      <a href="/thaivillas/" data-hostpill class="flex items-center text-ink border-[1.5px] border-ink/30 rounded-full px-3.5 py-1" aria-label="Thai Villas"><span class="thb-logo-text font-display text-[19px] tracking-tight ml-2.5 whitespace-nowrap"><span class="italic">Thai</span>&nbsp;<span class="font-semibold tracking-[0.09em]">VILLAS</span></span></a>
+
       <div class="hidden lg:flex items-center gap-9">
-        <a href="/thaivillas/property-rental/" class="nav-link">Villas</a>
-        <a href="/thaivillas/#locations" class="nav-link">Destinations</a>
-        <a href="/thaivillas/#longterm" class="nav-link">Monthly &amp; Yearly</a>
-        <a href="/thaivillas/about/" class="nav-link active">About</a>
+        <div class="mega-trigger">
+          <a href="/thaivillas/property-rental/" class="nav-link flex items-center gap-1">Villas <svg class="w-3 h-3 opacity-60 mega-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+        </div>
+        <a href="/thaivillas/property-rental/?period=daily" class="nav-link">Daily rentals</a>
+        <a href="/thaivillas/monthly-rental/" class="nav-link">Monthly & long stay</a>
+        <a href="/thaivillas/vip/" class="nav-link">VIP</a>
+        <a href="/thaivillas/about/" class="nav-link">About</a>
+        <a href="/thaivillas/contacts/" class="nav-link">Contacts</a>
       </div>
+
       <div class="flex items-center gap-2">
-        <a href="#contact" class="btn-primary hidden sm:inline-block !py-2.5 !px-5">Contact us</a>
+        <a href="/thaivillas/saved/" data-fav-link aria-label="Saved villas" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-paper transition"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span data-fav-badge>0</span></a>
+        <a href="/thaivillas/property-rental/" class="btn-primary mobile-menu-link hidden sm:inline-flex items-center gap-2"> Browse villas <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg> </a>
         <button id="mobileMenuBtn" aria-label="Menu" aria-expanded="false" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-paper transition">
           <svg id="burgerIcon" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
           <svg id="closeIcon" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -124,14 +344,17 @@ html { scroll-behavior: smooth; }
       </div>
     </div>
   </div>
-  <!-- Mobile menu panel -->
   <div id="mobileMenu" class="hidden lg:hidden bg-off border-t border-line px-6 py-6">
     <div class="flex flex-col gap-1 text-[16px] font-medium">
-      <a href="/thaivillas/property-rental/" class="py-3 border-b border-line">Villas</a>
-      <a href="/thaivillas/#locations" class="py-3 border-b border-line">Destinations</a>
-      <a href="/thaivillas/#longterm" class="py-3 border-b border-line">Monthly &amp; Yearly</a>
-      <a href="/thaivillas/about/" class="py-3 border-b border-line font-semibold">About</a>
-      <a href="#contact" class="btn-primary text-center mt-5">Contact us</a>
+      <a href="/thaivillas/saved/" class="thb-saved-item py-3 border-b border-line" style="display:flex;align-items:center;justify-content:space-between;color:#e11d48">Saved villas <span data-fav-count style="display:none;background:#e11d48;color:#fff;border-radius:999px;min-width:20px;height:20px;line-height:20px;text-align:center;font-size:11.5px;font-weight:700;padding:0 6px"></span></a>
+      <a href="/thaivillas/property-rental/" class="py-3 border-b border-line">All villas</a>
+      <a href="/thaivillas/villas/phuket/" class="py-3 border-b border-line">Phuket</a>
+      <a href="/thaivillas/property-rental/?period=daily" class="py-3 border-b border-line">Daily rentals</a>
+      <a href="/thaivillas/monthly-rental/" class="py-3 border-b border-line">Monthly & long stay</a>
+      <a href="/thaivillas/vip/" class="py-3 border-b border-line">VIP</a>
+      <a href="/thaivillas/about/" class="py-3 border-b border-line">About</a>
+      <a href="/thaivillas/contacts/" class="py-3 border-b border-line">Contacts</a>
+      <a href="https://wa.me/66000000000?text=Hi%20Thai%20Villas%21%20I%27m%20looking%20for%20a%20villa%20in%20Thailand." class="btn-primary text-center mt-5" rel="noopener">WhatsApp us</a>
     </div>
   </div>
 </nav>
@@ -152,432 +375,266 @@ html { scroll-behavior: smooth; }
 })();
 </script>
 
+<!-- Villas mega-menu panel (outside nav to avoid stacking context issues) -->
+<div id="villasPanel">
+  <div class="mega-inner">
+    <div style="width:150px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">Rental period</p>
+              <a href="/thaivillas/property-rental/?period=daily" class="mega-item">Daily <span class="mega-count">10</span></a>
+              <a href="/thaivillas/property-rental/?period=monthly" class="mega-item">Monthly <span class="mega-count">7</span></a>
+              <a href="/thaivillas/monthly-rental/" class="mega-item" style="font-weight:600">Long stay guide &rarr;</a>
+              <a href="/thaivillas/property-rental/" class="mega-item">All villas <span class="mega-count">10</span></a>
+              </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="width:170px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">Phuket beaches</p>
+              <a href="/thaivillas/villas/phuket/bang-tao/" class="mega-item">Bang Tao <span class="mega-count">2</span></a>
+              <a href="/thaivillas/villas/phuket/layan/" class="mega-item">Layan <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/phuket/surin/" class="mega-item">Surin <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/phuket/kamala/" class="mega-item">Kamala <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/phuket/patong/" class="mega-item">Patong <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/phuket/karon/" class="mega-item">Karon <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/phuket/kata/" class="mega-item">Kata <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/phuket/kata-noi/" class="mega-item">Kata Noi <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/phuket/nai-harn/" class="mega-item">Nai Harn <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/phuket/" class="mega-item" style="font-weight:600">All Phuket &rarr; <span class="mega-count">8</span></a>
+              </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="width:150px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">Thailand</p>
+              <a href="/thaivillas/villas/koh-samui/" class="mega-item">Koh Samui <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/pattaya/" class="mega-item">Pattaya <span class="mega-count">1</span></a>
+              <a href="/thaivillas/villas/bangkok/" class="mega-item">Bangkok <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/krabi/" class="mega-item">Krabi <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/koh-phangan/" class="mega-item">Koh Phangan <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/hua-hin/" class="mega-item">Hua Hin <span class="mega-count">0</span></a>
+              <a href="/thaivillas/villas/chiang-mai/" class="mega-item">Chiang Mai <span class="mega-count">0</span></a>
+              </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="width:140px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">Bedrooms</p>
+              <a href="/thaivillas/property-rental/?beds=1" class="mega-item">1 bedroom <span class="mega-count">1</span></a>
+              <a href="/thaivillas/property-rental/?beds=2" class="mega-item">2 bedrooms <span class="mega-count">2</span></a>
+              <a href="/thaivillas/property-rental/?beds=3" class="mega-item">3 bedrooms <span class="mega-count">3</span></a>
+              <a href="/thaivillas/property-rental/?beds=4" class="mega-item">4 bedrooms <span class="mega-count">3</span></a>
+              <a href="/thaivillas/property-rental/?beds=5" class="mega-item">5+ bedrooms <span class="mega-count">1</span></a>
+              </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="width:170px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">VIP</p>
+              <a href="/thaivillas/vip/yachts/" class="mega-item">Yacht charter</a>
+              <a href="/thaivillas/vip/helicopters/" class="mega-item">Helicopter flights</a>
+              <a href="/thaivillas/vip/supercars/" class="mega-item">Supercar</a>
+              <a href="/thaivillas/vip/superbikes/" class="mega-item">Superbike</a>
+              <a href="/thaivillas/vip/concierge/" class="mega-item">Luxury concierge</a>
+              <a href="/thaivillas/vip/" class="mega-item" style="font-weight:600">All VIP &rarr;</a>
+              </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="flex:1"></div>
+  </div>
+</div>
+
 <!-- =============== HERO =============== -->
-<header class="bg-ink text-white pt-[72px]">
-  <div class="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] min-h-[86vh]">
-    <div class="flex flex-col justify-center px-6 lg:pl-[max(2.5rem,calc((100vw-1400px)/2+2.5rem))] lg:pr-16 py-20">
-      <div class="flex items-center gap-2 mb-7 flex-wrap">
-        <span class="text-[11px] font-semibold tracking-[0.18em] uppercase border border-white/30 rounded-full px-4 py-1.5 text-white/80">Villa rentals</span>
-        <span class="text-[11px] font-semibold tracking-[0.18em] uppercase border border-white/30 rounded-full px-4 py-1.5 text-white/80">Monthly &amp; Yearly</span>
-        <span class="text-[11px] font-semibold tracking-[0.18em] uppercase border border-white/30 rounded-full px-4 py-1.5 text-white/80">Concierge</span>
-      </div>
-      <h1 class="font-display text-[44px] lg:text-[72px] leading-[0.97] tracking-tightest mb-7">We make finding a villa in Thailand <span class="italic">simple.</span></h1>
-      <p class="text-white/70 text-[16px] max-w-md mb-10">A local team on the ground plus an AI search that understands what you actually want. Handpicked pool villas from Phuket to Chiang Mai — for a week, a month or a whole year — and real people to help once you land.</p>
-      <div class="flex gap-3 flex-wrap">
-        <a href="#story" class="btn-white">Get to know us</a>
-        <a href="#contact" class="border border-white/40 text-white rounded-full px-6 py-3.5 font-semibold text-sm hover:bg-white hover:text-ink transition">Talk to our team</a>
-      </div>
-    </div>
-    <div class="relative min-h-[380px] lg:min-h-0">
-      <img src="/thaivillas/images/hero.jpg" alt="Private pool villa overlooking the sea in Thailand" class="absolute inset-0 w-full h-full object-cover object-center">
-      <div class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-ink to-transparent hidden lg:block"></div>
-      <span class="absolute top-6 right-6 text-white/95 font-semibold text-[12.5px] bg-black/40 backdrop-blur rounded-full px-4 py-2">Handpicked villas across Thailand</span>
-    </div>
-  </div>
-</header>
-
-<!-- =============== QUICK FACTS (overlapping card) =============== -->
-<section class="bg-off pb-16 border-b border-line">
-  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-    <div class="bg-white rounded-[28px] shadow-[0_24px_80px_rgba(10,10,10,0.12)] border border-line px-8 lg:px-12 py-10 -mt-14 lg:-mt-20 relative z-20 grid grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="reveal"><p class="font-display text-[44px] lg:text-[56px] leading-none tracking-tightest mb-2">6</p><p class="text-ink/50 text-[13.5px]">destinations — beaches, islands and cities</p></div>
-      <div class="reveal" style="transition-delay:.1s"><p class="font-display text-[44px] lg:text-[56px] leading-none tracking-tightest mb-2">100%</p><p class="text-ink/50 text-[13.5px]">of listed villas checked by our team</p></div>
-      <div class="reveal" style="transition-delay:.2s"><p class="font-display text-[44px] lg:text-[56px] leading-none tracking-tightest mb-2">24/7</p><p class="text-ink/50 text-[13.5px]">guest support during your stay</p></div>
-      <div class="reveal" style="transition-delay:.3s"><p class="font-display text-[44px] lg:text-[56px] leading-none tracking-tightest mb-2">&lt;5 min</p><p class="text-ink/50 text-[13.5px]">typical reply time on WhatsApp</p></div>
-    </div>
+<main class="w4">
+<header class="w4-head" style="padding-bottom:0"><div class="w4-wrap w4-split" style="padding-bottom:76px"><div><div class="w4-chiprow"><span>Daily rentals</span><span>Monthly stays</span><span>VIP</span></div><p class="w4-kicker" style="color:rgba(255,255,255,.5)">About us</p><h1 class="w4-h1">About <i>Thai Villas.</i></h1><p class="w4-lead">A local team in Phuket renting private pool villas by the night and by the month — in Phuket first, and across Thailand. You talk to a real person on WhatsApp from the first question to check-out.</p><div class="w4-btns"><a class="w4-btn light" href="/thaivillas/property-rental/">See the villas</a><a class="w4-btn ghost" href="/thaivillas/contacts/">Contact us</a></div></div><div class="w4-img"><img src="/thaivillas/images/phuket.jpg" alt="Phuket coastline" fetchpriority="high" decoding="async" width="1200" height="900"></div></div></header>
+<div class="w4-wrap"><div class="w4-crumbs"><a href="/thaivillas/">Home</a><span>/</span>About</div></div><section class="w4-sec ">
+  <div class="w4-wrap">
+    <p class="w4-kicker">What we do</p>
+    <h2 class="w4-h2">Villas and the extras, <i>one contact</i></h2>
+    <p class="w4-sub">Two kinds of rental — daily and monthly — plus VIP services around your stay.</p>
+<div class="w4-grid g3"><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><h3>Daily villa rentals</h3><p>Private pool villas for holidays of a few nights or a few weeks — beachfront, hillside and family villas around Phuket and beyond.</p></div><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><h3>Monthly &amp; long stays</h3><p>A month, a season or longer: villas set up for living, with clear terms on deposit and utilities before you commit.</p></div><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span><h3>VIP services</h3><p>Yacht charters, helicopter flights, supercars, superbikes and concierge, arranged with vetted local partners.</p></div></div>
   </div>
 </section>
-
-<!-- =============== PROBLEMS WE SOLVE =============== -->
-<section class="bg-off py-24">
-  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-    <div class="mb-14 reveal">
-      <p class="kicker mb-3">Why we exist</p>
-      <h2 class="font-display text-[40px] lg:text-[60px] leading-[1] tracking-tightest max-w-3xl">Booking a villa abroad shouldn't be a gamble.<br><span class="italic">So we took the guesswork out.</span></h2>
-    </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div class="bg-paper rounded-[28px] p-9 lg:p-12 reveal">
-        <p class="kicker !text-ink/40 mb-6">The old way</p>
-        <ul class="space-y-5">
-          <li class="flex gap-4"><span class="flex-none w-7 h-7 rounded-full border border-ink/20 text-ink/40 flex items-center justify-center text-sm">✕</span><div><p class="font-semibold mb-0.5">Photos that flatter</p><p class="text-ink/55 text-[14.5px]">Wide-angle pools, "sea views" behind a construction site, "5 minutes to the beach" by jet ski.</p></div></li>
-          <li class="flex gap-4"><span class="flex-none w-7 h-7 rounded-full border border-ink/20 text-ink/40 flex items-center justify-center text-sm">✕</span><div><p class="font-semibold mb-0.5">Support that disappears</p><p class="text-ink/55 text-[14.5px]">Quick replies before you pay. Silence when the air-con stops at 2am.</p></div></li>
-          <li class="flex gap-4"><span class="flex-none w-7 h-7 rounded-full border border-ink/20 text-ink/40 flex items-center justify-center text-sm">✕</span><div><p class="font-semibold mb-0.5">Surprise costs</p><p class="text-ink/55 text-[14.5px]">Electricity billed at mystery rates, unclear deposits, cleaning fees nobody mentioned.</p></div></li>
-          <li class="flex gap-4"><span class="flex-none w-7 h-7 rounded-full border border-ink/20 text-ink/40 flex items-center justify-center text-sm">✕</span><div><p class="font-semibold mb-0.5">Hours of scrolling</p><p class="text-ink/55 text-[14.5px]">Hundreds of near-identical listings and no way to tell which one is right for you.</p></div></li>
-        </ul>
-      </div>
-      <div class="bg-ink text-white rounded-[28px] p-9 lg:p-12 reveal" style="transition-delay:.15s">
-        <p class="kicker !text-white/50 mb-6">The Thai Villas way</p>
-        <ul class="space-y-5">
-          <li class="flex gap-4"><span class="flex-none w-7 h-7 rounded-full bg-white text-ink flex items-center justify-center text-sm">✓</span><div><p class="font-semibold mb-0.5">Checked by our team</p><p class="text-white/60 text-[14.5px]">We look at every villa before it goes live: the pool, the Wi-Fi, the road in, the walk to the beach.</p></div></li>
-          <li class="flex gap-4"><span class="flex-none w-7 h-7 rounded-full bg-white text-ink flex items-center justify-center text-sm">✓</span><div><p class="font-semibold mb-0.5">Locals on call, 24/7</p><p class="text-white/60 text-[14.5px]">A team in Thailand that answers in minutes — before you book, when you land and until checkout.</p></div></li>
-          <li class="flex gap-4"><span class="flex-none w-7 h-7 rounded-full bg-white text-ink flex items-center justify-center text-sm">✓</span><div><p class="font-semibold mb-0.5">Clear terms in writing</p><p class="text-white/60 text-[14.5px]">Price, deposit, utilities and cancellation rules confirmed in writing before you pay a single baht.</p></div></li>
-          <li class="flex gap-4"><span class="flex-none w-7 h-7 rounded-full bg-white text-ink flex items-center justify-center text-sm">✓</span><div><p class="font-semibold mb-0.5">AI that finds your match in seconds</p><p class="text-white/60 text-[14.5px]">Describe your trip in plain words — get villas that actually fit, not just the ones with the biggest ads.</p></div></li>
-        </ul>
-      </div>
-    </div>
+<section class="w4-sec paper">
+  <div class="w4-wrap">
+    <p class="w4-kicker">How we pick villas</p>
+    <h2 class="w4-h2">What a villa needs <i>to make the list</i></h2>
+    <p class="w4-sub">Our standards for every villa we offer.</p>
+<div class="w4-grid g3"><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h6"/></svg></span><h3>Honest photos &amp; descriptions</h3><p>What you see is what you get: the real pool, the real view, the real distance to the beach.</p></div><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>A pool, and it works</h3><p>Private pools that are cleaned and maintained on a schedule — the reason most people choose a villa.</p></div><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M2 9a15 15 0 0 1 20 0"/><circle cx="12" cy="19.5" r="1"/></svg></span><h3>Ready for real life</h3><p>Reliable Wi-Fi, air-conditioning in the bedrooms and a kitchen you can actually cook in.</p></div><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M14 9l2 2"/></svg></span><h3>Clear terms</h3><p>Deposit, utilities, cleaning and house rules agreed in writing before you pay — no surprises at check-out.</p></div><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><h3>Someone on the ground</h3><p>A local contact who answers when the air-con stops or you need a doctor, a driver or a boat.</p></div><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><h3>The right area</h3><p>We'll tell you honestly if a villa is too far from the beach, too steep for a pram or too lively for a quiet month.</p></div></div>
   </div>
 </section>
+<section class="w4-sec ">
+  <div class="w4-wrap">
+    <p class="w4-kicker">Where we work</p>
+    <h2 class="w4-h2">Phuket first, <i>Thailand next</i></h2>
+<div class="w4-split top"><div class="w4-prose"><p>We are based in Phuket, so that is where you'll find the widest choice — from Bang Tao and Layan in the north-west to Kata, Nai Harn and Rawai in the south.</p><p>We also help with villas in Koh Samui, Pattaya, Bangkok, Krabi, Koh Phangan, Hua Hin and Chiang Mai.</p><p class="w4-sample">This site is in preview: the villas shown are sample listings while we finish onboarding. Availability and rates are on request.</p></div><div><p class="w4-kicker">Phuket beaches</p><div class="w4-rel" style="margin-bottom:24px"><a href="/thaivillas/villas/phuket/bang-tao/">Bang Tao</a><a href="/thaivillas/villas/phuket/layan/">Layan</a><a href="/thaivillas/villas/phuket/surin/">Surin</a><a href="/thaivillas/villas/phuket/kamala/">Kamala</a><a href="/thaivillas/villas/phuket/patong/">Patong</a><a href="/thaivillas/villas/phuket/karon/">Karon</a><a href="/thaivillas/villas/phuket/kata/">Kata</a><a href="/thaivillas/villas/phuket/kata-noi/">Kata Noi</a><a href="/thaivillas/villas/phuket/nai-harn/">Nai Harn</a><a href="/thaivillas/villas/phuket/rawai/">Rawai</a><a href="/thaivillas/villas/phuket/chalong/">Chalong</a><a href="/thaivillas/villas/phuket/mai-khao/">Mai Khao &amp; Nai Yang</a></div><p class="w4-kicker">Destinations</p><div class="w4-rel"><a href="/thaivillas/villas/phuket/">Phuket</a><a href="/thaivillas/villas/koh-samui/">Koh Samui</a><a href="/thaivillas/villas/pattaya/">Pattaya</a><a href="/thaivillas/villas/bangkok/">Bangkok</a><a href="/thaivillas/villas/krabi/">Krabi</a><a href="/thaivillas/villas/koh-phangan/">Koh Phangan</a><a href="/thaivillas/villas/hua-hin/">Hua Hin</a><a href="/thaivillas/villas/chiang-mai/">Chiang Mai</a></div></div></div>
+  </div>
+</section>
+<section class="w4-sec paper">
+  <div class="w4-wrap">
+    <p class="w4-kicker">How to reach us</p>
+    <h2 class="w4-h2">A real person, <i>on WhatsApp</i></h2>
+<div class="w4-grid g3"><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span><h3>WhatsApp</h3><p><a href="https://wa.me/66000000000" rel="noopener">+66 00 000 0000</a><br>The fastest way to reach us.</p></div><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 6 10-6"/></svg></span><h3>Email</h3><p><a href="mailto:hello@thaivillas.example">hello@thaivillas.example</a></p></div><div class="w4-tile"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><h3>Hours</h3><p>Every day 9:00–21:00 (GMT+7)<br>Guest support 24/7 during your stay</p></div></div>
+  </div>
+</section>
+<section class="w4-sec" style="border-top:0;padding-top:24px"><div class="w4-wrap"><div class="w4-final"><p class="w4-kicker">Ready when you are</p><h2 class="w4-h2" style="margin-bottom:12px">Now you know us. <i>Let's find your villa.</i></h2><p class="t">Tell us your dates and what matters most — we'll suggest the right villa.</p><div class="w4-btns"><a class="w4-btn dark" href="/thaivillas/property-rental/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>Browse villas</a><a class="w4-btn light" href="https://wa.me/66000000000?text=Hi%20Thai%20Villas%21%20I%27m%20looking%20for%20a%20villa%20in%20Thailand." rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.5l-.9-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.4-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.7 2.7 1.1 3.2.9 3.8.8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>WhatsApp us</a></div></div></div></section>
 
-<!-- =============== OUR JOURNEY =============== -->
-<section id="story" class="bg-paper py-24 border-t border-line">
-  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-    <div class="mb-16 reveal">
-      <p class="kicker mb-3">Who we are</p>
-      <h2 class="font-display text-[40px] lg:text-[60px] leading-[1] tracking-tightest">A local team<br><span class="italic">with a smarter search.</span></h2>
-    </div>
+</main>
 
-    <div class="space-y-20">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal">
-        <div class="img-zoom rounded-[28px] overflow-hidden h-[340px]"><img src="/thaivillas/images/phuket-2.jpg" alt="Coastline and villas in Phuket" class="w-full h-full object-cover" loading="lazy"></div>
-        <div>
-          <span class="font-display text-[64px] text-ink/10 leading-none">01</span>
-          <h3 class="font-display text-[30px] tracking-tightest mt-2 mb-4">People who live here</h3>
-          <p class="text-ink/60 text-[15px] max-w-lg">We're a small team based in Thailand. We know which side of Phuket stays calm in the monsoon, which Koh Samui hills are worth the drive, and which Pattaya streets are quiet at night. That local knowledge is the first filter every villa goes through.</p>
+<style id="thb-footer-css">
+.thb-ft{background:#232322;color:#e9e4da;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:14px;line-height:1.6;margin:0;padding:0;box-sizing:border-box}
+.thb-ft *{box-sizing:border-box}
+.thb-ft a{color:inherit;text-decoration:none}
+.thb-ft .thb-ft-in{max-width:1280px;margin:0 auto;padding:56px 24px 0}
+.thb-ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:40px}
+.thb-ft-brand img{height:64px;width:64px;display:block;margin-bottom:16px}
+.thb-ft-name{font-family:'Lora',Georgia,"Times New Roman",serif;font-size:21px;font-weight:600;letter-spacing:.01em;margin:0 0 10px;color:#fff}
+.thb-ft-lead{color:#a9a29a;margin:0 0 20px;max-width:34ch}
+.thb-ft-soc{display:flex;gap:10px;flex-wrap:wrap}
+.thb-ft-soc a{display:inline-flex;align-items:center;gap:7px;border:1px solid #3d3c39;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:500;color:#e9e4da;transition:background .15s,border-color .15s}
+.thb-ft-soc a:hover{background:#2e2d2b;border-color:#5F5340}
+.thb-ft-soc svg{width:15px;height:15px;flex:0 0 auto}
+.thb-ft h4{font-family:'Lora',Georgia,"Times New Roman",serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#C1B59D;margin:0 0 16px}
+.thb-ft ul{list-style:none;margin:0;padding:0}
+.thb-ft li{margin:0 0 10px}
+.thb-ft li a{color:#d6d0c6;transition:color .15s;display:inline-block;padding:5px 0}
+.thb-ft li a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.thb-ft-c{font-size:11px;color:#7d766d;margin-left:5px}
+.thb-ft-ct{margin:0 0 12px}
+.thb-ft-ct dt{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7d766d;margin:0 0 2px}
+.thb-ft-ct dd{margin:0 0 12px;color:#e9e4da}
+.thb-ft-ct dd a:hover{text-decoration:underline;text-underline-offset:3px}
+.thb-ft-bar{border-top:1px solid #37352f;margin-top:44px;padding:20px 0 26px;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;color:#7d766d;font-size:13px}
+.thb-ft-bar nav{display:flex;gap:20px;flex-wrap:wrap}
+.thb-ft-bar nav a{display:inline-block;padding:9px 0}.thb-ft-bar nav a:hover{color:#d6d0c6}
+@media(max-width:980px){.thb-ft-grid{grid-template-columns:1fr 1fr;gap:32px}.thb-ft-brand{grid-column:1/-1}}
+@media(max-width:560px){.thb-ft .thb-ft-in{padding:40px 20px 0}.thb-ft-grid{grid-template-columns:1fr;gap:28px}.thb-ft-bar{margin-top:32px}}
+</style>
+<style id="thv-ft5">@media(min-width:981px){.thb-ft .thb-ft-grid{grid-template-columns:1.5fr 1fr 1fr 1fr 1.2fr}}</style>
+<footer class="thb-ft">
+  <div class="thb-ft-in">
+    <div class="thb-ft-grid">
+      <div class="thb-ft-brand">
+        <p class="thb-ft-name">Thai Villas</p>
+        <p class="thb-ft-lead">Pool villas in Phuket and across Thailand — daily and monthly rentals, booked direct with a real person on WhatsApp. Plus VIP: yachts, helicopters, supercars.</p>
+        <div class="thb-ft-soc">
+          <a href="https://wa.me/66000000000" rel="noopener">WhatsApp</a>
+          <a href="mailto:hello@thaivillas.example">Email</a>
         </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal">
-        <div class="lg:order-2 img-zoom rounded-[28px] overflow-hidden h-[340px]"><img src="/thaivillas/images/work.jpg" alt="Working remotely from a villa terrace" class="w-full h-full object-cover" loading="lazy"></div>
-        <div class="lg:order-1">
-          <span class="font-display text-[64px] text-ink/10 leading-none">02</span>
-          <h3 class="font-display text-[30px] tracking-tightest mt-2 mb-4">An AI search that speaks "villa"</h3>
-          <p class="text-ink/60 text-[15px] max-w-lg">Type something like "3-bedroom pool villa in Phuket near Kata beach, fast Wi-Fi, for two months from December" — and get matches in seconds. The search only shows villas our team has reviewed, so speed never comes at the cost of trust.</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal">
-        <div class="img-zoom rounded-[28px] overflow-hidden h-[340px]"><img src="/thaivillas/images/family.jpg" alt="Family enjoying a villa holiday in Thailand" class="w-full h-full object-cover" loading="lazy"></div>
-        <div>
-          <span class="font-display text-[64px] text-ink/10 leading-none">03</span>
-          <h3 class="font-display text-[30px] tracking-tightest mt-2 mb-4">And humans for everything else</h3>
-          <p class="text-ink/60 text-[15px] max-w-lg">Once you've booked, we stay with you: airport pickup, a SIM card, a private chef for a birthday dinner, a long-tail boat to the islands, a doctor who speaks English. One WhatsApp chat for the whole trip.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =============== MISSION QUOTE =============== -->
-<section class="bg-ink text-white py-24">
-  <div class="max-w-[1000px] mx-auto px-6 lg:px-10 text-center reveal">
-    <svg class="w-10 h-10 text-white/20 mx-auto mb-8" viewBox="0 0 32 32" fill="currentColor"><path d="M10 8c-3 0-5 2.5-5 5.5S7 19 10 19h1c0 2-2 4-5 4v3c5 0 9-4 9-9V13c0-2.8-2.2-5-5-5zm12 0c-3 0-5 2.5-5 5.5s2 5.5 5 5.5h1c0 2-2 4-5 4v3c5 0 9-4 9-9V13c0-2.8-2.2-5-5-5z"/></svg>
-    <p class="font-display text-[28px] lg:text-[40px] leading-[1.2] tracking-tightest italic mb-8">"Our goal is simple: the villa you arrive at should be even better than the one you booked."</p>
-    <p class="text-white/50 text-sm">Honest listings. Real help. — The Thai Villas team</p>
-  </div>
-</section>
-
-<!-- =============== WHAT WE DO FOR GUESTS =============== -->
-<section class="bg-off py-24 border-t border-line">
-  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-    <div class="mb-14 reveal">
-      <p class="kicker mb-3">Villas + concierge</p>
-      <h2 class="font-display text-[40px] lg:text-[60px] leading-[1] tracking-tightest max-w-3xl">From your first search<br><span class="italic">to your last sunset.</span></h2>
-      <p class="text-ink/55 text-[15px] max-w-xl mt-6">We do two things and try to do them very well: help you find the right villa, and look after you while you're in it. No upsells you didn't ask for, no hand-offs to call centres — one local team for the whole stay.</p>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <a href="/thaivillas/property-rental/" class="group bg-white border border-line rounded-[28px] p-8 card-hover reveal">
-        <div class="w-12 h-12 rounded-full bg-ink text-white flex items-center justify-center mb-6"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg></div>
-        <h3 class="font-semibold text-lg mb-2">Holiday villas</h3>
-        <p class="text-ink/55 text-[14px] mb-4">Pool villas for a week on the beach — couples, families and groups of friends, matched by AI in seconds.</p>
-        <span class="text-[13.5px] font-semibold underline underline-offset-4 group-hover:no-underline">Find a villa →</span>
-      </a>
-      <a href="/thaivillas/#longterm" class="group bg-white border border-line rounded-[28px] p-8 card-hover reveal" style="transition-delay:.05s">
-        <div class="w-12 h-12 rounded-full bg-ink text-white flex items-center justify-center mb-6"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></svg></div>
-        <h3 class="font-semibold text-lg mb-2">Monthly &amp; yearly stays</h3>
-        <p class="text-ink/55 text-[14px] mb-4">Homes for remote workers, families relocating and snowbirds escaping winter — with utilities, cleaning and Wi-Fi sorted upfront.</p>
-        <span class="text-[13.5px] font-semibold underline underline-offset-4 group-hover:no-underline">Long stays →</span>
-      </a>
-      <a href="#contact" class="group bg-white border border-line rounded-[28px] p-8 card-hover reveal" style="transition-delay:.1s">
-        <div class="w-12 h-12 rounded-full bg-ink text-white flex items-center justify-center mb-6"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 16l20-6-20-6 4 6z"/><path d="M6 10h8"/></svg></div>
-        <h3 class="font-semibold text-lg mb-2">Arrival &amp; transfers</h3>
-        <p class="text-ink/55 text-[14px] mb-4">Airport pickup, a local SIM, groceries stocked in the fridge before you walk in. Arrive and simply relax.</p>
-        <span class="text-[13.5px] font-semibold underline underline-offset-4 group-hover:no-underline">Plan my arrival →</span>
-      </a>
-      <a href="#contact" class="group bg-white border border-line rounded-[28px] p-8 card-hover reveal" style="transition-delay:.15s">
-        <div class="w-12 h-12 rounded-full bg-ink text-white flex items-center justify-center mb-6"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 14.3 7.2 16.9l.9-5.4L4.2 7.7l5.4-.8z"/></svg></div>
-        <h3 class="font-semibold text-lg mb-2">Experiences</h3>
-        <p class="text-ink/55 text-[14px] mb-4">Island-hopping boats, Thai cooking classes, Muay Thai sessions, in-villa massage and private chefs — booked with people we trust.</p>
-        <span class="text-[13.5px] font-semibold underline underline-offset-4 group-hover:no-underline">Ask for ideas →</span>
-      </a>
-      <a href="#contact" class="group bg-white border border-line rounded-[28px] p-8 card-hover reveal" style="transition-delay:.2s">
-        <div class="w-12 h-12 rounded-full bg-ink text-white flex items-center justify-center mb-6"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <h3 class="font-semibold text-lg mb-2">Help during your stay</h3>
-        <p class="text-ink/55 text-[14px] mb-4">Something broken, a question about the area, a recommendation for dinner tonight — message us any time, day or night.</p>
-        <span class="text-[13.5px] font-semibold underline underline-offset-4 group-hover:no-underline">Message us →</span>
-      </a>
-      <a href="#faq" class="group bg-ink text-white rounded-[28px] p-8 card-hover reveal" style="transition-delay:.25s">
-        <div class="w-12 h-12 rounded-full bg-white text-ink flex items-center justify-center mb-6"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg></div>
-        <h3 class="font-semibold text-lg mb-2">Long-stay know-how</h3>
-        <p class="text-white/60 text-[14px] mb-4">Seasons, neighbourhoods, schools, co-working and general visa pointers — practical tips from people who made Thailand home.</p>
-        <span class="text-[13.5px] font-semibold underline underline-offset-4 group-hover:no-underline">Read the FAQ →</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- =============== TEAM =============== -->
-<section class="bg-off py-24 border-t border-line">
-  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-    <div class="mb-14 reveal">
-      <p class="kicker mb-3">The team</p>
-      <h2 class="font-display text-[40px] lg:text-[54px] leading-[1] tracking-tightest">The people behind<br><span class="italic">every easy stay.</span></h2>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-      <div class="bg-white border border-line rounded-[28px] p-7 card-hover reveal">
-        <div class="img-zoom rounded-[20px] overflow-hidden mb-6"><img src="https://images.unsplash.com/photo-1516011362164-3095a82b0af9?q=80&w=700&h=800&auto=format&fit=crop&crop=faces" alt="Thai Villas villa scouts" loading="lazy" class="w-full aspect-[7/8] object-cover"></div>
-        <p class="font-semibold text-lg mb-0.5">Villa scouts</p>
-        <p class="text-ink/50 text-[13px] mb-3">Phuket · Koh Samui · Pattaya</p>
-        <p class="text-ink/60 text-[13.5px]">They visit villas before they're listed — checking the pool, the beds, the Wi-Fi speed and the real distance to the beach.</p>
-      </div>
-
-      <div class="bg-white border border-line rounded-[28px] p-7 card-hover reveal" style="transition-delay:.1s">
-        <div class="img-zoom rounded-[20px] overflow-hidden mb-6"><img src="https://images.unsplash.com/photo-1647964528306-06569a844aa3?q=80&w=700&h=800&auto=format&fit=crop&crop=faces" alt="Thai Villas guest experience team" loading="lazy" class="w-full aspect-[7/8] object-cover"></div>
-        <p class="font-semibold text-lg mb-0.5">Guest experience</p>
-        <p class="text-ink/50 text-[13px] mb-3">WhatsApp &amp; email, 24/7</p>
-        <p class="text-ink/60 text-[13.5px]">The voices behind our chat — helping you choose, confirming terms and staying in touch from booking to checkout.</p>
-      </div>
-
-      <div class="bg-white border border-line rounded-[28px] p-7 card-hover reveal" style="transition-delay:.2s">
-        <div class="img-zoom rounded-[20px] overflow-hidden mb-6"><img src="https://images.unsplash.com/photo-1715140608409-04e6176ce948?q=80&w=700&h=800&auto=format&fit=crop&crop=faces" alt="Thai Villas concierge team" loading="lazy" class="w-full aspect-[7/8] object-cover"></div>
-        <p class="font-semibold text-lg mb-0.5">Concierge</p>
-        <p class="text-ink/50 text-[13px] mb-3">Transfers, tours &amp; extras</p>
-        <p class="text-ink/60 text-[13.5px]">Drivers, boats, chefs, massage and day trips — arranged with trusted local partners so you don't have to haggle.</p>
-      </div>
-
-      <div class="bg-white border border-line rounded-[28px] p-7 card-hover reveal" style="transition-delay:.3s">
-        <div class="img-zoom rounded-[20px] overflow-hidden mb-6"><img src="https://images.unsplash.com/photo-1677168916969-e5a4af982664?q=80&w=700&h=800&auto=format&fit=crop&crop=faces" alt="Thai Villas long-stay specialists" loading="lazy" class="w-full aspect-[7/8] object-cover"></div>
-        <p class="font-semibold text-lg mb-0.5">Long-stay specialists</p>
-        <p class="text-ink/50 text-[13px] mb-3">Monthly &amp; yearly rentals</p>
-        <p class="text-ink/60 text-[13.5px]">They help remote workers and families settle in: the right neighbourhood, clear utility terms, schools and co-working nearby.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- =============== DESTINATIONS =============== -->
-<section class="bg-paper py-24 border-t border-line">
-  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-    <div class="flex items-end justify-between mb-14 flex-wrap gap-4 reveal">
-      <div>
-        <p class="kicker mb-3">Where we are</p>
-        <h2 class="font-display text-[40px] lg:text-[54px] leading-[1] tracking-tightest">Six places we know well.<br><span class="italic">Islands, beaches, cities.</span></h2>
-      </div>
-      <p class="text-ink/50 text-[14px] max-w-xs">We start with our demo villas in Phuket, Koh Samui and Pattaya. In Bangkok, Krabi and Chiang Mai we search on request.</p>
-    </div>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-[210px]">
-      <a href="/thaivillas/property-rental/" class="relative rounded-[24px] overflow-hidden col-span-2 row-span-2 img-zoom reveal">
-        <img src="/thaivillas/images/all-thailand.jpg" alt="Tropical coastline in Thailand" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-        <p class="absolute bottom-5 left-6 text-white font-semibold text-[15px]">All of Thailand — 6 villas</p>
-      </a>
-      <a href="/thaivillas/villas/phuket/" class="relative rounded-[24px] overflow-hidden img-zoom reveal">
-        <img src="/thaivillas/images/phuket.jpg" alt="Phuket beach" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-        <p class="absolute bottom-4 left-5 text-white font-semibold text-[13px]">Phuket — 2 villas</p>
-      </a>
-      <a href="/thaivillas/villas/koh-samui/" class="relative rounded-[24px] overflow-hidden img-zoom reveal">
-        <img src="/thaivillas/images/samui.jpg" alt="Koh Samui coastline" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-        <p class="absolute bottom-4 left-5 text-white font-semibold text-[13px]">Koh Samui — 2 villas</p>
-      </a>
-      <a href="/thaivillas/villas/pattaya/" class="relative rounded-[24px] overflow-hidden img-zoom reveal">
-        <img src="/thaivillas/images/pattaya.jpg" alt="Pattaya bay" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-        <p class="absolute bottom-4 left-5 text-white font-semibold text-[13px]">Pattaya — 2 villas</p>
-      </a>
-      <a href="/thaivillas/villas/bangkok/" class="relative rounded-[24px] overflow-hidden img-zoom reveal">
-        <img src="/thaivillas/images/bangkok.jpg" alt="Bangkok skyline" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-        <p class="absolute bottom-4 left-5 text-white font-semibold text-[13px]">Bangkok — on request</p>
-      </a>
-      <a href="/thaivillas/villas/krabi/" class="relative rounded-[24px] overflow-hidden col-span-2 img-zoom reveal">
-        <img src="/thaivillas/images/krabi.jpg" alt="Limestone cliffs in Krabi" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-        <p class="absolute bottom-4 left-5 text-white font-semibold text-[13px]">Krabi — on request</p>
-      </a>
-      <a href="/thaivillas/villas/chiang-mai/" class="relative rounded-[24px] overflow-hidden col-span-2 img-zoom reveal">
-        <img src="/thaivillas/images/chiang-mai.jpg" alt="Mountains and temples around Chiang Mai" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-        <p class="absolute bottom-4 left-5 text-white font-semibold text-[13px]">Chiang Mai — on request</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- =============== HOW WE PICK VILLAS =============== -->
-<section class="bg-ink text-white py-24">
-  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-    <div class="mb-14 reveal">
-      <p class="kicker !text-white/60 mb-3">How we pick villas</p>
-      <h2 class="font-display text-[40px] lg:text-[54px] leading-[1] tracking-tightest">Fewer villas.<br><span class="italic">Better ones.</span></h2>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-      <div class="reveal"><span class="font-display text-[56px] text-white/15 leading-none">01</span><p class="font-semibold mt-4 mb-2">Seen with our own eyes</p><p class="text-white/60 text-[14px]">Every villa is reviewed by our team before it's listed. No scraped listings, no stock photos passed off as real.</p></div>
-      <div class="reveal" style="transition-delay:.1s"><span class="font-display text-[56px] text-white/15 leading-none">02</span><p class="font-semibold mt-4 mb-2">Tested for real life</p><p class="text-white/60 text-[14px]">Wi-Fi speed, air-con in every bedroom, water pressure, noise at night, the road in during rainy season.</p></div>
-      <div class="reveal" style="transition-delay:.2s"><span class="font-display text-[56px] text-white/15 leading-none">03</span><p class="font-semibold mt-4 mb-2">Honest matches</p><p class="text-white/60 text-[14px]">Our AI recommends what fits your trip — not what pays the most. Rankings can't be bought.</p></div>
-      <div class="reveal" style="transition-delay:.3s"><span class="font-display text-[56px] text-white/15 leading-none">04</span><p class="font-semibold mt-4 mb-2">Clear terms, always</p><p class="text-white/60 text-[14px]">Price, deposit, electricity and water rates and cancellation policy — all confirmed in writing before you pay.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- =============== FAQ =============== -->
-<section id="faq" class="bg-off py-24 border-t border-line">
-  <div class="max-w-[900px] mx-auto px-6 lg:px-10">
-    <div class="mb-12 reveal">
-      <p class="kicker mb-3">FAQ</p>
-      <h2 class="font-display text-[40px] lg:text-[54px] leading-[1] tracking-tightest">Questions guests<br><span class="italic">ask us most.</span></h2>
-    </div>
-    <div class="space-y-3">
-      <details class="group bg-white border border-line rounded-2xl px-6 py-1 reveal">
-        <summary class="cursor-pointer list-none flex justify-between items-center py-4 font-display text-[18px]">What is Thai Villas?<span class="text-ink/40 group-open:rotate-45 transition text-[22px] leading-none">+</span></summary>
-        <p class="text-ink/60 text-[14.5px] pb-5">Thai Villas is a villa rental service in Thailand: a local team plus an AI search that matches you to handpicked villas in Phuket, Koh Samui, Pattaya, Bangkok, Krabi and Chiang Mai — for daily, monthly and yearly stays, with concierge help before and during your trip.</p>
-      </details>
-      <details class="group bg-white border border-line rounded-2xl px-6 py-1 reveal">
-        <summary class="cursor-pointer list-none flex justify-between items-center py-4 font-display text-[18px]">How do I book a villa?<span class="text-ink/40 group-open:rotate-45 transition text-[22px] leading-none">+</span></summary>
-        <p class="text-ink/60 text-[14.5px] pb-5">Describe your stay in plain words in our AI search, or message us on WhatsApp at +66 00 000 0000. We confirm availability and the exact price with the villa, send you a written confirmation, and you secure your dates with a deposit. Prices are on request while we're getting started.</p>
-      </details>
-      <details class="group bg-white border border-line rounded-2xl px-6 py-1 reveal">
-        <summary class="cursor-pointer list-none flex justify-between items-center py-4 font-display text-[18px]">How do deposits and payments work?<span class="text-ink/40 group-open:rotate-45 transition text-[22px] leading-none">+</span></summary>
-        <p class="text-ink/60 text-[14.5px] pb-5">Short stays are usually secured with a booking deposit, with the balance due before check-in. Monthly and yearly stays typically include a refundable security deposit, returned after check-out once the villa is checked. Every amount, plus the cancellation terms, is written in your confirmation before you pay.</p>
-      </details>
-      <details class="group bg-white border border-line rounded-2xl px-6 py-1 reveal">
-        <summary class="cursor-pointer list-none flex justify-between items-center py-4 font-display text-[18px]">Can I rent for a month or a year?<span class="text-ink/40 group-open:rotate-45 transition text-[22px] leading-none">+</span></summary>
-        <p class="text-ink/60 text-[14.5px] pb-5">Yes — and many of our guests do. Long stays usually come at a lower effective nightly rate. We help with what matters over a longer stay: how electricity and water are billed, cleaning schedules, Wi-Fi good enough for video calls, and schools, gyms or co-working nearby.</p>
-      </details>
-      <details class="group bg-white border border-line rounded-2xl px-6 py-1 reveal">
-        <summary class="cursor-pointer list-none flex justify-between items-center py-4 font-display text-[18px]">Do I need a visa for a long stay?<span class="text-ink/40 group-open:rotate-45 transition text-[22px] leading-none">+</span></summary>
-        <p class="text-ink/60 text-[14.5px] pb-5">It depends on your passport and how long you stay. Many nationalities can enter visa-free for a limited period, and there are longer options such as tourist, education, retirement and long-term visas. Rules change, so please check with the Thai embassy or official sources — we're happy to share what other long-stay guests have done, but we don't provide visa services.</p>
-      </details>
-      <details class="group bg-white border border-line rounded-2xl px-6 py-1 reveal">
-        <summary class="cursor-pointer list-none flex justify-between items-center py-4 font-display text-[18px]">When is the best time to visit?<span class="text-ink/40 group-open:rotate-45 transition text-[22px] leading-none">+</span></summary>
-        <p class="text-ink/60 text-[14.5px] pb-5">High season runs roughly November to April: dry, sunny and busiest — book early, especially around Christmas, New Year and Songkran in April. Koh Samui on the Gulf side is often driest from January to August, while Phuket and Krabi on the Andaman coast see more rain from May to October. Green season means lower rates and quieter beaches.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- =============== CONTACT =============== -->
-<section id="contact" class="bg-off py-24 border-t border-line">
-  <div class="max-w-[1400px] mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-16">
-    <div class="reveal">
-      <p class="kicker mb-3">Talk to us</p>
-      <h2 class="font-display text-[40px] lg:text-[54px] leading-[1] tracking-tightest mb-8">Plan your stay<br><span class="italic">with a local.</span></h2>
-      <div class="space-y-6 mb-10">
-        <div class="flex gap-4 items-start">
-          <div class="w-11 h-11 rounded-full bg-ink text-white flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div><p class="font-semibold mb-0.5">Based in</p><p class="text-ink/60 text-[14.5px]">Thailand — with local help in Phuket, Koh Samui, Pattaya, Bangkok, Krabi and Chiang Mai</p></div>
-        </div>
-        <div class="flex gap-4 items-start">
-          <div class="w-11 h-11 rounded-full bg-ink text-white flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.360.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg></div>
-          <div><p class="font-semibold mb-0.5">WhatsApp</p><a href="https://wa.me/66000000000?text=Hi%20Thai%20Villas!%20I%27m%20looking%20for%20a%20villa%20in%20Thailand." class="text-ink/60 text-[14.5px] hover:text-ink">+66 00 000 0000</a></div>
-        </div>
-        <div class="flex gap-4 items-start">
-          <div class="w-11 h-11 rounded-full bg-ink text-white flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 7l10 6 10-6"/></svg></div>
-          <div><p class="font-semibold mb-0.5">Email</p><a href="mailto:hello@thaivillas.example" class="text-ink/60 text-[14.5px] hover:text-ink">hello@thaivillas.example</a></div>
-        </div>
-        <div class="flex gap-4 items-start">
-          <div class="w-11 h-11 rounded-full bg-ink text-white flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-          <div><p class="font-semibold mb-0.5">Hours</p><p class="text-ink/60 text-[14.5px]">Booking help: every day, 9:00–21:00 (Thailand time, GMT+7)<br>Guest support during your stay: 24/7</p></div>
-        </div>
-      </div>
-      <a href="https://wa.me/66000000000?text=Hi%20Thai%20Villas!%20I%27m%20looking%20for%20a%20villa%20in%20Thailand." class="btn-primary inline-flex items-center gap-2">Message us on WhatsApp</a>
-    </div>
-    <div class="relative rounded-[28px] overflow-hidden border border-line min-h-[420px] bg-paper reveal">
-      <img src="/thaivillas/images/samui-2.jpg" alt="Villa terrace with a view over the Gulf of Thailand" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-    </div>
-  </div>
-</section>
-
-<!-- =============== CTA =============== -->
-<section class="bg-off py-24 border-t border-line">
-  <div class="max-w-[1200px] mx-auto px-6 lg:px-10 text-center reveal">
-    <p class="kicker mb-5">Ready when you are</p>
-    <h2 class="font-display text-[48px] lg:text-[80px] leading-[0.95] tracking-tightest mb-8">Now you know us.<br><span class="italic">Let's find your villa.</span></h2>
-    <a href="/thaivillas/property-rental/" class="btn-primary inline-flex items-center gap-2 !px-8 !py-4 !text-base">
-      Browse villas
-      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
-    </a>
-  </div>
-</section>
-
-<!-- =============== FOOTER =============== -->
-<footer class="bg-ink text-white pt-20 pb-10">
-  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-14">
-      <div class="col-span-2">
-        <div class="flex items-center gap-2 mb-5">
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-            <path d="M16 28 L15 16 L17 16 L16 28 Z" fill="#fff"/>
-            <ellipse cx="16" cy="12" rx="3" ry="8" fill="#fff" transform="rotate(-20 16 12)"/>
-            <ellipse cx="16" cy="12" rx="3" ry="8" fill="#fff" transform="rotate(20 16 12)"/>
-            <ellipse cx="16" cy="12" rx="3" ry="8" fill="#fff" transform="rotate(-60 16 12)"/>
-            <ellipse cx="16" cy="12" rx="3" ry="8" fill="#fff" transform="rotate(60 16 12)"/>
-            <ellipse cx="16" cy="12" rx="3" ry="8" fill="#fff" transform="rotate(-90 16 12)"/>
-            <ellipse cx="16" cy="12" rx="3" ry="8" fill="#fff" transform="rotate(90 16 12)"/>
-          </svg>
-          <span class="font-display text-[19px]"><span class="italic">Thai</span> <span class="font-semibold">Villas</span></span>
-        </div>
-        <p class="text-white/60 text-sm leading-relaxed max-w-xs mb-6">
-          Villa rentals in Thailand, matched by AI and looked after by a local team. Daily, monthly and yearly stays with concierge help for guests.
-        </p>
       </div>
       <div>
-        <h4 class="font-semibold mb-4 text-white/90">Explore</h4>
-        <ul class="space-y-2 text-sm text-white/55">
-          <li><a href="/thaivillas/villas/phuket/" class="hover:text-white">Phuket</a></li>
-          <li><a href="/thaivillas/villas/koh-samui/" class="hover:text-white">Koh Samui</a></li>
-          <li><a href="/thaivillas/villas/pattaya/" class="hover:text-white">Pattaya</a></li>
-          <li><a href="/thaivillas/villas/bangkok/" class="hover:text-white">Bangkok</a></li>
-          <li><a href="/thaivillas/property-rental/" class="hover:text-white">All destinations</a></li>
+        <h4>Destinations</h4>
+        <ul>
+          <li><a href="/thaivillas/property-rental/">All villas<span class="thb-ft-c">10</span></a></li>
+          <li><a href="/thaivillas/villas/phuket/">Phuket<span class="thb-ft-c">8</span></a></li>
+          <li><a href="/thaivillas/villas/koh-samui/">Koh Samui<span class="thb-ft-c">1</span></a></li>
+          <li><a href="/thaivillas/villas/pattaya/">Pattaya<span class="thb-ft-c">1</span></a></li>
+          <li><a href="/thaivillas/villas/bangkok/">Bangkok<span class="thb-ft-c">0</span></a></li>
+          <li><a href="/thaivillas/villas/krabi/">Krabi<span class="thb-ft-c">0</span></a></li>
+          <li><a href="/thaivillas/villas/koh-phangan/">Koh Phangan<span class="thb-ft-c">0</span></a></li>
+          <li><a href="/thaivillas/villas/">All destinations</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="font-semibold mb-4 text-white/90">Rentals</h4>
-        <ul class="space-y-2 text-sm text-white/55">
-          <li><a href="/thaivillas/property-rental/?period=daily" class="hover:text-white">Daily villas</a></li>
-          <li><a href="/thaivillas/property-rental/?period=monthly" class="hover:text-white">Monthly villas</a></li>
-          <li><a href="/thaivillas/property-rental/?period=yearly" class="hover:text-white">Yearly villas</a></li>
+        <h4>Phuket beaches</h4>
+        <ul>
+          <li><a href="/thaivillas/villas/phuket/bang-tao/">Bang Tao</a></li>
+          <li><a href="/thaivillas/villas/phuket/layan/">Layan</a></li>
+          <li><a href="/thaivillas/villas/phuket/surin/">Surin</a></li>
+          <li><a href="/thaivillas/villas/phuket/kamala/">Kamala</a></li>
+          <li><a href="/thaivillas/villas/phuket/patong/">Patong</a></li>
+          <li><a href="/thaivillas/villas/phuket/karon/">Karon</a></li>
+          <li><a href="/thaivillas/villas/phuket/kata/">Kata</a></li>
+          <li><a href="/thaivillas/villas/phuket/">All Phuket</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="font-semibold mb-4 text-white/90">Company</h4>
-        <ul class="space-y-2 text-sm text-white/55">
-          <li><a href="/thaivillas/about/" class="hover:text-white">About</a></li>
-          <li><a href="/thaivillas/about/#faq" class="hover:text-white">FAQ</a></li>
-          <li><a href="/thaivillas/about/#contact" class="hover:text-white">Contact</a></li>
+        <h4>Rent &amp; VIP</h4>
+        <ul>
+          <li><a href="/thaivillas/property-rental/?period=daily">Daily rentals</a></li>
+          <li><a href="/thaivillas/monthly-rental/">Monthly &amp; long stay</a></li>
+          <li><a href="/thaivillas/vip/yachts/">Yacht charter</a></li>
+          <li><a href="/thaivillas/vip/helicopters/">Helicopters</a></li>
+          <li><a href="/thaivillas/vip/supercars/">Supercars</a></li>
+          <li><a href="/thaivillas/vip/superbikes/">Superbikes</a></li>
+          <li><a href="/thaivillas/vip/">All VIP services</a></li>
         </ul>
       </div>
-    </div>
-    <div class="pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-white/50">
-      <div class="flex gap-6">
-        <a href="#" class="hover:text-white">Privacy Policy</a>
-        <a href="#" class="hover:text-white">Terms of Service</a>
+      <div>
+        <h4>Get in touch</h4>
+        <dl class="thb-ft-ct">
+          <dt>WhatsApp</dt>
+          <dd><a href="https://wa.me/66000000000" rel="noopener">+66 00 000 0000</a></dd>
+          <dt>Email</dt>
+          <dd><a href="mailto:hello@thaivillas.example">hello@thaivillas.example</a></dd>
+          <dt>Office</dt>
+          <dd>Phuket, Thailand</dd>
+          <dt>Hours</dt>
+          <dd>Every day 9:00–21:00 (GMT+7)<br>Guest support 24/7</dd>
+        </dl>
       </div>
-      <div>© 2026 ThaiVillas — All rights reserved</div>
+    </div>
+    <div class="thb-ft-bar">
+      <span>© 2026 Thai Villas · Villa rentals in Thailand</span>
+      <nav>
+        <a href="/thaivillas/property-rental/">All villas</a>
+        <a href="/thaivillas/about/">About</a>
+        <a href="/thaivillas/contacts/">Contacts</a>
+        <a href="/thaivillas/terms/">Terms</a>
+        <a href="/thaivillas/privacy/">Privacy</a>
+      </nav>
     </div>
   </div>
 </footer>
 
 <!-- =============== FLOATING WHATSAPP =============== -->
-<a href="https://wa.me/66000000000?text=Hi%20Thai%20Villas!%20I%27m%20looking%20for%20a%20villa%20in%20Thailand." class="fixed bottom-6 right-6 z-40 bg-ink hover:bg-ink/90 text-white px-5 py-3.5 rounded-full shadow-2xl flex items-center gap-2 font-semibold text-sm transition">
-  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-  Chat
-</a>
+<div id="thbWaPill">
+  <span class="ava" aria-hidden="true"></span>
+  <p>Need help choosing? Tell us your dates and what matters — we'll suggest the right villa.</p>
+  <a class="wa-go" href="https://wa.me/66000000000?text=Hi%20Thai%20Villas%21%20I%27m%20looking%20for%20a%20villa%20in%20Thailand." rel="noopener" aria-label="Chat on WhatsApp">WhatsApp</a>
+</div>
 
 <script>
-/* Scroll reveal animation */
+(function(){var pill=document.getElementById('thbWaPill');if(!pill)return;
+ function up(){pill.classList.toggle('thb-pill-on', window.scrollY > window.innerHeight*0.6);}
+ up();window.addEventListener('scroll',up,{passive:true});})();
+</script>
+<script defer src="/thaivillas/thb-fav.js"></script>
+<script>
+/* Villas mega-menu: hover the Villas nav item to reveal the districts/sections panel */
 (function () {
-  var els = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)) { els.forEach(function(e){e.classList.add('visible')}); return; }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) {
-      if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); }
-    });
-  }, { threshold: 0.12 });
-  els.forEach(function (e) { io.observe(e); });
+  var trigger = document.querySelector('.mega-trigger');
+  var panel = document.getElementById('villasPanel');
+  if (!trigger || !panel) return;
+  var backdrop = document.getElementById('villasBackdrop');
+  var chevron = trigger.querySelector('.mega-chevron');
+  var open = false;
+  function openMega() {
+    if (open) return; open = true;
+    panel.classList.add('open');
+    if (backdrop) backdrop.classList.add('open');
+    if (chevron) chevron.classList.add('open');
+  }
+  function closeMega() {
+    if (!open) return; open = false;
+    panel.classList.remove('open');
+    if (backdrop) backdrop.classList.remove('open');
+    if (chevron) chevron.classList.remove('open');
+  }
+  trigger.addEventListener('mouseenter', openMega);
+  if (backdrop) backdrop.addEventListener('click', closeMega);
+  /* close once the pointer leaves the trigger+panel zone */
+  document.addEventListener('mousemove', function (e) {
+    if (!open) return;
+    var pr = panel.getBoundingClientRect();
+    var tr = trigger.getBoundingClientRect();
+    var inZone = e.clientY >= tr.top && e.clientY <= pr.bottom + 8
+                 && e.clientX >= pr.left - 24 && e.clientX <= pr.right + 24;
+    if (!inZone && e.clientY > tr.bottom) closeMega();
+  });
+  /* click outside closes */
+  document.addEventListener('click', function (e) {
+    if (!trigger.contains(e.target) && !panel.contains(e.target)) closeMega();
+  });
+  /* Escape closes */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMega();
+  });
 })();
 </script>
+<script defer src="/thaivillas/thb-totop.js"></script>
+<script defer src="/thaivillas/thb-events.js"></script>
 </body>
 </html>
+
+

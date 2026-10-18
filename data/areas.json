@@ -1,0 +1,28 @@
+{
+  "_note": "Destinations and Phuket beach areas. Descriptions are general travel facts; villa counts are computed from villas.json.",
+  "destinations": [
+    {"slug": "phuket", "name": "Phuket", "image": "/thaivillas/images/phuket.jpg", "lat": 7.95, "lng": 98.34, "featured": true,
+     "short": "Thailand's biggest island: west-coast beaches, sunsets and the widest choice of pool villas.",
+     "areas": [
+       {"slug": "bang-tao", "name": "Bang Tao", "image": "/thaivillas/images/beaches/bang-tao.jpg", "lat": 7.997, "lng": 98.295, "short": "6 km beach, Laguna resorts, beach clubs and Cherng Talay cafés — the villa capital of Phuket."},
+       {"slug": "layan", "name": "Layan", "image": "/thaivillas/images/beaches/layan.jpg", "lat": 8.031, "lng": 98.293, "short": "Quiet bay inside a national park strip, hillside villas with sea views."},
+       {"slug": "surin", "name": "Surin", "image": "/thaivillas/images/beaches/surin.jpg", "lat": 7.978, "lng": 98.279, "short": "Small upscale beach between Bang Tao and Kamala, clear water November–April."},
+       {"slug": "kamala", "name": "Kamala", "image": "/thaivillas/images/beaches/kamala.jpg", "lat": 7.951, "lng": 98.283, "short": "Relaxed family beach, cliff-side villas on the road to Patong."},
+       {"slug": "patong", "name": "Patong", "image": "/thaivillas/images/beaches/patong.jpg", "lat": 7.896, "lng": 98.296, "short": "The busiest beach and nightlife hub; villas sit on the quieter hills above."},
+       {"slug": "karon", "name": "Karon", "image": "/thaivillas/images/beaches/karon.jpg", "lat": 7.847, "lng": 98.294, "short": "Long wide beach with squeaky sand, easy for families and long stays."},
+       {"slug": "kata", "name": "Kata", "image": "/thaivillas/images/beaches/kata.jpg", "lat": 7.82, "lng": 98.298, "short": "Lively but laid-back, surf in the green season, cafés and sea-view villas."},
+       {"slug": "kata-noi", "name": "Kata Noi", "image": "/thaivillas/images/beaches/kata-noi.jpg", "lat": 7.809, "lng": 98.296, "short": "Small secluded bay next to Kata, one of the island's most beautiful beaches."},
+       {"slug": "nai-harn", "name": "Nai Harn", "image": "/thaivillas/images/beaches/nai-harn.jpg", "lat": 7.776, "lng": 98.305, "short": "South-coast favourite of long-stayers: lake, beach, yoga and a calm pace."},
+       {"slug": "rawai", "name": "Rawai", "image": "/thaivillas/images/beaches/rawai.jpg", "lat": 7.779, "lng": 98.327, "short": "Southern tip, seafood market and boats to the islands; popular for monthly rentals."},
+       {"slug": "chalong", "name": "Chalong", "image": "/thaivillas/images/beaches/chalong.jpg", "lat": 7.83, "lng": 98.345, "short": "Marina for yacht and island trips, central for schools and everyday life."},
+       {"slug": "mai-khao", "name": "Mai Khao & Nai Yang", "image": "/thaivillas/images/beaches/mai-khao.jpg", "lat": 8.13, "lng": 98.3, "short": "Long quiet beaches in the north, 10 minutes from the airport."}
+     ]},
+    {"slug": "koh-samui", "name": "Koh Samui", "image": "/thaivillas/images/samui.jpg", "lat": 9.5, "lng": 100.0, "short": "Palm-fringed island in the Gulf of Thailand with calm seas and hillside villas."},
+    {"slug": "pattaya", "name": "Pattaya", "image": "/thaivillas/images/pattaya.jpg", "lat": 12.93, "lng": 100.88, "short": "Two hours from Bangkok, open all year, large family houses with pools."},
+    {"slug": "bangkok", "name": "Bangkok", "image": "/thaivillas/images/bangkok.jpg", "lat": 13.75, "lng": 100.5, "short": "Capital city stays: serviced houses and apartments for monthly living."},
+    {"slug": "krabi", "name": "Krabi", "image": "/thaivillas/images/krabi.jpg", "lat": 8.03, "lng": 98.82, "short": "Limestone cliffs, Ao Nang and Railay, gateway to Phi Phi and the Hong islands."},
+    {"slug": "koh-phangan", "name": "Koh Phangan", "image": "/thaivillas/images/koh-phangan.jpg", "lat": 9.73, "lng": 100.02, "short": "Jungle island next to Samui, quiet bays and a big long-stay community."},
+    {"slug": "hua-hin", "name": "Hua Hin", "image": "/thaivillas/images/hua-hin.jpg", "lat": 12.57, "lng": 99.96, "short": "Royal seaside town south of Bangkok, golf and calm family beaches."},
+    {"slug": "chiang-mai", "name": "Chiang Mai", "image": "/thaivillas/images/chiang-mai.jpg", "lat": 18.79, "lng": 98.98, "short": "Northern mountain city, temples and a cool season — popular for monthly stays."}
+  ]
+}
