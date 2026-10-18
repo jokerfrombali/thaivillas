@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Villa Rentals in Thailand — Thai Villas</title>
+<meta name="description" content="Browse pool villas for rent in Thailand — Phuket, Koh Samui, Pattaya and more. Daily, monthly and yearly stays with concierge help.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/thaivillas/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { ink:'#0a0a0a', off:'#fafaf7', paper:'#f2efe8', line:'#e6e3dc' },
+      fontFamily: { display:['Fraunces','Georgia','serif'], sans:['Inter','sans-serif'] }
+    }
+  }
+}
+</script>
+<style>
+* { box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: #fafaf7; color: #0a0a0a; -webkit-font-smoothing: antialiased; margin: 0; }
+
+/* NAV */
+.nav-link { position: relative; color: #0a0a0a; font-weight: 500; font-size: 14px; text-decoration: none; }
+.nav-link::after { content: ''; position: absolute; bottom: -6px; left: 0; right: 0; height: 1.5px; background: #0a0a0a; transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
+.nav-link:hover::after { transform: scaleX(1); }
+
+/* PROMO BANNER */
+.promo-banner {
+  position: relative;
+  background: #0a0a0a;
+  overflow: hidden;
+  padding: 32px 40px;
+}
+.promo-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/thaivillas/images/hero.jpg') center/cover no-repeat;
+  opacity: 0.18;
+}
+.promo-inner {
+  position: relative;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.promo-thumb {
+  width: 140px;
+  height: 110px;
+  border-radius: 16px;
+  object-fit: cover;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+.promo-center { flex: 1; text-align: center; }
+.promo-tag {
+  display: inline-block;
+  background: #b8f04a;
+  color: #0a0a0a;
+  font-weight: 800;
+  font-size: 13px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+}
+.promo-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 44px;
+  font-weight: 800;
+  color: white;
+  line-height: 1.05;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.promo-title em { color: #b8f04a; font-style: normal; }
+.promo-subtitle { color: rgba(255,255,255,0.65); font-size: 13px; margin-bottom: 16px; }
+.promo-code {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: 13px;
+  color: white;
+  margin-bottom: 18px;
+}
+.promo-code strong { color: #b8f04a; letter-spacing: 0.06em; }
+.promo-search {
+  background: white;
+  border-radius: 20px;
+  max-width: 620px;
+  margin: 0 auto;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+  overflow: hidden;
+}
+.promo-search-top {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px 10px;
+  gap: 10px;
+  border-bottom: 1px solid #e6e3dc;
+}
+.promo-search-top svg { color: #b0ada6; flex-shrink: 0; }
+.promo-search-top input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  color: #0a0a0a;
+  background: transparent;
+}
+.promo-search-top input::placeholder { color: #b0ada6; }
+.promo-search-bottom {
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 10px 20px;
+  gap: 0;
+}
+.promo-search-field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.promo-search-field input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  color: #0a0a0a;
+  background: transparent;
+  padding: 4px 0;
+}
+.promo-search-field input::placeholder { color: #b0ada6; }
+.promo-search-divider { width: 1px; height: 20px; background: #e6e3dc; flex-shrink: 0; margin: 0 12px; }
+.promo-search-btn {
+  background: #0a0a0a;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 11px 22px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+.promo-search-btn:hover { background: #222; }
+.promo-right { text-align: center; flex-shrink: 0; }
+.promo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(184,240,74,0.15);
+  border: 1px solid rgba(184,240,74,0.4);
+  border-radius: 12px;
+  padding: 10px 18px;
+  margin-bottom: 8px;
+}
+.promo-badge-text { font-size: 13px; font-weight: 600; color: #b8f04a; }
+.promo-tiers { display: flex; flex-direction: column; gap: 4px; }
+.promo-tier { font-size: 12px; color: rgba(255,255,255,0.55); }
+.promo-tier strong { color: rgba(255,255,255,0.85); }
+
+/* AMENITY PILLS ROW */
+.pills-bar {
+  background: white;
+  border-bottom: 1px solid #e6e3dc;
+  padding: 0 40px;
+}
+.pills-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.pills-scroll {
+  flex: 1;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 12px 0;
+  scrollbar-width: none;
+}
+.pills-scroll::-webkit-scrollbar { display: none; }
+.pill {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  color: #4a4a45;
+}
+.pill svg { stroke: currentColor; transition: stroke 0.15s; }
+.pill:hover { border-color: #0a0a0a; background: #f5f3ee; color: #0a0a0a; }
+.pill.active { border-color: #0a0a0a; background: #0a0a0a; color: white; }
+.pill-label { font-size: 11px; font-weight: 500; color: inherit; }
+.pills-sep { width: 1px; height: 40px; background: #e6e3dc; flex-shrink: 0; margin: 0 12px; }
+.filters-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  background: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  color: #0a0a0a;
+  transition: all 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.filters-btn:hover { border-color: #0a0a0a; }
+.filter-count-badge {
+  background: #0a0a0a;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 999px;
+  display: none;
+}
+
+/* RESULTS BAR */
+.results-bar {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 20px 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sort-select {
+  border: 1.5px solid #e6e3dc;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  background: white;
+  cursor: pointer;
+  color: #0a0a0a;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+.sort-select:hover { border-color: #0a0a0a; }
+.view-btn { width: 36px; height: 36px; border: 1.5px solid #e6e3dc; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: white; cursor: pointer; transition: all 0.15s; }
+.view-btn.active, .view-btn:hover { background: #0a0a0a; border-color: #0a0a0a; color: white; }
+.view-btn svg { width: 16px; height: 16px; }
+
+/* CARDS */
+.cards-wrap {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 24px 40px 60px;
+}
+.prop-card { background: white; border-radius: 20px; overflow: hidden; border: 1px solid #e6e3dc; transition: transform 0.3s cubic-bezier(0.2,0.6,0.2,1), box-shadow 0.3s; cursor: pointer; }
+.prop-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.10); }
+.prop-card .img-wrap { overflow: hidden; position: relative; }
+.prop-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.5s cubic-bezier(0.2,0.6,0.2,1); }
+.prop-card:hover img { transform: scale(1.04); }
+.badge { position: absolute; top: 12px; left: 12px; background: rgba(10,10,10,0.72); backdrop-filter: blur(6px); color: white; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+.badge-type { position: absolute; top: 12px; right: 44px; background: rgba(250,250,247,0.92); color: #0a0a0a; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+.heart-btn { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; background: rgba(250,250,247,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; transition: all 0.2s; }
+.heart-btn:hover { background: white; transform: scale(1.1); }
+.heart-btn.liked svg { fill: #e33; stroke: #e33; }
+.prop-meta { display: flex; align-items: center; gap: 12px; font-size: 12px; color: #6b6b66; }
+.prop-meta span { display: flex; align-items: center; gap: 4px; }
+
+/* FILTER DRAWER */
+#filterDrawer {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: none;
+}
+#filterDrawer.open { display: flex; }
+#filterBackdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,10,10,0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+#filterPanel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 380px;
+  background: #fafaf7;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  padding: 0;
+}
+#filterDrawer.open #filterPanel { transform: translateX(0); }
+
+.filter-section { border-bottom: 1px solid #e6e3dc; padding: 20px 28px; }
+.filter-section:last-child { border-bottom: none; }
+.filter-title { font-size: 13px; font-weight: 700; color: #0a0a0a; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+.filter-title svg { transition: transform 0.2s; }
+.filter-title.collapsed svg { transform: rotate(-90deg); }
+.filter-body { overflow: hidden; transition: max-height 0.3s ease; }
+
+.f-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 13px; border-radius: 999px; border: 1.5px solid #e6e3dc; font-size: 13px; cursor: pointer; transition: all 0.15s; user-select: none; background: white; font-family: 'Inter', sans-serif; }
+.f-chip:hover { border-color: #0a0a0a; }
+.f-chip.active { background: #0a0a0a; color: white; border-color: #0a0a0a; }
+.f-chip .count { font-size: 11px; opacity: 0.55; }
+.f-chip.active .count { opacity: 0.7; }
+
+.price-input { border: 1.5px solid #e6e3dc; border-radius: 10px; padding: 8px 12px; font-size: 13px; width: 100%; background: white; outline: none; font-family: 'Inter', sans-serif; }
+.price-input:focus { border-color: #0a0a0a; }
+
+/* CATEGORY CARDS */
+.cat-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.cat-card {
+  background: white;
+  border: 1px solid #e6e3dc;
+  border-radius: 24px;
+  padding: 28px 28px 26px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2,0.6,0.2,1);
+  overflow: hidden;
+  position: relative;
+}
+.cat-card::after {
+  content: '→';
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%) translateX(4px);
+  font-size: 18px;
+  color: #ccc;
+  transition: all 0.25s;
+  opacity: 0;
+}
+.cat-card:hover { border-color: #0a0a0a; transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.10); }
+.cat-card:hover::after { opacity: 1; transform: translateY(-50%) translateX(0); color: #0a0a0a; }
+.cat-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.2,0.6,0.2,1);
+}
+.cat-card:hover .cat-icon { transform: scale(1.06) rotate(-2deg); }
+.cat-card h3 { font-family: 'Fraunces', Georgia, serif; font-size: 17px; font-weight: 700; margin: 0 0 4px; letter-spacing: -0.01em; }
+.cat-card p { font-size: 12.5px; color: #6b6b66; margin: 0; line-height: 1.4; }
+
+/* BTN */
+.btn-primary { background: #0a0a0a; color: #fff; border-radius: 999px; padding: 12px 22px; font-weight: 600; font-size: 14px; border: none; cursor: pointer; transition: background 0.2s; display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; text-decoration: none; }
+.btn-primary:hover { background: #222; }
+.btn-outline { border: 1.5px solid #0a0a0a; color: #0a0a0a; background: transparent; border-radius: 999px; padding: 11px 21px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+.btn-outline:hover { background: #0a0a0a; color: #fff; }
+
+/* ── MEGA-MENU (copied from main) ── */
+#villasBackdrop { display:none; position:fixed; inset:0; top:72px; background:rgba(0,0,0,0.45); z-index:300; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+#villasBackdrop.open { display:block; }
+#villasPanel { display:none; position:fixed; top:72px; left:0; right:0; width:100%; background:#fafaf7; border-bottom:1px solid #e6e3dc; box-shadow:0 8px 40px rgba(0,0,0,0.10); padding:32px 0; z-index:310; flex-direction:row; justify-content:center; gap:0; }
+#villasPanel.open { display:flex; }
+.mega-inner { display:flex; align-items:flex-start; max-width:1400px; margin:0 auto; padding:0 40px; }
+.mega-col-title { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#b0ada6; margin-bottom:10px; }
+.mega-item { display:block; font-size:13.5px; font-weight:500; color:#0a0a0a; text-decoration:none; padding:4px 0; white-space:nowrap; position:relative; }
+.mega-item::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:#0a0a0a; transform:scaleX(0); transform-origin:center; transition:transform 0.25s cubic-bezier(0.4,0,0.2,1); }
+.mega-item:hover::after { transform:scaleX(1); }
+.mega-count { font-size:11px; color:#b0ada6; font-weight:400; margin-left:4px; }
+.mega-divider { width:1px; background:#e6e3dc; align-self:stretch; flex-shrink:0; }
+.mega-featured { position:relative; border-radius:16px; overflow:hidden; height:200px; cursor:pointer; flex-shrink:0; }
+.mega-featured-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(10,10,10,0.75) 0%,transparent 55%); }
+.mega-featured-content { position:absolute; bottom:0; left:0; right:0; padding:20px 16px; color:white; }
+.mega-zoom-img { transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1) !important; }
+.mega-zoom:hover .mega-zoom-img { transform:scale(1.08); }
+.mega-trigger { position:relative; }
+.mega-chevron { transition:transform 0.25s; }
+.mega-chevron.open { transform:rotate(180deg); }
+@keyframes navMicPulse { 0% { transform:scale(1); opacity:0.6; } 100% { transform:scale(1.9); opacity:0; } }
+@keyframes vorbPulse { 0% { transform:scale(1); opacity:0.7; } 100% { transform:scale(2.1); opacity:0; } }
+
+/* EMPTY STATE + RESPONSIVE (Thai Villas) */
+.empty-state { grid-column: 1 / -1; background: white; border: 1px dashed #d8d4ca; border-radius: 24px; padding: 56px 24px; text-align: center; }
+.empty-state h3 { font-family: 'Fraunces', Georgia, serif; font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+.empty-state p { font-size: 14px; color: #6b6b66; margin: 0 auto 20px; max-width: 420px; line-height: 1.5; }
+.loc-row { display:flex; align-items:center; justify-content:space-between; padding:6px 0; cursor:pointer; font-size:13.5px; }
+.loc-row.zero { color:#9a978f; }
+@media (max-width: 1100px) { #cardGrid.grid-mode { grid-template-columns: repeat(3,1fr) !important; } .nav-center { display:none !important; } }
+@media (max-width: 860px) { #cardGrid.grid-mode { grid-template-columns: repeat(2,1fr) !important; } .cat-grid { grid-template-columns: 1fr; } #villasPanel { display:none !important; } }
+@media (max-width: 640px) {
+  #cardGrid.grid-mode { grid-template-columns: 1fr !important; }
+  .promo-banner, .pills-bar { padding-left:16px; padding-right:16px; }
+  .results-bar, .cards-wrap, .cat-grid { padding-left:16px; padding-right:16px; }
+  .results-bar { flex-direction:column; align-items:flex-start; gap:12px; }
+  .promo-title { font-size: 32px; }
+  .promo-search-bottom { flex-wrap: wrap; gap:8px; }
+  .promo-search-divider { display:none; }
+  .nav-pad { padding: 0 16px !important; }
+  .hide-sm { display:none !important; }
+  #filterPanel { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<div id="villasBackdrop"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar" style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,250,247,0.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #e6e3dc">
+  <div class="nav-pad" style="max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:72px">
+    <!-- Logo -->
+    <a href="/thaivillas/" style="text-decoration:none;color:#0a0a0a;font-family:'Fraunces',Georgia,serif;font-size:19px;font-weight:600;letter-spacing:-0.025em;flex-shrink:0">
+      <span class="italic" style="font-style:italic;font-weight:400">Thai</span> <span class="font-semibold" style="font-weight:600">Villas</span>
+    </a>
+    <!-- Center links -->
+    <div class="nav-center" style="display:flex;align-items:center;gap:36px">
+      <div class="mega-trigger">
+        <a href="/thaivillas/property-rental/" class="nav-link" style="display:flex;align-items:center;gap:4px">Villas
+          <svg class="mega-chevron" style="width:12px;height:12px;opacity:0.6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+      </div>
+      <a href="/thaivillas/#locations" class="nav-link">Destinations</a>
+      <a href="/thaivillas/#longterm" class="nav-link">Monthly &amp; Yearly</a>
+      <a href="/thaivillas/about/" class="nav-link">About</a>
+      <a href="/thaivillas/villas/" class="nav-link">All villas</a>
+    </div>
+    <!-- Right side -->
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+      <!-- Language -->
+      <div class="hide-sm" style="position:relative" id="langSwitcher">
+        <button id="langToggle" style="display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;border:none;background:transparent;cursor:pointer;font-size:13px;font-weight:500;font-family:'Inter',sans-serif;color:#0a0a0a">
+          <svg style="width:16px;height:16px;opacity:0.7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+          EN
+          <svg style="width:12px;height:12px;opacity:0.6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div id="langMenu" style="display:none;position:absolute;right:0;top:calc(100% + 8px);width:176px;background:white;border:1px solid #e6e3dc;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.12);overflow:hidden;z-index:50">
+          <a href="/thaivillas/property-rental/" style="display:flex;align-items:center;gap:8px;padding:10px 16px;font-size:13px;font-weight:600;color:#0a0a0a;text-decoration:none;background:#f2efe8">EN <span style="font-weight:400;color:#6b6b66">English</span></a>
+          <span style="display:flex;align-items:center;gap:8px;padding:10px 16px;font-size:13px;font-weight:500;color:#b0ada6">RU <span style="font-weight:400">Русский — soon</span></span>
+          <span style="display:flex;align-items:center;gap:8px;padding:10px 16px;font-size:13px;font-weight:500;color:#b0ada6">TH <span style="font-weight:400">ไทย — soon</span></span>
+        </div>
+      </div>
+      <!-- Mic -->
+      <button id="navMicBtn" class="hide-sm" title="Voice search" style="position:relative;width:40px;height:40px;border-radius:50%;background:#0a0a0a;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform 0.15s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+      </button>
+      <!-- CTA -->
+      <a href="https://wa.me/66000000000?text=Hi%20Thai%20Villas!%20I%27m%20looking%20for%20a%20villa%20in%20Thailand." class="btn-primary" style="font-size:13px;padding:10px 20px">
+        Contact Concierge
+        <svg style="width:14px;height:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- MEGA-MENU PANEL -->
+<div id="villasPanel">
+  <div class="mega-inner">
+    <div style="width:140px;flex-shrink:0;padding:0 28px 0 0">
+      <p class="mega-col-title">Property type</p>
+      <a href="/thaivillas/property-rental/?type=villa" class="mega-item">Villa <span class="mega-count">6</span></a>
+      <a href="/thaivillas/property-rental/?type=luxury" class="mega-item">Luxury <span class="mega-count">0</span></a>
+      <a href="/thaivillas/property-rental/" class="mega-item">All types <span class="mega-count">6</span></a>
+    </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="width:150px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">Bedrooms</p>
+      <a href="/thaivillas/property-rental/?beds=1" class="mega-item">1 bedroom <span class="mega-count">1</span></a>
+      <a href="/thaivillas/property-rental/?beds=2" class="mega-item">2 bedrooms <span class="mega-count">2</span></a>
+      <a href="/thaivillas/property-rental/?beds=3" class="mega-item">3 bedrooms <span class="mega-count">2</span></a>
+      <a href="/thaivillas/property-rental/?beds=4" class="mega-item">4 bedrooms <span class="mega-count">1</span></a>
+      <a href="/thaivillas/property-rental/?beds=5" class="mega-item">5+ bedrooms <span class="mega-count">0</span></a>
+    </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="width:130px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">Rental period</p>
+      <a href="/thaivillas/property-rental/?period=daily" class="mega-item">Daily <span class="mega-count">6</span></a>
+      <a href="/thaivillas/property-rental/?period=monthly" class="mega-item">Monthly <span class="mega-count">4</span></a>
+      <a href="/thaivillas/property-rental/?period=yearly" class="mega-item">Yearly <span class="mega-count">4</span></a>
+    </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="width:140px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">Location</p>
+      <a href="/thaivillas/property-rental/?location=phuket" class="mega-item">Phuket <span class="mega-count">2</span></a>
+      <a href="/thaivillas/property-rental/?location=koh-samui" class="mega-item">Koh Samui <span class="mega-count">2</span></a>
+      <a href="/thaivillas/property-rental/?location=pattaya" class="mega-item">Pattaya <span class="mega-count">2</span></a>
+      <a href="/thaivillas/property-rental/?location=bangkok" class="mega-item">Bangkok <span class="mega-count">0</span></a>
+      <a href="/thaivillas/property-rental/?location=krabi" class="mega-item">Krabi <span class="mega-count">0</span></a>
+      <a href="/thaivillas/property-rental/?location=chiang-mai" class="mega-item">Chiang Mai <span class="mega-count">0</span></a>
+      <a href="/thaivillas/property-rental/" class="mega-item" style="margin-top:6px;border-top:1px solid #e6e3dc;padding-top:8px;color:#6b6b66">All of Thailand →</a>
+    </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="width:140px;flex-shrink:0;padding-right:28px">
+      <p class="mega-col-title">Amenities</p>
+      <a href="/thaivillas/property-rental/?amenity=pool" class="mega-item">Private pool <span class="mega-count">6</span></a>
+      <a href="/thaivillas/property-rental/?amenity=beach" class="mega-item">Near beach <span class="mega-count">2</span></a>
+      <a href="/thaivillas/property-rental/?amenity=ocean-view" class="mega-item">Ocean view <span class="mega-count">2</span></a>
+      <a href="/thaivillas/property-rental/?amenity=chef" class="mega-item">Chef service <span class="mega-count">1</span></a>
+    </div>
+    <div class="mega-divider" style="margin-right:28px"></div>
+    <div style="min-width:130px;padding-right:28px">
+      <p class="mega-col-title">Type of stay</p>
+      <a href="/thaivillas/property-rental/?vibe=romantic" class="mega-item">Romantic Escape</a>
+      <a href="/thaivillas/property-rental/?vibe=surf" class="mega-item">Beach &amp; Friends</a>
+      <a href="/thaivillas/property-rental/?vibe=family" class="mega-item">Family Retreat</a>
+      <a href="/thaivillas/property-rental/?vibe=work" class="mega-item">Work &amp; Live</a>
+    </div>
+    <div style="flex:1"></div>
+    <div class="mega-featured mega-zoom" style="width:180px;flex-shrink:0;margin-right:16px">
+      <img src="/thaivillas/images/all-thailand.jpg" alt="All of Thailand" class="mega-zoom-img" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <div class="mega-featured-overlay"></div>
+      <div class="mega-featured-content">
+        <p style="font-family:'Fraunces',Georgia,serif;font-size:16px;font-weight:700;line-height:1.25;margin-bottom:6px">All of Thailand,<br>in one place</p>
+        <p style="font-size:11px;opacity:0.75;margin-bottom:12px">Islands, beaches and city stays</p>
+        <a href="/thaivillas/property-rental/" style="font-size:12px;font-weight:600;background:white;color:#0a0a0a;border-radius:999px;padding:6px 14px;text-decoration:none;display:inline-flex;align-items:center;gap:5px">
+          <svg style="width:11px;height:11px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Browse all villas
+        </a>
+      </div>
+    </div>
+    <div id="megaSlide" class="mega-featured mega-zoom" style="width:180px;flex-shrink:0">
+      <img id="megaSlideImg" src="/thaivillas/images/phuket.jpg" alt="" class="mega-zoom-img" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 0.6s">
+      <div class="mega-featured-overlay"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:rgba(255,255,255,0.2);z-index:2">
+        <div id="megaSlideBar" style="height:100%;background:white;width:100%;transition:none;transform-origin:left"></div>
+      </div>
+      <div style="position:absolute;top:10px;right:10px;display:flex;gap:5px;z-index:2">
+        <span class="sdot" data-i="0" style="width:6px;height:6px;border-radius:50%;background:white;opacity:1;transition:opacity 0.3s"></span>
+        <span class="sdot" data-i="1" style="width:6px;height:6px;border-radius:50%;background:white;opacity:0.35;transition:opacity 0.3s"></span>
+        <span class="sdot" data-i="2" style="width:6px;height:6px;border-radius:50%;background:white;opacity:0.35;transition:opacity 0.3s"></span>
+      </div>
+      <div class="mega-featured-content">
+        <p id="megaSlideTitle" style="font-family:'Fraunces',Georgia,serif;font-size:16px;font-weight:700;line-height:1.25;margin-bottom:6px;transition:opacity 0.4s">Beaches, Sunsets<br>&amp; Sea Views</p>
+        <p id="megaSlideDesc" style="font-size:11px;opacity:0.75;margin-bottom:12px;transition:opacity 0.4s">Phuket — Thailand's favourite island</p>
+        <a id="megaSlideBtn" href="/thaivillas/property-rental/?location=phuket" style="font-size:12px;font-weight:600;background:white;color:#0a0a0a;border-radius:999px;padding:6px 14px;text-decoration:none">Explore Phuket →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE -->
+<div style="padding-top:72px;min-height:100vh">
+
+  <!-- HERO BANNER -->
+  <div class="promo-banner">
+    <div class="promo-inner">
+      <div class="promo-center">
+        <div class="promo-tag">🌴 High season · Nov–Apr</div>
+        <h1 class="promo-title">Villa rentals in <em>Thailand</em></h1>
+        <p class="promo-subtitle">Pool villas in Phuket, Koh Samui and Pattaya — daily, monthly or yearly. Prices on request.</p>
+        <div class="promo-search">
+          <div class="promo-search-top">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <input type="text" id="searchWhere" placeholder="Where in Thailand? — Phuket, Koh Samui, Pattaya…">
+          </div>
+          <div class="promo-search-bottom">
+            <div class="promo-search-field">
+              <div>
+                <div style="font-size:10px;font-weight:700;color:#0a0a0a;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:2px">Check in</div>
+                <input type="text" placeholder="Add dates">
+              </div>
+            </div>
+            <div class="promo-search-divider"></div>
+            <div class="promo-search-field">
+              <div>
+                <div style="font-size:10px;font-weight:700;color:#0a0a0a;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:2px">Check out</div>
+                <input type="text" placeholder="Add dates">
+              </div>
+            </div>
+            <div class="promo-search-divider"></div>
+            <div class="promo-search-field">
+              <div>
+                <div style="font-size:10px;font-weight:700;color:#0a0a0a;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:2px">Guests</div>
+                <input type="number" min="1" id="searchGuests" placeholder="Add guests">
+              </div>
+            </div>
+            <button class="promo-search-btn" id="searchBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              Search
+            </button>
+          </div>
+        </div>
+        <p style="color:rgba(255,255,255,0.4);font-size:11.5px;margin-top:10px">Free concierge help &nbsp;•&nbsp; Monthly &amp; yearly stays &nbsp;•&nbsp; Local team in Thailand</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI SEARCH STRIP -->
+  <div style="background:#f5f3ee;border-bottom:1px solid #e6e3dc;padding:20px 16px">
+    <div style="max-width:860px;margin:0 auto">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+        <span style="display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6b6b66">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
+          Ask our concierge
+        </span>
+        <span style="font-size:11.5px;color:#b0ada6">— describe your ideal villa in plain language</span>
+      </div>
+      <div style="background:white;border-radius:20px;border:1px solid #e6e3dc;box-shadow:0 4px 24px rgba(0,0,0,0.06);overflow:hidden">
+        <div style="padding:16px 20px 10px;display:flex;align-items:flex-start;gap:12px">
+          <textarea id="aiPrompt" rows="2" style="flex:1;resize:none;background:transparent;font-family:'Fraunces',Georgia,serif;font-size:17px;line-height:1.5;color:#0a0a0a;border:none;outline:none" placeholder="e.g. 3 bedroom pool villa in Phuket near the beach, monthly stay from December…"></textarea>
+          <button id="voiceMicBtn" title="Voice search" style="width:42px;height:42px;flex-shrink:0;border-radius:50%;background:#0a0a0a;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform 0.15s;margin-top:2px" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          </button>
+        </div>
+        <div style="padding:8px 16px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button class="qchip" onclick="appendPrompt('Phuket')">📍 Phuket</button>
+            <button class="qchip" onclick="appendPrompt('Koh Samui')">📍 Koh Samui</button>
+            <button class="qchip" onclick="appendPrompt('private pool')">🏊 Private pool</button>
+            <button class="qchip" onclick="appendPrompt('monthly stay')">📅 Monthly stay</button>
+            <button class="qchip" onclick="appendPrompt('near the beach')">🏖️ Near beach</button>
+          </div>
+          <button id="aiSend" style="display:flex;align-items:center;gap:7px;background:#0a0a0a;color:white;border:none;border-radius:12px;padding:10px 20px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap" onmouseover="this.style.background='#222'" onmouseout="this.style.background='#0a0a0a'">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
+            Send to concierge
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AMENITY PILLS + FILTERS -->
+  <div class="pills-bar">
+    <div class="pills-inner">
+      <div class="pills-scroll" id="pillsScroll">
+        <button class="pill active" data-amenity="all" onclick="setPill(this)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <span class="pill-label">All</span>
+        </button>
+        <button class="pill" data-amenity="pool" onclick="setPill(this)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c1.5-2 3-2 4.5 0s3 2 4.5 0 3-2 4.5 0 3 2 4.5 0"/><path d="M2 18c1.5-2 3-2 4.5 0s3 2 4.5 0 3-2 4.5 0 3 2 4.5 0"/><circle cx="12" cy="5" r="2"/><path d="M12 7v3"/></svg>
+          <span class="pill-label">Private pool</span>
+        </button>
+        <button class="pill" data-amenity="wifi" onclick="setPill(this)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
+          <span class="pill-label">Wi-Fi</span>
+        </button>
+        <button class="pill" data-amenity="kitchen" onclick="setPill(this)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2"/><path d="M18 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" fill="none"/><path d="M18 6v16"/></svg>
+          <span class="pill-label">Kitchen</span>
+        </button>
+        <button class="pill" data-amenity="beach" onclick="setPill(this)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0-4.4-3.6-8-8-8s-8 3.6-8 8"/><path d="M12 2v20"/><path d="M4 10h16"/><path d="M3 20h18"/></svg>
+          <span class="pill-label">Near beach</span>
+        </button>
+        <button class="pill" data-amenity="ocean" onclick="setPill(this)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16c1.5-2 3-2 4.5 0s3 2 4.5 0 3-2 4.5 0 3 2 4.5 0"/><path d="M2 20c1.5-2 3-2 4.5 0s3 2 4.5 0 3-2 4.5 0 3 2 4.5 0"/><circle cx="12" cy="8" r="3"/><path d="M12 5V3"/></svg>
+          <span class="pill-label">Sea view</span>
+        </button>
+        <button class="pill" data-amenity="work" onclick="setPill(this)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <span class="pill-label">Workspace</span>
+        </button>
+        <button class="pill" data-amenity="ac" onclick="setPill(this)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="8" rx="2"/><path d="M7 14v2M12 14v4M17 14v2"/><path d="M6 10h.01M10 10h.01M14 10h.01"/></svg>
+          <span class="pill-label">Air con</span>
+        </button>
+        <button class="pill" data-amenity="parking" onclick="setPill(this)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+          <span class="pill-label">Parking</span>
+        </button>
+        <button class="pill" data-amenity="garden" onclick="setPill(this)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C12 7 8 4 4 4c0 5 3 8 8 8z"/><path d="M12 12c0-5 4-8 8-8 0 5-3 8-8 8z"/></svg>
+          <span class="pill-label">Garden</span>
+        </button>
+        <button class="pill" data-amenity="kids" onclick="setPill(this)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2"/><path d="M3 21v-2a6 6 0 0 1 12 0v2"/><path d="M15 21v-1a4 4 0 0 1 6-3.5"/></svg>
+          <span class="pill-label">Kids friendly</span>
+        </button>
+        <button class="pill" data-amenity="chef" onclick="setPill(this)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6v-7.13z"/><path d="M6 17h12"/></svg>
+          <span class="pill-label">Private chef</span>
+        </button>
+      </div>
+      <div class="pills-sep"></div>
+      <button class="filters-btn" onclick="openFilters()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+        Filters
+        <span class="filter-count-badge" id="filterCountBadge">0</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- RESULTS BAR -->
+  <div class="results-bar">
+    <div>
+      <p style="font-size:12px;color:#6b6b66;text-transform:uppercase;letter-spacing:0.18em;font-weight:600;margin-bottom:3px">Thailand Villa Rentals</p>
+      <p style="font-family:'Fraunces',Georgia,serif;font-size:26px;font-weight:700" id="resultsTitle">6 villas available</p>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <select class="sort-select" id="sortSelect">
+        <option value="recommended">Recommended</option>
+        <option value="beds-desc">Bedrooms: most first</option>
+        <option value="beds-asc">Bedrooms: fewest first</option>
+        <option value="guests-desc">Guests: most first</option>
+      </select>
+      <div class="hide-sm" style="display:flex;gap:4px">
+        <button class="view-btn active" id="viewGrid" title="Grid view">
+          <svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
+        </button>
+        <button class="view-btn" id="viewList" title="List view">
+          <svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="2" width="14" height="3" rx="1"/><rect x="1" y="7" width="14" height="3" rx="1"/><rect x="1" y="12" width="14" height="3" rx="1"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORY CARDS -->
+  <div class="cat-grid" style="padding-top:20px">
+    <a class="cat-card" href="/thaivillas/property-rental/?location=phuket" style="text-decoration:none;color:inherit">
+      <div class="cat-icon">
+        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 5l2.5 9.5L31 12l-7.5 6 2.5 9.5L19 22l-7 5.5 2.5-9.5L7 12l9.5 2.5L19 5z" fill="#b8f04a" stroke="#b8f04a" stroke-width="0.5" stroke-linejoin="round"/>
+          <circle cx="7" cy="7" r="2" fill="white" opacity="0.6"/>
+          <circle cx="31" cy="31" r="2" fill="white" opacity="0.6"/>
+          <circle cx="31" cy="8" r="1.2" fill="white" opacity="0.35"/>
+          <circle cx="7" cy="30" r="1.2" fill="white" opacity="0.35"/>
+        </svg>
+      </div>
+      <div>
+        <h3>New on Thai Villas</h3>
+        <p>Our first pool villas in Phuket</p>
+      </div>
+    </a>
+
+    <a class="cat-card" href="/thaivillas/property-rental/?vibe=family" style="text-decoration:none;color:inherit">
+      <div class="cat-icon">
+        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 28h28l-3-14-7 7-4-10-4 10-7-7-3 14z" fill="#b8f04a" stroke="#b8f04a" stroke-width="0.5" stroke-linejoin="round"/>
+          <rect x="5" y="28" width="28" height="3.5" rx="1.5" fill="white" opacity="0.9"/>
+          <circle cx="19" cy="10" r="2.5" fill="white"/>
+          <circle cx="8.5" cy="19" r="1.8" fill="white" opacity="0.7"/>
+          <circle cx="29.5" cy="19" r="1.8" fill="white" opacity="0.7"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Family Villas</h3>
+        <p>Space, big pools and kid-friendly homes</p>
+      </div>
+    </a>
+
+    <a class="cat-card" href="/thaivillas/property-rental/?period=monthly" style="text-decoration:none;color:inherit">
+      <div class="cat-icon">
+        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="9" width="30" height="25" rx="5" fill="none" stroke="white" stroke-width="2"/>
+          <rect x="4" y="9" width="30" height="11" rx="5" fill="#b8f04a"/>
+          <rect x="4" y="16" width="30" height="4" fill="#b8f04a"/>
+          <line x1="13" y1="5" x2="13" y2="13" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="25" y1="5" x2="25" y2="13" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="12" cy="24" r="2" fill="white" opacity="0.5"/>
+          <circle cx="19" cy="24" r="2" fill="white"/>
+          <circle cx="26" cy="24" r="2" fill="white" opacity="0.5"/>
+          <circle cx="12" cy="31" r="2" fill="white" opacity="0.5"/>
+          <circle cx="19" cy="31" r="2" fill="white" opacity="0.5"/>
+          <circle cx="26" cy="31" r="2" fill="#b8f04a"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Monthly Stays</h3>
+        <p>Flexible long-term options</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- CARDS GRID (rendered from VILLAS below) -->
+  <div class="cards-wrap">
+    <div id="cardGrid" class="grid-mode" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px"></div>
+    <div style="text-align:center;margin-top:40px">
+      <p style="font-size:13px;color:#6b6b66" id="showingNote">Showing 6 of 6 villas</p>
+      <p style="font-size:12px;color:#9a978f;margin-top:6px">Demo listings — prices on request. Our concierge confirms availability and rates within hours.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer style="background:#0a0a0a;color:white;padding:48px 16px 32px">
+  <div style="max-width:1300px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between">
+    <div style="max-width:320px">
+      <p style="font-family:'Fraunces',Georgia,serif;font-size:19px;margin-bottom:10px"><span class="italic" style="font-style:italic;font-weight:400">Thai</span> <span class="font-semibold" style="font-weight:600">Villas</span></p>
+      <p style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6">Villa rentals in Thailand — daily, monthly and yearly stays, with a concierge team to help you settle in.</p>
+    </div>
+    <div>
+      <p style="font-size:13px;font-weight:600;margin-bottom:10px;color:rgba(255,255,255,0.9)">Destinations</p>
+      <ul style="list-style:none;padding:0;margin:0;font-size:13px;line-height:2">
+        <li><a href="/thaivillas/villas/phuket/" style="color:rgba(255,255,255,0.55);text-decoration:none">Phuket</a></li>
+        <li><a href="/thaivillas/villas/koh-samui/" style="color:rgba(255,255,255,0.55);text-decoration:none">Koh Samui</a></li>
+        <li><a href="/thaivillas/villas/pattaya/" style="color:rgba(255,255,255,0.55);text-decoration:none">Pattaya</a></li>
+        <li><a href="/thaivillas/villas/" style="color:rgba(255,255,255,0.55);text-decoration:none">All destinations</a></li>
+      </ul>
+    </div>
+    <div>
+      <p style="font-size:13px;font-weight:600;margin-bottom:10px;color:rgba(255,255,255,0.9)">Rentals</p>
+      <ul style="list-style:none;padding:0;margin:0;font-size:13px;line-height:2">
+        <li><a href="/thaivillas/property-rental/?period=daily" style="color:rgba(255,255,255,0.55);text-decoration:none">Daily villas</a></li>
+        <li><a href="/thaivillas/property-rental/?period=monthly" style="color:rgba(255,255,255,0.55);text-decoration:none">Monthly villas</a></li>
+        <li><a href="/thaivillas/property-rental/?period=yearly" style="color:rgba(255,255,255,0.55);text-decoration:none">Yearly villas</a></li>
+      </ul>
+    </div>
+    <div>
+      <p style="font-size:13px;font-weight:600;margin-bottom:10px;color:rgba(255,255,255,0.9)">Contact</p>
+      <ul style="list-style:none;padding:0;margin:0;font-size:13px;line-height:2;color:rgba(255,255,255,0.55)">
+        <li><a href="https://wa.me/66000000000?text=Hi%20Thai%20Villas!%20I%27m%20looking%20for%20a%20villa%20in%20Thailand." style="color:rgba(255,255,255,0.55);text-decoration:none">WhatsApp concierge</a></li>
+        <li>+66 00 000 0000</li>
+        <li><a href="mailto:hello@thaivillas.example" style="color:rgba(255,255,255,0.55);text-decoration:none">hello@thaivillas.example</a></li>
+        <li>Thailand</li>
+      </ul>
+    </div>
+  </div>
+  <p style="max-width:1300px;margin:32px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);font-size:12px;color:rgba(255,255,255,0.45)">© 2026 ThaiVillas — All rights reserved</p>
+</footer>
+
+<!-- FILTER DRAWER -->
+<div id="filterDrawer">
+  <div id="filterBackdrop" onclick="closeFilters()"></div>
+  <div id="filterPanel">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 28px 16px;border-bottom:1px solid #e6e3dc;position:sticky;top:0;background:#fafaf7;z-index:1">
+      <span style="font-family:'Fraunces',Georgia,serif;font-size:18px;font-weight:700">Filters</span>
+      <div style="display:flex;align-items:center;gap:12px">
+        <button onclick="clearAllFilters()" style="font-size:12px;color:#6b6b66;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:underline">Clear all</button>
+        <button onclick="closeFilters()" style="width:32px;height:32px;border-radius:50%;border:1.5px solid #e6e3dc;background:white;cursor:pointer;display:flex;align-items:center;justify-content:center">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title" onclick="toggleFilter(this)">Property type
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="filter-body">
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <label class="f-chip" data-group="type" data-value="">All <span class="count" data-count="type:">6</span></label>
+          <label class="f-chip" data-group="type" data-value="villa">Villa <span class="count" data-count="type:villa">6</span></label>
+          <label class="f-chip" data-group="type" data-value="luxury">Luxury <span class="count" data-count="type:luxury">0</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title" onclick="toggleFilter(this)">Bedrooms
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="filter-body">
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <label class="f-chip" data-group="beds" data-value="">Any</label>
+          <label class="f-chip" data-group="beds" data-value="1">1 <span class="count" data-count="beds:1">1</span></label>
+          <label class="f-chip" data-group="beds" data-value="2">2 <span class="count" data-count="beds:2">2</span></label>
+          <label class="f-chip" data-group="beds" data-value="3">3 <span class="count" data-count="beds:3">2</span></label>
+          <label class="f-chip" data-group="beds" data-value="4">4 <span class="count" data-count="beds:4">1</span></label>
+          <label class="f-chip" data-group="beds" data-value="5">5+ <span class="count" data-count="beds:5">0</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title" onclick="toggleFilter(this)">Rental period
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="filter-body">
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <label class="f-chip" data-group="period" data-value="daily">Daily <span class="count" data-count="period:daily">6</span></label>
+          <label class="f-chip" data-group="period" data-value="monthly">Monthly <span class="count" data-count="period:monthly">4</span></label>
+          <label class="f-chip" data-group="period" data-value="yearly">Yearly <span class="count" data-count="period:yearly">4</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title" onclick="toggleFilter(this)">Price
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="filter-body">
+        <p style="font-size:13px;color:#6b6b66;line-height:1.5;margin:0">All prices are on request — rates depend on season (high season Nov–Apr) and length of stay. Message our concierge for a quote.</p>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title" onclick="toggleFilter(this)">Location
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="filter-body">
+        <div style="display:flex;flex-direction:column;gap:2px" id="locationList">
+          <label class="loc-row"><span style="display:flex;align-items:center;gap:8px"><input type="checkbox" data-filter="location" value="phuket" style="accent-color:#0a0a0a"> Phuket</span><span style="font-size:12px;color:#b0ada6" data-count="location:phuket">2</span></label>
+          <label class="loc-row"><span style="display:flex;align-items:center;gap:8px"><input type="checkbox" data-filter="location" value="koh-samui" style="accent-color:#0a0a0a"> Koh Samui</span><span style="font-size:12px;color:#b0ada6" data-count="location:koh-samui">2</span></label>
+          <label class="loc-row"><span style="display:flex;align-items:center;gap:8px"><input type="checkbox" data-filter="location" value="pattaya" style="accent-color:#0a0a0a"> Pattaya</span><span style="font-size:12px;color:#b0ada6" data-count="location:pattaya">2</span></label>
+          <label class="loc-row zero"><span style="display:flex;align-items:center;gap:8px"><input type="checkbox" data-filter="location" value="bangkok" style="accent-color:#0a0a0a"> Bangkok</span><span style="font-size:12px;color:#b0ada6" data-count="location:bangkok">0</span></label>
+          <label class="loc-row zero"><span style="display:flex;align-items:center;gap:8px"><input type="checkbox" data-filter="location" value="krabi" style="accent-color:#0a0a0a"> Krabi</span><span style="font-size:12px;color:#b0ada6" data-count="location:krabi">0</span></label>
+          <label class="loc-row zero"><span style="display:flex;align-items:center;gap:8px"><input type="checkbox" data-filter="location" value="chiang-mai" style="accent-color:#0a0a0a"> Chiang Mai</span><span style="font-size:12px;color:#b0ada6" data-count="location:chiang-mai">0</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title" onclick="toggleFilter(this)">Amenities
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="filter-body">
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <label class="f-chip" data-group="amenity" data-value="pool">Private pool <span class="count" data-count="amenity:pool">6</span></label>
+          <label class="f-chip" data-group="amenity" data-value="beach">Near beach <span class="count" data-count="amenity:beach">2</span></label>
+          <label class="f-chip" data-group="amenity" data-value="ocean">Sea / ocean view <span class="count" data-count="amenity:ocean">2</span></label>
+          <label class="f-chip" data-group="amenity" data-value="chef">Chef on request <span class="count" data-count="amenity:chef">1</span></label>
+          <label class="f-chip" data-group="amenity" data-value="wifi">Wi-Fi <span class="count" data-count="amenity:wifi">6</span></label>
+          <label class="f-chip" data-group="amenity" data-value="work">Workspace <span class="count" data-count="amenity:work">2</span></label>
+          <label class="f-chip" data-group="amenity" data-value="kitchen">Kitchen <span class="count" data-count="amenity:kitchen">6</span></label>
+          <label class="f-chip" data-group="amenity" data-value="ac">Air con <span class="count" data-count="amenity:ac">2</span></label>
+          <label class="f-chip" data-group="amenity" data-value="parking">Parking <span class="count" data-count="amenity:parking">2</span></label>
+          <label class="f-chip" data-group="amenity" data-value="garden">Garden <span class="count" data-count="amenity:garden">2</span></label>
+          <label class="f-chip" data-group="amenity" data-value="kids">Kids friendly <span class="count" data-count="amenity:kids">2</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title" onclick="toggleFilter(this)">Type of stay
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="filter-body">
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <label class="f-chip" data-group="vibe" data-value="romantic">🌹 Romantic Escape <span class="count" data-count="vibe:romantic">1</span></label>
+          <label class="f-chip" data-group="vibe" data-value="surf">🏖️ Beach &amp; Friends <span class="count" data-count="vibe:surf">4</span></label>
+          <label class="f-chip" data-group="vibe" data-value="family">👨‍👩‍👧 Family Retreat <span class="count" data-count="vibe:family">2</span></label>
+          <label class="f-chip" data-group="vibe" data-value="work">💻 Work &amp; Live <span class="count" data-count="vibe:work">2</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:20px 28px;position:sticky;bottom:0;background:#fafaf7;border-top:1px solid #e6e3dc">
+      <button class="btn-primary" id="applyBtn" style="width:100%;justify-content:center;font-size:15px" onclick="closeFilters()">Show 6 villas</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.qchip { padding:5px 12px; border:1px solid #e6e3dc; border-radius:999px; font-size:12px; font-weight:500; background:white; cursor:pointer; font-family:'Inter',sans-serif; color:#4a4a45; transition:all 0.15s; }
+.qchip:hover { border-color:#0a0a0a; color:#0a0a0a; }
+</style>
+
+<script>
+/* ===== Inventory: the 6 demo villas (inline copy of /data/villas.json) ===== */
+var VILLAS = [
+  {"slug":"kata-hills-3br-pool-villa","name":"Kata Hills — 3BR Pool Villa with Sea View","area":"Phuket","areaSlug":"phuket","district":"Kata","bedrooms":3,"bathrooms":3,"guests":6,"priceNight":null,"priceMonth":null,"currency":"USD","amenities":["Private pool","Sea view","Wi-Fi","Workspace","Fully equipped kitchen","Air conditioning","Parking"],"images":["/thaivillas/images/villa-1.jpg","/thaivillas/images/phuket.jpg","/thaivillas/images/villa-3.jpg"],"monthly":true,"demo":true},
+  {"slug":"bang-tao-2br-pool-townhouse","name":"Bang Tao — 2BR Pool Townhouse near Beach","area":"Phuket","areaSlug":"phuket","district":"Bang Tao","bedrooms":2,"bathrooms":2,"guests":4,"priceNight":null,"priceMonth":null,"currency":"USD","amenities":["Private pool","Near beach","Wi-Fi","Smart TV","Kitchen","Washing machine"],"images":["/thaivillas/images/villa-2.jpg","/thaivillas/images/phuket-2.jpg","/thaivillas/images/villa-1.jpg"],"monthly":true,"demo":true},
+  {"slug":"chaweng-noi-4br-family-villa","name":"Chaweng Noi — 4BR Family Villa with Big Pool","area":"Koh Samui","areaSlug":"koh-samui","district":"Chaweng","bedrooms":4,"bathrooms":4,"guests":8,"priceNight":null,"priceMonth":null,"currency":"USD","amenities":["Private pool","Ocean view","Wi-Fi","Chef on request","Garden","Kids friendly"],"images":["/thaivillas/images/villa-3.jpg","/thaivillas/images/samui.jpg","/thaivillas/images/villa-2.jpg"],"monthly":false,"demo":true},
+  {"slug":"bophut-1br-garden-pool-villa","name":"Bophut — 1BR Garden Pool Villa for Couples","area":"Koh Samui","areaSlug":"koh-samui","district":"Bophut","bedrooms":1,"bathrooms":1,"guests":2,"priceNight":null,"priceMonth":null,"currency":"USD","amenities":["Private pool","Garden","Wi-Fi","Outdoor shower","Kitchenette"],"images":["/thaivillas/images/romantic.jpg","/thaivillas/images/samui-2.jpg","/thaivillas/images/villa-1.jpg"],"monthly":true,"demo":true},
+  {"slug":"pratumnak-3br-pool-villa","name":"Pratumnak Hill — 3BR Pool Villa","area":"Pattaya","areaSlug":"pattaya","district":"Pratumnak","bedrooms":3,"bathrooms":3,"guests":6,"priceNight":null,"priceMonth":null,"currency":"USD","amenities":["Private pool","Wi-Fi","Workspace","Kitchen","Parking","Air conditioning"],"images":["/thaivillas/images/villa-2.jpg","/thaivillas/images/pattaya.jpg","/thaivillas/images/villa-3.jpg"],"monthly":true,"demo":true},
+  {"slug":"jomtien-2br-family-house","name":"Jomtien — 2BR Family House with Pool","area":"Pattaya","areaSlug":"pattaya","district":"Jomtien","bedrooms":2,"bathrooms":2,"guests":5,"priceNight":null,"priceMonth":null,"currency":"USD","amenities":["Private pool","Near beach","Wi-Fi","Kids friendly","Kitchen"],"images":["/thaivillas/images/family.jpg","/thaivillas/images/villa-1.jpg","/thaivillas/images/villa-2.jpg"],"monthly":false,"demo":true}
+];
+
+var LOCATIONS = [
+  { slug:'phuket', name:'Phuket' }, { slug:'koh-samui', name:'Koh Samui' }, { slug:'pattaya', name:'Pattaya' },
+  { slug:'bangkok', name:'Bangkok' }, { slug:'krabi', name:'Krabi' }, { slug:'chiang-mai', name:'Chiang Mai' }
+];
+var WA_BASE = 'https://wa.me/66000000000?text=';
+var WA_DEFAULT = WA_BASE + 'Hi%20Thai%20Villas!%20I%27m%20looking%20for%20a%20villa%20in%20Thailand.';
+
+/* Derived tags used by the filters */
+var AMENITY_RULES = {
+  pool: /pool/i, wifi: /wi-?fi/i, kitchen: /kitchen/i, ac: /air condition/i, parking: /parking/i,
+  beach: /beach/i, ocean: /ocean view|sea view/i, chef: /chef/i, garden: /garden/i, work: /workspace/i,
+  kids: /kids/i, gym: /gym/i, jacuzzi: /jacuzzi/i
+};
+var AMENITY_ALIASES = { 'ocean-view':'ocean', 'sea-view':'ocean', 'seaview':'ocean', 'beachfront':'beach', 'near-beach':'beach',
+  'workspace':'work', 'wi-fi':'wifi', 'air-con':'ac', 'aircon':'ac', 'private-pool':'pool', 'kids-friendly':'kids' };
+var LOCATION_ALIASES = { 'samui':'koh-samui', 'kohsamui':'koh-samui', 'chiangmai':'chiang-mai' };
+
+VILLAS.forEach(function(v) {
+  var all = v.amenities.join(' | ');
+  v.tags = Object.keys(AMENITY_RULES).filter(function(k) { return AMENITY_RULES[k].test(all); });
+  v.type = 'villa';            /* every listing is a private pool home */
+  v.luxury = false;            /* no luxury-tier listings yet */
+  v.periods = ['daily'].concat(v.monthly ? ['monthly', 'yearly'] : []);
+  var has = function(t) { return v.tags.indexOf(t) !== -1; };
+  v.vibes = [];
+  if (v.bedrooms <= 1 || v.guests <= 2) v.vibes.push('romantic');
+  if ((has('beach') || has('ocean')) && v.guests >= 4) v.vibes.push('surf');
+  if (has('kids') || v.bedrooms >= 4) v.vibes.push('family');
+  if (has('work')) v.vibes.push('work');
+});
+
+var GROUPS = ['location', 'type', 'beds', 'period', 'amenity', 'vibe'];
+var state = { location:[], type:[], beds:[], period:[], amenity:[], vibe:[], q:'', guests:0, sort:'recommended' };
+
+function norm(group, val) {
+  val = String(val || '').trim().toLowerCase().replace(/\s+/g, '-');
+  if (!val || val === 'all' || val === 'any') return '';
+  if (group === 'amenity') return AMENITY_ALIASES[val] || val;
+  if (group === 'location') return LOCATION_ALIASES[val] || val;
+  if (group === 'beds') { var n = parseInt(val, 10); return isNaN(n) ? '' : String(Math.min(n, 5)); }
+  return val;
+}
+
+function readUrl() {
+  var p = new URLSearchParams(window.location.search);
+  GROUPS.forEach(function(g) {
+    var raw = p.getAll(g).join(',');
+    state[g] = raw.split(',').map(function(x) { return norm(g, x); }).filter(Boolean)
+      .filter(function(x, i, arr) { return arr.indexOf(x) === i; });
+  });
+  state.q = (p.get('q') || '').trim();
+  state.guests = parseInt(p.get('guests') || '0', 10) || 0;
+}
+
+function writeUrl() {
+  var p = new URLSearchParams();
+  GROUPS.forEach(function(g) { if (state[g].length) p.set(g, state[g].join(',')); });
+  if (state.q) p.set('q', state.q);
+  if (state.guests) p.set('guests', String(state.guests));
+  var qs = p.toString();
+  try { history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '')); } catch (e) {}
+}
+
+function matchGroup(v, g, vals) {
+  if (!vals.length) return true;
+  return vals.some(function(val) {
+    switch (g) {
+      case 'location': return v.areaSlug === val;
+      case 'type': return val === 'luxury' ? v.luxury : v.type === val;
+      case 'beds': return val === '5' ? v.bedrooms >= 5 : String(v.bedrooms) === val;
+      case 'period': return v.periods.indexOf(val) !== -1;
+      case 'amenity': return v.tags.indexOf(val) !== -1;
+      case 'vibe': return v.vibes.indexOf(val) !== -1;
+    }
+    return true;
+  });
+}
+
+function matchText(v) {
+  if (!state.q) return true;
+  var hay = (v.name + ' ' + v.area + ' ' + v.district + ' ' + v.amenities.join(' ')).toLowerCase();
+  return state.q.toLowerCase().split(/[\s,]+/).filter(Boolean).every(function(w) { return hay.indexOf(w) !== -1; });
+}
+
+function matches(v, skipGroup) {
+  for (var i = 0; i < GROUPS.length; i++) {
+    var g = GROUPS[i];
+    if (g === skipGroup) continue;
+    if (!matchGroup(v, g, state[g])) return false;
+  }
+  if (state.guests && v.guests < state.guests) return false;
+  return matchText(v);
+}
+
+function esc(s) { return String(s).replace(/[&<>"']/g, function(c) { return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]; }); }
+
+var HEART = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
+var CHIP_LABEL = { pool:'Pool', ocean:'Sea view', beach:'Beach', work:'Workspace', kids:'Kids', garden:'Garden', chef:'Chef' };
+
+function cardHtml(v) {
+  var chips = ['pool', 'ocean', 'beach', 'work', 'kids', 'garden'].filter(function(t) { return v.tags.indexOf(t) !== -1; }).slice(0, 2)
+    .map(function(t) { return '<span style="font-size:11px;background:#f2efe8;padding:3px 8px;border-radius:999px">' + CHIP_LABEL[t] + '</span>'; }).join('');
+  var href = '/thaivillas/villa/' + v.slug + '/';
+  return '<a class="prop-card" href="' + href + '" style="display:block;text-decoration:none;color:inherit">' +
+    '<div class="img-wrap"><img src="' + esc(v.images[0]) + '" alt="' + esc(v.name) + ' — ' + esc(v.district + ', ' + v.area) + '" loading="lazy">' +
+    '<span class="badge">' + esc(v.district) + ' · ' + esc(v.area) + '</span>' +
+    '<span class="badge-type">' + (v.monthly ? 'Monthly OK' : 'Villa') + '</span>' +
+    '<button class="heart-btn" type="button" aria-label="Save" onclick="event.preventDefault();event.stopPropagation();this.classList.toggle(\'liked\')">' + HEART + '</button></div>' +
+    '<div style="padding:14px">' +
+    '<p style="font-family:\'Fraunces\',Georgia,serif;font-size:16px;font-weight:600;margin-bottom:6px;line-height:1.2">' + esc(v.name) + '</p>' +
+    '<div class="prop-meta" style="margin-bottom:10px"><span>' + v.bedrooms + ' bed</span><span>' + v.bathrooms + ' bath</span><span>' + v.guests + ' guests</span></div>' +
+    '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px">' +
+    '<div><span style="font-family:\'Fraunces\',Georgia,serif;font-size:19px;font-weight:700">On request</span></div>' +
+    '<div style="display:flex;gap:4px">' + chips + '</div></div></div></a>';
+}
+
+function emptyHtml() {
+  var loc = state.location.length === 1 ? LOCATIONS.filter(function(l) { return l.slug === state.location[0]; })[0] : null;
+  var msg = 'Hi Thai Villas! I\'m looking for a villa' + (loc ? ' in ' + loc.name : ' in Thailand') + '.';
+  return '<div class="empty-state">' +
+    '<h3>No villas here yet — message our concierge</h3>' +
+    '<p>' + (loc ? 'We\'re still adding homes in ' + esc(loc.name) + '. ' : 'Nothing matches these filters right now. ') +
+    'Tell us what you need and our team will find options for you — usually within a few hours.</p>' +
+    '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">' +
+    '<a class="btn-primary" href="' + WA_BASE + encodeURIComponent(msg) + '">Message our concierge</a>' +
+    '<button class="btn-outline" type="button" onclick="clearAllFilters()">Clear filters</button></div></div>';
+}
+
+function updateCounts() {
+  document.querySelectorAll('[data-count]').forEach(function(el) {
+    var parts = el.getAttribute('data-count').split(':');
+    var g = parts[0], val = parts[1];
+    var n = VILLAS.filter(function(v) { return matches(v, g) && (!val || matchGroup(v, g, [val])); }).length;
+    el.textContent = n;
+  });
+}
+
+function syncControls() {
+  document.querySelectorAll('.f-chip[data-group]').forEach(function(chip) {
+    var g = chip.getAttribute('data-group'), val = chip.getAttribute('data-value');
+    chip.classList.toggle('active', val ? state[g].indexOf(val) !== -1 : state[g].length === 0);
+  });
+  document.querySelectorAll('input[data-filter="location"]').forEach(function(inp) {
+    inp.checked = state.location.indexOf(inp.value) !== -1;
+  });
+  var amen = state.amenity.length === 1 ? state.amenity[0] : (state.amenity.length ? null : 'all');
+  document.querySelectorAll('.pill').forEach(function(p) { p.classList.toggle('active', p.getAttribute('data-amenity') === amen); });
+  var n = GROUPS.reduce(function(acc, g) { return acc + state[g].length; }, 0) + (state.q ? 1 : 0) + (state.guests ? 1 : 0);
+  var badge = document.getElementById('filterCountBadge');
+  if (n > 0) { badge.style.display = 'inline'; badge.textContent = n; } else { badge.style.display = 'none'; }
+  document.getElementById('sortSelect').value = state.sort;
+  var w = document.getElementById('searchWhere'); if (w && document.activeElement !== w) w.value = state.q;
+  var gi = document.getElementById('searchGuests'); if (gi && document.activeElement !== gi) gi.value = state.guests || '';
+}
+
+function titleCase(s) { return s.replace(/-/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); }); }
+
+function render() {
+  var list = VILLAS.filter(function(v) { return matches(v); });
+  if (state.sort === 'beds-desc') list.sort(function(a, b) { return b.bedrooms - a.bedrooms; });
+  else if (state.sort === 'beds-asc') list.sort(function(a, b) { return a.bedrooms - b.bedrooms; });
+  else if (state.sort === 'guests-desc') list.sort(function(a, b) { return b.guests - a.guests; });
+
+  document.getElementById('cardGrid').innerHTML = list.length ? list.map(cardHtml).join('') : emptyHtml();
+
+  var parts = [];
+  if (state.beds.length) parts.push(state.beds.map(function(b) { return b === '5' ? '5+' : b; }).join('/') + ' bedroom');
+  if (state.location.length) parts.push(state.location.map(function(l) {
+    var m = LOCATIONS.filter(function(x) { return x.slug === l; })[0]; return m ? m.name : titleCase(l);
+  }).join(', '));
+  if (state.type.length) parts.push(state.type.map(titleCase).join(', '));
+  if (state.period.length) parts.push(state.period.map(titleCase).join(', '));
+  if (state.amenity.length) parts.push(state.amenity.map(titleCase).join(', '));
+  if (state.vibe.length) parts.push(state.vibe.map(function(x) { return x === 'surf' ? 'Beach & Friends' : titleCase(x); }).join(', '));
+  if (state.guests) parts.push(state.guests + '+ guests');
+  if (state.q) parts.push('“' + state.q + '”');
+  var word = list.length === 1 ? 'villa' : 'villas';
+  document.getElementById('resultsTitle').textContent = parts.length ? list.length + ' ' + word + ' — ' + parts.join(' · ') : list.length + ' ' + word + ' available';
+  document.getElementById('showingNote').textContent = 'Showing ' + list.length + ' of ' + VILLAS.length + ' villas';
+  document.getElementById('applyBtn').textContent = 'Show ' + list.length + ' ' + word;
+
+  updateCounts();
+  syncControls();
+}
+
+function update() { writeUrl(); render(); }
+
+/* Pills = quick single amenity filter */
+function setPill(el) {
+  var a = el.getAttribute('data-amenity');
+  state.amenity = a === 'all' ? [] : [a];
+  update();
+}
+
+/* Drawer chips: multi-select within a group; "All"/"Any" clears the group */
+document.querySelectorAll('.f-chip[data-group]').forEach(function(chip) {
+  chip.addEventListener('click', function(e) {
+    e.preventDefault();
+    var g = chip.getAttribute('data-group'), val = chip.getAttribute('data-value');
+    if (!val) state[g] = [];
+    else {
+      var i = state[g].indexOf(val);
+      if (i === -1) state[g].push(val); else state[g].splice(i, 1);
+    }
+    update();
+  });
+});
+document.querySelectorAll('input[data-filter="location"]').forEach(function(inp) {
+  inp.addEventListener('change', function() {
+    state.location = Array.from(document.querySelectorAll('input[data-filter="location"]:checked')).map(function(x) { return x.value; });
+    update();
+  });
+});
+
+document.getElementById('sortSelect').addEventListener('change', function() { state.sort = this.value; render(); });
+
+/* Hero search: a known destination becomes a location filter, anything else a text search */
+function runSearch() {
+  var where = (document.getElementById('searchWhere').value || '').trim();
+  var guests = parseInt(document.getElementById('searchGuests').value || '0', 10) || 0;
+  var key = where.toLowerCase().replace(/\s+/g, '-');
+  key = LOCATION_ALIASES[key] || key;
+  var loc = LOCATIONS.filter(function(l) { return l.slug === key; })[0];
+  if (loc) { state.location = [loc.slug]; state.q = ''; }
+  else { state.q = where; }
+  state.guests = guests;
+  update();
+  document.querySelector('.results-bar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+document.getElementById('searchBtn').addEventListener('click', runSearch);
+document.getElementById('searchWhere').addEventListener('keydown', function(e) { if (e.key === 'Enter') runSearch(); });
+
+/* Concierge request → WhatsApp */
+document.getElementById('aiSend').addEventListener('click', function() {
+  var t = (document.getElementById('aiPrompt').value || '').trim();
+  window.location.href = t ? WA_BASE + encodeURIComponent('Hi Thai Villas! ' + t) : WA_DEFAULT;
+});
+
+/* Filter drawer */
+function openFilters() {
+  document.getElementById('filterDrawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeFilters() {
+  document.getElementById('filterDrawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* Collapsible filter sections */
+function toggleFilter(titleEl) {
+  titleEl.classList.toggle('collapsed');
+  var body = titleEl.nextElementSibling;
+  body.style.maxHeight = titleEl.classList.contains('collapsed') ? '0' : body.scrollHeight + 'px';
+}
+document.querySelectorAll('.filter-body').forEach(function(b) { b.style.maxHeight = 'none'; });
+
+function clearAllFilters() {
+  GROUPS.forEach(function(g) { state[g] = []; });
+  state.q = ''; state.guests = 0;
+  var w = document.getElementById('searchWhere'); if (w) w.value = '';
+  var gi = document.getElementById('searchGuests'); if (gi) gi.value = '';
+  update();
+}
+
+/* View toggle */
+document.getElementById('viewGrid').addEventListener('click', function() {
+  this.classList.add('active');
+  document.getElementById('viewList').classList.remove('active');
+  var g = document.getElementById('cardGrid'); g.classList.add('grid-mode'); g.style.gridTemplateColumns = 'repeat(4,1fr)';
+});
+document.getElementById('viewList').addEventListener('click', function() {
+  this.classList.add('active');
+  document.getElementById('viewGrid').classList.remove('active');
+  var g = document.getElementById('cardGrid'); g.classList.remove('grid-mode'); g.style.gridTemplateColumns = '1fr';
+});
+
+/* Close overlays on Escape */
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeFilters(); if (window.closeVoice) closeVoice(); if (window.closeMega) closeMega(); }
+});
+
+readUrl();
+render();
+
+/* ── MEGA-MENU ── */
+(function() {
+  var panel = document.getElementById('villasPanel');
+  var backdrop = document.getElementById('villasBackdrop');
+  var trigger = document.querySelector('.mega-trigger');
+  var chevron = trigger ? trigger.querySelector('.mega-chevron') : null;
+  var open = false;
+
+  function openMega() {
+    if (open || window.innerWidth < 860) return;
+    open = true;
+    panel.classList.add('open');
+    backdrop.classList.add('open');
+    if (chevron) chevron.classList.add('open');
+  }
+  function closeMega() {
+    if (!open) return;
+    open = false;
+    panel.classList.remove('open');
+    backdrop.classList.remove('open');
+    if (chevron) chevron.classList.remove('open');
+  }
+  window.closeMega = closeMega;
+
+  if (trigger) trigger.addEventListener('mouseenter', openMega);
+  backdrop.addEventListener('click', closeMega);
+  document.addEventListener('mousemove', function(e) {
+    if (!open) return;
+    if (e.clientY > panel.getBoundingClientRect().bottom) closeMega();
+  });
+
+  /* Language menu */
+  var lt = document.getElementById('langToggle');
+  var lm = document.getElementById('langMenu');
+  if (lt && lm) {
+    lt.addEventListener('click', function(e) {
+      e.stopPropagation();
+      lm.style.display = lm.style.display === 'block' ? 'none' : 'block';
+    });
+    document.addEventListener('click', function() { lm.style.display = 'none'; });
+  }
+
+  var micBtn = document.getElementById('navMicBtn');
+  if (micBtn) micBtn.addEventListener('click', function() { if (typeof window.openVoice === 'function') window.openVoice(); });
+
+  /* Slideshow */
+  var slides = [
+    { img:'/thaivillas/images/phuket.jpg', title:'Beaches, Sunsets<br>&amp; Sea Views', desc:'Phuket — Thailand\'s favourite island', btn:'Explore Phuket →', link:'/thaivillas/property-rental/?location=phuket' },
+    { img:'/thaivillas/images/samui.jpg', title:'Palm Coves<br>&amp; Slow Mornings', desc:'Koh Samui — laid-back island living', btn:'Explore Koh Samui →', link:'/thaivillas/property-rental/?location=koh-samui' },
+    { img:'/thaivillas/images/pattaya.jpg', title:'City Energy<br>by the Sea', desc:'Pattaya — easy reach from Bangkok', btn:'Explore Pattaya →', link:'/thaivillas/property-rental/?location=pattaya' }
+  ];
+  var cur = 0, barStart = null, barDur = 10000, paused = false;
+  var barEl = document.getElementById('megaSlideBar');
+  var imgEl = document.getElementById('megaSlideImg');
+  var titleEl = document.getElementById('megaSlideTitle');
+  var descEl = document.getElementById('megaSlideDesc');
+  var btnEl = document.getElementById('megaSlideBtn');
+  var slideCard = document.getElementById('megaSlide');
+
+  function setSlide(i) {
+    cur = i;
+    var s = slides[cur];
+    imgEl.style.opacity = 0;
+    setTimeout(function() { imgEl.src = s.img; imgEl.style.opacity = 1; }, 200);
+    titleEl.innerHTML = s.title;
+    descEl.textContent = s.desc;
+    btnEl.textContent = s.btn; btnEl.href = s.link;
+    document.querySelectorAll('.sdot').forEach(function(d) { d.style.opacity = +d.dataset.i === cur ? '1' : '0.35'; });
+    barStart = null;
+    barEl.style.width = '0%';
+    requestAnimationFrame(function() { requestAnimationFrame(animBar); });
+  }
+  function animBar(ts) {
+    if (paused) { requestAnimationFrame(animBar); return; }
+    if (!barStart) barStart = ts;
+    var pct = Math.min((ts - barStart) / barDur * 100, 100);
+    barEl.style.width = pct + '%';
+    if (pct < 100) requestAnimationFrame(animBar);
+    else setTimeout(function() { setSlide((cur + 1) % slides.length); }, 100);
+  }
+  if (slideCard) {
+    slideCard.addEventListener('mouseenter', function() { paused = true; });
+    slideCard.addEventListener('mouseleave', function() { paused = false; barStart = null; });
+  }
+  setSlide(0);
+})();
+
+/* Quick chip helper */
+function appendPrompt(text) {
+  var ta = document.getElementById('aiPrompt');
+  if (!ta) return;
+  ta.value = ta.value ? ta.value.trimEnd() + ', ' + text : text;
+  ta.focus();
+}
+
+/* ===== Voice input (browser speech recognition, no external services) ===== */
+(function () {
+  var overlay = document.createElement('div');
+  overlay.id = 'voiceOverlay';
+  overlay.innerHTML = '<div id="voiceCard"><div id="voiceOrb"><div class="vorb-ring r1"></div><div class="vorb-ring r2"></div><div class="vorb-ring r3"></div><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div><p id="voiceStatus">Listening…</p><p id="voiceTranscript">Start speaking</p><div style="display:flex;gap:12px;margin-top:28px"><button id="voiceCancel">Cancel</button><button id="voiceDone">Use this text →</button></div></div>';
+  document.body.appendChild(overlay);
+
+  var style = document.createElement('style');
+  style.textContent = '#voiceOverlay{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.82);backdrop-filter:blur(18px);align-items:center;justify-content:center;flex-direction:column}#voiceOverlay.open{display:flex}#voiceCard{display:flex;flex-direction:column;align-items:center;padding:48px 40px;border-radius:28px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);max-width:460px;width:90%}#voiceOrb{position:relative;width:100px;height:100px;border-radius:50%;background:#0a0a0a;display:flex;align-items:center;justify-content:center;margin-bottom:28px;flex-shrink:0}.vorb-ring{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,255,255,0.3);animation:vorbPulse 2s ease-out infinite}.vorb-ring.r2{animation-delay:.55s}.vorb-ring.r3{animation-delay:1.1s}#voiceStatus{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px}#voiceTranscript{font-family:"Fraunces",Georgia,serif;font-size:22px;font-weight:600;color:white;text-align:center;line-height:1.35;min-height:60px;max-width:340px}#voiceTranscript.interim{color:rgba(255,255,255,.5)}#voiceCancel{padding:11px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:transparent;color:rgba(255,255,255,.7);font-size:14px;font-weight:500;cursor:pointer}#voiceDone{padding:11px 26px;border-radius:999px;background:white;color:#0a0a0a;font-size:14px;font-weight:600;border:none;cursor:pointer;display:none}';
+  document.head.appendChild(style);
+
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var recognition = SR ? new SR() : null;
+  var finalText = '', interimText = '';
+
+  if (recognition) {
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = 'en-US';
+    recognition.onresult = function(e) {
+      finalText = ''; interimText = '';
+      for (var i = 0; i < e.results.length; i++) {
+        if (e.results[i].isFinal) finalText += e.results[i][0].transcript;
+        else interimText += e.results[i][0].transcript;
+      }
+      var t = document.getElementById('voiceTranscript');
+      t.textContent = (finalText + interimText) || 'Start speaking';
+      t.className = (interimText && !finalText) ? 'interim' : '';
+      document.getElementById('voiceDone').style.display = finalText ? 'block' : 'none';
+    };
+    recognition.onerror = function(e) {
+      document.getElementById('voiceStatus').textContent = e.error === 'not-allowed' ? 'Microphone denied' : 'Error — try again';
+    };
+    recognition.onend = function() {
+      if (overlay.classList.contains('open')) document.getElementById('voiceStatus').textContent = 'Done — review your text';
+    };
+  }
+
+  function openVoice() {
+    finalText = ''; interimText = '';
+    document.getElementById('voiceTranscript').textContent = recognition ? 'Start speaking' : 'Voice input is not supported in this browser';
+    document.getElementById('voiceTranscript').className = '';
+    document.getElementById('voiceStatus').textContent = recognition ? 'Listening…' : 'Unavailable';
+    document.getElementById('voiceDone').style.display = 'none';
+    overlay.classList.add('open');
+    if (recognition) { try { recognition.start(); } catch(e){} }
+  }
+  function closeVoice() {
+    overlay.classList.remove('open');
+    if (recognition) { try { recognition.stop(); } catch(e){} }
+  }
+  window.openVoice = openVoice;
+  window.closeVoice = closeVoice;
+
+  function applyText() {
+    var text = (finalText || interimText).trim();
+    closeVoice();
+    if (!text) return;
+    var ta = document.getElementById('aiPrompt');
+    if (ta) { ta.value = text; ta.focus(); }
+  }
+
+  document.getElementById('voiceMicBtn').addEventListener('click', openVoice);
+  document.getElementById('voiceCancel').addEventListener('click', closeVoice);
+  document.getElementById('voiceDone').addEventListener('click', applyText);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeVoice(); });
+})();
+</script>
+</body>
+</html>
