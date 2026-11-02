@@ -54,12 +54,24 @@ SITES = {
         "base": "https://getyourphuket.com",
         "start": ["/en/"],
         "langPrefix": "/en",  # only English pages; turn off with "all languages"
+        "propertyUrl": r"/real-estate/(?:rent|sale)/(?:[^/]+/)?object/[^/]+/?$",
+        "skipUrl": r"/filter/|/apply/|/favorite/|/search/|/lang/|\.php$",
+    },
+    "indreams-en": {
+        "name": "In Dreams Phuket — English version (same listings as indreamsphuket.ru)",
+        "base": "https://indreamsphuket.com",
+        "start": ["/"],
+        "langPrefix": "",
+        "propertyUrl": r"^/(?:sale|rent)/[^/]+/[^/]+/?$|^/project/[^/]+/?$",
+        "skipUrl": r"^/search/|^/cdn-img|^/team/|^/privilegeclub",
     },
     "indreams": {
         "name": "In Dreams Phuket (projects)",
         "base": "https://indreamsphuket.ru",
         "start": ["/"],
         "langPrefix": "",
+        "propertyUrl": r"^/(?:sale|rent)/[^/]+/[^/]+/?$|^/project/[^/]+/?$",
+        "skipUrl": r"^/search/|^/cdn-img|^/team/|^/privilegeclub",
     },
 }
 
@@ -326,10 +338,12 @@ def lang_ok(url, lang_prefix):
     return path == lang_prefix or path.startswith(lang_prefix.rstrip("/") + "/")
 
 
-def crawlable(url, base, lang_prefix):
+def crawlable(url, base, lang_prefix, skip_re=None):
     if not url or not same_site(url, base):
         return False
     path = urllib.parse.urlparse(url).path
+    if skip_re and re.search(skip_re, path):
+        return False
     if SKIP_EXT.search(path) or SKIP_PATH.search(path):
         return False
     return lang_ok(url, lang_prefix)
@@ -452,10 +466,19 @@ def original_candidates(url):
     return dedupe(cands)
 
 
+def variant_size(url):
+    path = urllib.parse.unquote(urllib.parse.urlparse(url).path)
+    m = re.search(r"/(\d{2,4})_(\d{2,4})_[0-9a-f]+/", path) or re.search(r"_(\d{3,4})X(\d{3,4})_", path, re.I)
+    return int(m.group(1)) * int(m.group(2)) if m else 0
+
+
 def image_key(url):
     best = original_candidates(url)[0]
     p = urllib.parse.urlparse(best)
-    key = urllib.parse.unquote(p.netloc.removeprefix("www.") + p.path).lower()
+    path = re.sub(r"/resize_cache/", "/", p.path)
+    path = re.sub(r"/\d{2,4}_\d{2,4}_[0-9a-f]+/", "/", path)
+    path = re.sub(r"/styles/[^/]+/public/", "/", path)
+    key = urllib.parse.unquote(p.netloc.removeprefix("www.") + path).lower()
     key = re.sub(r"-(?:scaled|thumbnail|thumb|small|medium|large|\d{3,4}w?)(\.(?:jpe?g|png|webp|avif))$", r"\1", key)
     return key
 
@@ -508,7 +531,7 @@ def merge_images(urls):
         if k not in by_key:
             by_key[k] = u
             order.append(k)
-        elif len(u) > len(by_key[k]) and "resize" not in u:
+        elif variant_size(u) > variant_size(by_key[k]) or (not variant_size(u) and not variant_size(by_key[k]) and len(u) > len(by_key[k]) and "resize" not in u):
             by_key[k] = u
     return [by_key[k] for k in order]
 
@@ -573,7 +596,10 @@ def to_number(s):
 
 def extract_prices(lines):
     prices = []
-    for ln in lines:
+    prev = ""
+    for raw_ln in lines:
+        ln = prev[-60:] + " \u2502 " + raw_ln if prev and PRICE_RE.search(raw_ln) and not PRICE_RE.search(prev) else raw_ln
+        prev = raw_ln
         if len(prices) >= 60:
             break
         for m in PRICE_RE.finditer(ln):
@@ -604,7 +630,13 @@ def extract_prices(lines):
                     period = "sale"
                 elif thb >= 2_500_000:
                     period = "sale"
-            prices.append({"amount": amount, "currency": cur, "period": period, "raw": ln[max(0, m.start() - 25): m.end() + 25].strip()})
+            rng = re.search(NUM + r"\s*[–—-]\s*$", ln[max(0, m.start() - 30): m.start()])
+            item = {"amount": amount, "currency": cur, "period": period, "raw": ln[max(0, m.start() - 25): m.end() + 25].strip()}
+            if rng and m.group(4):
+                low = to_number(rng.group(1))
+                if low and low < amount:
+                    item["amountFrom"] = low * (amount / to_number(num)) if to_number(num) else low
+            prices.append(item)
     return dedupe(prices)
 
 
@@ -713,6 +745,7 @@ def find_coords(doc, raw, blocks):
                 return float(m.group(1)), float(m.group(2))
     pats = [
         r'"lat(?:itude)?"\s*:\s*"?(-?\d{1,2}\.\d{3,})"?\s*,\s*"(?:lng|lon|long|longitude)"\s*:\s*"?(-?\d{1,3}\.\d{3,})',
+        r"\blat(?:itude)?\s*:\s*['\"]?(-?\d{1,2}\.\d{3,})['\"]?\s*,\s*(?:lng|lon|long|longitude)\s*:\s*['\"]?(-?\d{1,3}\.\d{3,})",
         r"!3d(-?\d{1,2}\.\d{3,})!4d(-?\d{1,3}\.\d{3,})",
         r"!2d(-?\d{1,3}\.\d{3,})!3d(-?\d{1,2}\.\d{3,})",
         r"google\.[^\"'\s]*?[@=](-?\d{1,2}\.\d{3,}),\s*(-?\d{1,3}\.\d{3,})",
@@ -722,7 +755,7 @@ def find_coords(doc, raw, blocks):
     for i, p in enumerate(pats):
         for m in re.finditer(p, raw):
             a, b = float(m.group(1)), float(m.group(2))
-            lat, lng = (b, a) if i == 2 else (a, b)
+            lat, lng = (b, a) if i == 3 else (a, b)
             cands.append((lat, lng))
     for lat, lng in cands:  # prefer Thailand
         if 5 < lat < 21 and 97 < lng < 106:
@@ -731,6 +764,10 @@ def find_coords(doc, raw, blocks):
 
 
 def classify_deal(url, title, crumbs, text, prices):
+    path = urllib.parse.urlparse(url).path.lower()
+    m = re.search(r"/(rent|sale|project)/", path + "/")
+    if m:
+        return m.group(1)
     hay = " ".join([urllib.parse.unquote(url).lower(), title.lower(), " ".join(crumbs).lower()])
     if re.search(r"project|proekt|проект|complex|комплекс|residence|резиденц|\bzhk\b|\bжк\b|off-?plan|under construction|строящ", hay):
         return "project"
@@ -973,6 +1010,8 @@ def analyze_page(raw, url, site):
         score -= 2
         reasons.append(f"listing page ({len(set(prop_links))} property links)")
     kind = "property" if score >= 3 else "listing" if len(set(prop_links)) >= 6 else "page"
+    if site.get("propertyUrl"):  # the site's own URL scheme is authoritative
+        kind = "property" if re.search(site["propertyUrl"], urllib.parse.urlparse(url).path) else ("listing" if len(set(prop_links)) >= 6 else "page")
 
     deal = classify_deal(url, title, crumbs, text, prices)
     ptype = classify_type(" ".join([title, " ".join(crumbs), urllib.parse.unquote(url)])) or classify_type(text[:1500])
@@ -1080,7 +1119,7 @@ def download_files(fetcher, items, folder, referer, job, min_size=3000):
                     raise RuntimeError("got HTML instead of a file")
                 if len(resp.content) < min_size:
                     raise RuntimeError(f"file too small ({len(resp.content)} bytes)")
-                out.write_bytes(resp.content)
+                out.write_bytes(shrink(resp.content, out))
                 item["downloadedFrom"] = cand
                 return item, None, len(resp.content)
             except Exception as exc:
@@ -1096,6 +1135,29 @@ def download_files(fetcher, items, folder, referer, job, min_size=3000):
                 ok += 1
                 item["bytes"] = size
     return ok, failures
+
+
+MAX_PX = int(os.environ.get("IMPORTER_MAX_PX", "0"))  # e.g. 1920: downscale photos on download (needs Pillow)
+
+
+def shrink(data, out):
+    if not MAX_PX or out.suffix.lower() not in (".jpg", ".jpeg", ".png", ".webp"):
+        return data
+    try:
+        import io
+        from PIL import Image
+        im = Image.open(io.BytesIO(data))
+        if max(im.size) <= MAX_PX and out.suffix.lower() != ".png":
+            return data
+        im.thumbnail((MAX_PX, MAX_PX))
+        buf = io.BytesIO()
+        fmt = {".png": "PNG", ".webp": "WEBP"}.get(out.suffix.lower(), "JPEG")
+        if fmt == "JPEG" and im.mode not in ("RGB", "L"):
+            im = im.convert("RGB")
+        im.save(buf, fmt, quality=85, optimize=True)
+        return buf.getvalue() if buf.tell() < len(data) else data
+    except Exception:
+        return data
 
 
 def ext_of(url, default=".jpg"):
@@ -1156,7 +1218,7 @@ def save_item(fetcher, a, raw, batch_dir, site, job, chrome_keys, used_slugs, wi
     (folder / "raw" / "page.html").write_text(raw, encoding="utf-8")
 
     imgs = [u for u in a["images"] if image_key(u) not in chrome_keys]
-    extra = [u for u in a["extraImages"] if image_key(u) not in chrome_keys]
+    extra = [u for u in a["extraImages"] if image_key(u) not in chrome_keys] if len(a["images"]) < 3 else []
     dropped = [u for u in a["images"] + a["extraImages"] if image_key(u) in chrome_keys]
     photos = [{"index": n + 1, "filename": f"{n + 1:03d}{ext_of(u)}", "url": u, "candidates": original_candidates(u)}
               for n, u in enumerate(imgs + extra)]
@@ -1166,6 +1228,7 @@ def save_item(fetcher, a, raw, batch_dir, site, job, chrome_keys, used_slugs, wi
 
     ok = 0
     failures = []
+    with_photos = with_photos and not job.params.get("noPhotos")
     if with_photos and photos:
         ok, failures = download_files(fetcher, photos, folder / "photos", a["url"], job)
     if with_photos and docs:
@@ -1225,7 +1288,7 @@ def run_crawl(job):
 
     def push(u, front=False):
         u = normalize_url(u, base)
-        if u and u not in seen and crawlable(u, base, site["langPrefix"]):
+        if u and u not in seen and crawlable(u, base, site["langPrefix"], site.get("skipUrl")):
             seen.add(u)
             (queue.appendleft if front else queue.append)(u)
 
@@ -1436,7 +1499,7 @@ button.secondary{background:#fff;color:#111;border:1px solid var(--line)}button:
 <h1>Phuket Importer</h1>
 <p>Скачивает все объекты (аренда, продажа, проекты): тексты, характеристики, цены, координаты, удобства, PDF-презентации и все фото в оригинальном размере. Сайт обходится целиком: sitemap + все внутренние ссылки. Страницы нашего сайта не меняются — результат складывается в папку <code>imports/</code>.</p>
 <div class="grid">
- <div><label>Сайт</label><select id="site"><option value="getyourphuket">getyourphuket.com — аренда + продажа</option><option value="indreams">indreamsphuket.ru — наши проекты</option><option value="custom">Другой сайт (URL ниже)</option></select></div>
+ <div><label>Сайт</label><select id="site"><option value="getyourphuket">getyourphuket.com — аренда + продажа</option><option value="indreams">indreamsphuket.ru — наши проекты</option><option value="indreams-en">indreamsphuket.com — то же на английском</option><option value="custom">Другой сайт (URL ниже)</option></select></div>
  <div><label>Что сохранять</label><select id="only"><option value="all">Всё</option><option value="rent">Только аренда</option><option value="sale">Только продажа</option><option value="project">Только проекты</option></select></div>
  <div><label>Макс. страниц обхода</label><input id="maxPages" type="number" min="1" max="50000" value="3000"></div>
  <div><label>Лимит объектов</label><input id="limit" type="number" min="1" placeholder="пусто = все"></div>
@@ -1529,6 +1592,7 @@ def main():
     c.add_argument("--all-langs", action="store_true")
     c.add_argument("--no-pages", action="store_true", help="do not save non-listing pages")
     c.add_argument("--no-page-photos", action="store_true")
+    c.add_argument("--no-photos", action="store_true", help="record photo URLs only, download nothing")
     s = sub.add_parser("single", help="download one listing page")
     s.add_argument("url")
     sub.add_parser("serve", help="web UI (default)")
@@ -1536,7 +1600,7 @@ def main():
     if args.cmd == "crawl":
         params = {"site": args.site if args.site in SITES else args.site, "url": "" if args.site in SITES else args.site,
                   "only": args.only, "maxPages": args.max_pages, "limit": args.limit, "allLangs": args.all_langs,
-                  "savePages": not args.no_pages, "pagePhotos": not args.no_page_photos}
+                  "savePages": not args.no_pages, "pagePhotos": not args.no_page_photos, "noPhotos": args.no_photos}
         job = start_job("crawl", params, background=False)
         sys.exit(0 if job.status == "done" else 1)
     if args.cmd == "single":
