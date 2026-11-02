@@ -16,5 +16,5 @@ python3 -I tools/thai/build_all.py --base /thaivillas   # GitHub Pages project U
 python3 -I tools/thai/build_all.py                      # custom domain / local
 ```
 
-Placeholders to replace in `tools/thai/thv.py` and `thb-enquiry.js`: WhatsApp `66000000000`,
-phone `+66 00 000 0000`, email `hello@thaivillas.example`. Site is `noindex` until launch.
+Contacts: phone/WhatsApp `+66 81 123 7388`. Placeholder still to replace in `tools/thai/thv.py`:
+email `hello@thaivillas.example`. Site is `noindex` until launch.

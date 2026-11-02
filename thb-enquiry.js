@@ -9,7 +9,7 @@
 */
 (function () {
   var ENDPOINT = '';                 // static hosting: no lead API yet, requests go to WhatsApp
-  var WA = '66000000000';            // TODO: real WhatsApp number
+  var WA = '66811237388';
   var TERMS = '/thaivillas/terms/';
 
   if (window.__thbEnquiry) return;

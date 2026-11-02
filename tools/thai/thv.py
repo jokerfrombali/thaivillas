@@ -17,8 +17,8 @@ TPL = os.environ.get('THAI_TPL', '/private/tmp/claude-501/-Users-macbookm4-Proje
                      'f6949ea3-892b-4504-be21-647ce2cb4d05/scratchpad/src/thebalihost')
 
 BRAND = 'Thai Villas'
-WA_NUM = '66000000000'                      # TODO: real number
-PHONE = '+66 00 000 0000'                   # TODO
+WA_NUM = '66811237388'
+PHONE = '+66 81 123 7388'
 EMAIL = 'hello@thaivillas.example'          # TODO
 WA = 'https://wa.me/' + WA_NUM
 def wa(text="Hi Thai Villas! I'm looking for a villa in Thailand."):
