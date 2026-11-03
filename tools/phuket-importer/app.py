@@ -262,6 +262,12 @@ def dedupe(seq):
 
 # --------------------------------------------------------------------------- HTTP
 
+class CachedResponse:
+    def __init__(self, url, text, ctype):
+        self.url, self.text, self.headers, self.status_code = url, text, {"content-type": ctype}, 200
+        self.content = text.encode("utf-8")
+
+
 class Fetcher:
     def __init__(self):
         self.s = requests.Session()
@@ -270,6 +276,23 @@ class Fetcher:
         self.lock = threading.Lock()
 
     def get(self, url, binary=False, referer=None, polite=True):
+        cache = os.environ.get("IMPORTER_CACHE")
+        cfile = None
+        if cache and not binary:
+            cfile = Path(cache) / (hashlib.sha1(url.encode()).hexdigest() + ".json")
+            if cfile.exists():
+                try:
+                    c = json.loads(cfile.read_text(encoding="utf-8"))
+                    return CachedResponse(c["url"], c["text"], c["ctype"])
+                except Exception:
+                    pass
+        resp = self._get(url, binary, referer, polite)
+        if cfile is not None:
+            cfile.parent.mkdir(parents=True, exist_ok=True)
+            cfile.write_text(json.dumps({"url": resp.url, "text": resp.text, "ctype": resp.headers.get("content-type", "")}), encoding="utf-8")
+        return resp
+
+    def _get(self, url, binary=False, referer=None, polite=True):
         last_error = None
         for attempt in range(3):
             try:

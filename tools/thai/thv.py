@@ -31,6 +31,26 @@ def load(name):
     return json.load(open(os.path.join(ROOT, 'data', name), encoding='utf-8'))
 
 VILLAS = load('villas.json')
+def _opt(name):
+    return load(name) if os.path.exists(os.path.join(ROOT, 'data', name)) else []
+SALE = _opt('sale.json')
+PROJECTS = _opt('projects.json')
+
+def thb(n):
+    """Short THB price: 49,000 / 1.25M / 13.4M."""
+    if n >= 1_000_000:
+        return '\u0e3f%sM' % ('%.2f' % (n / 1e6)).rstrip('0').rstrip('.')
+    return '\u0e3f{:,}'.format(int(n))
+
+def price_label(v, short=False):
+    """'from \u0e3f49,000 / night', '\u0e3f280,000 / month', '\u0e3f13.4M', or 'On request'."""
+    if v.get('dealType') in ('sale', 'project'):
+        return (('from ' if v.get('dealType') == 'project' and not short else '') + thb(v['priceSale'])) if v.get('priceSale') else 'Price on request'
+    if v.get('priceNight'):
+        return ('' if short else 'from ') + thb(v['priceNight']) + ' / night'
+    if v.get('priceMonth'):
+        return ('' if short else 'from ') + thb(v['priceMonth']) + ' / month'
+    return 'On request'
 AREAS = load('areas.json')['destinations']
 VIP = load('vip.json')['categories']
 PHUKET = next(d for d in AREAS if d['slug'] == 'phuket')
@@ -300,6 +320,11 @@ def fav(v):
 
 SAMPLE_BADGE = '<span class="thb-sample" style="position:absolute;left:10px;bottom:10px;background:rgba(10,10,10,.72);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px">Sample listing</span>'
 
+def third_meta(v):
+    if v.get('dealType') in ('sale', 'project'):
+        return '%g m²' % v['livingAreaSqm'] if v.get('livingAreaSqm') else esc(v.get('propertyTypeName') or 'Property')
+    return '%d guests' % v['guests']
+
 def prop_card(v):
     """Catalog grid card (.prop-card). data-* attributes drive thb-filters.js."""
     img = v.get('cardImage') or v['images'][0]
@@ -311,13 +336,13 @@ def prop_card(v):
             '            <span class="badge">%s</span>\n            %s\n            %s\n'
             '          </div>\n          <div style="padding:14px">\n'
             '            <p style="font-family:\'Lora\',Georgia,serif;font-size:16px;font-weight:600;margin-bottom:6px;line-height:1.2">%s</p>\n'
-            '            <div class="prop-meta" style="margin-bottom:10px"><span>%d bed</span><span>%g bath</span><span>%d guests</span></div>\n'
+            '            <div class="prop-meta" style="margin-bottom:10px"><span>%d bed</span><span>%g bath</span><span>%s</span></div>\n'
             '            <div style="display:flex;align-items:center;justify-content:space-between">'
-            '<div><span style="font-family:\'Lora\',Georgia,serif;font-size:19px;font-weight:700">On request</span></div></div>\n'
+            '<div><span style="font-family:\'Lora\',Georgia,serif;font-size:19px;font-weight:700">%s</span></div></div>\n'
             '          </div>\n        </div>'
             % (v['areaSlug'], v.get('subAreaSlug') or '', v['bedrooms'], v['guests'], period, tokens(v), v['url'],
                img, esc(v['name']), esc(where(v)), esc(v.get('subArea') or v['area']), fav(v),
-               SAMPLE_BADGE if v.get('sample') else '', esc(v['name']), v['bedrooms'], v['bathrooms'], v['guests']))
+               SAMPLE_BADGE if v.get('sample') else '', esc(v['name']), v['bedrooms'], v['bathrooms'], third_meta(v), esc(price_label(v, True))))
 
 def acard(v):
     """Horizontal-rail card (.thb-acard) used on the home page."""
@@ -325,6 +350,6 @@ def acard(v):
     return ('<div class="thb-acw"><a class="thb-acard" href="%s">\n'
             '      <img src="%s" alt="%s" loading="lazy" decoding="async" width="600" height="450">\n'
             '      <div class="in">\n        <p class="t">%s</p>\n        <p class="a">%s %s</p>\n'
-            '        <p class="m">%s</p>\n        <p class="p">On request <span>&middot; fast reply on WhatsApp</span></p>\n'
+            '        <p class="m">%s</p>\n        <p class="p">%s <span>&middot; fast reply on WhatsApp</span></p>\n'
             '      </div>\n    </a>%s</div>'
-            % (v['url'], img, esc(v['name']), esc(v['name']), SVG_PIN, esc(where(v)), meta(v).replace(' · ', ' &middot; '), fav(v)))
+            % (v['url'], img, esc(v['name']), esc(v['name']), SVG_PIN, esc(where(v)), meta(v).replace(' · ', ' &middot; '), esc(price_label(v)), fav(v)))

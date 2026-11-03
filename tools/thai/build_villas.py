@@ -46,7 +46,9 @@ def close_div(s, i):
     raise AssertionError('unclosed div')
 
 def jpeg_size(rel):
-    """(w, h) of a JPEG read from its SOF marker — no PIL needed."""
+    """(w, h) of a JPEG read from its SOF marker — no PIL needed. Remote (media repo) photos: 1280x720."""
+    if rel.startswith('http'):
+        return 1280, 720
     with open(os.path.join(ROOT, rel.lstrip('/')), 'rb') as f:
         data = f.read()
     i = 2
@@ -98,7 +100,19 @@ def stay_text(v):
     return ('short holiday stays and monthly / long stays' if len(p) == 2 else
             'short holiday stays (daily rental)' if p == ['Daily'] else 'monthly and long stays')
 
+DEAL_WORD = {'rent': 'rental', 'sale': 'for sale', 'project': 'new project'}
+SECTION = {'rent': ('Villas', '/villas/'), 'sale': ('For sale', '/sale/'), 'project': ('New projects', '/projects/')}
+
+def kind(v):
+    return v.get('propertyTypeName') or 'Villa'
+
+def listing_pool(v):
+    return {'sale': SALE, 'project': PROJECTS}.get(v.get('dealType'), VILLAS)
+
 def description(v):
+    if not v.get('sample'):
+        return v.get('description') or ('%s in %s, Thailand: %d bedrooms, %g bathrooms. Message us on WhatsApp for details, '
+                                        'photos and availability.' % (kind(v), where(v), v['bedrooms'], v['bathrooms']))
     sa, d = subarea(v), dest(v)
     loc = (sa or d)['short']
     return ('Sample listing. A %d-bedroom, %g-bathroom villa in %s for up to %d guests, with %s. %s '
@@ -108,15 +122,80 @@ def description(v):
             % (v['bedrooms'], v['bathrooms'], where(v), v['guests'], amen_list(v), loc, stay_text(v)))
 
 def meta_desc(v):
+    if not v.get('sample'):
+        bits = ['%s in %s, Thailand' % (kind(v), where(v))]
+        if v['bedrooms']:
+            bits.append('%d bedroom%s' % (v['bedrooms'], '' if v['bedrooms'] == 1 else 's'))
+        if v.get('livingAreaSqm'):
+            bits.append('%g m²' % v['livingAreaSqm'])
+        bits.append(price_label(v))
+        return ' · '.join(bits) + '. ' + (v.get('description') or '')[:120].rsplit(' ', 1)[0] + '…'
     return ('Sample listing: %d-bedroom villa in %s, Thailand — %s. Sleeps %d. %s rental, price on request via WhatsApp.'
             % (v['bedrooms'], where(v), ', '.join(x.lower().replace('wi-fi', 'Wi-Fi') for x in v['amenities'][:3]),
                v['guests'], ' & '.join(periods(v))))
 
 def related(v, n=4):
-    others = [x for x in VILLAS if x['id'] != v['id']]
+    others = [x for x in listing_pool(v) if x['id'] != v['id']]
     rank = lambda x: (0 if x['areaSlug'] == v['areaSlug'] and x.get('subAreaSlug') == v.get('subAreaSlug') and x.get('subAreaSlug')
                       else 1 if x['areaSlug'] == v['areaSlug'] else 2)
     return sorted(others, key=rank)[:n]   # sorted() is stable: keeps villas.json order inside each rank
+
+
+def facts_of(v):
+    f = []
+    if v['bedrooms']:
+        f.append('%d bedroom%s' % (v['bedrooms'], '' if v['bedrooms'] == 1 else 's'))
+    if v['bathrooms']:
+        f.append('%g bathroom%s' % (v['bathrooms'], '' if v['bathrooms'] == 1 else 's'))
+    if v['guests'] and v.get('dealType', 'rent') == 'rent':
+        f.append('%d guests' % v['guests'])
+    if v.get('livingAreaSqm'):
+        f.append('%g m²' % v['livingAreaSqm'])
+    if v.get('landArea') and v.get('dealType') in ('sale', 'project'):
+        f.append('land %g m²' % v['landArea'])
+    return f or [kind(v)]
+
+def pills_of(v):
+    if v.get('dealType') == 'sale':
+        return ['For sale']
+    if v.get('dealType') == 'project':
+        return ['New project']
+    return [p + ' rental' for p in periods(v)]
+
+def booking_sub(v):
+    if v.get('sample'):
+        return '%s rental · sample listing' % ' & '.join(periods(v))
+    if v.get('dealType') == 'sale':
+        return 'Sale price · we arrange viewings'
+    if v.get('dealType') == 'project':
+        return 'Developer price · layouts and payment plan on request'
+    extra = [thb(v['priceMonth']) + ' / month'] if v.get('priceNight') and v.get('priceMonth') else []
+    return ' · '.join(extra + ['%s rental' % ' & '.join(periods(v)) if periods(v) else 'Rental'])
+
+def _paras(text):
+    return '<br><br>'.join(esc(p) for p in text.split('\n\n') if p.strip())
+
+own = lambda v: ' '.join([v['name'], v.get('description') or '', ' '.join(' '.join(x) for x in v.get('specs') or [])])
+
+def fill_real(s, v):
+    """Listing content goes in last, so the template-leftover check above never trips on real text."""
+    s = s.replace('@@DESCTEXT@@', _paras(description(v)))
+    if '@@SPECS@@' in s:
+        rows = ''.join('<div style="display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid #eeebe4">'
+                       '<span style="color:#6b6b66">%s</span><span style="color:#0a0a0a;font-weight:500;text-align:right">%s</span></div>'
+                       % (esc(k), esc(val)) for k, val in (v.get('specs') or [])[:30])
+        block = ('<div class="p-6 bg-surface-secondary rounded-xl w-full mb-12" role="note">'
+                 '<h3 class="text-headline-sm text-primary font-medium" data-slot="heading">Details</h3>'
+                 '<div style="margin-top:8px;font-size:15px;line-height:1.45">%s</div></div>' % rows) if rows else ''
+        s = s.replace('@@SPECS@@', block)
+    if '@@LOCTEXT@@' in s:
+        sa = subarea(v)
+        t = esc('%s in %s, Thailand. %s' % (kind(v), where(v), (sa or dest(v))['short']))
+        if v.get('latitude') and v.get('longitude'):
+            t += (' <a href="https://www.google.com/maps?q=%s,%s" target="_blank" rel="noopener" '
+                  'style="color:#0a0a0a;font-weight:600;text-decoration:underline">Open on Google Maps</a>' % (v['latitude'], v['longitude']))
+        s = s.replace('@@LOCTEXT@@', t)
+    return s
 
 
 # ---------------------------------------------------------------- amenity icons (same sprite as the reference)
@@ -196,13 +275,22 @@ def strip_common(s):
     return s
 
 def bookbar(s, v):
-    text = "Hi Thai Villas! I'd like to book %s (%s). Is it available?" % (v['name'], v['url'])
+    text = ("Hi Thai Villas! I'd like to book %s (%s). Is it available?" if v.get('dealType', 'rent') == 'rent'
+            else "Hi Thai Villas! I'm interested in %s (%s). Please send me details.") % (v['name'], v['url'])
     s = resub(s, r'<div id="thbBookBar"><div class="tbb-i"><strong>Prices on request</strong><span>[^<]*</span></div><a href="[^"]*"',
-              '<div id="thbBookBar"><div class="tbb-i"><strong>On request</strong><span>Sample listing · fast reply on WhatsApp</span></div>'
-              '<a href="%s"' % esc(wa(text)), 'book bar')
+              '<div id="thbBookBar"><div class="tbb-i"><strong>%s</strong><span>%s · fast reply on WhatsApp</span></div>'
+              '<a href="%s"' % (esc(price_label(v)), 'Sample listing' if v.get('sample') else esc(DEAL_WORD.get(v.get('dealType', 'rent')).capitalize()),
+                                esc(wa(text))), 'book bar')
     return s
 
 def ld_villa(v):
+    if v.get('dealType') in ('sale', 'project'):
+        d = {'@context': 'https://schema.org', '@type': 'RealEstateListing', 'name': v['name'], 'url': v['url'],
+             'description': description(v)[:500], 'image': v['images'][:8],
+             'address': {'@type': 'PostalAddress', 'addressLocality': place(v), 'addressRegion': v['area'], 'addressCountry': 'TH'}}
+        if v.get('priceSale'):
+            d['offers'] = {'@type': 'Offer', 'price': v['priceSale'], 'priceCurrency': v.get('currency') or 'THB'}
+        return d
     return {'@context': 'https://schema.org', '@type': 'VacationRental', 'name': v['name'],
             'description': description(v), 'url': v['url'],
             'image': list(dict.fromkeys(v['topGallery'] + v['images']))[:8],
@@ -214,6 +302,14 @@ def ld_villa(v):
             'brand': {'@type': 'Brand', 'name': BRAND}}
 
 def crumbs_list(v, gallery=False):
+    if v.get('dealType') in ('sale', 'project'):
+        c = [SECTION[v['dealType']]]
+        if v['dealType'] == 'sale':
+            c.append((v['area'], '/sale/%s/' % v['areaSlug']))
+        c.append((short(v), v['url']))
+        if gallery:
+            c.append(('Photo tour', v['url'] + 'gallery/'))
+        return c
     c = [('Thailand', '/villas/'), (v['area'], area_url(v['areaSlug']))]
     if v.get('subAreaSlug'):
         c.append((v['subArea'], back_url(v)))
@@ -287,20 +383,18 @@ def build_villa(v, tpl):
     s = s.replace('data-m="2 bed · 2.5 bath · 4 guests" data-a="Sanur"', 'data-m="%s" data-a="%s"' % (meta(v), esc(where(v))))
 
     # summary: location line, title, facts, rental type badges + sample notice
-    s = sub1(s, '>Villa in Sanur</h2>', '>Villa in %s</h2>' % esc(where(v)), 'location line')
+    s = sub1(s, '>Villa in Sanur</h2>', '>%s in %s</h2>' % (esc(kind(v)), esc(where(v))), 'location line')
     facts = ('<div class="flex items-center flex-wrap w-full gap-1.5">'
              + '<p class="text-body text-tertiary font-normal" data-slot="text" aria-hidden="true">•</p>'.join(
                  '<p class="text-body-lg text-secondary font-normal" data-slot="text">%s</p>' % f for f in
-                 ('%d bedroom%s' % (v['bedrooms'], '' if v['bedrooms'] == 1 else 's'),
-                  '%g bathroom%s' % (v['bathrooms'], '' if v['bathrooms'] == 1 else 's'),
-                  '%d guests' % v['guests']))
+                 facts_of(v))
              + '</div><div class="flex items-center flex-wrap gap-2" style="margin-top:4px">'
-             + ''.join(PILL.format(t=p + ' rental') for p in periods(v)) + SAMPLE_PILL + '</div>')
+             + ''.join(PILL.format(t=esc(t)) for t in pills_of(v)) + (SAMPLE_PILL if v.get('sample') else '') + '</div>')
     s = replace_el(s, r'<div class="flex items-center flex-wrap w-full gap-1\.5">', facts)
 
     # about
     s = sub1(s, '>New 110 m2 two-storey townhouse', '>@@DESC@@', 'desc start')
-    s = re.sub(r'>@@DESC@@[^<]*<', lambda m: '>' + esc(description(v)) + '<', s)
+    s = re.sub(r'>@@DESC@@[^<]*<', lambda m: '>@@DESCTEXT@@<', s)
 
     # where you'll sleep
     beds = [i for i in v['images'] if 'bed-' in i] or v['images']
@@ -329,6 +423,8 @@ def build_villa(v, tpl):
             '<h3 class="text-headline-sm text-primary font-medium" data-slot="heading">Sample listing — real villas coming soon</h3>'
             '<p class="text-body text-secondary font-normal mt-1" data-slot="text">Photos and details on this page are illustrative. '
             'Tell us your dates on WhatsApp and we will send real, available villas in %s.</p></div></div>' % esc(place(v)))
+    if not v.get('sample'):
+        note = '@@SPECS@@'
     s = s[:sp[0]] + note + s[sp[1]:]
 
     # location
@@ -344,8 +440,8 @@ def build_villa(v, tpl):
            % (img, esc(where(v)), w, h, esc(where(v))))
     s = replace_el(s, r'<div class="relative h-\[376px\] self-stretch rounded-2xl bg-gray-300', pic)
     s = resub(s, r'(<p class="text-body-lg-long text-primary font-normal" data-slot="text">)Modern 2BR Pool Townhouse is a new[^<]*(</p>)',
-              lambda m: m.group(1) + esc('This sample villa is listed in %s. %s The exact address is shared when your booking is confirmed.'
-                                         % (where(v), (sa or d)['short'])) + m.group(2), 'location para')
+              lambda m: m.group(1) + (esc('This sample villa is listed in %s. %s The exact address is shared when your booking is confirmed.'
+                                         % (where(v), (sa or d)['short'])) if v.get('sample') else '@@LOCTEXT@@') + m.group(2), 'location para')
     lk = '<a href="%s">All villas in %s</a>' % (back_url(v), esc(place(v)))
     if sa:
         lk += '<a href="%s">All villas in %s</a>' % (area_url(v['areaSlug']), esc(v['area']))
@@ -359,12 +455,13 @@ def build_villa(v, tpl):
 
     # booking card + mobile bar
     s = sub1(s, 'data-slot="booking-panel-header">Select dates for pricing</h3>',
-             'data-slot="booking-panel-header">On request<span style="display:block;margin-top:4px;font-family:Inter,system-ui,sans-serif;'
-             'font-size:14px;font-weight:400;color:#6b6b66">%s rental · sample listing</span></h3>' % ' &amp; '.join(periods(v)),
+             'data-slot="booking-panel-header">%s<span style="display:block;margin-top:4px;font-family:Inter,system-ui,sans-serif;'
+             'font-size:14px;font-weight:400;color:#6b6b66">%s</span></h3>' % (esc(price_label(v)), esc(booking_sub(v))),
              'booking header')
     s = sub1(s, 'pt-[5px]">$0</div><div class="text-content-muted text-xs font-sans font-normal leading-5">for <!-- -->0 nights</div>',
-             'pt-[5px]">On request</div><div class="text-content-muted text-xs font-sans font-normal leading-5">sample listing</div>', 'sticky price')
-    s = sub1(s, '>Prices on request</span>', '>On request</span>', 'mobile price')
+             'pt-[5px]">%s</div><div class="text-content-muted text-xs font-sans font-normal leading-5">%s</div>'
+             % (esc(price_label(v, True)), 'sample listing' if v.get('sample') else esc(DEAL_WORD.get(v.get('dealType', 'rent')))), 'sticky price')
+    s = sub1(s, '>Prices on request</span>', '>%s</span>' % esc(price_label(v, True)), 'mobile price')
     s = sub1(s, ">You won't be charged yet.</p>", ">No payment now — we confirm on WhatsApp.</p>", 'no charge')
 
     s = s.replace('Select dates for pricing', 'Select your dates')
@@ -385,9 +482,10 @@ def build_villa(v, tpl):
                   '<p class="text-body text-secondary font-normal" data-slot="text">%s</p>'
                   '<p class="text-body text-secondary font-normal" data-slot="text">%s · On request</p></a>'
                   % (x['url'], x['cardImage'], esc(x['name']), esc(short(x)), esc(where(x)), meta(x)) for x in related(v))
-    title = 'More villas in %s' % (place(v) if v.get('subAreaSlug') and all(x.get('subAreaSlug') == v['subAreaSlug'] for x in related(v)) else v['area'])
+    word = {'sale': 'properties for sale', 'project': 'projects'}.get(v.get('dealType'), 'villas')
+    title = 'More %s in %s' % (word, place(v) if v.get('subAreaSlug') and all(x.get('subAreaSlug') == v['subAreaSlug'] for x in related(v)) else v['area'])
     if not any(x['areaSlug'] == v['areaSlug'] for x in related(v)):
-        title = 'More villas in Thailand'
+        title = 'More %s in Thailand' % word
     relsec = ('<section id="section-related" class="py-8 lg:py-10 flex flex-col gap-6 lg:gap-8 @container">'
               '<div class="flex flex-col gap-6"><h2 class="text-headline text-primary font-medium" data-slot="heading">%s</h2></div>'
               '<div class="thv-rel">%s</div><p class="text-body text-secondary font-normal" data-slot="text">'
@@ -413,9 +511,9 @@ def build_villa(v, tpl):
 
     # names and paths last (markers above rely on the template text)
     s = s.replace(T_URL, url).replace(esc(T_NAME), esc(name)).replace(T_NAME, esc(name)).replace(T_SHORT, esc(sh))
-    left = [x for x in ('/public-objects/', 'Sanur', 'Host', 'Airbnb', 'Guarantee', 'Hostex', '/villa/assets', '/brand/') if x in s]
+    left = [x for x in ('/public-objects/', 'Sanur', 'Host', 'Airbnb', 'Guarantee', 'Hostex', '/villa/assets', '/brand/') if x in s and x not in own(v)]
     assert not left, '%s: template leftovers %s' % (v['id'], left)
-    return s
+    return fill_real(s, v)
 
 
 # ---------------------------------------------------------------- gallery page
@@ -425,7 +523,7 @@ def build_gallery(v, tpl):
     total = sum(len(g) for _, g in gs)
     sid = lambda n: re.sub(r'[^a-z0-9]+', '-', n.lower()).strip('-')
     s = strip_common(tpl)
-    desc = 'Photo tour of %s (sample listing): %s. Daily and monthly villa rentals in Thailand, booked on WhatsApp.' % (
+    desc = ('Photo tour of %s' + (' (sample listing)' if v.get('sample') else '') + ': %s. Daily and monthly villa rentals in Thailand, booked on WhatsApp.') % (
         name, ', '.join(n.lower() for n, _ in gs))
     s = clean_head(s, title='%s photo tour | %s' % (name, BRAND), desc=desc, jsonld=[ld_crumbs(v, gallery=True)], image=v['cardImage'])
     s = re.sub(r'<link rel="canonical"[^>]*>', '', s)
@@ -434,11 +532,11 @@ def build_gallery(v, tpl):
     a = s.find('<nav class="category-tabs">'); b = s.find('</nav>', a) + 6
     s = s[:a] + tabs + s[b:]
 
-    out = ['<main class="gallery-content">',
+    out = ['<main class="gallery-content">'] + ([] if not v.get('sample') else [
            '<p style="margin:0 0 18px;padding:12px 16px;border:1px solid #e6e3dc;border-radius:14px;background:#fafaf7;font-size:14px;'
            'line-height:1.5;color:#3c3c39"><strong style="color:#0a0a0a">Sample listing — real villas coming soon.</strong> '
            'These photos are illustrative. <a href="%s" style="color:#0a0a0a;text-decoration:underline">Back to the villa</a> or '
-           '<a href="%s" style="color:#0a0a0a;text-decoration:underline">see all villas in %s</a>.</p>' % (url, back_url(v), esc(place(v)))]
+           '<a href="%s" style="color:#0a0a0a;text-decoration:underline">see all villas in %s</a>.</p>' % (url, back_url(v), esc(place(v)))])
     for n, imgs in gs:
         out.append('<section class="category-section" id="%s"><div class="section-header"><h2 class="section-title">%s</h2>'
                    '<span class="section-count">%d photo%s</span></div><div class="photo-grid">'
@@ -460,7 +558,7 @@ def build_gallery(v, tpl):
               'gallery wa')
     s = bookbar(s, v)
     s = s.replace(T_URL, url).replace(esc(T_NAME), esc(name)).replace(T_NAME, esc(name))
-    left = [x for x in ('/public-objects/', 'Sanur', 'Host', 'Airbnb', 'Hostex', '/brand/') if x in s]
+    left = [x for x in ('/public-objects/', 'Sanur', 'Host', 'Airbnb', 'Hostex', '/brand/') if x in s and x not in own(v)]
     assert not left, '%s gallery: template leftovers %s' % (v['id'], left)
     return s
 
@@ -499,11 +597,12 @@ INDEX = '''<!DOCTYPE html>
 def main():
     copy_assets()
     tv, tg = read_tpl(TPL_V), read_tpl(TPL_G)
-    for v in VILLAS:
+    for v in VILLAS + SALE + PROJECTS:
         rel = v['url'].strip('/')
         write(rel + '/index.html', build_villa(v, tv))
         write(rel + '/gallery/index.html', build_gallery(v, tg))
-        print('ok', v['url'], '+ gallery/')
+        if v.get('sample'):
+            print('ok', v['url'], '+ gallery/')
     write('villa/index.html', INDEX)
     print('ok /villa/ -> /villas/')
 

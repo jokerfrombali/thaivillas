@@ -11,9 +11,9 @@ import os, re, subprocess, sys, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 HERE = pathlib.Path(__file__).resolve().parent
-STEPS = ['build_home.py', 'build_areas.py', 'build_villas.py', 'build_monthly.py', 'build_vip.py', 'build_info.py']
+STEPS = ['build_home.py', 'build_areas.py', 'build_villas.py', 'build_sale.py', 'build_monthly.py', 'build_vip.py', 'build_info.py']
 
-TOP = ('images|villa|villas|property-rental|monthly-rental|vip|about|contacts|terms|privacy|saved|data|fonts|vendor|'
+TOP = ('images|villa|villas|sale|projects|property-rental|monthly-rental|vip|about|contacts|terms|privacy|saved|data|fonts|vendor|'
        'favicon\\.svg|404\\.html|thb-[\\w.-]+\\.(?:js|css)')
 
 def prefix(base):
