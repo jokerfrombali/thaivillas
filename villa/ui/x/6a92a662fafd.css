@@ -1,0 +1,28 @@
+
+.thb-ft{background:#232322;color:#e9e4da;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:14px;line-height:1.6;margin:0;padding:0;box-sizing:border-box}
+.thb-ft *{box-sizing:border-box}
+.thb-ft a{color:inherit;text-decoration:none}
+.thb-ft .thb-ft-in{max-width:1280px;margin:0 auto;padding:56px 24px 0}
+.thb-ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1.3fr;gap:36px}
+.thb-ft-brand img{height:64px;width:64px;display:block;margin-bottom:16px}
+.thb-ft-name{font-family:'Lora',Georgia,"Times New Roman",serif;font-size:21px;font-weight:600;letter-spacing:.01em;margin:0 0 10px;color:#fff}
+.thb-ft-lead{color:#a9a29a;margin:0 0 20px;max-width:34ch}
+.thb-ft-soc{display:flex;gap:10px;flex-wrap:wrap}
+.thb-ft-soc a{display:inline-flex;align-items:center;gap:7px;border:1px solid #3d3c39;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:500;color:#e9e4da;transition:background .15s,border-color .15s}
+.thb-ft-soc a:hover{background:#2e2d2b;border-color:#5F5340}
+.thb-ft-soc svg{width:15px;height:15px;flex:0 0 auto}
+.thb-ft h4{font-family:'Lora',Georgia,"Times New Roman",serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#C1B59D;margin:0 0 16px}
+.thb-ft ul{list-style:none;margin:0;padding:0}
+.thb-ft li{margin:0 0 10px}
+.thb-ft li a{color:#d6d0c6;transition:color .15s;display:inline-block;padding:5px 0}
+.thb-ft li a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.thb-ft-c{font-size:11px;color:#7d766d;margin-left:5px}
+.thb-ft-ct{margin:0 0 12px}
+.thb-ft-ct dt{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7d766d;margin:0 0 2px}
+.thb-ft-ct dd{margin:0 0 12px;color:#e9e4da}
+.thb-ft-ct dd a:hover{text-decoration:underline;text-underline-offset:3px}
+.thb-ft-bar{border-top:1px solid #37352f;margin-top:44px;padding:20px 0 26px;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;color:#7d766d;font-size:13px}
+.thb-ft-bar nav{display:flex;gap:20px;flex-wrap:wrap}
+.thb-ft-bar nav a{display:inline-block;padding:9px 0}.thb-ft-bar nav a:hover{color:#d6d0c6}
+@media(max-width:980px){.thb-ft-grid{grid-template-columns:1fr 1fr;gap:32px}.thb-ft-brand{grid-column:1/-1}}
+@media(max-width:560px){.thb-ft .thb-ft-in{padding:40px 20px 0}.thb-ft-grid{grid-template-columns:1fr;gap:28px}.thb-ft-bar{margin-top:32px}}
