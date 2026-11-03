@@ -64,6 +64,7 @@ SITES = {
         "langPrefix": "",
         "propertyUrl": r"^/(?:sale|rent)/[^/]+/[^/]+/?$|^/project/[^/]+/?$",
         "skipUrl": r"^/search/|^/cdn-img|^/team/|^/privilegeclub",
+        "lowerPaths": True,  # the site serves /project/Foo-Bar and /project/foo-bar as the same page
     },
     "indreams": {
         "name": "In Dreams Phuket (projects)",
@@ -72,6 +73,7 @@ SITES = {
         "langPrefix": "",
         "propertyUrl": r"^/(?:sale|rent)/[^/]+/[^/]+/?$|^/project/[^/]+/?$",
         "skipUrl": r"^/search/|^/cdn-img|^/team/|^/privilegeclub",
+        "lowerPaths": True,  # the site serves /project/Foo-Bar and /project/foo-bar as the same page
     },
 }
 
@@ -280,6 +282,10 @@ class Fetcher:
         cfile = None
         if cache and not binary:
             cfile = Path(cache) / (hashlib.sha1(url.encode()).hexdigest() + ".json")
+            if not cfile.exists():
+                alt = self._ci_index(cache).get(url.lower())
+                if alt:
+                    cfile = alt
             if cfile.exists():
                 try:
                     c = json.loads(cfile.read_text(encoding="utf-8"))
@@ -291,6 +297,24 @@ class Fetcher:
             cfile.parent.mkdir(parents=True, exist_ok=True)
             cfile.write_text(json.dumps({"url": resp.url, "text": resp.text, "ctype": resp.headers.get("content-type", "")}), encoding="utf-8")
         return resp
+
+    _ci = None
+
+    def _ci_index(self, cache):
+        """lower-cased URL -> cached file, so a case-normalised crawl reuses pages cached under mixed-case URLs."""
+        if Fetcher._ci is None:
+            idx = {}
+            for f in Path(cache).glob("*.json"):
+                try:
+                    with open(f, encoding="utf-8") as fh:
+                        head = fh.read(600)
+                    m = re.search(r'"url":\s*"([^"]+)"', head)
+                    if m:
+                        idx.setdefault(m.group(1).lower(), f)
+                except Exception:
+                    pass
+            Fetcher._ci = idx
+        return Fetcher._ci
 
     def _get(self, url, binary=False, referer=None, polite=True):
         last_error = None
@@ -1311,6 +1335,9 @@ def run_crawl(job):
 
     def push(u, front=False):
         u = normalize_url(u, base)
+        if u and site.get("lowerPaths"):
+            pu = urllib.parse.urlparse(u)
+            u = urllib.parse.urlunparse(pu._replace(path=pu.path.lower()))
         if u and u not in seen and crawlable(u, base, site["langPrefix"], site.get("skipUrl")):
             seen.add(u)
             (queue.appendleft if front else queue.append)(u)
