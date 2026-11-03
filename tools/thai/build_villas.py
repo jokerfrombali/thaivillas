@@ -563,6 +563,46 @@ def build_gallery(v, tpl):
     return s
 
 
+
+# ---------------------------------------------------------------- shared CSS/JS
+# The template inlines ~100 KB of CSS/JS that is identical on every listing page. With thousands of
+# listings that alone would push the site past the GitHub Pages size limit, so blocks shared by most
+# pages are moved to /villa/ui/x/<hash>.css|js (cached once by the browser). Per-listing blocks stay inline.
+import hashlib, collections
+_BLOCK = re.compile(r'<style([^>]*)>(.*?)</style>|<script((?:\s[^>]*)?)>(.*?)</script>', re.S)
+COMMON = set()
+
+def _key(m):
+    if m.group(2) is not None:
+        body, kind = m.group(2), 'css'
+    else:
+        attrs = m.group(3) or ''
+        if 'src=' in attrs or ('type=' in attrs and 'javascript' not in attrs):
+            return None, None
+        body, kind = m.group(4), 'js'
+    if len(body) < 1500:
+        return None, None
+    return hashlib.sha1(body.encode('utf-8')).hexdigest()[:12] + '.' + kind, body
+
+def learn_common(pages):
+    c = collections.Counter()
+    for s in pages:
+        c.update({k for k, _ in (_key(m) for m in _BLOCK.finditer(s)) if k})
+    COMMON.update(k for k, n in c.items() if n >= max(2, int(len(pages) * 0.6)))
+
+def externalize(s):
+    def sub(m):
+        k, body = _key(m)
+        if not k or k not in COMMON:
+            return m.group(0)
+        path = os.path.join(ROOT, 'villa', 'ui', 'x', k)
+        if not os.path.exists(path):
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            open(path, 'w', encoding='utf-8').write(body)
+        return ('<link rel="stylesheet" href="/villa/ui/x/%s">' % k if k.endswith('.css')
+                else '<script src="/villa/ui/x/%s"></script>' % k)
+    return _BLOCK.sub(sub, s)
+
 # ---------------------------------------------------------------- assets + index
 def copy_assets():
     dst = os.path.join(ROOT, 'villa', 'ui')
@@ -597,10 +637,14 @@ INDEX = '''<!DOCTYPE html>
 def main():
     copy_assets()
     tv, tg = read_tpl(TPL_V), read_tpl(TPL_G)
-    for v in VILLAS + SALE + PROJECTS:
+    alls = VILLAS + SALE + PROJECTS
+    sample = alls[:: max(1, len(alls) // 24)][:24]
+    learn_common([build_villa(v, tv) for v in sample])
+    learn_common([build_gallery(v, tg) for v in sample])
+    for v in alls:
         rel = v['url'].strip('/')
-        write(rel + '/index.html', build_villa(v, tv))
-        write(rel + '/gallery/index.html', build_gallery(v, tg))
+        write(rel + '/index.html', externalize(build_villa(v, tv)))
+        write(rel + '/gallery/index.html', externalize(build_gallery(v, tg)))
         if v.get('sample'):
             print('ok', v['url'], '+ gallery/')
     write('villa/index.html', INDEX)
