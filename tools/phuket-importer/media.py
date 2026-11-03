@@ -67,7 +67,12 @@ def main():
     cat = json.loads((Path(a.import_dir) / "catalog.json").read_text(encoding="utf-8"))
     root = Path(a.media_root) / a.source
     jobs, index = [], {}
+    seen = set()
     for p in cat["properties"]:
+        key = (p.get("url") or "").lower().rstrip("/")
+        if key in seen:
+            continue
+        seen.add(key)
         names = []
         for i, ph in enumerate(p.get("photos") or [], 1):
             name = f"{i:02d}.webp"

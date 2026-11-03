@@ -63,7 +63,7 @@ SITES = {
         "start": ["/"],
         "langPrefix": "",
         "propertyUrl": r"^/(?:sale|rent)/[^/]+/[^/]+/?$|^/project/[^/]+/?$",
-        "skipUrl": r"^/search/|^/cdn-img|^/team/|^/privilegeclub",
+        "skipUrl": r"^/search/|^/cdn-img|^/team/|^/privilegeclub|^/phuketpdf|^/user/",
         "lowerPaths": True,  # the site serves /project/Foo-Bar and /project/foo-bar as the same page
     },
     "indreams": {
@@ -72,7 +72,7 @@ SITES = {
         "start": ["/"],
         "langPrefix": "",
         "propertyUrl": r"^/(?:sale|rent)/[^/]+/[^/]+/?$|^/project/[^/]+/?$",
-        "skipUrl": r"^/search/|^/cdn-img|^/team/|^/privilegeclub",
+        "skipUrl": r"^/search/|^/cdn-img|^/team/|^/privilegeclub|^/phuketpdf|^/user/",
         "lowerPaths": True,  # the site serves /project/Foo-Bar and /project/foo-bar as the same page
     },
 }

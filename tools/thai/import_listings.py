@@ -195,7 +195,12 @@ def main():
         chrome_par = boilerplate(props, paragraphs)
         chrome_spec = boilerplate(props, lambda p: [tuple(x) for x in p.get('specs') or []])
         n = 0
+        seen_urls = set()
         for p in props:
+            key = (p.get('url') or '').lower().rstrip('/')
+            if key in seen_urls:
+                continue
+            seen_urls.add(key)
             r = convert(src, p, chrome_par, chrome_spec, media_url, media_index, today)
             if not r:
                 continue
