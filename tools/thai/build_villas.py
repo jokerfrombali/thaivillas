@@ -386,7 +386,7 @@ def build_villa(v, tpl):
 
     # header: logo + nav links
     s = sub1(s, '<span style="font-style:italic;font-weight:400">The</span>&nbsp;<span style="font-weight:700;letter-spacing:0.09em">HOST</span>',
-             '<span style="font-style:italic;font-weight:400">Thai</span>&nbsp;<span style="font-weight:700;letter-spacing:0.09em">VILLAS</span>',
+             '<span style="font-style:italic;font-weight:400">Luxury</span>&nbsp;<span style="font-weight:700;letter-spacing:0.09em">PHUKET</span>',
              'logo', 2)
     s = sub1(s, '>Villas&nbsp;for&nbsp;rent</a>', '>Villas</a>', 'nav villas', 2)
     s = sub1(s, '<a href="/villas-for-sale/" class="thb-navlink"', '<a href="/monthly-rental/" class="thb-navlink"', 'nav sale', 2)
@@ -554,7 +554,7 @@ def build_villa(v, tpl):
     s = sub1(s, "'Hi The Host Bali! Availability request for '", "'Hi Thai Villas! Availability request for '", 'checkavail text')
     s = sub1(s, "return 'https://thehostbali.com'+location.pathname;", "return location.origin+location.pathname;", 'checkavail url')
     s = sub1(s, "b.setAttribute('aria-label','The Host Bali \\u2014 home');\n        b.textContent='H';",
-             "b.setAttribute('aria-label','Thai Villas \\u2014 home');\n        b.textContent='T';", 'secnav badge')
+             "b.setAttribute('aria-label','Thai Villas \\u2014 home');\n        b.textContent='L';", 'secnav badge')
     s = s.replace('<a href="#section-rules">Things to know</a>', '<a href="#section-rules">Things to know</a><a href="#section-related">More villas</a>')
     s = s.replace('#section-location,#section-rules{', '#section-location,#section-rules,#section-related{')
     s = s.replace('<script defer src="/thb-totop.js"></script>\n<script defer src="/thb-enquiry.js"></script>',

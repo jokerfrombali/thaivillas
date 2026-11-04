@@ -74,8 +74,8 @@ def write(rel, s):
         print('WARN', rel, 'banned terms:', hits)
 
 # ---------------------------------------------------------------- shell pieces
-LOGO = ('<a href="/" data-hostpill class="flex items-center text-ink border-[1.5px] border-ink/30 rounded-full px-3.5 py-1" aria-label="Thai Villas">'
-        '<span class="thb-logo-text font-display text-[19px] tracking-tight ml-2.5 whitespace-nowrap"><span class="italic">Thai</span>&nbsp;<span class="font-semibold tracking-[0.09em]">VILLAS</span></span></a>')
+LOGO = ('<a href="/" data-hostpill class="flex items-center text-ink border-[1.5px] border-ink/30 rounded-full px-3.5 py-1" aria-label="Luxury Phuket">'
+        '<span class="thb-logo-text font-display text-[19px] tracking-tight ml-2.5 whitespace-nowrap"><span class="italic">Luxury</span>&nbsp;<span class="font-semibold tracking-[0.09em]">PHUKET</span></span></a>')
 
 CHEV = '<svg class="w-3 h-3 opacity-60 mega-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>'
 HEART = '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'

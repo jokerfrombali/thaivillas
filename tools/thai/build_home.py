@@ -393,7 +393,7 @@ def build_404():
     s = s.replace("image-set(url('/public-objects/hero/slide-05-1200.avif') type('image/avif'),\n    url('/public-objects/hero/slide-05-1200.jpg') type('image/jpeg'))",
                   "url('/images/hero.jpg')")
     s = s.replace('<a class="logo" href="/" aria-label="The Host Bali — home"><i>The</i><b>HOST</b></a>',
-                  '<a class="logo" href="/" aria-label="Thai Villas — home"><i>Thai</i><b>VILLAS</b></a>')
+                  '<a class="logo" href="/" aria-label="Luxury Phuket — home"><i>Luxury</i><b>PHUKET</b></a>')
     s = s.replace('Everything we run is one tap away', 'Every villa is one tap away')
     s = re.sub(r'href="https://wa\.me/[^"]*"', 'href="%s"' % esc(wa('Hi Thai Villas! I hit a broken link on your site — can you help me find a villa?')), s)
     chips = [('/villas/phuket/', 'Phuket')] + [(area_url('phuket', x), n) for x, n in (('bang-tao', 'Bang Tao'), ('kata', 'Kata'), ('nai-harn', 'Nai Harn'))] \
@@ -413,7 +413,7 @@ def build_saved():
     s = s.replace('</style>\n</style>', '</style>')
     hdr = f'''<header class="hd">
   <div class="hd-in">
-    <a href="/" data-hostpill class="hostpill" aria-label="Thai Villas"><em>Thai</em>&nbsp;<b>VILLAS</b></a>
+    <a href="/" data-hostpill class="hostpill" aria-label="Luxury Phuket"><em>Luxury</em>&nbsp;<b>PHUKET</b></a>
     <nav>
       <a href="/property-rental/?period=daily" class="hm">Daily rentals</a>
       <a href="/monthly-rental/" class="hm">Monthly</a>
