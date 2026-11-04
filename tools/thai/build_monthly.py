@@ -122,8 +122,20 @@ def dest_card(slug):
             '<div class="in"><h3>%s</h3><p>%s</p><span class="go">Monthly in %s %s</span></div></a>'
             % (slug, cnt, d['image'], esc(d['name']), esc(d['name']), esc(d['short']), esc(d['name']), ICON['arrow'].replace('<svg', '<svg width="14" height="14"')))
 
+MONTHLY_SHOWN = 24
+
+def month_price(v):
+    if v.get('priceMonth'):
+        return '%s / month <span>&middot; reply on WhatsApp</span>' % thb(v['priceMonth'])
+    return 'Monthly rate on request <span>&middot; reply on WhatsApp</span>'
+
 def villa_grid(vs):
-    return '<div class="w4-cards">' + ''.join(villa_card(v, 'Monthly rate on request <span>&middot; reply on WhatsApp</span>') for v in vs) + '</div>'
+    html = '<div class="w4-cards">' + ''.join(villa_card(v, month_price(v)) for v in vs[:MONTHLY_SHOWN]) + '</div>'
+    if len(vs) > MONTHLY_SHOWN:
+        html += ('<div style="display:flex;justify-content:center;margin:28px 0 4px"><a href="/property-rental/?period=monthly" '
+                 'style="display:inline-flex;align-items:center;height:48px;padding:0 26px;border-radius:999px;background:#0a0a0a;'
+                 'color:#fff;font-weight:600;font-size:15px;text-decoration:none">See all %d monthly rentals</a></div>' % len(vs))
+    return html
 
 def none_yet(name):
     return ('<div class="w4-tile" style="max-width:720px"><h3>Monthly villas in %s are on request</h3>'
@@ -136,7 +148,7 @@ SAMPLE_NOTE = '<p class="w4-sample">Listings shown are sample villas while the s
 
 def itemlist(name, vs):
     return {"@context": "https://schema.org", "@type": "ItemList", "name": name, "numberOfItems": len(vs),
-            "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": v['url'], "name": v['name']} for i, v in enumerate(vs)]}
+            "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": v['url'], "name": v['name']} for i, v in enumerate(vs[:100])]}
 
 # ------------------------------------------------------------------ hub
 def build_hub():

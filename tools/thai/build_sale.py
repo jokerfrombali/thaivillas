@@ -21,7 +21,7 @@ def page(rel, crumbs, tag, h1, sub, vs, kicker, seo_title, seo_paras, side, qa, 
     html += A.faq_section(kicker, '%s — FAQ' % kicker, qa)
     ld = [A.crumbs_ld([('Home', '/')] + [(n, u) for n, u in (crumbs or [])]), A.faq_ld(qa),
           {"@context": "https://schema.org", "@type": "ItemList", "name": h1, "numberOfItems": len(vs),
-           "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": v['name'], "url": v['url']} for i, v in enumerate(vs)]}]
+           "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": v['name'], "url": v['url']} for i, v in enumerate(vs[:100])]}]
     s = A.assemble('property-rental/index.html', title, desc, image, html, '', ld, False, False)
     write(rel, s)
 

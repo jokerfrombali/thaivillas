@@ -142,6 +142,19 @@ def related(v, n=4):
 
 
 def facts_of(v):
+    if v.get('dealType') == 'project':
+        f = []
+        if v.get('bedroomsRange'):
+            f.append(fmt_range(v['bedroomsRange'], ' bedrooms'))
+        if v.get('areaRange'):
+            f.append(fmt_range(v['areaRange'], ' m²'))
+        if v.get('completion'):
+            f.append('Completion ' + v['completion'])
+        if v.get('ownership'):
+            f.append(v['ownership'])
+        if v.get('unitsForSale'):
+            f.append('%d unit%s for sale' % (v['unitsForSale'], '' if v['unitsForSale'] == 1 else 's'))
+        return f or [kind(v)]
     f = []
     if v['bedrooms']:
         f.append('%d bedroom%s' % (v['bedrooms'], '' if v['bedrooms'] == 1 else 's'))
@@ -176,6 +189,44 @@ def _paras(text):
     return '<br><br>'.join(esc(p) for p in text.split('\n\n') if p.strip())
 
 own = lambda v: ' '.join([v['name'], v.get('description') or '', ' '.join(' '.join(x) for x in v.get('specs') or [])])
+
+BTN_DARK = ('display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:12px;background:#0a0a0a;'
+            'color:#fff;font-weight:600;font-size:16px;text-decoration:none')
+BTN_LIGHT = ('display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:12px;border:1px solid #d6d3cc;'
+             'background:#fff;color:#0a0a0a;font-weight:600;font-size:16px;text-decoration:none')
+
+def buy_mode(s, v):
+    """Sale / project pages: no dates, guests, calendar or house rules — a request-details panel instead."""
+    ask = wa("Hi Thai Villas! I'm interested in %s (%s). Please send me details, the price list and photos." % (v['name'], v['url']))
+    view = wa("Hi Thai Villas! I'd like to arrange a viewing of %s (%s)." % (v['name'], v['url']))
+    for sec in ('section-availability', 'section-rules', 'section-sleep'):
+        sp = _balanced(s, r'<section id="%s"' % sec, 'section')
+        s = s[:sp[0]] + s[sp[1]:]
+        s = re.sub(r'<a href="#%s"[^>]*>[^<]*</a>' % sec, '', s)
+    s = re.sub(r'#section-availability,|,#section-availability|#section-rules,|#section-sleep,', '', s)
+    # header button "Check availability" -> WhatsApp request
+    s = re.sub(r'(<a[^>]*)href="#section-availability"([^>]*data-thb-cta="check-availability"[^>]*>(?:<span[^>]*>(?:<span[^>]*></span>)?</span>)?)Check availability</a>',
+               lambda m: m.group(1) + 'href="%s" target="_blank" rel="noopener"%sRequest details</a>' % (esc(ask), m.group(2)), s)
+    # booking panel: drop dates + guests, put two buttons
+    sp = _balanced(s, r'<div class="flex flex-col gap-2" data-slot="booking-panel-inputs"', 'div')
+    s = s[:sp[0]] + s[sp[1]:]
+    sp = _balanced(s, r'<div[^>]*data-slot="booking-panel-cta"', 'div')
+    cta = ('<div data-slot="booking-panel-cta" style="display:flex;flex-direction:column;gap:10px">'
+           '<a href="%s" target="_blank" rel="noopener" style="%s">Request details on WhatsApp</a>'
+           '<a href="%s" target="_blank" rel="noopener" style="%s">Book a viewing</a>'
+           '<p style="margin:4px 0 0;text-align:center;font-size:13px;color:#6b6b66">%s</p></div>'
+           % (esc(ask), BTN_DARK, esc(view), BTN_LIGHT,
+              'Price list, layouts and payment plan in one message.' if v['dealType'] == 'project'
+              else 'Documents, ownership details and viewings arranged on WhatsApp.'))
+    s = s[:sp[0]] + cta + s[sp[1]:]
+    sp = _balanced(s, r'<div[^>]*data-slot="booking-panel-mobile-bar"', 'div')
+    bar = ('<div data-slot="booking-panel-mobile-bar" class="fixed inset-x-0 bottom-0 z-50 lg:hidden" style="display:flex;align-items:center;'
+           'justify-content:space-between;gap:12px;border-top:1px solid #e6e3dc;background:#fff;padding:14px 20px '
+           'max(14px,calc(env(safe-area-inset-bottom) + 14px))"><span style="font-weight:600;font-size:16px">%s</span>'
+           '<a href="%s" target="_blank" rel="noopener" style="%s;height:44px;padding:0 18px">Request details</a></div>'
+           % (esc(price_label(v, True)), esc(ask), BTN_DARK))
+    s = s[:sp[0]] + bar + s[sp[1]:]
+    return s
 
 def fill_real(s, v):
     """Listing content goes in last, so the template-leftover check above never trips on real text."""
@@ -513,6 +564,8 @@ def build_villa(v, tpl):
     s = s.replace(T_URL, url).replace(esc(T_NAME), esc(name)).replace(T_NAME, esc(name)).replace(T_SHORT, esc(sh))
     left = [x for x in ('/public-objects/', 'Sanur', 'Host', 'Airbnb', 'Guarantee', 'Hostex', '/villa/assets', '/brand/') if x in s and x not in own(v)]
     assert not left, '%s: template leftovers %s' % (v['id'], left)
+    if v.get('dealType') in ('sale', 'project'):
+        s = buy_mode(s, v)
     return fill_real(s, v)
 
 

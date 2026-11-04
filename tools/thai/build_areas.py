@@ -344,7 +344,45 @@ def empty_state(place, near_links):
                + ''.join(CHIP_A % l for l in near_links) + '</div>' if near_links else '')
             + '</div>')
 
+FIRST_CARDS = 48          # cards in the page HTML; the rest load from data/cards-<deal>.json
+CARD_POOLS = {}
+
+def card_pool(vs):
+    """One shared JSON file per listing type holding every card's HTML; a page only lists indexes into it."""
+    deal = vs[0].get('dealType', 'rent') if vs else 'rent'
+    src = {'sale': SALE, 'project': PROJECTS}.get(deal, VILLAS)
+    if deal not in CARD_POOLS:
+        rel = 'data/cards-%s.json' % deal
+        write(rel, json.dumps([card(v) for v in src], ensure_ascii=False, separators=(',', ':')))
+        CARD_POOLS[deal] = ({v['url']: i for i, v in enumerate(src)}, '/' + rel)
+    return CARD_POOLS[deal]
+
+MORE_JS = r"""<script>(function(){var c=document.getElementById('thbMore');if(!c)return;var cfg=JSON.parse(c.textContent),
+btn=document.getElementById('thbMoreBtn'),done=false,busy=false;
+function load(){if(done||busy)return;busy=true;if(btn)btn.textContent='Loading\u2026';
+fetch(cfg.src).then(function(r){return r.json()}).then(function(all){var g=document.getElementById('cardGrid'),h='';
+cfg.ids.forEach(function(i){h+=all[i]||''});g.insertAdjacentHTML('beforeend',h);done=true;if(btn)btn.parentNode.removeChild(btn);
+if(window.thbFilterApply)window.thbFilterApply();try{document.dispatchEvent(new Event('thb:cards'))}catch(e){}})
+.catch(function(){busy=false;if(btn)btn.textContent='Show more'})}
+if(btn){btn.addEventListener('click',load);if('IntersectionObserver' in window){new IntersectionObserver(function(e){if(e[0].isIntersecting)load()},{rootMargin:'1500px'}).observe(btn)}}
+document.addEventListener('click',function(e){var t=e.target;if(t&&t.closest&&t.closest('.pill,.f-chip,[class*=qchip],[data-filter],#filterDrawer,[onclick*="ilter"],[onclick*="setPill"],[onclick*="setPrice"]'))load()},true);
+if(location.search||location.hash)load();})();</script>"""
+
 def cards_wrap(vs, empty_html=''):
+    if len(vs) > FIRST_CARDS:
+        idx, src = card_pool(vs)
+        rest = [idx[v['url']] for v in vs[FIRST_CARDS:]]
+        return f'''  <!-- CARDS GRID -->
+  <div class="cards-wrap">
+    <div id="cardGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      {"".join(card(v) for v in vs[:FIRST_CARDS])}
+    </div>
+    <div style="display:flex;justify-content:center;margin:28px 0 8px"><button type="button" id="thbMoreBtn" style="height:48px;padding:0 26px;border-radius:999px;border:1px solid #0a0a0a;background:#fff;font-weight:600;font-size:15px;cursor:pointer">Show all {len(vs)}</button></div>
+    <script type="application/json" id="thbMore">{json.dumps({"src": src, "ids": rest}, separators=(',', ':'))}</script>
+    {MORE_JS}
+    {NO_MATCH % wa()}
+  </div>
+'''
     if not vs:
         return f'''  <!-- CARDS GRID -->
   <div class="cards-wrap">
@@ -747,7 +785,7 @@ def build_catalog():
         is_cat='true', cur='""', keys=json.dumps(allkeys, ensure_ascii=False))
     ld = [crumbs_ld([('Home', '/'), ('Villas for rent in Thailand', '/property-rental/')]), faq_ld(qa),
           {"@context": "https://schema.org", "@type": "ItemList", "name": "Villas for rent in Thailand", "numberOfItems": len(vs),
-           "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": v['name'], "url": v['url']} for i, v in enumerate(vs)]}]
+           "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": v['name'], "url": v['url']} for i, v in enumerate(vs[:100])]}]
     s = assemble('property-rental/index.html', 'Villas for Rent in Thailand — Phuket Pool Villas, Daily & Monthly | Thai Villas',
                  'Private pool villas for rent in Phuket and across Thailand. Filter by beach, bedrooms, guests and daily or monthly stays; book on WhatsApp.',
                  '/images/hero.jpg', page, tail, ld, True, True)
@@ -826,7 +864,7 @@ def area_page(rel, place, kicker, crumbs, h1, sub, image, vs, chip_list, cur, sh
     if vs:
         ld.append({"@context": "https://schema.org", "@type": "ItemList", "name": "Villas for rent in %s" % re.sub('<[^>]+>', '', fullplace),
                    "numberOfItems": len(vs), "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": v['name'], "url": v['url']}
-                                                                 for i, v in enumerate(vs)]})
+                                                                 for i, v in enumerate(vs[:100])]})
     s = assemble('villas/umalas/index.html', title, desc, image, page, tail, ld, bool(vs), bool(vs))
     write(rel, s)
 
@@ -929,7 +967,21 @@ def build_dest(d):
               ('%s for rent in %s. ' % (pl(n, 'private villa'), name) if n else 'Private villas for rent in %s, Thailand. ' % name)
               + d['short'] + ' Daily or monthly, book on WhatsApp.', empty, '%s, Thailand' % name)
 
+def write_map_data():
+    """Light data file for the map (thb-rent-map.js): no descriptions, real coordinates when known."""
+    keep = ('id', 'name', 'url', 'area', 'areaSlug', 'subArea', 'subAreaSlug', 'bedrooms', 'bathrooms', 'guests', 'cardImage',
+            'priceNight', 'priceMonth', 'daily', 'monthly')
+    out = []
+    for v in VILLAS:
+        r = {k: v.get(k) for k in keep}
+        r['images'] = [v['cardImage']]
+        if v.get('latitude') and v.get('longitude'):
+            r['lat'], r['lng'] = v['latitude'], v['longitude']
+        out.append(r)
+    write('data/map-villas.json', json.dumps(out, ensure_ascii=False, separators=(',', ':')))
+
 if __name__ == '__main__':
+    write_map_data()
     build_catalog()
     build_hub()
     build_phuket()

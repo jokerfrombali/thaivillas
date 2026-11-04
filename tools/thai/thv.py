@@ -320,9 +320,33 @@ def fav(v):
 
 SAMPLE_BADGE = '<span class="thb-sample" style="position:absolute;left:10px;bottom:10px;background:rgba(10,10,10,.72);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px">Sample listing</span>'
 
+def fmt_range(r, unit=''):
+    a, b = r
+    f = lambda x: ('%g' % x) if isinstance(x, (int, float)) else str(x)
+    return (f(a) if a == b else '%s–%s' % (f(a), f(b))) + unit
+
+def card_meta(v):
+    """Short facts under a card title (3 items max)."""
+    if v.get('dealType') == 'project':
+        m = []
+        if v.get('bedroomsRange'):
+            m.append(fmt_range(v['bedroomsRange'], ' bed'))
+        if v.get('areaRange'):
+            m.append(fmt_range(v['areaRange'], ' m²'))
+        if v.get('completion'):
+            m.append('Completion ' + v['completion'])
+        return m or [v.get('propertyTypeName') or 'New project']
+    m = []
+    if v['bedrooms']:
+        m.append('%d bed' % v['bedrooms'])
+    if v['bathrooms']:
+        m.append('%g bath' % v['bathrooms'])
+    m.append(third_meta(v))
+    return m
+
 def third_meta(v):
     if v.get('dealType') in ('sale', 'project'):
-        return '%g m²' % v['livingAreaSqm'] if v.get('livingAreaSqm') else esc(v.get('propertyTypeName') or 'Property')
+        return '%g m²' % v['livingAreaSqm'] if v.get('livingAreaSqm') else (v.get('propertyTypeName') or 'Property')
     return '%d guests' % v['guests']
 
 def prop_card(v):
@@ -336,13 +360,13 @@ def prop_card(v):
             '            <span class="badge">%s</span>\n            %s\n            %s\n'
             '          </div>\n          <div style="padding:14px">\n'
             '            <p style="font-family:\'Lora\',Georgia,serif;font-size:16px;font-weight:600;margin-bottom:6px;line-height:1.2">%s</p>\n'
-            '            <div class="prop-meta" style="margin-bottom:10px"><span>%d bed</span><span>%g bath</span><span>%s</span></div>\n'
+            '            <div class="prop-meta" style="margin-bottom:10px">%s</div>\n'
             '            <div style="display:flex;align-items:center;justify-content:space-between">'
             '<div><span style="font-family:\'Lora\',Georgia,serif;font-size:19px;font-weight:700">%s</span></div></div>\n'
             '          </div>\n        </div>'
             % (v['areaSlug'], v.get('subAreaSlug') or '', v['bedrooms'], v['guests'], period, tokens(v), v['url'],
                img, esc(v['name']), esc(where(v)), esc(v.get('subArea') or v['area']), fav(v),
-               SAMPLE_BADGE if v.get('sample') else '', esc(v['name']), v['bedrooms'], v['bathrooms'], third_meta(v), esc(price_label(v, True))))
+               SAMPLE_BADGE if v.get('sample') else '', esc(v['name']), ''.join('<span>%s</span>' % esc(x) for x in card_meta(v)), esc(price_label(v, True))))
 
 def acard(v):
     """Horizontal-rail card (.thb-acard) used on the home page."""

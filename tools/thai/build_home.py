@@ -113,7 +113,7 @@ def loc_card(href, img, name, n, extra=''):
             '<div class="in"><p class="n">%s</p>%s</div></a>' % (href, img, esc(name), name, c))
 
 def rail(title, href, villas):
-    cards = '\n    '.join(acard(v) for v in villas)
+    cards = '\n    '.join(acard(v) for v in villas[:12])   # the heading links to the full list
     return f'''  <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
     <a href="{href}" class="thb-arh"><h3>{title} {CHEV_R}</h3><span class="cnt">{plural(len(villas))}</span></a>
   </div>

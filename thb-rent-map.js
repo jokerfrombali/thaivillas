@@ -155,7 +155,7 @@
        lat/lng is placed at the centre of its beach area (or destination) from
        data/areas.json and drawn as a wide "somewhere around here" circle. */
     cache = Promise.all([
-      fetch('/thaivillas/data/villas.json').then(function (r) { return r.json(); }),
+      fetch('/thaivillas/data/map-villas.json').then(function (r) { return r.json(); }),
       fetch('/thaivillas/data/areas.json').then(function (r) { return r.json(); }).catch(function () { return {}; })
     ]).then(function (r) {
       var geo = {};

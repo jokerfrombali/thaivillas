@@ -100,6 +100,32 @@ def location(p):
     return dest, sub, sub_name
 
 
+def project_facts(p):
+    """Ranges from the project page text: '2 properties are currently for sale: 1–2 bedrooms, 45–71 m², from 5,920,000 THB.
+    Ownership: leasehold.' plus 'Completion scheduled for 2027' / 'completed in 2019'."""
+    t = p.get('fullText') or ''
+    out = {}
+    m = re.search(r'(\d{1,2})\s*[–-]\s*(\d{1,2})\s*bedrooms?', t) or re.search(r'currently for sale:\s*(\d{1,2})\s*bedrooms?', t)
+    if m:
+        a = int(m.group(1)); b = int(m.group(2)) if m.lastindex > 1 else a
+        out['bedroomsRange'] = [min(a, b), max(a, b)]
+    m = re.search(r'(\d[\d,]{0,5})\s*[–-]\s*(\d[\d,]{0,5})\s*m²', t) or re.search(r'range from (\d[\d,]{0,5}) to (\d[\d,]{0,5})', t)
+    if m:
+        a, b = num(m.group(1)), num(m.group(2))
+        if a and b and 10 <= a <= b < 100000:
+            out['areaRange'] = [a, b]
+    m = re.search(r'[Cc]ompletion[^.\n]{0,40}?((?:Q[1-4]\s*)?20\d\d)', t) or re.search(r'[Cc]ompleted in (20\d\d)', t)
+    if m:
+        out['completion'] = m.group(1)
+    m = re.search(r'Ownership:\s*(freehold|leasehold)', t, re.I)
+    if m:
+        out['ownership'] = m.group(1).capitalize()
+    m = re.search(r'(\d+) propert(?:y|ies) (?:is|are) currently for sale', t)
+    if m:
+        out['unitsForSale'] = int(m.group(1))
+    return out
+
+
 def title_of(p):
     t = clean(p.get('title') or p.get('h1') or '')
     t = re.sub(r'\s*\|\s*', ' · ', t)
@@ -174,6 +200,8 @@ def convert(src, p, chrome_par, chrome_spec, media_url, media_index, today):
         'categories': [c for c in ('property-rental' if deal == 'rent' else 'property-' + deal, dest, sub, 'monthly' if monthly and deal == 'rent' else None) if c],
         'filterTags': tags, 'url': url, 'source': src, 'sourceUrl': p.get('url'), 'updatedAt': today,
     }
+    if deal == 'project':
+        rec.update(project_facts(p))
     return rec
 
 
