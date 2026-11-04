@@ -17,8 +17,8 @@
         var b=document.createElement('a');
         b.id='thbHBadge';
         b.href='/';
-        b.setAttribute('aria-label','Thai Villas \u2014 home');
-        b.textContent='T';
+        b.setAttribute('aria-label','Luxury Phuket \u2014 home');
+        b.textContent='L';
         row.insertBefore(b,row.firstChild);
       }
       row.insertBefore(nav,row.children[2]||null);

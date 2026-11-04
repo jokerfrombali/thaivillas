@@ -16,7 +16,7 @@ monthly = lambda v: v.get('monthly')
 # Long-stay notes per destination: general, well-known facts only.
 NOTES = {
     'phuket': {
-        'title': 'Monthly Villa Rental in Phuket — Long-Stay Pool Villas | Thai Villas',
+        'title': 'Monthly Villa Rental in Phuket — Long-Stay Pool Villas | Luxury Phuket',
         'desc': 'Rent a pool villa in Phuket by the month: Rawai, Nai Harn, Bang Tao, Kata and Chalong. How long stays work, deposits, utilities. Rates on request via WhatsApp.',
         'h1': 'Monthly villa rental <i>in Phuket.</i>',
         'lead': 'A month or a whole season on Thailand\'s biggest island: private pool villas near the beaches long-stayers actually choose, rented by the month and arranged with a real person on WhatsApp.',
@@ -25,7 +25,7 @@ NOTES = {
                  'High season runs roughly November to April (dry, calm sea on the west coast); May to October is the green season, with short tropical showers, surf on the west coast and more choice of villas.'],
     },
     'koh-samui': {
-        'title': 'Monthly Villa Rental in Koh Samui — Long Stays | Thai Villas',
+        'title': 'Monthly Villa Rental in Koh Samui — Long Stays | Luxury Phuket',
         'desc': 'Monthly and long-term villa rentals on Koh Samui: how it works, deposits, utilities, what to check. Monthly rates on request via WhatsApp.',
         'h1': 'Monthly villa rental <i>on Koh Samui.</i>',
         'lead': 'Hillside villas with sea views and quiet beaches in the Gulf of Thailand — rented by the month, arranged on WhatsApp.',
@@ -34,7 +34,7 @@ NOTES = {
                  'Many villas sit on hillsides, so a car or scooter makes day-to-day life easier — ask us about access roads when you shortlist.'],
     },
     'pattaya': {
-        'title': 'Monthly Villa Rental in Pattaya — Pool Houses for Long Stays | Thai Villas',
+        'title': 'Monthly Villa Rental in Pattaya — Pool Houses for Long Stays | Luxury Phuket',
         'desc': 'Rent a pool house or villa in Pattaya by the month: Pratumnak, Jomtien and beyond. How long stays work, deposits, utilities. Rates on request.',
         'h1': 'Monthly villa rental <i>in Pattaya.</i>',
         'lead': 'Large pool houses about two hours from Bangkok, open all year — rented by the month for families, remote workers and long winters.',
@@ -43,7 +43,7 @@ NOTES = {
                  'The weather is warm all year; the wetter months are usually around September and October.'],
     },
     'bangkok': {
-        'title': 'Monthly Rental in Bangkok — Houses for Long Stays | Thai Villas',
+        'title': 'Monthly Rental in Bangkok — Houses for Long Stays | Luxury Phuket',
         'desc': 'Monthly and long-term rentals in Bangkok: houses and serviced homes, how deposits and utilities usually work. Ask us on WhatsApp — rates on request.',
         'h1': 'Monthly rental <i>in Bangkok.</i>',
         'lead': 'Serviced houses and homes for living in the capital for a month or more — arranged on WhatsApp.',
@@ -52,7 +52,7 @@ NOTES = {
                  'The cooler, drier months are usually November to February; the rainy season peaks around September and October.'],
     },
     'chiang-mai': {
-        'title': 'Monthly Villa Rental in Chiang Mai — Long Stays | Thai Villas',
+        'title': 'Monthly Villa Rental in Chiang Mai — Long Stays | Luxury Phuket',
         'desc': 'Monthly villa and house rentals in Chiang Mai: how it works, deposits, utilities, best season. Rates on request via WhatsApp.',
         'h1': 'Monthly villa rental <i>in Chiang Mai.</i>',
         'lead': 'Houses with gardens and pools in the northern mountain city — a long-time favourite for monthly stays and remote work.',
@@ -141,7 +141,7 @@ def none_yet(name):
     return ('<div class="w4-tile" style="max-width:720px"><h3>Monthly villas in %s are on request</h3>'
             '<p>We are still adding long-stay villas here. Tell us your dates, budget and what you need, and we\'ll look for you and come back with options.</p>'
             '<div class="w4-btns" style="margin-top:18px">%s%s</div></div>'
-            % (esc(name), wa_btn("Hi Thai Villas! I'm looking for a monthly villa rental in %s." % name, 'Ask on WhatsApp'),
+            % (esc(name), wa_btn("Hi Luxury Phuket! I'm looking for a monthly villa rental in %s." % name, 'Ask on WhatsApp'),
                btn('/property-rental/?period=monthly', 'All monthly villas', 'light')))
 
 SAMPLE_NOTE = '<p class="w4-sample">Listings shown are sample villas while the site is in preview — real availability and rates on request.</p>'
@@ -157,7 +157,7 @@ def build_hub():
                 'Rent a villa in Thailand <i>by the month.</i>',
                 'Private pool villas for a month, a season or longer — in Phuket first, plus Koh Samui, Pattaya, Bangkok and Chiang Mai. '
                 'One person on WhatsApp handles your shortlist, viewing and agreement.',
-                wa_btn("Hi Thai Villas! I'm looking for a monthly villa rental in Thailand.", 'Ask about a long stay')
+                wa_btn("Hi Luxury Phuket! I'm looking for a monthly villa rental in Thailand.", 'Ask about a long stay')
                 + btn('#destinations', 'Choose a destination', 'ghost'),
                 chips=['From one month', 'Deposit 1–2 months', 'Rates on request'], alt='Pool villa in Phuket for a monthly stay')
     body += '<div class="w4-wrap">' + crumbs_html([('Home', '/'), ('Monthly rentals', '/monthly-rental/')]) + '</div>'
@@ -177,9 +177,9 @@ def build_hub():
     body += section('Questions', 'Monthly rentals: <i>your questions</i>', fh, narrow=True, sid='faq')
     body += final('Long stays', 'Tell us your dates.',
                   'Send your dates, the destination and how many of you there are. We reply with what is free and the monthly rate.',
-                  wa_btn("Hi Thai Villas! I'm looking for a monthly villa rental in Thailand.") + btn('/property-rental/', 'All villas', 'light'))
+                  wa_btn("Hi Luxury Phuket! I'm looking for a monthly villa rental in Thailand.") + btn('/property-rental/', 'All villas', 'light'))
     ld = [fld, crumbs_ld([('Home', '/'), ('Monthly rentals', '/monthly-rental/')]), itemlist('Villas for monthly rent in Thailand', vs)]
-    write('monthly-rental/index.html', page('Monthly Villa Rental in Thailand — Long-Stay Pool Villas | Thai Villas',
+    write('monthly-rental/index.html', page('Monthly Villa Rental in Thailand — Long-Stay Pool Villas | Luxury Phuket',
           'Rent a private pool villa in Thailand by the month — Phuket, Koh Samui, Pattaya, Bangkok, Chiang Mai. How long stays work: minimum term, deposit, utilities. Rates on request.',
           body, ld, '/images/phuket-2.jpg'))
 
@@ -188,7 +188,7 @@ def build_dest(slug):
     d, n = D[slug], NOTES[slug]
     name = d['name']
     vs = [v for v in VILLAS if monthly(v) and v['areaSlug'] == slug]
-    wtxt = "Hi Thai Villas! I'm looking for a monthly villa rental in %s." % name
+    wtxt = "Hi Luxury Phuket! I'm looking for a monthly villa rental in %s." % name
     img = '/images/phuket.jpg' if slug == 'phuket' else d['image']
     body = hero(img, 'Monthly &amp; long stay · %s' % esc(name), n['h1'], n['lead'],
                 wa_btn(wtxt, 'Ask about monthly rates') + btn('#villas', 'See the villas', 'ghost'),

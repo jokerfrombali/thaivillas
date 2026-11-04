@@ -42,7 +42,7 @@
          обычный запрос, а раньше чип-ы вели себя как радиокнопки. */
       beds: checkedMany('beds').filter(function (v) { return v !== 'any'; }),
       loc: checkedMany('location'),
-      /* Thai Villas: beach sub-areas, rental period, minimum guests, vibe */
+      /* Luxury Phuket: beach sub-areas, rental period, minimum guests, vibe */
       sub: checkedMany('sub'),
       period: checkedOne('period', 'any'),
       guests: parseInt(checkedOne('guests', '0'), 10) || 0,
@@ -230,7 +230,7 @@
     });
   }
 
-  /* Thai Villas: filters from the URL (?location= ?sub= ?beds= ?period= ?guests= ?amenity= ?vibe=)
+  /* Luxury Phuket: filters from the URL (?location= ?sub= ?beds= ?period= ?guests= ?amenity= ?vibe=)
      and a small API for the quick chips / search bar. */
   function setGroup(name, values) {
     var want = (values || []).map(String);

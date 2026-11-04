@@ -48,21 +48,21 @@ def main():
          SALE, 'Property for sale in Thailand', 'Buying property in Thailand',
          ['Every listing shows the asking price in Thai baht, the size, bedrooms and the ownership type where known.',
           'Message us with the properties you like: we send documents, arrange viewings and connect you with a lawyer.'],
-         side, SALE_QA, 'Property for Sale in Thailand — Villas & Condos in Phuket | Thai Villas',
+         side, SALE_QA, 'Property for Sale in Thailand — Villas & Condos in Phuket | Luxury Phuket',
          '%d villas, apartments and penthouses for sale in Phuket and Thailand, with prices and photos.' % len(SALE), '/images/phuket.jpg')
     for d in dests:
         vs = [v for v in SALE if v['areaSlug'] == d['slug']]
         page('sale/%s/index.html' % d['slug'], [('For sale', '/sale/'), (d['name'], '/sale/%s/' % d['slug'])], '🏡 ' + d['name'],
              'Property for sale in %s' % d['name'], d['short'], vs, 'For sale in ' + d['name'], 'Buying in ' + d['name'],
              ['%d properties for sale in %s, sorted as listed by the owners and developers.' % (len(vs), d['name'])],
-             side, SALE_QA, 'Property for Sale in %s, Thailand | Thai Villas' % d['name'],
+             side, SALE_QA, 'Property for Sale in %s, Thailand | Luxury Phuket' % d['name'],
              '%d villas and apartments for sale in %s, Thailand.' % (len(vs), d['name']), d['image'])
     page('projects/index.html', [('New projects', '/projects/')], '🏗 New developments', 'New residential projects in Phuket',
          'Villa and condo developments — completion dates, price ranges, layouts and photos of every project.',
          PROJECTS, 'New projects in Thailand', 'Investing in a new project',
          ['Each project page lists the price range, unit sizes, completion and the developer details we have.',
           'Ask us on WhatsApp for the price list, payment plan and available units.'],
-         side, PROJECT_QA, 'New Real Estate Projects in Phuket — Villas & Condos Off-Plan | Thai Villas',
+         side, PROJECT_QA, 'New Real Estate Projects in Phuket — Villas & Condos Off-Plan | Luxury Phuket',
          '%d new villa and condo projects in Phuket and Thailand.' % len(PROJECTS), '/images/phuket-2.jpg')
     print('ok: /sale/ (%d), %d destinations, /projects/ (%d)' % (len(SALE), len(dests), len(PROJECTS)))
 

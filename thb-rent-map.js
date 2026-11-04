@@ -30,7 +30,7 @@
   if (!isList) return;
   var areaOnly = mArea ? mArea[1] : null;
   var subOnly = mArea && mArea[2] ? mArea[2] : null;
-  /* Thai Villas: the catalogue opens on Phuket, the main destination */
+  /* Luxury Phuket: the catalogue opens on Phuket, the main destination */
   var HOME = 'phuket';
   function inFocus(v) {
     return (!areaOnly || v.areaSlug === areaOnly) && (!subOnly || v.subAreaSlug === subOnly);
@@ -151,7 +151,7 @@
   var cache = null;
   function data() {
     if (cache) return cache;
-    /* Thai Villas: listings carry no exact coordinates. A villa without its own
+    /* Luxury Phuket: listings carry no exact coordinates. A villa without its own
        lat/lng is placed at the centre of its beach area (or destination) from
        data/areas.json and drawn as a wide "somewhere around here" circle. */
     cache = Promise.all([

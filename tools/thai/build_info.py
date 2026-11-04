@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""/about/, /contacts/, /terms/, /privacy/ for Thai Villas.
+"""/about/, /contacts/, /terms/, /privacy/ for Luxury Phuket.
 
 Modelled on the reference about/contacts/terms/privacy pages, rewritten for a new business in
 Thailand: no management, owners, sale, company registration numbers, office address or map embed,
@@ -19,7 +19,7 @@ def build_about():
     body = ('<header class="w4-head" style="padding-bottom:0"><div class="w4-wrap w4-split" style="padding-bottom:76px">'
             '<div><div class="w4-chiprow"><span>Daily rentals</span><span>Monthly stays</span><span>VIP</span></div>'
             '<p class="w4-kicker" style="color:rgba(255,255,255,.5)">About us</p>'
-            '<h1 class="w4-h1">About <i>Thai Villas.</i></h1>'
+            '<h1 class="w4-h1">About <i>Luxury Phuket.</i></h1>'
             '<p class="w4-lead">A local team in Phuket renting private pool villas by the night and by the month — in Phuket first, and across Thailand. '
             'You talk to a real person on WhatsApp from the first question to check-out.</p>'
             '<div class="w4-btns">%s%s</div></div>'
@@ -59,11 +59,11 @@ def build_about():
                         tile('Hours', '<p>Every day 9:00–21:00 (GMT+7)<br>Guest support 24/7 during your stay</p>', 'clock')), cls='paper')
     body += final('Ready when you are', 'Now you know us. <i>Let\'s find your villa.</i>',
                   'Tell us your dates and what matters most — we\'ll suggest the right villa.',
-                  btn('/property-rental/', 'Browse villas', 'dark', 'arrow') + wa_btn("Hi Thai Villas! I'm looking for a villa in Thailand.", 'WhatsApp us', 'light'))
+                  btn('/property-rental/', 'Browse villas', 'dark', 'arrow') + wa_btn("Hi Luxury Phuket! I'm looking for a villa in Thailand.", 'WhatsApp us', 'light'))
     ld = [crumbs_ld([('Home', '/'), ('About', '/about/')]),
-          {"@context": "https://schema.org", "@type": "AboutPage", "name": "About Thai Villas", "url": "/about/"}]
-    write('about/index.html', page('About Thai Villas — Villa Rentals in Phuket & Thailand',
-          'Thai Villas is a local team in Phuket renting private pool villas by the night and by the month, plus VIP services: yachts, helicopters, supercars.',
+          {"@context": "https://schema.org", "@type": "AboutPage", "name": "About Luxury Phuket", "url": "/about/"}]
+    write('about/index.html', page('About Luxury Phuket — Villa Rentals in Phuket & Thailand',
+          'Luxury Phuket is a local team in Phuket renting private pool villas by the night and by the month, plus VIP services: yachts, helicopters, supercars.',
           body, ld, '/images/phuket.jpg'))
 
 # ------------------------------------------------------------------ contacts
@@ -79,7 +79,7 @@ def build_contacts():
         tile('Hours', '<p><b>Every day 9:00–21:00</b><br>Thailand time (GMT+7)</p>', 'clock'),
         tile('Guest support', '<p><b>24/7</b><br>For guests during their stay.</p>', 'shield'),
     ])
-    form = ('<form class="w4-form" data-wa-form="Hi Thai Villas!">'
+    form = ('<form class="w4-form" data-wa-form="Hi Luxury Phuket!">'
             '<label for="ct">What is it about?</label><select id="ct" data-label="Topic"><option>Daily villa rental</option><option>Monthly / long stay</option>'
             '<option>VIP services</option><option>Something else</option></select>'
             '<div class="row"><div><label for="cn">Your name</label><input id="cn" type="text" autocomplete="name" data-label="Name"></div>'
@@ -103,11 +103,11 @@ def build_contacts():
     fh, fld = faq(fq)
     body += section('Questions', 'Before you <i>message us</i>', fh, narrow=True, cls='paper')
     body += final('Fastest way', 'WhatsApp us.', 'Dates, number of guests and the area are enough to get started.',
-                  wa_btn("Hi Thai Villas! I'm looking for a villa in Thailand.") + btn('/property-rental/', 'Browse villas', 'light'))
+                  wa_btn("Hi Luxury Phuket! I'm looking for a villa in Thailand.") + btn('/property-rental/', 'Browse villas', 'light'))
     ld = [fld, crumbs_ld([('Home', '/'), ('Contacts', '/contacts/')]),
-          {"@context": "https://schema.org", "@type": "ContactPage", "name": "Contact Thai Villas", "url": "/contacts/"}]
-    write('contacts/index.html', page('Contact Thai Villas — WhatsApp, Phone, Email | Phuket',
-          'Contact Thai Villas in Phuket: WhatsApp, phone and email, every day 9:00–21:00 (GMT+7). Villa rentals by the night or month and VIP services.',
+          {"@context": "https://schema.org", "@type": "ContactPage", "name": "Contact Luxury Phuket", "url": "/contacts/"}]
+    write('contacts/index.html', page('Contact Luxury Phuket — WhatsApp, Phone, Email | Phuket',
+          'Contact Luxury Phuket in Phuket: WhatsApp, phone and email, every day 9:00–21:00 (GMT+7). Villa rentals by the night or month and VIP services.',
           body, ld, '/images/phuket-2.jpg', extra=wa_form_script()))
 
 # ------------------------------------------------------------------ legal
@@ -123,7 +123,7 @@ def legal(path, kicker, h1, lead, sections, title, desc):
 
 TERMS = [
     ('Who we are', [
-        'These terms apply to this website and to stays and services arranged through Thai Villas (“we”, “us”). The legal entity operating Thai Villas, '
+        'These terms apply to this website and to stays and services arranged through Luxury Phuket (“we”, “us”). The legal entity operating Luxury Phuket, '
         'and its registered details, will be published here before bookings open.',
         'By requesting a booking, confirming a stay or using this website you accept these terms. If you book a villa through another platform, '
         'that platform\'s terms govern the payment and cancellation of that booking, and these terms apply to the stay itself.']),
@@ -168,7 +168,7 @@ TERMS = [
 
 PRIVACY = [
     ('Who is responsible for your data', [
-        'Thai Villas (“we”, “us”) is responsible for personal data collected through this website and when you contact us. The legal entity and its contact details '
+        'Luxury Phuket (“we”, “us”) is responsible for personal data collected through this website and when you contact us. The legal entity and its contact details '
         'will be published here before bookings open. Until then, you can reach us at <a href="mailto:%s">%s</a>.' % (EMAIL, EMAIL)]),
     ('What we collect', [[
         'What you send us — for example your name, phone number, email, travel dates, number of guests and your messages on WhatsApp or by email.',
@@ -197,11 +197,11 @@ if __name__ == '__main__':
     build_about()
     build_contacts()
     legal('/terms/', 'Terms', 'Terms of stay <i>and booking conditions.</i>',
-          'The rules that apply when you book a villa or a VIP service with Thai Villas — in plain English.', TERMS,
-          'Terms of Stay & Booking Conditions | Thai Villas',
-          'Terms that apply to villa stays (daily and monthly) and VIP services arranged through Thai Villas. Draft — the site is in preview.')
+          'The rules that apply when you book a villa or a VIP service with Luxury Phuket — in plain English.', TERMS,
+          'Terms of Stay & Booking Conditions | Luxury Phuket',
+          'Terms that apply to villa stays (daily and monthly) and VIP services arranged through Luxury Phuket. Draft — the site is in preview.')
     legal('/privacy/', 'Privacy', 'Privacy <i>notice.</i>',
           'What personal data we collect when you use this site or contact us, why, and what you can ask us to do with it.', PRIVACY,
-          'Privacy Notice | Thai Villas',
-          'How Thai Villas handles personal data from enquiries and bookings. Draft — the site is in preview.')
+          'Privacy Notice | Luxury Phuket',
+          'How Luxury Phuket handles personal data from enquiries and bookings. Draft — the site is in preview.')
     print('info: about, contacts, terms, privacy')

@@ -1,4 +1,4 @@
-"""Shared shell for every Thai Villas page generator.
+"""Shared shell for every Luxury Phuket page generator.
 
 Page generators take a page from the reference template site (the "wrapper" design), swap in the
 Thai shell with `rebrand()`, then replace the page body with Thai content. Everything brand-,
@@ -16,12 +16,12 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 TPL = os.environ.get('THAI_TPL', '/private/tmp/claude-501/-Users-macbookm4-Projects-Whatsapp-crm/'
                      'f6949ea3-892b-4504-be21-647ce2cb4d05/scratchpad/src/thebalihost')
 
-BRAND = 'Thai Villas'
+BRAND = 'Luxury Phuket'
 WA_NUM = '66811237388'
 PHONE = '+66 81 123 7388'
 EMAIL = 'hello@thaivillas.example'          # TODO
 WA = 'https://wa.me/' + WA_NUM
-def wa(text="Hi Thai Villas! I'm looking for a villa in Thailand."):
+def wa(text="Hi Luxury Phuket! I'm looking for a villa in Thailand."):
     from urllib.parse import quote
     return WA + '?text=' + quote(text)
 
@@ -264,7 +264,7 @@ def clean_head(s, title, desc, jsonld=None, image='/images/hero.jpg'):
     return h + add + body
 
 def rebrand(s, title, desc, jsonld=None, image='/images/hero.jpg'):
-    """Swap the reference site's shell (head tags, nav, mega-menu, footer, WhatsApp pill) for Thai Villas."""
+    """Swap the reference site's shell (head tags, nav, mega-menu, footer, WhatsApp pill) for Luxury Phuket."""
     s = clean_head(s, title, desc, jsonld, image)
     s = replace_el(s, r'<nav id="navbar"', nav(), 'nav')
     s = replace_el(s, r'<div id="villasPanel">', mega())

@@ -1,4 +1,4 @@
-"""Home page, 404, /saved/ and favicon for Thai Villas.
+"""Home page, 404, /saved/ and favicon for Luxury Phuket.
 
 Base layout: the reference home (index.html), 404.html and saved/index.html. The shell is swapped by
 thv.rebrand(); everything between the HERO and FOOTER markers of the home page is rebuilt here.
@@ -272,7 +272,7 @@ def direct():
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 {cards}    </div>
     <div class="mt-10 flex flex-wrap gap-3">
-      <a href="{esc(wa("Hi Thai Villas! I would like to check availability for a villa in Phuket."))}" rel="noopener" class="btn-primary inline-flex items-center gap-2">Check dates on WhatsApp</a>
+      <a href="{esc(wa("Hi Luxury Phuket! I would like to check availability for a villa in Phuket."))}" rel="noopener" class="btn-primary inline-flex items-center gap-2">Check dates on WhatsApp</a>
       <a href="{area_url('phuket')}" class="btn-outline inline-flex items-center gap-2">See villas in Phuket</a>
     </div>
   </div>
@@ -372,7 +372,7 @@ def drop_scripts(s, names):
 # ------------------------------------------------------------------ home
 def build_home():
     s = read_tpl('index.html')
-    title = 'Thai Villas — Private Pool Villas in Phuket & Thailand, Booked Direct'
+    title = 'Luxury Phuket — Private Pool Villas in Phuket & Thailand, Booked Direct'
     desc = ('Private pool villas on Phuket\'s beaches and across Thailand — daily and monthly rentals booked direct on '
             'WhatsApp, no booking-site fee. Plus VIP: yachts, helicopters, supercars.')
     site = {"@context": "https://schema.org", "@type": "WebSite", "name": BRAND}
@@ -395,7 +395,7 @@ def build_404():
     s = s.replace('<a class="logo" href="/" aria-label="The Host Bali — home"><i>The</i><b>HOST</b></a>',
                   '<a class="logo" href="/" aria-label="Luxury Phuket — home"><i>Luxury</i><b>PHUKET</b></a>')
     s = s.replace('Everything we run is one tap away', 'Every villa is one tap away')
-    s = re.sub(r'href="https://wa\.me/[^"]*"', 'href="%s"' % esc(wa('Hi Thai Villas! I hit a broken link on your site — can you help me find a villa?')), s)
+    s = re.sub(r'href="https://wa\.me/[^"]*"', 'href="%s"' % esc(wa('Hi Luxury Phuket! I hit a broken link on your site — can you help me find a villa?')), s)
     chips = [('/villas/phuket/', 'Phuket')] + [(area_url('phuket', x), n) for x, n in (('bang-tao', 'Bang Tao'), ('kata', 'Kata'), ('nai-harn', 'Nai Harn'))] \
         + [('/monthly-rental/', 'Monthly rentals'), ('/vip/', 'VIP'), ('/saved/', 'Saved villas'), ('/contacts/', 'Contacts')]
     s = replace_el(s, r'<div class="chips">', '<div class="chips">\n' + ''.join('    <a class="chip" href="%s">%s</a>\n' % c for c in chips) + '  </div>')
@@ -450,7 +450,7 @@ def build_saved():
     s = s.replace("var WA = 'https://wa.me/6285746499697?text=';", "var WA = '%s?text=';" % WA)
     s = s.replace("(v.a ? '<p class=\"a\">'+esc(v.a)+', Bali</p>' : '')", "(v.a ? '<p class=\"a\">'+esc(v.a)+'</p>' : '')")
     s = s.replace("' — https://thehostbali.com' + v.u", "' — ' + location.origin + v.u")
-    s = s.replace("'Hi The Host Bali! These are the villas on my shortlist:", "'Hi Thai Villas! These are the villas on my shortlist:")
+    s = s.replace("'Hi The Host Bali! These are the villas on my shortlist:", "'Hi Luxury Phuket! These are the villas on my shortlist:")
     s = s.replace('Nothing is sent anywhere', 'Nothing is sent anywhere')
     s = drop_scripts(s, ['thb-consent.js', 'thb-bot.js'])
     write('saved/index.html', s)

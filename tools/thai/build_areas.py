@@ -1,4 +1,4 @@
-"""Catalog and area pages for Thai Villas (worker W2).
+"""Catalog and area pages for Luxury Phuket (worker W2).
 
 Writes
   property-rental/index.html              full catalogue: filters, sort, map
@@ -339,7 +339,7 @@ def empty_state(place, near_links):
             f'<p style="font-family:\'Lora\',Georgia,serif;font-size:24px;font-weight:700;margin-bottom:8px">No villas listed in {place} yet</p>'
             f'<p style="font-size:14.5px;line-height:1.7;color:#4b4b45;max-width:560px;margin:0 auto 18px">We are adding villas in {place} now. '
             f'Send us your dates, the number of guests and whether you need a daily or monthly stay &mdash; we will reply on WhatsApp with what is available.</p>'
-            f'<a href="{wa("Hi Thai Villas! I am looking for a villa in %s." % re.sub("<[^>]+>|&[a-z]+;", "", place))}" rel="noopener" style="display:inline-flex;height:46px;align-items:center;padding:0 22px;border-radius:999px;background:#0a0a0a;color:#fff;text-decoration:none;font-weight:600;font-size:14.5px">Ask about {place} on WhatsApp</a>'
+            f'<a href="{wa("Hi Luxury Phuket! I am looking for a villa in %s." % re.sub("<[^>]+>|&[a-z]+;", "", place))}" rel="noopener" style="display:inline-flex;height:46px;align-items:center;padding:0 22px;border-radius:999px;background:#0a0a0a;color:#fff;text-decoration:none;font-weight:600;font-size:14.5px">Ask about {place} on WhatsApp</a>'
             + (f'<p style="font-size:13px;color:#6b6b66;margin:22px 0 10px">Villas nearby</p><div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">'
                + ''.join(CHIP_A % l for l in near_links) + '</div>' if near_links else '')
             + '</div>')
@@ -786,7 +786,7 @@ def build_catalog():
     ld = [crumbs_ld([('Home', '/'), ('Villas for rent in Thailand', '/property-rental/')]), faq_ld(qa),
           {"@context": "https://schema.org", "@type": "ItemList", "name": "Villas for rent in Thailand", "numberOfItems": len(vs),
            "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": v['name'], "url": v['url']} for i, v in enumerate(vs[:100])]}]
-    s = assemble('property-rental/index.html', 'Villas for Rent in Thailand — Phuket Pool Villas, Daily & Monthly | Thai Villas',
+    s = assemble('property-rental/index.html', 'Villas for Rent in Thailand — Phuket Pool Villas, Daily & Monthly | Luxury Phuket',
                  'Private pool villas for rent in Phuket and across Thailand. Filter by beach, bedrooms, guests and daily or monthly stays; book on WhatsApp.',
                  '/images/hero.jpg', page, tail, ld, True, True)
     write('property-rental/index.html', s)
@@ -842,7 +842,7 @@ def build_hub():
           ('Can you help me choose an area?', 'Yes &mdash; message us on WhatsApp with your dates, the group and what you want nearby, and we will suggest areas and villas.')]
     page += faq_section('destinations', 'Choosing a destination — FAQ', qa)
     ld = [crumbs_ld([('Home', '/'), ('Villas by destination', '/villas/')]), faq_ld(qa)]
-    s = assemble('villas/index.html', 'Villas in Thailand by Destination — Phuket Beaches, Samui & More | Thai Villas',
+    s = assemble('villas/index.html', 'Villas in Thailand by Destination — Phuket Beaches, Samui & More | Luxury Phuket',
                  'Pick where to stay: Phuket and its 12 beach areas, Koh Samui, Pattaya, Bangkok, Krabi, Koh Phangan, Hua Hin and Chiang Mai.',
                  '/images/all-thailand.jpg', page, '', ld, False, True)
     write('villas/index.html', s)
@@ -910,7 +910,7 @@ def build_phuket():
               'Villas for rent in <em>Phuket</em>', 'Pool villas along the west coast &mdash; from quiet Mai Khao and Bang Tao to Kata and the long-stay south',
               '/images/phuket.jpg', vs, [(k, l, n, k == 'phuket') for k, l, n in keys], 'phuket', keys, 'Where in Phuket?',
               seo + other, qa, beaches,
-              'Villas for Rent in Phuket — Pool Villas by Beach, Daily & Monthly | Thai Villas',
+              'Villas for Rent in Phuket — Pool Villas by Beach, Daily & Monthly | Luxury Phuket',
               'Private pool villas for rent in Phuket: Bang Tao, Layan, Surin, Kamala, Patong, Karon, Kata, Nai Harn, Rawai and more. Daily or monthly, book on WhatsApp.',
               '')
 
@@ -937,7 +937,7 @@ def build_beach(a):
               'Villas for rent in <em>%s</em>, Phuket' % name, esc(a['short']), a['image'], vs,
               [(k, l, c, k == 'phuket/' + slug) for k, l, c in keys], 'phuket/' + slug, keys, 'Where in Phuket?',
               seo + others, qa, '',
-              'Villas for Rent in %s, Phuket — Pool Villas, Daily & Monthly | Thai Villas' % name,
+              'Villas for Rent in %s, Phuket — Pool Villas, Daily & Monthly | Luxury Phuket' % name,
               ('%s for rent in %s, Phuket. ' % (pl(n, 'private villa'), name) if n else 'Private villas for rent in %s, Phuket. ' % name)
               + re.sub(r'<[^>]+>|&[a-z]+;', '', a['short']) + ' Daily or monthly, book on WhatsApp.',
               empty, '%s, Phuket' % name)
@@ -963,7 +963,7 @@ def build_dest(d):
               'Villas for rent in <em>%s</em>' % name, t['sub'], d['image'], vs,
               [(k, ('All Thailand' if not k else l), c, k == slug) for k, l, c in keys], slug, keys, 'Where in Thailand?',
               seo + others, qa, '',
-              'Villas for Rent in %s, Thailand — Daily & Monthly | Thai Villas' % name,
+              'Villas for Rent in %s, Thailand — Daily & Monthly | Luxury Phuket' % name,
               ('%s for rent in %s. ' % (pl(n, 'private villa'), name) if n else 'Private villas for rent in %s, Thailand. ' % name)
               + d['short'] + ' Daily or monthly, book on WhatsApp.', empty, '%s, Thailand' % name)
 

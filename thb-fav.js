@@ -1,4 +1,4 @@
-/*! Thai Villas — saved villas (wishlist). Vanilla, no deps, localStorage. */
+/*! Luxury Phuket — saved villas (wishlist). Vanilla, no deps, localStorage. */
 (function () {
   'use strict';
 

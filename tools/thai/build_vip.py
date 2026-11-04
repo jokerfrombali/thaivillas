@@ -13,7 +13,7 @@ C = {c['slug']: c for c in VIP}
 # Per-category copy (general, no named operators or models)
 EXTRA = {
     'yachts': {
-        'title': 'Yacht Charter in Phuket — Phang Nga Bay, Phi Phi, Racha | Thai Villas VIP',
+        'title': 'Yacht Charter in Phuket — Phang Nga Bay, Phi Phi, Racha | Luxury Phuket VIP',
         'h1': 'Yacht charter <i>from Phuket.</i>',
         'lead': 'Speedboats, sailing catamarans and crewed motor yachts for a day, a sunset or several days among the islands of the Andaman Sea.',
         'ideas': [
@@ -29,10 +29,10 @@ EXTRA = {
             ('Is a deposit required?', 'Usually yes — the amount and terms depend on the boat and the length of the charter, and are confirmed in writing before you pay.'),
             ('Are national park fees included?', 'Some islands are in marine national parks with entry fees. Whether they are included is confirmed with each offer.'),
         ],
-        'wa': "Hi Thai Villas! I'd like to charter a yacht in Phuket.",
+        'wa': "Hi Luxury Phuket! I'd like to charter a yacht in Phuket.",
     },
     'helicopters': {
-        'title': 'Helicopter Flights & Transfers in Phuket | Thai Villas VIP',
+        'title': 'Helicopter Flights & Transfers in Phuket | Luxury Phuket VIP',
         'h1': 'Helicopter flights <i>over Phuket.</i>',
         'lead': 'Scenic flights over the beaches and Phang Nga Bay, and private transfers between Phuket and the islands or the mainland.',
         'ideas': [
@@ -47,10 +47,10 @@ EXTRA = {
             ('Are there weight or luggage limits?', 'Yes — helicopters have passenger and luggage limits. Tell us the number of people and bags and we\'ll confirm what is possible.'),
             ('Is a deposit required?', 'Usually yes. Payment and cancellation terms are confirmed in writing before anything is paid.'),
         ],
-        'wa': "Hi Thai Villas! I'm interested in a helicopter flight in Phuket.",
+        'wa': "Hi Luxury Phuket! I'm interested in a helicopter flight in Phuket.",
     },
     'supercars': {
-        'title': 'Supercar & Luxury Car Rental in Phuket | Thai Villas VIP',
+        'title': 'Supercar & Luxury Car Rental in Phuket | Luxury Phuket VIP',
         'h1': 'Supercars <i>delivered to your villa.</i>',
         'lead': 'Supercars, convertibles and premium SUVs brought to your door — drive yourself or sit back with a chauffeur.',
         'ideas': [
@@ -65,10 +65,10 @@ EXTRA = {
             ('Is insurance included?', 'Insurance terms differ from car to car; what is covered and the excess are confirmed with each offer.'),
             ('Can I have a driver instead?', 'Yes — most cars can be booked with a chauffeur by the hour or the day.'),
         ],
-        'wa': "Hi Thai Villas! I'd like to rent a supercar in Phuket.",
+        'wa': "Hi Luxury Phuket! I'd like to rent a supercar in Phuket.",
     },
     'superbikes': {
-        'title': 'Superbike & Premium Bike Rental in Phuket | Thai Villas VIP',
+        'title': 'Superbike & Premium Bike Rental in Phuket | Luxury Phuket VIP',
         'h1': 'Superbikes <i>for island roads.</i>',
         'lead': 'Big bikes, touring bikes and premium scooters delivered to your villa with helmets — or join a guided ride.',
         'ideas': [
@@ -83,10 +83,10 @@ EXTRA = {
             ('Is there a deposit?', 'A security deposit is normal for big bikes. The amount and terms are confirmed in writing before you pay.'),
             ('Is it safe to ride in Phuket?', 'Roads can be busy and hilly, and tropical rain makes them slippery. We recommend big bikes only to experienced riders — a guided ride is a good way to start.'),
         ],
-        'wa': "Hi Thai Villas! I'd like to rent a superbike in Phuket.",
+        'wa': "Hi Luxury Phuket! I'd like to rent a superbike in Phuket.",
     },
     'concierge': {
-        'title': 'Luxury Villa Concierge in Phuket — Private Chef, Spa, Events | Thai Villas VIP',
+        'title': 'Luxury Villa Concierge in Phuket — Private Chef, Spa, Events | Luxury Phuket VIP',
         'h1': 'Luxury concierge <i>at your villa.</i>',
         'lead': 'Private chef, in-villa spa, celebrations, childcare, security and reservations — arranged around your stay.',
         'ideas': [
@@ -102,7 +102,7 @@ EXTRA = {
             ('How is it paid?', 'Each service is quoted separately and confirmed in writing before you pay.'),
             ('Do I need to rent a villa with you?', 'Concierge works best together with a villa stay, but ask us — we\'ll tell you what is possible.'),
         ],
-        'wa': "Hi Thai Villas! I'd like to arrange concierge services for my villa stay.",
+        'wa': "Hi Luxury Phuket! I'd like to arrange concierge services for my villa stay.",
     },
 }
 
@@ -128,7 +128,7 @@ def lux_villas():
 
 def form(c=None):
     opts = (c['options'] if c else [short_name(x) for x in VIP])
-    title = ("Hi Thai Villas! VIP enquiry — %s" % c['name']) if c else "Hi Thai Villas! VIP enquiry"
+    title = ("Hi Luxury Phuket! VIP enquiry — %s" % c['name']) if c else "Hi Luxury Phuket! VIP enquiry"
     sel = ''.join('<option>%s</option>' % esc(o) for o in opts)
     return ('<form class="w4-form" data-wa-form="%s">'
             '<div class="row"><div><label for="vd">Date</label><input id="vd" type="date" data-label="Date"></div>'
@@ -141,11 +141,11 @@ def form(c=None):
 
 # ------------------------------------------------------------------ hub
 def build_hub():
-    body = hero('/images/vip/yacht.jpg', 'Thai Villas VIP',
+    body = hero('/images/vip/yacht.jpg', 'Luxury Phuket VIP',
                 'Yachts, helicopters <i>&amp; supercars.</i>',
                 'The extras that turn a villa holiday into something else: yacht charters, helicopter flights, supercars and superbikes delivered to your door, '
                 'and a concierge for everything in between. Arranged with vetted local partners, on request.',
-                wa_btn("Hi Thai Villas! I'm interested in your VIP services.", 'Ask on WhatsApp') + btn('#services', 'See services', 'ghost'),
+                wa_btn("Hi Luxury Phuket! I'm interested in your VIP services.", 'Ask on WhatsApp') + btn('#services', 'See services', 'ghost'),
                 chips=['Phuket', 'On request', 'One contact'], alt='Yacht on the Andaman Sea near Phuket')
     body += '<div class="w4-wrap">' + crumbs_html([('Home', '/'), ('VIP', '/vip/')]) + '</div>'
     cards = ''.join(cat_card(c) for c in VIP)
@@ -153,13 +153,13 @@ def build_hub():
                     '<div class="w4-grid" style="grid-template-columns:repeat(auto-fill,minmax(250px,1fr))">' + cards + '</div>',
                     sub='Every service is arranged to your date and group — prices on request.', sid='services')
     body += section('How it works', 'Three messages, <i>no paperwork</i>', steps(HOW, s3=True)
-                    + '<div class="w4-btns" style="margin-top:30px">%s</div>' % wa_btn("Hi Thai Villas! I'm interested in your VIP services.", 'Start on WhatsApp'),
+                    + '<div class="w4-btns" style="margin-top:30px">%s</div>' % wa_btn("Hi Luxury Phuket! I'm interested in your VIP services.", 'Start on WhatsApp'),
                     sub='You talk to one person who knows the partners and the island.', cls='ink')
     combo = ('<div class="w4-split"><div><p class="w4-sub" style="margin-bottom:22px">Stay in a luxury pool villa and let us line up the yacht, the car and the chef around it. '
              'One conversation covers the villa and every extra.</p><div class="w4-btns">%s%s</div></div>'
              '<div class="w4-img"><img src="/images/villas/ext-2.jpg" alt="Luxury pool villa in Phuket" loading="lazy" decoding="async" width="1200" height="900"></div></div>'
              '<div style="margin-top:40px">%s%s</div>'
-             % (btn('/property-rental/?vibe=luxury', 'Luxury villas', 'dark'), wa_btn("Hi Thai Villas! I'd like a luxury villa plus VIP services.", 'Plan it on WhatsApp', 'light'),
+             % (btn('/property-rental/?vibe=luxury', 'Luxury villas', 'dark'), wa_btn("Hi Luxury Phuket! I'd like a luxury villa plus VIP services.", 'Plan it on WhatsApp', 'light'),
                 '<p class="w4-sample">Listings shown are sample villas while the site is in preview.</p>', lux_villas()))
     body += section('Villa + VIP', 'Combine it <i>with a luxury villa</i>', combo, cls='paper')
     body += section('Enquiry', 'Tell us <i>what you have in mind</i>',
@@ -175,13 +175,13 @@ def build_hub():
     ]
     fh, fld = faq(fq)
     body += section('Questions', 'VIP services: <i>your questions</i>', fh, narrow=True, cls='paper', sid='faq')
-    body += final('Thai Villas VIP', 'Make it unforgettable.',
+    body += final('Luxury Phuket VIP', 'Make it unforgettable.',
                   'Send the date and the group size — we\'ll come back with options from our partners.',
-                  wa_btn("Hi Thai Villas! I'm interested in your VIP services.") + btn('/property-rental/?vibe=luxury', 'Luxury villas', 'ghost'), ink=True)
+                  wa_btn("Hi Luxury Phuket! I'm interested in your VIP services.") + btn('/property-rental/?vibe=luxury', 'Luxury villas', 'ghost'), ink=True)
     ld = [fld, crumbs_ld([('Home', '/'), ('VIP', '/vip/')]),
-          {"@context": "https://schema.org", "@type": "ItemList", "name": "Thai Villas VIP services",
+          {"@context": "https://schema.org", "@type": "ItemList", "name": "Luxury Phuket VIP services",
            "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": '/vip/%s/' % c['slug'], "name": c['name']} for i, c in enumerate(VIP)]}]
-    write('vip/index.html', page('VIP Services in Phuket — Yachts, Helicopters, Supercars | Thai Villas',
+    write('vip/index.html', page('VIP Services in Phuket — Yachts, Helicopters, Supercars | Luxury Phuket',
           'Yacht charter, helicopter flights, supercar and superbike rental and luxury concierge in Phuket — arranged with vetted partners. Prices on request via WhatsApp.',
           body, ld, '/images/vip/yacht.jpg', extra=wa_form_script()))
 
@@ -189,7 +189,7 @@ def build_hub():
 def build_cat(c):
     x = EXTRA[c['slug']]
     url = '/vip/%s/' % c['slug']
-    body = hero(c['image'], 'Thai Villas VIP · %s' % esc(short_name(c)), x['h1'], x['lead'],
+    body = hero(c['image'], 'Luxury Phuket VIP · %s' % esc(short_name(c)), x['h1'], x['lead'],
                 wa_btn(x['wa'], 'Ask on WhatsApp') + btn('#enquiry', 'Send an enquiry', 'ghost'),
                 chips=['On request', 'Vetted partners'], short=True, alt='%s in Phuket' % c['name'])
     body += '<div class="w4-wrap">' + crumbs_html([('Home', '/'), ('VIP', '/vip/'), (c['name'], url)]) + '</div>'
@@ -219,7 +219,7 @@ def build_cat(c):
     body += section('More VIP', 'Add something <i>else</i>',
                     '<div class="w4-grid g4">' + others + '</div><div class="w4-rel" style="margin-top:22px"><a href="/vip/">All VIP services</a>'
                     '<a href="/property-rental/?vibe=luxury">Luxury villas</a></div>', cls='paper')
-    body += final('Thai Villas VIP', 'Send us the date.', 'Tell us the date, the group size and what you have in mind — we\'ll come back with options.',
+    body += final('Luxury Phuket VIP', 'Send us the date.', 'Tell us the date, the group size and what you have in mind — we\'ll come back with options.',
                   wa_btn(x['wa']) + btn('/vip/', 'All VIP services', 'ghost'), ink=True)
     ld = [fld, crumbs_ld([('Home', '/'), ('VIP', '/vip/'), (c['name'], url)]),
           {"@context": "https://schema.org", "@type": "Service", "name": c['name'], "serviceType": c['name'],

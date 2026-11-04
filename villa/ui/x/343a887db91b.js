@@ -32,7 +32,7 @@
     return s;
   }
   function message(){
-    return 'Hi Thai Villas! Availability request for '+villaName()+'.'+details()+'\nLink: '+villaUrl();
+    return 'Hi Luxury Phuket! Availability request for '+villaName()+'.'+details()+'\nLink: '+villaUrl();
   }
 
   /* every WhatsApp booking link carries the current dates at all times */

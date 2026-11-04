@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Villa pages for Thai Villas: /villa/{area}/{slug}/ and /villa/{area}/{slug}/gallery/.
+"""Villa pages for Luxury Phuket: /villa/{area}/{slug}/ and /villa/{area}/{slug}/gallery/.
 
 Clones the canonical villa page design of the reference site (the same template that
 tools/villa-page/make_villa_page.py / make_gallery_page.py use) and substitutes data from
@@ -197,8 +197,8 @@ BTN_LIGHT = ('display:flex;align-items:center;justify-content:center;gap:8px;hei
 
 def buy_mode(s, v):
     """Sale / project pages: no dates, guests, calendar or house rules — a request-details panel instead."""
-    ask = wa("Hi Thai Villas! I'm interested in %s (%s). Please send me details, the price list and photos." % (v['name'], v['url']))
-    view = wa("Hi Thai Villas! I'd like to arrange a viewing of %s (%s)." % (v['name'], v['url']))
+    ask = wa("Hi Luxury Phuket! I'm interested in %s (%s). Please send me details, the price list and photos." % (v['name'], v['url']))
+    view = wa("Hi Luxury Phuket! I'd like to arrange a viewing of %s (%s)." % (v['name'], v['url']))
     for sec in ('section-availability', 'section-rules', 'section-sleep'):
         sp = _balanced(s, r'<section id="%s"' % sec, 'section')
         s = s[:sp[0]] + s[sp[1]:]
@@ -326,8 +326,8 @@ def strip_common(s):
     return s
 
 def bookbar(s, v):
-    text = ("Hi Thai Villas! I'd like to book %s (%s). Is it available?" if v.get('dealType', 'rent') == 'rent'
-            else "Hi Thai Villas! I'm interested in %s (%s). Please send me details.") % (v['name'], v['url'])
+    text = ("Hi Luxury Phuket! I'd like to book %s (%s). Is it available?" if v.get('dealType', 'rent') == 'rent'
+            else "Hi Luxury Phuket! I'm interested in %s (%s). Please send me details.") % (v['name'], v['url'])
     s = resub(s, r'<div id="thbBookBar"><div class="tbb-i"><strong>Prices on request</strong><span>[^<]*</span></div><a href="[^"]*"',
               '<div id="thbBookBar"><div class="tbb-i"><strong>%s</strong><span>%s · fast reply on WhatsApp</span></div>'
               '<a href="%s"' % (esc(price_label(v)), 'Sample listing' if v.get('sample') else esc(DEAL_WORD.get(v.get('dealType', 'rent')).capitalize()),
@@ -551,10 +551,10 @@ def build_villa(v, tpl):
     s = sub1(s, "var fallback = '/villas/sanur/';", "var fallback = '%s';" % back_url(v), 'smart back')
     s = bookbar(s, v)
     s = sub1(s, "var WA='6285746499697';", "var WA='%s';" % WA_NUM, 'checkavail WA')
-    s = sub1(s, "'Hi The Host Bali! Availability request for '", "'Hi Thai Villas! Availability request for '", 'checkavail text')
+    s = sub1(s, "'Hi The Host Bali! Availability request for '", "'Hi Luxury Phuket! Availability request for '", 'checkavail text')
     s = sub1(s, "return 'https://thehostbali.com'+location.pathname;", "return location.origin+location.pathname;", 'checkavail url')
     s = sub1(s, "b.setAttribute('aria-label','The Host Bali \\u2014 home');\n        b.textContent='H';",
-             "b.setAttribute('aria-label','Thai Villas \\u2014 home');\n        b.textContent='L';", 'secnav badge')
+             "b.setAttribute('aria-label','Luxury Phuket \\u2014 home');\n        b.textContent='L';", 'secnav badge')
     s = s.replace('<a href="#section-rules">Things to know</a>', '<a href="#section-rules">Things to know</a><a href="#section-related">More villas</a>')
     s = s.replace('#section-location,#section-rules{', '#section-location,#section-rules,#section-related{')
     s = s.replace('<script defer src="/thb-totop.js"></script>\n<script defer src="/thb-enquiry.js"></script>',
@@ -607,7 +607,7 @@ def build_gallery(v, tpl):
     s = sub1(s, '<span id="totalCount">32</span>', '<span id="totalCount">%d</span>' % total, 'gallery total')
     s = resub(s, r'<button class="icon-btn" title="Save">.*?</button>', '', 'save btn')
     s = resub(s, r"""<button class="book-btn" onclick="location\.href='[^']*'">""",
-              '<button class="book-btn" onclick="location.href=\'%s\'">' % wa("Hi Thai Villas! I'm interested in %s (%s). Is it available?" % (name, url)).replace("'", '%27'),
+              '<button class="book-btn" onclick="location.href=\'%s\'">' % wa("Hi Luxury Phuket! I'm interested in %s (%s). Is it available?" % (name, url)).replace("'", '%27'),
               'gallery wa')
     s = bookbar(s, v)
     s = s.replace(T_URL, url).replace(esc(T_NAME), esc(name)).replace(T_NAME, esc(name))
@@ -675,7 +675,7 @@ INDEX = '''<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Villas in Thailand | Thai Villas</title>
+<title>Villas in Thailand | Luxury Phuket</title>
 <meta name="robots" content="noindex">
 <meta http-equiv="refresh" content="0; url=/villas/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -691,6 +691,7 @@ def main():
     copy_assets()
     tv, tg = read_tpl(TPL_V), read_tpl(TPL_G)
     alls = VILLAS + SALE + PROJECTS
+    shutil.rmtree(os.path.join(ROOT, 'villa', 'ui', 'x'), ignore_errors=True)   # shared blocks are rewritten below
     sample = alls[:: max(1, len(alls) // 24)][:24]
     learn_common([build_villa(v, tv) for v in sample])
     learn_common([build_gallery(v, tg) for v in sample])

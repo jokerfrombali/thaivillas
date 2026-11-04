@@ -1,4 +1,4 @@
-# Thai Villas
+# Luxury Phuket
 
 Villa rentals in Thailand (Phuket first): daily and monthly/long stay, plus VIP services
 (yachts, helicopters, supercars, superbikes, concierge). Static site on GitHub Pages.
