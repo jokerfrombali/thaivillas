@@ -1,0 +1,16 @@
+// Cloudflare Workers (static assets) deploy for luxuryphuket.net.
+// `wrangler deploy` runs the build below first: it copies the site into dist/ without the
+// GitHub Pages "/thaivillas" prefix (see tools/cloudflare_build.py), and only dist/ is published.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "thaivillas",
+  "compatibility_date": "2026-11-01",
+  "build": {
+    "command": "python3 tools/cloudflare_build.py"
+  },
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  }
+}

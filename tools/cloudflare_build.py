@@ -16,7 +16,7 @@ import sys
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 OUT = os.path.join(ROOT, 'dist')
 SKIP_DIRS = {'.git', '.github', 'tools', 'dist', 'node_modules'}
-SKIP_FILES = {'README.md', 'CNAME', '.nojekyll', '.gitignore'}
+SKIP_FILES = {"README.md", "CNAME", ".nojekyll", ".gitignore", "wrangler.jsonc", "wrangler.toml", "wrangler.json"}
 TEXT = ('.html', '.js', '.css', '.json', '.xml', '.txt', '.svg', '.webmanifest')
 PREFIX = re.compile(r'/thaivillas(?=/|["\'`?#)\s,]|$)(?!-)')
 
