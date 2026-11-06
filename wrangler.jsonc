@@ -5,6 +5,13 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "thaivillas",
   "compatibility_date": "2026-11-01",
+  // Custom domains: Cloudflare creates the DNS records and the SSL certificates on deploy
+  // (the zone luxuryphuket.net is in the same Cloudflare account).
+  "routes": [
+    { "pattern": "luxuryphuket.net", "custom_domain": true },
+    { "pattern": "www.luxuryphuket.net", "custom_domain": true }
+  ],
+  "workers_dev": true,
   "build": {
     "command": "python3 tools/cloudflare_build.py"
   },
