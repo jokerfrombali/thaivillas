@@ -1,3 +1,4 @@
 # downloads from tools/phuket-importer (big: raw HTML + photos)
 imports/
 __pycache__/
+dist/
