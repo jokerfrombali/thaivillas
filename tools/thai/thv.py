@@ -66,6 +66,8 @@ def read_tpl(rel):
     return open(os.path.join(TPL, rel), encoding='utf-8').read()
 
 def write(rel, s):
+    if 'class="lp-logo"' in s and 'id="lp-logo-css"' not in s and '</head>' in s:
+        s = s.replace('</head>', LOGO_CSS + '</head>', 1)
     p = os.path.join(ROOT, rel)
     os.makedirs(os.path.dirname(p), exist_ok=True)
     open(p, 'w', encoding='utf-8').write(s)
@@ -73,9 +75,25 @@ def write(rel, s):
     if hits:
         print('WARN', rel, 'banned terms:', hits)
 
+
+# ---------------------------------------------------------------- brand logo: gold roof + LUXURY / PHUKET
+ROOF_SVG = ('<svg class="lp-roof" viewBox="0 0 120 62" aria-hidden="true"><defs><linearGradient id="lpg" x1="0" y1="0" x2="1" y2="1">'
+            '<stop offset="0" stop-color="#f5dc9a"/><stop offset=".45" stop-color="#d4a24c"/><stop offset="1" stop-color="#9a6a22"/>'
+            '</linearGradient></defs><path fill="url(#lpg)" d="M2 47C26 39 48 24 60 3c12 21 34 36 58 44-24-4-45-14-58-30C47 33 26 43 2 47z"/>'
+            '<path fill="url(#lpg)" d="M28 56c13-3 25-9 32-19 7 10 19 16 32 19-11-1-21-4-30-9l-1.2 15h-1.6L58.2 47c-9 5-19 8-30 9z"/></svg>')
+LOCKUP = ('<span class="lp-logo">' + ROOF_SVG + '<span class="lp-l">LUXURY</span><span class="lp-p">PHUKET</span></span>')
+LOGO_CSS = ('<style id="lp-logo-css">a:has(>.lp-logo){border:0!important;background:none!important;box-shadow:none!important;'
+            'padding:0 4px!important;border-radius:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}'
+            '.lp-logo{display:inline-flex;flex-direction:column;align-items:center;line-height:1;white-space:nowrap;font-style:normal}'
+            '.lp-roof{display:block;width:40px;height:21px;margin-bottom:1px}'
+            '.lp-l{font-family:Lora,Georgia,"Times New Roman",serif;font-size:19px;font-weight:600;letter-spacing:.07em;'
+            'background:linear-gradient(180deg,#d9ad55 0%,#b5832e 55%,#8f6020 100%);-webkit-background-clip:text;background-clip:text;color:transparent}'
+            '.lp-p{display:flex;align-items:center;gap:5px;margin-top:3px;font-family:Inter,system-ui,sans-serif;font-size:7.5px;'
+            'font-weight:600;letter-spacing:.48em;padding-left:.48em;color:#1a1a1a}'
+            '.lp-p:before,.lp-p:after{content:"";width:11px;height:1px;background:#c9973f}</style>')
+
 # ---------------------------------------------------------------- shell pieces
-LOGO = ('<a href="/" data-hostpill class="flex items-center text-ink border-[1.5px] border-ink/30 rounded-full px-3.5 py-1" aria-label="Luxury Phuket">'
-        '<span class="thb-logo-text font-display text-[19px] tracking-tight ml-2.5 whitespace-nowrap"><span class="italic">Luxury</span>&nbsp;<span class="font-semibold tracking-[0.09em]">PHUKET</span></span></a>')
+LOGO = ('<a href="/" data-hostpill class="flex items-center text-ink" aria-label="Luxury Phuket">' + LOCKUP + '</a>')
 
 CHEV = '<svg class="w-3 h-3 opacity-60 mega-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>'
 HEART = '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'

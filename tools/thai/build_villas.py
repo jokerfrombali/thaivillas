@@ -386,7 +386,7 @@ def build_villa(v, tpl):
 
     # header: logo + nav links
     s = sub1(s, '<span style="font-style:italic;font-weight:400">The</span>&nbsp;<span style="font-weight:700;letter-spacing:0.09em">HOST</span>',
-             '<span style="font-style:italic;font-weight:400">Luxury</span>&nbsp;<span style="font-weight:700;letter-spacing:0.09em">PHUKET</span>',
+             LOCKUP,
              'logo', 2)
     s = sub1(s, '>Villas&nbsp;for&nbsp;rent</a>', '>Villas</a>', 'nav villas', 2)
     s = sub1(s, '<a href="/villas-for-sale/" class="thb-navlink"', '<a href="/monthly-rental/" class="thb-navlink"', 'nav sale', 2)
