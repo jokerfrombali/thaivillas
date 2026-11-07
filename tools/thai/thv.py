@@ -84,7 +84,7 @@ ROOF_SVG = ('<svg class="lp-roof" viewBox="0 0 120 62" aria-hidden="true"><defs>
 LOCKUP = ('<span class="lp-logo">' + ROOF_SVG + '<span class="lp-l">LUXURY</span><span class="lp-p">PHUKET</span></span>')
 LOGO_CSS = ('<style id="lp-logo-css">a:has(>.lp-logo){border:0!important;background:none!important;box-shadow:none!important;'
             'padding:0 4px!important;border-radius:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}'
-            '.lp-logo{display:inline-flex;flex-direction:column;align-items:center;line-height:1;white-space:nowrap;font-style:normal}'
+            '.lp-logo{display:inline-flex;flex-direction:column;align-items:center;line-height:1;white-space:nowrap;font-style:normal;filter:drop-shadow(.5px 0 0 #000) drop-shadow(-.5px 0 0 #000) drop-shadow(0 .5px 0 #000) drop-shadow(0 -.5px 0 #000)}'
             '.lp-roof{display:block;width:40px;height:21px;margin-bottom:1px}'
             '.lp-l{font-family:Lora,Georgia,"Times New Roman",serif;font-size:19px;font-weight:600;letter-spacing:.07em;'
             'background:linear-gradient(180deg,#d9ad55 0%,#b5832e 55%,#8f6020 100%);-webkit-background-clip:text;background-clip:text;color:transparent}'
