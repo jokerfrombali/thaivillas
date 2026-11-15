@@ -1,11 +1,10 @@
 // luxuryphuket.net — static site (assets in dist/) + one endpoint: POST /api/enquiry.
-// The enquiry form (thb-enquiry.js) posts JSON here; the request is emailed through Cloudflare Email
-// Routing to the address in the LEAD_TO secret. If anything is missing or fails, the endpoint answers
-// with an error and the form falls back to WhatsApp, so no request is lost.
-//
-// Cloudflare setup (dashboard):
-//   1. luxuryphuket.net -> Email -> Email Routing: enable, add + verify the destination Gmail address.
-//   2. Workers & Pages -> thaivillas -> Settings -> Variables and Secrets: secret LEAD_TO = that Gmail address.
+// The enquiry form (thb-enquiry.js) posts JSON here and the request is delivered to:
+//   * Telegram — secrets TG_BOT_TOKEN (from @BotFather) and TG_CHAT_ID (one or more ids, comma-separated);
+//   * email (optional) — Cloudflare Email Routing + secret LEAD_TO.
+// If no channel is configured or every channel fails, the endpoint answers with an error and the form
+// falls back to WhatsApp, so no request is lost.
+// Secrets live in Cloudflare: Workers & Pages -> thaivillas -> Settings -> Variables and Secrets.
 import { EmailMessage } from "cloudflare:email";
 
 const MAX_BODY = 20000;
@@ -28,9 +27,25 @@ const LABELS = {
   adults: "Adults", children: "Children", name: "Name", email: "Email", phone: "Phone", note: "Message", page: "Sent from",
 };
 
+async function telegram(env, text) {
+  const ids = String(env.TG_CHAT_ID).split(",").map((x) => x.trim()).filter(Boolean);
+  let ok = 0;
+  for (const chat_id of ids) {
+    const r = await fetch(`https://api.telegram.org/bot${env.TG_BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ chat_id, text: text.slice(0, 4000), disable_web_page_preview: true }),
+    });
+    if (r.ok) ok++;
+  }
+  return ok > 0;
+}
+
 async function enquiry(request, env) {
   if (request.method !== "POST") return json({ ok: false, error: "method" }, 405);
-  if (!env.LEADS || !env.LEAD_TO) return json({ ok: false, error: "email not configured" }, 503);
+  const hasTg = !!(env.TG_BOT_TOKEN && env.TG_CHAT_ID);
+  const hasMail = !!(env.LEADS && env.LEAD_TO);
+  if (!hasTg && !hasMail) return json({ ok: false, error: "not configured" }, 503);
   let p;
   try {
     const text = await request.text();
@@ -52,6 +67,14 @@ async function enquiry(request, env) {
     lines.push(`${label}: ${k === "note" ? String(v).slice(0, 4000) : oneLine(v, 500)}`);
   }
   lines.push("", `Country (by IP): ${request.cf?.country || "?"}`, `Received: ${new Date().toISOString()}`);
+
+  let delivered = false;
+  if (hasTg) {
+    try {
+      delivered = (await telegram(env, `🏝 ${subject}\n\n${lines.join("\n")}`)) || delivered;
+    } catch {}
+  }
+  if (!hasMail) return delivered ? json({ ok: true }) : json({ ok: false, error: "send failed" }, 502);
   const email = oneLine(p.email, 120);
   const headers = [
     `From: Luxury Phuket website <${from}>`,
@@ -67,10 +90,9 @@ async function enquiry(request, env) {
   const raw = headers.join("\r\n") + "\r\n\r\n" + b64(lines.join("\r\n")).replace(/.{76}/g, "$&\r\n");
   try {
     await env.LEADS.send(new EmailMessage(from, env.LEAD_TO, raw));
-    return json({ ok: true });
-  } catch (e) {
-    return json({ ok: false, error: "send failed" }, 502);
-  }
+    delivered = true;
+  } catch {}
+  return delivered ? json({ ok: true }) : json({ ok: false, error: "send failed" }, 502);
 }
 
 export default {
