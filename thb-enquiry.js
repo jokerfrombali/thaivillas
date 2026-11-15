@@ -8,7 +8,9 @@
    handed to WhatsApp as a prefilled message, so nothing is ever lost.
 */
 (function () {
-  var ENDPOINT = '';                 // static hosting: no lead API yet, requests go to WhatsApp
+  // luxuryphuket.net: Cloudflare worker emails the request (src/worker.js). Anywhere it is missing or fails
+  // (GitHub Pages copy, email not set up yet) the form falls back to WhatsApp.
+  var ENDPOINT = '/api/enquiry';
   var WA = '66811237388';
   var TERMS = '/thaivillas/terms/';
 
