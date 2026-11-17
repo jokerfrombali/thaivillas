@@ -108,3 +108,10 @@ Group "Luxury Phuket" (forum) id -1004370261657, bot = TG_BOT_TOKEN secret.
   "Luxury Phuket Telegram Bridge" (api-console.zoho.com, luxuryphuketnet@gmail.com), secrets ZOHO_CLIENT_ID /
   ZOHO_CLIENT_SECRET; refresh token + state in KV `thaivillas-state` (binding STATE). Reconnect: delete KV key
   `zoho_refresh`, open https://luxuryphuket.net/api/zoho/connect.
+
+## Building on Windows (Git Bash) — gotchas (18.11.2026)
+- `export MSYS_NO_PATHCONV=1` or `--base /thaivillas` becomes `C:/Program Files/Git/thaivillas`.
+- `python3` is a Store stub: put a `python3` shim first in PATH (tailwind script calls it).
+- Python writes CRLF: after the build run `git diff --name-only -z | xargs -0 sed -i 's/\r$//'` (else ~7,500 files "change").
+- SEO additions: `llms.txt` (tools/llms_txt.py), IndexNow (`python tools/indexnow.py` after deploy), price facts in area/sale FAQ
+  (tools/thai/facts.py), outreach texts in tools/marketing/listing-kit.md. Bing Webmaster: Microsoft blocked account creation — retry later.
