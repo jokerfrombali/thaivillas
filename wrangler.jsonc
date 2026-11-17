@@ -9,6 +9,10 @@
   "main": "src/worker.js",
   // Email Routing must be enabled on luxuryphuket.net; the recipient is the LEAD_TO secret (not in the repo)
   "send_email": [{ "name": "LEADS" }],
+  // state for the Zoho Mail <-> Telegram bridge (src/mail.js): refresh token, last seen mail, reply map
+  "kv_namespaces": [{ "binding": "STATE", "id": "bf40d445af094eb69bb110f13e8ab08b" }],
+  // every minute: new mail from hello@luxuryphuket.net -> Telegram topic "Почта"
+  "triggers": { "crons": ["* * * * *"] },
   // Custom domains: Cloudflare creates the DNS records and the SSL certificates on deploy
   // (the zone luxuryphuket.net is in the same Cloudflare account).
   "routes": [
