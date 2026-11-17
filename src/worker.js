@@ -73,11 +73,36 @@ function sourceOf(p) {
   return utm ? `${name} · utm_source=${oneLine(utm, 60)}` : `${name} · ${refHost}`;
 }
 
+function countryRu(code) {
+  try { return code ? new Intl.DisplayNames(["ru"], { type: "region" }).of(code) || code : ""; } catch { return code || ""; }
+}
 function place(cf) {
   if (!cf) return "";
-  let country = cf.country || "";
-  try { if (country) country = new Intl.DisplayNames(["ru"], { type: "region" }).of(country) || country; } catch {}
-  return [cf.city, country].filter(Boolean).join(", ");
+  return [...new Set([cf.city, cf.region, countryRu(cf.country)].filter(Boolean))].join(", ");
+}
+function device(ua) {
+  ua = String(ua || "");
+  const type = /iPad|Tablet/i.test(ua) ? "планшет" : /Mobi|iPhone|Android/i.test(ua) ? "телефон" : "компьютер";
+  const os = /iPhone|iPad|iOS/i.test(ua) ? "iOS" : /Android/i.test(ua) ? "Android" : /Windows/i.test(ua) ? "Windows"
+    : /Mac OS X|Macintosh/i.test(ua) ? "macOS" : /Linux/i.test(ua) ? "Linux" : "";
+  const br = /YaBrowser/i.test(ua) ? "Яндекс Браузер" : /Edg\//i.test(ua) ? "Edge" : /OPR\//i.test(ua) ? "Opera"
+    : /SamsungBrowser/i.test(ua) ? "Samsung" : /Instagram/i.test(ua) ? "Instagram (встроенный)" : /FBAN|FBAV/i.test(ua) ? "Facebook (встроенный)"
+    : /Chrome|CriOS/i.test(ua) ? "Chrome" : /Firefox|FxiOS/i.test(ua) ? "Firefox" : /Safari/i.test(ua) ? "Safari" : "";
+  return [type, os, br].filter(Boolean).join(" · ");
+}
+function visitorBlock(request) {
+  const cf = request.cf || {};
+  const L = [];
+  const pl = place(cf);
+  if (pl) L.push(`📍 ${pl}`);
+  const extra = [cf.postalCode ? `индекс ${cf.postalCode}` : "", cf.timezone ? `пояс ${cf.timezone}` : ""].filter(Boolean);
+  if (extra.length) L.push(`🗺 ${extra.join(" · ")}`);
+  if (cf.asOrganization) L.push(`🌐 Провайдер: ${oneLine(cf.asOrganization, 80)}`);
+  const dev = device(request.headers.get("user-agent"));
+  if (dev) L.push(`📱 ${dev}`);
+  const lang = (request.headers.get("accept-language") || "").split(",")[0].trim();
+  if (lang) L.push(`🗣 Язык браузера: ${oneLine(lang, 20)}`);
+  return L;
 }
 
 function phuketTime() {
@@ -108,8 +133,7 @@ function leadText(p, request, kind) {
   if (msg) L.push("", "💬 Текст обращения:", msg.slice(0, 2500));
   L.push("", `🔎 Источник: ${sourceOf(p)}`);
   if (oneLine(p.page)) L.push(`🔗 ${oneLine(p.page, 400)}`);
-  const pl = place(request.cf);
-  if (pl) L.push(`📍 ${pl}`);
+  L.push(...visitorBlock(request));
   return L.join("\n");
 }
 
