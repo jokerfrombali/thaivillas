@@ -22,6 +22,17 @@ PREFIX = re.compile(r'/thaivillas(?=/|["\'`?#)\s,]|$)(?!-)')
 SITE = 'https://luxuryphuket.net'
 NOINDEX = re.compile(r'<meta name="robots" content="noindex[^"]*">\s*')
 # pages that stay out of search: photo-tour duplicates, favourites, 404, the /villa/ redirect stub
+GA_ID = 'G-V4843CE7W2'
+# Google Analytics 4 + Consent Mode v2: granted by default, denied in EEA/UK/CH until thb-consent.js gets a yes.
+# Only the luxuryphuket.net build gets it; the GitHub Pages copy stays untracked.
+GA_HEAD = (
+    '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}'
+    "gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'granted'});"
+    "gtag('consent','default',{analytics_storage:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],wait_for_update:500});"
+    "gtag('js',new Date());gtag('config','%s');</script>\n"
+    '<script async src="https://www.googletagmanager.com/gtag/js?id=%s"></script>\n'
+    '<script defer src="/thb-consent.js"></script>\n'
+) % (GA_ID, GA_ID)
 HIDDEN = re.compile(r'(^|/)(gallery|saved)/index\.html$|^404\.html$|^villa/index\.html$')
 
 
@@ -29,6 +40,8 @@ def seo(rel, html):
     """luxuryphuket.net is the indexed copy: drop noindex, add canonical + og:url (GitHub Pages copy stays noindex)."""
     url = SITE + '/' + (rel[:-len('index.html')] if rel.endswith('index.html') else rel)
     html = NOINDEX.sub('', html)
+    if 'googletagmanager.com/gtag/js' not in html:
+        html = html.replace('</head>', GA_HEAD + '</head>', 1)
     if HIDDEN.search(rel):
         canon = url.rsplit('gallery/', 1)[0] if '/gallery/' in rel else url
         add = '<meta name="robots" content="noindex, follow">\n<link rel="canonical" href="%s">\n' % canon

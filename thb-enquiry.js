@@ -402,6 +402,7 @@
 
       function done(viaWa) {
         card.classList.add('is-done');
+        try { if (typeof window.gtag === 'function') window.gtag('event', viaWa ? 'enquiry_whatsapp' : 'generate_lead', { channel: viaWa ? 'whatsapp' : 'form', villa: p.villa }); } catch (e) {}
         els.doneTitle.textContent = viaWa ? 'Request ready' : 'Request sent';
         els.doneText.textContent = viaWa
           ? 'We opened WhatsApp with your request — press send there and our team picks it up right away.'
