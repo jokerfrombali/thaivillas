@@ -118,7 +118,8 @@ async function accessToken(env) {
 async function zohoGet(env, path, token) {
   token = token || (await accessToken(env));
   const r = await fetch(API + path, { headers: { Authorization: "Zoho-oauthtoken " + token } });
-  return r.json().catch(() => ({ status: { code: r.status } }));
+  const t = await r.text();
+  try { return JSON.parse(t.replace(/([:\[,]\s*)(\d{16,})(?=\s*[,\]}])/g, '$1"$2"')); } catch { return { status: { code: r.status } }; }
 }
 
 // ---------------- inbox -> Telegram (cron) ----------------
@@ -178,7 +179,13 @@ export async function tgWebhook(request, env) {
   const { chat_id } = mailChat(env);
   if (String(msg.chat.id) !== String(chat_id)) return ok();
   const ref = JSON.parse((await env.STATE.get("tgmail:" + msg.reply_to_message.message_id)) || "null");
-  if (!ref) return ok();
+  if (!ref) {
+    await env.STATE.put("bridge_error", "no mail mapped to tg message " + msg.reply_to_message.message_id, { expirationTtl: 86400 });
+    if (msg.reply_to_message.from && msg.reply_to_message.from.is_bot)
+      await tg(env, "sendMessage", { chat_id: msg.chat.id, message_thread_id: msg.message_thread_id, reply_to_message_id: msg.message_id,
+        text: "ℹ️ Это не письмо. Чтобы ответить клиенту, нажмите «Ответить» на сообщение бота, которое начинается с «📧 Письмо»." });
+    return ok();
+  }
   const acc = JSON.parse((await env.STATE.get("zoho_account")) || "null");
   const token = acc && (await accessToken(env));
   const reply = (text) => tg(env, "sendMessage", { chat_id: msg.chat.id, message_thread_id: msg.message_thread_id, reply_to_message_id: msg.message_id, text });
@@ -193,6 +200,7 @@ export async function tgWebhook(request, env) {
     }),
   });
   const res = await r.json().catch(() => ({}));
+  await env.STATE.put("bridge_error", "zoho send " + r.status + " " + JSON.stringify(res).slice(0, 400), { expirationTtl: 86400 });
   if (r.ok && (res.status?.code ?? 200) < 300) await reply(`✅ Ответ отправлен на ${ref.from}`);
   else { await env.STATE.put("bridge_error", "zoho send " + r.status + " " + JSON.stringify(res).slice(0, 400), { expirationTtl: 86400 }); }
   if (!(r.ok && (res.status?.code ?? 200) < 300)) await reply(`❌ Не отправилось (${res.status?.code || r.status}: ${res.data?.errorCode || res.status?.description || ""}). Ответьте из Zoho Mail.`);
