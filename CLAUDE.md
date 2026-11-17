@@ -78,12 +78,15 @@ Supports `IMPORTER_CACHE=<dir>` (resumable), per-site URL rules in `SITES` (indr
 ## Status / open tasks (owner's checklist)
 Done: all listings live, logo, brand rename, light catalogues, sale/project pages, Cloudflare + domain + SSL,
 indexing opened (robots, sitemap, canonical), Telegram/email lead endpoint (waiting for secrets).
-Waiting for the owner (they do these in their browser — Claude in Chrome can help):
-1. Google Search Console: domain property `luxuryphuket.net` (TXT in Cloudflare DNS), submit `sitemap.xml`, request indexing of main pages.
-2. Google Analytics 4 → owner sends `G-XXXXXXXXXX` → **you add gtag to every page** (via `thv.py` head injection /
-   `cloudflare_build.py`) + events: enquiry sent, WhatsApp click, phone click. Respect `thb-consent.js`.
+Done 17.11.2026 (Google account of the project: luxuryphuketnet@gmail.com — NOT newlifeonbali@gmail.com):
+- Search Console: domain property verified by TXT `google-site-verification=8o_zNr...` in Cloudflare DNS (keep it), sitemap submitted (3,759 URLs).
+  "Request indexing" for main pages returned "try later" right after creation — retry.
+- GA4: account "Luxury Phuket", stream luxuryphuket.net, **G-V4843CE7W2**, linked to Search Console. gtag + Consent Mode
+  injected by `tools/cloudflare_build.py` (GA_HEAD, live site only); events: `thb-events.js` (whatsapp_click, phone_click,
+  booking_open/submit) + `generate_lead` / `enquiry_whatsapp` in `thb-enquiry.js`.
+- Cloudflare: Always Use HTTPS on; Redirect Rule www → apex (301, keeps path + query).
+Still waiting for the owner:
 3. Telegram bot: @BotFather token + chat id → Cloudflare secrets → send a test enquiry.
-4. Cloudflare: SSL/TLS → Always Use HTTPS; Redirect Rule www → root (301).
 5. Zoho Mail `hello@luxuryphuket.net` (MX/SPF/DKIM in Cloudflare DNS) → then replace `EMAIL` in `thv.py`, rebuild.
 Next ideas offered: unique texts for home/area/section pages (listing descriptions are copied from the sources →
 duplicate-content risk), Bing/Yandex webmaster, Google Business Profile, Russian version, retire the github.io copy.
