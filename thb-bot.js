@@ -15,6 +15,22 @@
 
   var off = false;                    /* set once the API answers 404 */
 
+  /* first page of the visit + external referrer -> lead source (ChatGPT, Google, Instagram...) */
+  var SRC_KEY = 'thb_src_v1';
+  function source() {
+    try {
+      var s = JSON.parse(sessionStorage.getItem(SRC_KEY) || 'null');
+      if (s) return s;
+      var ref = document.referrer || '';
+      if (ref && ref.indexOf(location.hostname) !== -1) ref = '';
+      s = { ref: ref, land: location.href };
+      sessionStorage.setItem(SRC_KEY, JSON.stringify(s));
+      return s;
+    } catch (e) { return { ref: document.referrer || '', land: location.href }; }
+  }
+  source();
+  window.thbSource = source;
+
   function post(path, data, beacon) {
     if (off) return;
     var body = JSON.stringify(data);
@@ -80,7 +96,9 @@
       source: 'whatsapp',
       villa: villaName(),
       page: location.href,
-      text: text
+      text: text,
+      ref: source().ref,
+      land: source().land
     };
     var d = dates();
     if (d) { payload.checkin = d.checkin; payload.checkout = d.checkout; payload.nights = d.nights; }

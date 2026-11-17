@@ -43,20 +43,101 @@ async function telegram(env, text) {
   return ok > 0;
 }
 
+// ---------- lead formatting (Russian, for the managers' Telegram topic) ----------
+const SOURCES = [
+  [/chatgpt|openai/i, "ChatGPT"], [/perplexity/i, "Perplexity"], [/gemini\.google|bard/i, "Gemini"],
+  [/copilot|bing\.com\/chat/i, "Copilot"], [/claude\.ai/i, "Claude"], [/google\./i, "Google"],
+  [/bing\./i, "Bing"], [/yandex|ya\.ru/i, "Яндекс"], [/duckduckgo/i, "DuckDuckGo"],
+  [/instagram/i, "Instagram"], [/facebook|fb\.com|fb\.me/i, "Facebook"], [/t\.me|telegram/i, "Telegram"],
+  [/youtube|youtu\.be/i, "YouTube"], [/tiktok/i, "TikTok"], [/whatsapp|wa\.me/i, "WhatsApp"],
+];
+const SEARCH = ["Google", "Bing", "Яндекс", "DuckDuckGo"];
+
+function sourceOf(p) {
+  const land = String(p.land || p.page || "");
+  let utm = "", medium = "";
+  try {
+    const u = new URL(land);
+    utm = u.searchParams.get("utm_source") || "";
+    medium = u.searchParams.get("utm_medium") || "";
+  } catch {}
+  let refHost = "";
+  try { refHost = p.ref ? new URL(String(p.ref)).hostname.replace(/^www\./, "") : ""; } catch {}
+  if (/(^|\.)luxuryphuket\.net$/.test(refHost)) refHost = "";
+  const probe = utm || refHost;
+  if (!probe) return "Прямой заход / закладка";
+  const hit = SOURCES.find(([re]) => re.test(probe));
+  let name = hit ? hit[1] : probe;
+  if (hit && SEARCH.includes(name) && !utm) name += " (поиск)";
+  if (/cpc|ppc|paid/i.test(medium)) name += " · реклама";
+  return utm ? `${name} · utm_source=${oneLine(utm, 60)}` : `${name} · ${refHost}`;
+}
+
+function place(cf) {
+  if (!cf) return "";
+  let country = cf.country || "";
+  try { if (country) country = new Intl.DisplayNames(["ru"], { type: "region" }).of(country) || country; } catch {}
+  return [cf.city, country].filter(Boolean).join(", ");
+}
+
+function phuketTime() {
+  const d = new Date(Date.now() + 7 * 3600 * 1000);
+  const z = (n) => String(n).padStart(2, "0");
+  return `${z(d.getUTCDate())}.${z(d.getUTCMonth() + 1)}.${d.getUTCFullYear()} ${z(d.getUTCHours())}:${z(d.getUTCMinutes())}`;
+}
+
+function guestsLine(p) {
+  if (Number(p.adults)) return `${p.adults} взр.` + (Number(p.children) ? ` + ${p.children} дет.` : "");
+  return p.guests ? `${oneLine(p.guests, 20)} гост.` : "";
+}
+
+function leadText(p, request, kind) {
+  const L = [`🏝 Заявка · ${kind}`, `🕒 ${phuketTime()} (Пхукет)`, ""];
+  if (oneLine(p.villa)) L.push(`🏠 ${oneLine(p.villa, 200)}`);
+  if (oneLine(p.checkin)) {
+    const n = Number(p.nights) ? ` · ${p.nights} ноч.` : "";
+    L.push(`📅 ${oneLine(p.checkin, 40)} → ${oneLine(p.checkout, 40)}${n}`);
+  }
+  const g = guestsLine(p);
+  if (g) L.push(`👥 ${g}`);
+  if (oneLine(p.name)) L.push(`👤 ${oneLine(p.name, 120)}`);
+  const phone = oneLine(p.phone, 60);
+  if (phone && phone.replace(/^\+\d+\s*/, "")) L.push(`📞 ${phone}`);
+  if (oneLine(p.email)) L.push(`✉️ ${oneLine(p.email, 120)}`);
+  const msg = String(p.note || p.text || "").trim();
+  if (msg) L.push("", "💬 Текст обращения:", msg.slice(0, 2500));
+  L.push("", `🔎 Источник: ${sourceOf(p)}`);
+  if (oneLine(p.page)) L.push(`🔗 ${oneLine(p.page, 400)}`);
+  const pl = place(request.cf);
+  if (pl) L.push(`📍 ${pl}`);
+  return L.join("\n");
+}
+
+async function readJson(request) {
+  const text = await request.text();
+  if (text.length > MAX_BODY) throw new Error("too big");
+  const p = JSON.parse(text);
+  if (!p || typeof p !== "object") throw new Error("bad");
+  return p;
+}
+
+// WhatsApp click from thb-bot.js: the guest is about to message us; log it as a lead.
+async function waLead(request, env) {
+  if (request.method !== "POST") return json({ ok: false }, 405);
+  if (!(env.TG_BOT_TOKEN && env.TG_CHAT_ID)) return json({ ok: false, error: "not configured" }, 503);
+  let p;
+  try { p = await readJson(request); } catch { return json({ ok: false }, 400); }
+  try { await telegram(env, leadText(p, request, "WhatsApp")); } catch {}
+  return json({ ok: true });
+}
+
 async function enquiry(request, env) {
   if (request.method !== "POST") return json({ ok: false, error: "method" }, 405);
   const hasTg = !!(env.TG_BOT_TOKEN && env.TG_CHAT_ID);
   const hasMail = !!(env.LEADS && env.LEAD_TO);
   if (!hasTg && !hasMail) return json({ ok: false, error: "not configured" }, 503);
   let p;
-  try {
-    const text = await request.text();
-    if (text.length > MAX_BODY) throw new Error("too big");
-    p = JSON.parse(text);
-    if (!p || typeof p !== "object") throw new Error("bad");
-  } catch {
-    return json({ ok: false, error: "bad request" }, 400);
-  }
+  try { p = await readJson(request); } catch { return json({ ok: false, error: "bad request" }, 400); }
   if (p.website) return json({ ok: true }); // honeypot field, if a form adds one
   if (!oneLine(p.name) && !oneLine(p.phone) && !oneLine(p.email)) return json({ ok: false, error: "empty" }, 400);
 
@@ -68,12 +149,12 @@ async function enquiry(request, env) {
     if (v === undefined || v === null || v === "" || (k === "phone" && !String(v).replace(/^\+\d+\s*/, ""))) continue;
     lines.push(`${label}: ${k === "note" ? String(v).slice(0, 4000) : oneLine(v, 500)}`);
   }
-  lines.push("", `Country (by IP): ${request.cf?.country || "?"}`, `Received: ${new Date().toISOString()}`);
+  lines.push("", `Source: ${sourceOf(p)}`, `Location: ${place(request.cf) || "?"}`, `Received: ${new Date().toISOString()}`);
 
   let delivered = false;
   if (hasTg) {
     try {
-      delivered = (await telegram(env, `🏝 ${subject}\n\n${lines.join("\n")}`)) || delivered;
+      delivered = (await telegram(env, leadText(p, request, "Форма бронирования"))) || delivered;
     } catch {}
   }
   if (!hasMail) return delivered ? json({ ok: true }) : json({ ok: false, error: "send failed" }, 502);
@@ -101,6 +182,9 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname === "/api/enquiry") return enquiry(request, env);
+    if (url.pathname === "/api/lead") return waLead(request, env);
+    // thb-bot.js also pings these; accepted and dropped so the script stays on
+    if (url.pathname === "/api/hit" || url.pathname === "/api/alert") return new Response(null, { status: 204 });
     return env.ASSETS.fetch(request);
   },
 };

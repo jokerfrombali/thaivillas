@@ -32,6 +32,7 @@ GA_HEAD = (
     "gtag('js',new Date());gtag('config','%s');</script>\n"
     '<script async src="https://www.googletagmanager.com/gtag/js?id=%s"></script>\n'
     '<script defer src="/thb-consent.js"></script>\n'
+    '<script defer src="/thb-bot.js"></script>\n'
 ) % (GA_ID, GA_ID)
 HIDDEN = re.compile(r'(^|/)(gallery|saved)/index\.html$|^404\.html$|^villa/index\.html$')
 

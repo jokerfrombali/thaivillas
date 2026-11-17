@@ -349,7 +349,9 @@
         email: card.email.value.trim(),
         phone: card.code.value + ' ' + card.phone.value.trim(),
         note: card.note.value.trim(),
-        page: location.href
+        page: location.href,
+        ref: (window.thbSource && window.thbSource().ref) || document.referrer || '',
+        land: (window.thbSource && window.thbSource().land) || ''
       };
     }
     function asText(p) {
