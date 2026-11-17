@@ -183,7 +183,9 @@ export async function tgWebhook(request, env) {
     await env.STATE.put("bridge_error", "no mail mapped to tg message " + msg.reply_to_message.message_id, { expirationTtl: 86400 });
     if (msg.reply_to_message.from && msg.reply_to_message.from.is_bot)
       await tg(env, "sendMessage", { chat_id: msg.chat.id, message_thread_id: msg.message_thread_id, reply_to_message_id: msg.message_id,
-        text: "ℹ️ Это не письмо. Чтобы ответить клиенту, нажмите «Ответить» на сообщение бота, которое начинается с «📧 Письмо»." });
+        text: String(msg.reply_to_message.text || "").startsWith("📧")
+          ? "⏳ Письмо только что пришло, бот ещё не готов на него ответить. Подождите минуту и нажмите «Ответить» ещё раз."
+          : "ℹ️ Это не письмо. Чтобы ответить клиенту, нажмите «Ответить» на сообщение бота, которое начинается с «📧 Письмо»." });
     return ok();
   }
   const acc = JSON.parse((await env.STATE.get("zoho_account")) || "null");
