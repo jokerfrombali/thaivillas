@@ -96,3 +96,15 @@ duplicate-content risk), Bing/Yandex webmaster, Google Business Profile, Russian
 - Before pushing a rebuild, check a few pages in a browser (Playwright) and that `grep -c /thaivillas/ dist/index.html` is 0 after `cloudflare_build.py`.
 - Never put tokens, passwords or the owner's private email in the repo (it is public). Use Cloudflare secrets.
 - Keep the GitHub Pages copy `noindex`; only luxuryphuket.net is indexed.
+
+## Telegram (done 17.11.2026)
+Group "Luxury Phuket" (forum) id -1004370261657, bot = TG_BOT_TOKEN secret.
+- Topic 3 "Заявки": `TG_CHAT_ID` secret = `-1004370261657:3` ("chat:topic"). Leads in Russian (`src/worker.js` leadText):
+  booking form (/api/enquiry) + every WhatsApp click (/api/lead from `thb-bot.js`, injected on the live site by
+  cloudflare_build.py). Source = first page of the visit (utm_source / referrer: ChatGPT, Google…), city/region/ISP/device.
+- Topic 7 "Почта": `TG_MAIL_CHAT` var in wrangler.jsonc. `src/mail.js`: cron every minute reads Zoho Mail API
+  (hello@luxuryphuket.net, Zoho Forever Free — API works) and posts new mail; Telegram Reply to that post is sent back
+  from hello@ (Telegram webhook /api/tg/webhook, secret derived from the bot token). Zoho API client
+  "Luxury Phuket Telegram Bridge" (api-console.zoho.com, luxuryphuketnet@gmail.com), secrets ZOHO_CLIENT_ID /
+  ZOHO_CLIENT_SECRET; refresh token + state in KV `thaivillas-state` (binding STATE). Reconnect: delete KV key
+  `zoho_refresh`, open https://luxuryphuket.net/api/zoho/connect.
