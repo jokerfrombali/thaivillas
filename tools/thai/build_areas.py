@@ -15,6 +15,7 @@ inline scripts) is regenerated here from data/villas.json + data/areas.json.
 """
 import sys, os, re, json, math
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import facts as F
 from thv import *  # noqa
 
 OTHER = [d for d in AREAS if d['slug'] != 'phuket']
@@ -728,7 +729,7 @@ def assemble(tpl, title, desc, image, page_html, after_footer_html, jsonld, has_
     s = s.replace('</body>', tail + '\n</body>', 1)
     return s
 
-def faq_common(place, season, go, monthly_note=True):
+def faq_common(place, season, go, monthly_note=True, vs=None):
     qa = [
         ('How do I book a villa in %s?' % place,
          'Open a villa, choose your dates and send the request &mdash; it comes straight to us on WhatsApp. We reply with availability '
@@ -738,10 +739,12 @@ def faq_common(place, season, go, monthly_note=True):
          '(electricity, cleaning, pool care) are set per villa &mdash; filter by "Monthly" or ask us and we will list the options.'),
         ('When is the best time to stay in %s?' % place, season),
         ('How do I get to %s?' % place, go),
-        ('Why do the villas show "On request" instead of a price?',
-         'The villas shown are sample listings while we onboard properties, and rates depend on the dates and the length of stay. '
-         'Send your dates and we will quote the exact price.'),
     ]
+    if vs is not None:
+        qa[3:3] = F.rent_price_qa(place, vs)
+    qa.append(('Is the price on the listing final?',
+               'Listed rates are a guide for the season. The exact price depends on your dates and length of stay &mdash; '
+               'send the request and we confirm it in writing before anything is paid.'))
     return qa
 
 # ------------------------------------------------------------------ 1. catalogue
@@ -901,7 +904,7 @@ def build_phuket():
     qa = faq_common('Phuket', 'November to April is high season, with calm seas and dry weather on the west coast. May to October is the green season: '
                     'showers, surf at Kata and Karon, and quieter beaches &mdash; good for monthly stays.',
                     'Phuket International Airport is in the north of the island, with domestic and international flights. Mai Khao and Layan are 5&ndash;25 minutes away, '
-                    'Bang Tao about 30, Patong about 45 and the southern beaches about an hour by car.')
+                    'Bang Tao about 30, Patong about 45 and the southern beaches about an hour by car.', vs=vs)
     qa.insert(2, ('Which Phuket beach is best for a villa?', 'For families and amenities, Bang Tao and Layan; for a lively beach town, Kata and Karon; for nightlife, Patong; '
                   'for long stays, Nai Harn, Rawai and Chalong; for peace and quick airport access, Mai Khao and Nai Yang.'))
     other = more_places('Other destinations in Thailand', [(area_url(d['slug']), 'Villas in ' + d['name']) for d in OTHER] + [('/villas/', 'All destinations'), ('/vip/', 'VIP services in Phuket')])
@@ -923,11 +926,11 @@ def build_beach(a):
     near_with = sorted(nearby(slug, 11), key=lambda b: (count('phuket', b['slug']) == 0, km(a, b)))[:4]
     empty = empty_state(name, [(area_url('phuket', b['slug']), '%s <b style="font-weight:400;color:#8a877f">%d</b>' % (b['name'], count('phuket', b['slug'])))
                                for b in near_with] + [(area_url('phuket'), 'All Phuket villas')])
-    seo = seo_section('%s-seo-title' % slug, '%s villa rentals' % name, 'Villas in %s, Phuket' % name, t['p'],
+    seo = seo_section('%s-seo-title' % slug, '%s villa rentals' % name, 'Villas in %s, Phuket' % name, t['p'] + [x for x in [F.rent_price_para(name, vs)] if x],
         'Nearby beaches', [(area_url('phuket', b['slug']), 'Villas in ' + b['name']) for b in near]
         + [('/property-rental/?sub=%s' % slug, 'Filtered catalogue'), (area_url('phuket'), 'All Phuket villas'), ('/monthly-rental/phuket/', 'Monthly in Phuket')],
         [('Who is %s for?' % name, t['who']), ('Getting there', t['go']), ('When to go', t['season'])])
-    qa = faq_common(name, t['season'], t['go'])
+    qa = faq_common(name, t['season'], t['go'], vs=vs)
     qa.insert(2, ('What is %s like?' % name, re.sub(r'<[^>]+>', '', t['p'][0])))
     others = more_places('Other Phuket beaches', [(area_url('phuket', b['slug']), b['name']) for b in BEACHES if b['slug'] != slug]
                          + [(area_url('phuket'), 'All Phuket'), ('/villas/', 'All destinations')])
