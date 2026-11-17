@@ -6,7 +6,7 @@
 // falls back to WhatsApp, so no request is lost.
 // Secrets live in Cloudflare: Workers & Pages -> thaivillas -> Settings -> Variables and Secrets.
 import { EmailMessage } from "cloudflare:email";
-import { zohoConnect, zohoCallback, pollMail, tgWebhook } from "./mail.js";
+import { zohoConnect, zohoCallback, pollMail, tgWebhook, bridgeStatus } from "./mail.js";
 
 const MAX_BODY = 20000;
 
@@ -211,6 +211,7 @@ export default {
     if (url.pathname === "/api/zoho/connect") return zohoConnect(request, env);
     if (url.pathname === "/api/zoho/callback") return zohoCallback(request, env);
     if (url.pathname === "/api/tg/webhook") return tgWebhook(request, env);
+    if (url.pathname === "/api/tg/status") return bridgeStatus(env);
     // thb-bot.js also pings these; accepted and dropped so the script stays on
     if (url.pathname === "/api/hit" || url.pathname === "/api/alert") return new Response(null, { status: 204 });
     return env.ASSETS.fetch(request);

@@ -172,6 +172,8 @@ export async function tgWebhook(request, env) {
   const u = await request.json().catch(() => ({}));
   const msg = u.message;
   const ok = () => new Response("ok");
+  await env.STATE.put("bridge_error", "last update " + new Date().toISOString() + ": chat " + (msg && msg.chat && msg.chat.id) +
+    ", reply_to " + (msg && msg.reply_to_message && msg.reply_to_message.message_id) + ", text " + !!(msg && msg.text), { expirationTtl: 86400 });
   if (!msg || !msg.reply_to_message || !msg.text) return ok();
   const { chat_id } = mailChat(env);
   if (String(msg.chat.id) !== String(chat_id)) return ok();
@@ -192,6 +194,22 @@ export async function tgWebhook(request, env) {
   });
   const res = await r.json().catch(() => ({}));
   if (r.ok && (res.status?.code ?? 200) < 300) await reply(`✅ Ответ отправлен на ${ref.from}`);
-  else await reply(`❌ Не отправилось (${res.status?.code || r.status}: ${res.data?.errorCode || res.status?.description || ""}). Ответьте из Zoho Mail.`);
+  else { await env.STATE.put("bridge_error", "zoho send " + r.status + " " + JSON.stringify(res).slice(0, 400), { expirationTtl: 86400 }); }
+  if (!(r.ok && (res.status?.code ?? 200) < 300)) await reply(`❌ Не отправилось (${res.status?.code || r.status}: ${res.data?.errorCode || res.status?.description || ""}). Ответьте из Zoho Mail.`);
   return ok();
+}
+
+// Diagnostics without secrets: Telegram webhook state + last bridge error.
+export async function bridgeStatus(env) {
+  const info = await tg(env, "getWebhookInfo", {});
+  const w = info.result || {};
+  const out = {
+    webhook_set: !!w.url, webhook_url_ok: w.url === "https://luxuryphuket.net/api/tg/webhook",
+    pending: w.pending_update_count, last_error: w.last_error_message || null,
+    last_error_at: w.last_error_date ? new Date(w.last_error_date * 1000).toISOString() : null,
+    allowed_updates: w.allowed_updates || null,
+    mail_connected: !!(await env.STATE.get("zoho_account")),
+    last_bridge_error: await env.STATE.get("bridge_error"),
+  };
+  return new Response(JSON.stringify(out, null, 1), { headers: { "content-type": "application/json" } });
 }
