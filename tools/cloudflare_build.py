@@ -23,6 +23,8 @@ SITE = 'https://luxuryphuket.net'
 NOINDEX = re.compile(r'<meta name="robots" content="noindex[^"]*">\s*')
 # pages that stay out of search: photo-tour duplicates, favourites, 404, the /villa/ redirect stub
 GA_ID = 'G-V4843CE7W2'
+# IndexNow (Bing, Yandex, Seznam...): public key, served as /<key>.txt; submit with tools/indexnow.py
+INDEXNOW_KEY = '5874ee558f22a42dd083814e243355b5'
 # Google Analytics 4 + Consent Mode v2: granted by default, denied in EEA/UK/CH until thb-consent.js gets a yes.
 # Only the luxuryphuket.net build gets it; the GitHub Pages copy stays untracked.
 GA_HEAD = (
@@ -95,6 +97,12 @@ def main():
         for u in urls:
             fh.write('<url><loc>%s</loc><lastmod>%s</lastmod></url>\n' % (u, today))
         fh.write('</urlset>\n')
+    with open(os.path.join(OUT, INDEXNOW_KEY + '.txt'), 'w') as fh:
+        fh.write(INDEXNOW_KEY)
+    sys.path.insert(0, os.path.dirname(__file__))
+    import llms_txt
+    with open(os.path.join(OUT, 'llms.txt'), 'w', encoding='utf-8') as fh:
+        fh.write(llms_txt.build(ROOT))
     with open(os.path.join(OUT, 'robots.txt'), 'w') as fh:
         fh.write('User-agent: *\nAllow: /\nDisallow: /saved/\nDisallow: /api/\n\nSitemap: %s/sitemap.xml\n' % SITE)
     print('dist: %d files (%d rewritten), sitemap: %d URLs' % (n_files, n_text, len(urls)))
