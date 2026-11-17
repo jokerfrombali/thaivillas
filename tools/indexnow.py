@@ -10,7 +10,7 @@ import urllib.request
 sys.path.insert(0, __import__('os').path.dirname(__file__))
 from cloudflare_build import INDEXNOW_KEY, SITE
 
-sm = urllib.request.urlopen(SITE + '/sitemap.xml', timeout=60).read().decode('utf-8')
+sm = urllib.request.urlopen(urllib.request.Request(SITE + '/sitemap.xml', headers={'User-Agent': 'Mozilla/5.0 (indexnow-submit)'}), timeout=60).read().decode('utf-8')
 urls = re.findall(r'<loc>([^<]+)</loc>', sm)
 for i in range(0, len(urls), 9000):
     body = json.dumps({'host': SITE.split('//')[1], 'key': INDEXNOW_KEY,
