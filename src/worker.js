@@ -1,6 +1,6 @@
 // luxuryphuket.net — static site (assets in dist/) + one endpoint: POST /api/enquiry.
 // The enquiry form (thb-enquiry.js) posts JSON here and the request is delivered to:
-//   * Telegram — secrets TG_BOT_TOKEN (from @BotFather) and TG_CHAT_ID (one or more ids, comma-separated);
+//   * Telegram — secrets TG_BOT_TOKEN (from @BotFather) and TG_CHAT_ID (one or more ids, comma-separated; "chat:topic" posts into a forum topic);
 //   * email (optional) — Cloudflare Email Routing + secret LEAD_TO.
 // If no channel is configured or every channel fails, the endpoint answers with an error and the form
 // falls back to WhatsApp, so no request is lost.
@@ -30,11 +30,13 @@ const LABELS = {
 async function telegram(env, text) {
   const ids = String(env.TG_CHAT_ID).split(",").map((x) => x.trim()).filter(Boolean);
   let ok = 0;
-  for (const chat_id of ids) {
+  for (const id of ids) {
+    // "chat_id:topic" sends into a forum topic, e.g. -1004370261657:3
+    const [chat_id, topic] = id.split(":");
     const r = await fetch(`https://api.telegram.org/bot${env.TG_BOT_TOKEN}/sendMessage`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ chat_id, text: text.slice(0, 4000), disable_web_page_preview: true }),
+      body: JSON.stringify({ chat_id, ...(topic ? { message_thread_id: Number(topic) } : {}), text: text.slice(0, 4000), disable_web_page_preview: true }),
     });
     if (r.ok) ok++;
   }
