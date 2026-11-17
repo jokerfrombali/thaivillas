@@ -218,6 +218,8 @@ export async function bridgeStatus(env) {
     allowed_updates: w.allowed_updates || null,
     mail_connected: !!(await env.STATE.get("zoho_account")),
     last_bridge_error: await env.STATE.get("bridge_error"),
+    mapped_tg_messages: (await env.STATE.list({ prefix: "tgmail:" })).keys.map((k) => k.name),
+    mail_since: await env.STATE.get("mail_since"),
   };
   return new Response(JSON.stringify(out, null, 1), { headers: { "content-type": "application/json" } });
 }
