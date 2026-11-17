@@ -13,6 +13,8 @@
   "kv_namespaces": [{ "binding": "STATE", "id": "bf40d445af094eb69bb110f13e8ab08b" }],
   // every minute: new mail from hello@luxuryphuket.net -> Telegram topic "Почта"
   "triggers": { "crons": ["* * * * *"] },
+  // Telegram forum topic for mail ("chat_id:topic"); leads use the TG_CHAT_ID secret
+  "vars": { "TG_MAIL_CHAT": "-1004370261657:7" },
   // Custom domains: Cloudflare creates the DNS records and the SSL certificates on deploy
   // (the zone luxuryphuket.net is in the same Cloudflare account).
   "routes": [
