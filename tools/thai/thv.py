@@ -19,7 +19,7 @@ TPL = os.environ.get('THAI_TPL', '/private/tmp/claude-501/-Users-macbookm4-Proje
 BRAND = 'Luxury Phuket'
 WA_NUM = '66811237388'
 PHONE = '+66 81 123 7388'
-EMAIL = 'hello@thaivillas.example'          # TODO
+EMAIL = 'hello@luxuryphuket.net'          # TODO
 WA = 'https://wa.me/' + WA_NUM
 def wa(text="Hi Luxury Phuket! I'm looking for a villa in Thailand."):
     from urllib.parse import quote

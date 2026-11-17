@@ -10,7 +10,7 @@ give click-by-click steps only for things that need their accounts (Google, Clou
 - **Old copy:** https://jokerfrombali.github.io/thaivillas/ (GitHub Pages, same repo, kept `noindex`).
 - **Repo:** `jokerfrombali/thaivillas` (public — never commit secrets, tokens or the owner's private email).
 - **Contacts on the site:** WhatsApp/phone `+66 81 123 7388` (`tools/thai/thv.py`: `WA_NUM`, `PHONE`; `thb-enquiry.js`: `WA`).
-  Email is still a placeholder `hello@thaivillas.example` (`thv.py: EMAIL`) — replace when Zoho mail `hello@luxuryphuket.net` works.
+  Email: `hello@luxuryphuket.net` (Zoho Mail free, MX/SPF/DKIM in Cloudflare DNS, verified 17.11.2026).
 - Content language: English. Listings come from getyourphuket.com (EN) and indreamsphuket.com (EN version of indreamsphuket.ru).
 
 ## Numbers (current data)
