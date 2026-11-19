@@ -77,7 +77,7 @@ Supports `IMPORTER_CACHE=<dir>` (resumable), per-site URL rules in `SITES` (indr
 
 ## Status / open tasks (owner's checklist)
 Done: all listings live, logo, brand rename, light catalogues, sale/project pages, Cloudflare + domain + SSL,
-indexing opened (robots, sitemap, canonical), Telegram/email lead endpoint (waiting for secrets).
+indexing opened (robots, sitemap, canonical), Telegram/email lead endpoint.
 Done 17.11.2026 (Google account of the project: luxuryphuketnet@gmail.com — NOT newlifeonbali@gmail.com):
 - Search Console: domain property verified by TXT `google-site-verification=8o_zNr...` in Cloudflare DNS (keep it), sitemap submitted (3,759 URLs).
   "Request indexing" for main pages returned "try later" right after creation — retry.
@@ -85,11 +85,17 @@ Done 17.11.2026 (Google account of the project: luxuryphuketnet@gmail.com — NO
   injected by `tools/cloudflare_build.py` (GA_HEAD, live site only); events: `thb-events.js` (whatsapp_click, phone_click,
   booking_open/submit) + `generate_lead` / `enquiry_whatsapp` in `thb-enquiry.js`.
 - Cloudflare: Always Use HTTPS on; Redirect Rule www → apex (301, keeps path + query).
-Still waiting for the owner:
-3. Telegram bot: @BotFather token + chat id → Cloudflare secrets → send a test enquiry.
-5. Zoho Mail `hello@luxuryphuket.net` (MX/SPF/DKIM in Cloudflare DNS) → then replace `EMAIL` in `thv.py`, rebuild.
-Next ideas offered: unique texts for home/area/section pages (listing descriptions are copied from the sources →
-duplicate-content risk), Bing/Yandex webmaster, Google Business Profile, Russian version, retire the github.io copy.
+Also done 17–18.11.2026: Telegram leads + Zoho mail bridge (see "Telegram" below), hello@luxuryphuket.net on the site,
+llms.txt, IndexNow, price facts in area/sale FAQ.
+Open / next (19.11.2026):
+- Google Business Profile "Luxury Phuket" created (service area Phuket, no address, luxuryphuketnet@gmail.com) — NOT verified:
+  the owner works online, Google needs a real address. Finish when there is an office/coworking (business.google.com → Verify).
+- Bing Webmaster: Microsoft blocked account creation — retry later (no VPN / from phone). Bing already gets URLs via IndexNow.
+- Directories: FazWaz = owner listings only (leads go to FazWaz); Dot Property / Thailand-Property / Hipflat for agencies only via
+  Proppit (paid, demo request); DDproperty paid. Owner not paying yet.
+- Proposed next: own content — guide articles (monthly rent prices by area, can foreigners buy, Bang Tao vs Rawai) + FAQ page;
+  Facebook/Instagram/Reddit by the owner (texts in tools/marketing/listing-kit.md); Russian version; retire github.io copy.
+- Search Console: retry "Request indexing" for main pages.
 
 ## Working rules
 - Commit to `main` (Cloudflare deploys it). Branch `real-listings` mirrors main (used for staged builds).
